@@ -1,22 +1,12 @@
 import ts from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
+import eslint from 'eslint';
+import prettier from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
-import { fileURLToPath, URL } from 'node:url';
-
-const ROOT_DIR = fileURLToPath(new URL('./', import.meta.url));
 
 const sharedPlugins = {
   ts,
   prettierPlugin,
-};
-
-const config = {
-  plugins: {
-    ...sharedPlugins,
-  },
-  // rules: {
-  //   ...sharedRules,
-  // },
 };
 
 const sharedBrowserGlobals = {
@@ -25,21 +15,37 @@ const sharedBrowserGlobals = {
   es2022: 'writable',
 };
 
+const sharedRules = {
+  ...eslint['recommended'],
+  ...ts.rules['stylistic-type-checked'],
+  ...ts.rules['strict-type-checked'],
+  ...prettier.rules,
+};
+
+const config = {
+  plugins: {
+    ...sharedPlugins,
+  },
+  rules: {
+    ...sharedRules,
+  },
+};
+
 export default [
   {
-    files: ['apps/*/src/**/*.ts'],
+    files: ['apps/demo/src/**/*.ts'],
     languageOptions: {
       sourceType: 'module',
       ecmaVersion: 2022,
       parser,
       parserOptions: {
-        project: ['./tsconfig.eslint.json', './apps/*/tsconfig.json'],
-        tsconfigRootDir: ROOT_DIR,
+        project: true,
+        // tsconfigRootDir: fileURLToPath(new URL('./apps/demo', import.meta.url)),
       },
       globals: {
         ...sharedBrowserGlobals,
       },
     },
+    ...config,
   },
-  ...config,
 ];
