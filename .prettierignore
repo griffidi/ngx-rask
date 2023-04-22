@@ -1,0 +1,4 @@
+dist
+.out
+.git
+node_modules

@@ -1,20 +1,38 @@
 {
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
-      "type": "pwa-chrome",
+      "name": "ng serve: demo",
+      "type": "node-terminal",
       "request": "launch",
-      "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "command": "pnpm start",
+      // "preLaunchTask": "build libs",
+      "presentation": {
+        "hidden": false,
+        "group": "demo",
+        "order": 1
+      }
     },
     {
-      "name": "ng test",
-      "type": "chrome",
+      "name": "Debug demo (edge)",
+      "type": "pwa-msedge",
       "request": "launch",
-      "preLaunchTask": "npm: test",
-      "url": "http://localhost:9876/debug.html"
+      "runtimeExecutable": "dev",
+      "url": "http://localhost:4400",
+      "webRoot": "${workspaceFolder}",
+      "userDataDir": "${workspaceFolder}/.out/edge",
+      "presentation": {
+        "hidden": false,
+        "group": "demo",
+        "order": 2
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch demo",
+      "configurations": ["ng serve: demo", "Debug demo (edge)"],
+      "stopAll": true
     }
   ]
 }

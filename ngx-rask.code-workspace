@@ -30,7 +30,7 @@
     },
     "npm.autoDetect": "off",
     "typescript.tsc.autoDetect": "off",
-    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+    "typescript.tsserver.experimental.enableProjectDiagnostics": false,
     "typescript.tsdk": "node_modules\\typescript\\lib",
     "typescript.preferences.quoteStyle": "single",
     "[typescript]": {
