@@ -1,0 +1,136 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": ".root"
+    },
+    {
+      "path": "apps"
+    }
+  ],
+  "settings": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "javascript.format.enable": false,
+    "javascript.preferences.importModuleSpecifier": "project-relative",
+    "javascript.preferences.importModuleSpecifierEnding": "js",
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+    "typescript.format.enable": false,
+    "typescript.preferences.importModuleSpecifier": "project-relative",
+    "typescript.preferences.importModuleSpecifierEnding": "js",
+    "typescript.preferences.useAliasesForRenames": false,
+    "typescript.workspaceSymbols.scope": "allOpenProjects",
+    "typescript.unstable": {
+      "organizeImportsIgnoreCase": "false",
+      "organizeImportsCollation": "ordinal",
+      "organizeImportsCaseFirst": "lower"
+    },
+    "npm.autoDetect": "off",
+    "typescript.tsc.autoDetect": "off",
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "typescript.preferences.quoteStyle": "single",
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+    "json.format.enable": false,
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "html.autoClosingTags": true,
+    "html.format.wrapAttributes": "preserve-aligned",
+    "html.completion.attributeDefaultValue": "empty",
+    "html.autoCreateQuotes": true,
+    "html.format.enable": false,
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+    "scss.format.enable": false,
+    "scss.validate": false,
+    "[scss]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+    "css.format.enable": false,
+    "css.validate": false,
+    "[css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+    "[prisma]": {
+      "editor.defaultFormatter": "Prisma.prisma-insider"
+    },
+    "[markdown]": {
+      "editor.formatOnSave": true,
+      "editor.formatOnPaste": true,
+      "files.trimTrailingWhitespace": false
+    },
+
+    "editor.linkedEditing": true,
+
+    "debug.internalConsoleOptions": "neverOpen",
+    "debug.javascript.unmapMissingSources": true,
+    "debug.showBreakpointsInOverviewRuler": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.fixAll.eslint": true,
+      "source.organizeImports": true,
+      "source.fixAll.markdownlint": true
+    },
+
+    "eslint.workingDirectories": [{ "mode": "auto" }],
+    "eslint.codeActionsOnSave.mode": "problems",
+    "eslint.experimental.useFlatConfig": true,
+    "eslint.packageManager": "pnpm",
+    "eslint.validate": ["json", "javascript", "typescript", "html", "css"],
+    "eslint.debug": true,
+
+    "npm.packageManager": "pnpm",
+
+    "files.exclude": {
+      ".out": true,
+      "api": true,
+      "apps": true,
+      "docs": true,
+      "packages": true,
+      "**/.git": true,
+      "**/dist": true,
+      "**/node_modules": true
+    },
+
+    "workbench.iconTheme": "vscode-icons",
+    "[xml]": {
+      "editor.defaultFormatter": "DotJoshJohnson.xml"
+    },
+    "sqltools.connections": [
+      {
+        "previewLimit": 50,
+        "driver": "SQLite",
+        "name": "sqlite",
+        "database": "${workspaceFolder:api}/prisma/dev.db"
+      }
+    ],
+    "sqltools.useNodeRuntime": true,
+
+    "vscode-edge-devtools.browserFlavor": "Dev",
+    // "vscode-edge-devtools.defaultUrl": "https://localhost:8000",
+    "vscode-edge-devtools.useHttps": true,
+    "vscode-edge-devtools.webRoot": "${workspaceFolder}/apps/demo/src",
+    "vscode-edge-devtools.webhint": false,
+    "editor.fontFamily": "Consolas, 'Courier New', monospacemo"
+  }
+}
