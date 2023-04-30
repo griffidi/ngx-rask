@@ -131,6 +131,13 @@
     "vscode-edge-devtools.useHttps": true,
     "vscode-edge-devtools.webRoot": "${workspaceFolder}/apps/demo/src",
     "vscode-edge-devtools.webhint": false,
-    "editor.fontFamily": "Consolas, 'Courier New', monospacemo"
+    "editor.fontFamily": "Consolas, 'Courier New', monospacemo",
+    "angular.log": "verbose",
+    "angular.forceStrictTemplates": true,
+
+    "terminal.integrated.cwd": "${workspaceFolder}"
+  },
+  "extensions": {
+    "recommendations": ["angular.ng-template"]
   }
 }

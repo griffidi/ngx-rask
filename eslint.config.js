@@ -31,7 +31,7 @@ const config = {
   },
 };
 
-export default [
+export default /** @type {import("eslint").FlatConfig} */ [
   {
     files: ['apps/demo/src/**/*.ts'],
     languageOptions: {
@@ -40,7 +40,9 @@ export default [
       parser,
       parserOptions: {
         project: true,
-        // tsconfigRootDir: fileURLToPath(new URL('./apps/demo', import.meta.url)),
+        // project: '',
+        // tsconfigRootDir: fileURLToPath(new URL('./', import.meta.url)),
+        tsconfigRootDir: import.meta.url,
       },
       globals: {
         ...sharedBrowserGlobals,
