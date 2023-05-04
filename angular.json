@@ -11,31 +11,13 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "skipTests": false,
           "standalone": true
-        },
-        "@schematics/angular:class": {
-          "skipTests": false
         },
         "@schematics/angular:directive": {
-          "skipTests": false,
           "standalone": true
-        },
-        "@schematics/angular:guard": {
-          "skipTests": false
-        },
-        "@schematics/angular:interceptor": {
-          "skipTests": false
         },
         "@schematics/angular:pipe": {
-          "skipTests": false,
           "standalone": true
-        },
-        "@schematics/angular:resolver": {
-          "skipTests": false
-        },
-        "@schematics/angular:service": {
-          "skipTests": false
         }
       },
       "root": "apps/demo",

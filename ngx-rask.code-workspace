@@ -135,7 +135,8 @@
     "angular.log": "verbose",
     "angular.forceStrictTemplates": true,
 
-    "terminal.integrated.cwd": "${workspaceFolder}"
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "cSpell.words": ["devkit"]
   },
   "extensions": {
     "recommendations": [
