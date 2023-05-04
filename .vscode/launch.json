@@ -2,17 +2,52 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+    // {
+    //   "name": "ng serve",
+    //   "type": "msedge",
+    //   "request": "launch",
+    //   "preLaunchTask": "npm: start",
+    //   "runtimeExecutable": "dev",
+    //   "url": "http://localhost:4200/",
+    //   "webRoot": "${workspaceFolder}/apps/demo/src",
+    //   "userDataDir": "${workspaceFolder}/.out/edge/apps/demo",
+    //   "skipFiles": ["<node_internals>/**"],
+    //   "smartStep": true
+    // },
     {
-      "name": "ng serve",
-      "type": "msedge",
+      "name": "ng serve: demo",
+      "type": "node-terminal",
       "request": "launch",
-      "preLaunchTask": "npm: start",
+      "command": "pnpm start",
+      // "preLaunchTask": "build libs",
+      "presentation": {
+        "hidden": false,
+        "group": "demo",
+        "order": 1
+      }
+    },
+    {
+      "name": "Debug demo (edge)",
+      "type": "pwa-msedge",
+      "request": "launch",
       "runtimeExecutable": "dev",
-      "url": "http://localhost:4200/",
-      "webRoot": "${workspaceFolder}/apps/demo/src",
-      "userDataDir": "${workspaceFolder}/.out/edge/apps/demo",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+      "userDataDir": "${workspaceFolder}/.out/edge",
       "skipFiles": ["<node_internals>/**"],
-      "smartStep": true
+      "smartStep": true,
+      "presentation": {
+        "hidden": false,
+        "group": "demo",
+        "order": 2
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch demo",
+      "configurations": ["ng serve: demo", "Debug demo (edge)"],
+      "stopAll": true
     }
   ]
 }

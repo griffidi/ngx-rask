@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowJs": true
+  },
+  "include": ["apps/*/src/**/*.ts"],
+  "exclude": [
+    "**/.cache/**/*",
+    "**/.next/**/*",
+    "**/build/**/*",
+    "**/dist/**/*",
+    "**/node_modules/**/*"
+  ]
+}

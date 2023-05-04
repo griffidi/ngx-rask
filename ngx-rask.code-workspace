@@ -23,11 +23,11 @@
     // "typescript.preferences.importModuleSpecifierEnding": "js",
     // "typescript.preferences.useAliasesForRenames": false,
     // "typescript.workspaceSymbols.scope": "allOpenProjects",
-    // "typescript.unstable": {
-    //   "organizeImportsIgnoreCase": "false",
-    //   "organizeImportsCollation": "ordinal",
-    //   "organizeImportsCaseFirst": "lower"
-    // },
+    "typescript.unstable": {
+      "organizeImportsIgnoreCase": "false",
+      "organizeImportsCollation": "ordinal",
+      "organizeImportsCaseFirst": "lower"
+    },
     "npm.autoDetect": "off",
     // "typescript.tsc.autoDetect": "off",
     // "typescript.tsserver.experimental.enableProjectDiagnostics": false,
