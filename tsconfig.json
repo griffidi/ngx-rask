@@ -7,8 +7,6 @@
     "allowUnusedLabels": false,
     "baseUrl": "./",
     "declaration": false,
-    // "composite": true,
-    // "incremental": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
