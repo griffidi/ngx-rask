@@ -138,6 +138,10 @@
     "terminal.integrated.cwd": "${workspaceFolder}"
   },
   "extensions": {
-    "recommendations": ["angular.ng-template"]
+    "recommendations": [
+      "angular.ng-template",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint"
+    ]
   }
 }
