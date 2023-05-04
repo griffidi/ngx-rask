@@ -1,3 +1,4 @@
+import ngplugin from '@angular-eslint/eslint-plugin';
 import ts from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
 import eslint from 'eslint';
@@ -17,6 +18,7 @@ const sharedBrowserGlobals = {
 
 const sharedRules = {
   ...eslint['recommended'],
+  ...ngplugin.rules.recommended,
   ...ts.rules['stylistic-type-checked'],
   ...ts.rules['strict-type-checked'],
   ...prettier.rules,
@@ -49,5 +51,26 @@ export default /** @type {import("eslint").FlatConfig} */ [
       },
     },
     ...config,
+  },
+  {
+    files: ['apps/demo/src/**/*.html'],
+    languageOptions: {
+      parser: '@angular-eslint/template-parser',
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      parserOptions: {
+        project: true,
+        // project: '',
+        // tsconfigRootDir: fileURLToPath(new URL('./', import.meta.url)),
+        tsconfigRootDir: import.meta.url,
+      },
+      globals: {
+        ...sharedBrowserGlobals,
+      },
+    },
+    plugins: {
+      ...prettier.rules,
+      ...['plugin:@angular-eslint/template/recommended'],
+    },
   },
 ];
