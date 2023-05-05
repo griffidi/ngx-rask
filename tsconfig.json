@@ -8,6 +8,7 @@
     "baseUrl": "./",
     "declaration": false,
     "downlevelIteration": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
@@ -30,8 +31,8 @@
     "target": "ES2022",
     "types": ["jest"],
     "useDefineForClassFields": false,
-    "useUnknownInCatchVariables": true
-    // "verbatimModuleSyntax": false
+    "useUnknownInCatchVariables": true,
+    "verbatimModuleSyntax": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

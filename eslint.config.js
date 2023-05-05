@@ -1,4 +1,5 @@
 import ngplugin from '@angular-eslint/eslint-plugin';
+import ngparser from '@angular-eslint/template-parser';
 import ts from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
 import eslint from 'eslint';
@@ -22,6 +23,21 @@ const sharedRules = {
   ...ts.rules['stylistic-type-checked'],
   ...ts.rules['strict-type-checked'],
   ...prettier.rules,
+  '@angular-eslint/no-empty-lifecycle-method': 'error',
+  'ts/ban-types': 'warn',
+  'ts/consistent-type-exports': [
+    'error',
+    {
+      fixMixedExportsWithInlineTypeSpecifier: true,
+    },
+  ],
+  'ts/consistent-type-imports': [
+    'error',
+    {
+      prefer: 'type-imports',
+      fixStyle: 'inline-type-imports',
+    },
+  ],
 };
 
 const config = {
@@ -55,7 +71,7 @@ export default /** @type {import("eslint").FlatConfig} */ [
   {
     files: ['apps/demo/src/**/*.html'],
     languageOptions: {
-      parser: '@angular-eslint/template-parser',
+      parser: ngparser,
       ecmaVersion: 2022,
       sourceType: 'module',
       parserOptions: {
@@ -68,9 +84,9 @@ export default /** @type {import("eslint").FlatConfig} */ [
         ...sharedBrowserGlobals,
       },
     },
-    plugins: {
+    rules: {
       ...prettier.rules,
-      ...['plugin:@angular-eslint/template/recommended'],
+      ...ngplugin.rules['template'],
     },
   },
 ];
