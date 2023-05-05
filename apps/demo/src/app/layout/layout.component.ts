@@ -1,7 +1,8 @@
-import { AuthService } from '#/services';
-import { HeaderComponent } from '#/ui';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterOutlet } from '@angular/router';
+import { AuthService } from '../common/services';
+import { FooterComponent, HeaderComponent } from '../ui/layout';
 
 @Component({
   selector: 'app-layout',
@@ -9,7 +10,7 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [FooterComponent, HeaderComponent, MatSidenavModule, RouterOutlet],
 })
 export class LayoutComponent {
   protected readonly authService = inject(AuthService);

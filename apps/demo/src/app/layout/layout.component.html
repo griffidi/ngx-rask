@@ -1,1 +1,15 @@
-<p>layout works!</p>
+<app-header [isAuthenticated]="authService.isAuthenticated()" />
+
+<mat-drawer-container>
+  <mat-drawer
+    mode="side"
+    opened>
+    Drawer Content
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet />
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<app-footer />

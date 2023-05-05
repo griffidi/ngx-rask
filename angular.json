@@ -35,7 +35,7 @@
             "index": "apps/demo/src/index.html",
             "main": "apps/demo/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "apps/demo/tsconfig.json",
+            "tsConfig": "apps/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/demo/src/favicon.svg", "apps/demo/src/assets"],
             "styles": ["@angular/material/prebuilt-themes/purple-green.css", "apps/demo/src/styles.scss"],
