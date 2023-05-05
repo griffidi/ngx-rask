@@ -12,7 +12,10 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "standalone": true
+          "standalone": true,
+          "changeDetection": "OnPush",
+          "skipImport": true,
+          "prefix": "app"
         },
         "@schematics/angular:directive": {
           "standalone": true
@@ -32,10 +35,13 @@
             "index": "apps/demo/src/index.html",
             "main": "apps/demo/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "apps/demo/tsconfig.app.json",
+            "tsConfig": "apps/demo/tsconfig.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/demo/src/favicon.svg", "apps/demo/src/assets"],
             "styles": ["@angular/material/prebuilt-themes/purple-green.css", "apps/demo/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/demo/src/styles"]
+            },
             "scripts": []
           },
           "configurations": {
