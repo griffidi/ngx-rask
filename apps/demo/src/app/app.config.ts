@@ -1,7 +1,8 @@
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideZoneChangeDetection, type ApplicationConfig } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideRouter } from '@angular/router';
-import { routes } from './app.routes';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { authInterceptor } from './common/auth/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -9,7 +10,17 @@ export const appConfig: ApplicationConfig = {
       eventCoalescing: true,
       runCoalescing: true,
     }),
-    provideRouter(routes),
+    provideRouter(
+      [
+        {
+          path: '',
+          loadComponent: () => import('./feature-layout/layout.component'),
+          loadChildren: () => import('./feature-layout/layout.routes'),
+        },
+      ],
+      withComponentInputBinding()
+    ),
+    provideHttpClient(withInterceptors([authInterceptor()])),
     provideAnimations(),
   ],
 };

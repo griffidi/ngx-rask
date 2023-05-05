@@ -9,6 +9,6 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink],
 })
-export class HeaderComponent {
+export default class LayoutHeader {
   @Input({ required: true }) isAuthenticated = false;
 }
