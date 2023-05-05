@@ -29,6 +29,11 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "target": "ES2022",
+    "paths": {
+      "theme": [
+        "dist/theme"
+      ]
+    },
     "types": ["jest"],
     "useDefineForClassFields": false,
     "useUnknownInCatchVariables": true,

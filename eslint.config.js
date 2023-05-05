@@ -1,4 +1,5 @@
 import ngplugin from '@angular-eslint/eslint-plugin';
+import ngtemplate from '@angular-eslint/eslint-plugin-template';
 import ngparser from '@angular-eslint/template-parser';
 import ts from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
@@ -20,6 +21,7 @@ const sharedBrowserGlobals = {
 const sharedRules = {
   ...eslint['recommended'],
   ...ngplugin.rules.recommended,
+  ...ngtemplate.rules['process-inline-templates'],
   ...ts.rules['stylistic-type-checked'],
   ...ts.rules['strict-type-checked'],
   ...prettier.rules,
@@ -40,44 +42,105 @@ const sharedRules = {
   ],
 };
 
-const config = {
+const sharedAppRules = {
+  '@angular-eslint/directive-selector': [
+    'error',
+    {
+      type: 'attribute',
+      prefix: 'app',
+      style: 'camelCase',
+    },
+  ],
+  '@angular-eslint/component-selector': [
+    'error',
+    {
+      type: 'element',
+      prefix: 'app',
+      style: 'kebab-case',
+    },
+  ],
+};
+
+const sharedLibRules = {
+  '@angular-eslint/directive-selector': [
+    'error',
+    {
+      type: 'attribute',
+      prefix: 'rk',
+      style: 'camelCase',
+    },
+  ],
+  '@angular-eslint/component-selector': [
+    'error',
+    {
+      type: 'element',
+      prefix: 'rk',
+      style: 'kebab-case',
+    },
+  ],
+};
+
+const appConfig = {
   plugins: {
     ...sharedPlugins,
   },
   rules: {
     ...sharedRules,
+    ...sharedAppRules,
+  },
+};
+
+const libConfig = {
+  plugins: {
+    ...sharedPlugins,
+  },
+  rules: {
+    ...sharedRules,
+    ...sharedLibRules,
   },
 };
 
 export default /** @type {import("eslint").FlatConfig} */ [
   {
-    files: ['apps/demo/src/**/*.ts'],
+    files: ['apps/*/src/**/*.ts'],
     languageOptions: {
       sourceType: 'module',
       ecmaVersion: 2022,
       parser,
       parserOptions: {
         project: true,
-        // project: '',
-        // tsconfigRootDir: fileURLToPath(new URL('./', import.meta.url)),
         tsconfigRootDir: import.meta.url,
       },
       globals: {
         ...sharedBrowserGlobals,
       },
     },
-    ...config,
+    ...appConfig,
   },
   {
-    files: ['apps/demo/src/**/*.html'],
+    files: ['libs/*/src/**/*.ts'],
+    languageOptions: {
+      sourceType: 'module',
+      ecmaVersion: 2022,
+      parser,
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: import.meta.url,
+      },
+      globals: {
+        ...sharedBrowserGlobals,
+      },
+    },
+    ...libConfig,
+  },
+  {
+    files: ['apps/*/src/**/*.html', 'libs/*/src/**/*.html'],
     languageOptions: {
       parser: ngparser,
       ecmaVersion: 2022,
       sourceType: 'module',
       parserOptions: {
         project: true,
-        // project: '',
-        // tsconfigRootDir: fileURLToPath(new URL('./', import.meta.url)),
         tsconfigRootDir: import.meta.url,
       },
       globals: {
@@ -86,7 +149,8 @@ export default /** @type {import("eslint").FlatConfig} */ [
     },
     rules: {
       ...prettier.rules,
-      ...ngplugin.rules['template'],
+      ...ngtemplate.rules['recommended'],
+      ...ngtemplate.rules['accessibility'],
     },
   },
 ];

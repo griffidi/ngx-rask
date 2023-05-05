@@ -6,6 +6,9 @@
     },
     {
       "path": "apps"
+    },
+    {
+      "path": "libs"
     }
   ],
   "settings": {
@@ -105,8 +108,7 @@
       ".out": true,
       "api": true,
       "apps": true,
-      "docs": true,
-      "packages": true,
+      "libs": true,
       "**/.git": true,
       "**/dist": true,
       "**/node_modules": true
@@ -136,7 +138,7 @@
     "angular.forceStrictTemplates": true,
 
     "terminal.integrated.cwd": "${workspaceFolder}",
-    "cSpell.words": ["devkit", "ngeslint", "ngparser", "ngplugin"]
+    "cSpell.words": ["devkit", "ngeslint", "ngparser", "ngplugin", "ngtemplate"]
   },
   "extensions": {
     "recommendations": ["angular.ng-template", "esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
