@@ -3,10 +3,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
-    "types": [],
-    "paths": {
-      "@ngx-rask/core": ["dist/@ngx-rask/core/lib"]
-    }
+    "types": []
   },
   "files": ["src/main.ts"],
   "include": ["src/**/*.d.ts"]
