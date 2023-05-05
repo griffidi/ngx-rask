@@ -30,6 +30,7 @@
     "strictPropertyInitialization": true,
     "target": "ES2022",
     "paths": {
+      "@ngx-rask/core": ["dist/@ngx-rask/core"],
       "@ngx-rask/theme": ["dist/@ngx-rask/theme"]
     },
     "types": ["jest"],
