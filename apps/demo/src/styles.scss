@@ -1,13 +1,8 @@
 @use '@angular/material' as mat;
-@use 'variables';
+@use 'theme';
+@use 'variables' as vars;
+@use 'modern-css';
 
-@include mat.core();
-
-html,
 body {
-  height: 100%;
-}
-body {
-  margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }

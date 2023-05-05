@@ -1,5 +1,14 @@
+:host {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  z-index: 1;
+}
+
 footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-inline: var(--app-site-header-footer-padding);
+  padding-block: var(--app-site-header-footer-padding);
 }

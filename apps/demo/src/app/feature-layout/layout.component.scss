@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+@use 'variables' as vars;
+
+:host {
+  display: block;
+  block-size: 100%;
+}
+
+.mat-drawer-container {
+  block-size: calc(100% - var(--app-site-header-block-size));
+}
+
+.mat-drawer {
+  @include mat.elevation(2);
+
+  background: vars.$surface-color-1;
+  inline-size: 300px;
+}
+
+.mat-drawer-content {
+  padding: 16px;
+}

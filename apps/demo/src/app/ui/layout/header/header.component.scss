@@ -1,5 +1,16 @@
+@use 'variables' as vars;
+@use 'layout';
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-inline: var(--app-site-header-footer-padding);
+  padding-block: var(--app-site-header-footer-padding);
+  block-size: var(--app-site-header-block-size);
+  background: vars.$surface-color-1;
+
+  .nav-link {
+    font-size: 1.2rem;
+  }
 }
