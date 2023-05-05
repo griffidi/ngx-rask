@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { unique } from '@ngx-rask/core';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +11,4 @@ import { unique } from '@ngx-rask/core';
 })
 export class AppComponent {
   title = 'demo';
-
-  constructor() {
-    const arr = [1, 2, 3, 4, 5];
-    const uniq = unique(arr);
-  }
 }
