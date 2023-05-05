@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: '@rask/demo',
+  displayName: '@ngx-rask/demo',
   preset: 'jest-preset-angular',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},

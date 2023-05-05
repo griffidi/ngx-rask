@@ -1,5 +1,5 @@
 {
-  "name": "@rask/root",
+  "name": "@ngx-rask/root",
   "author": {
     "name": "Dustin Griffith",
     "email": "dustingriffith@outlook.com"
@@ -24,9 +24,9 @@
   "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start": "ng serve @ngx-rask/demo",
+    "build": "ng build @ngx-rask/demo",
+    "watch": "ng build @ngx-rask/demo --watch --configuration development",
     "lint": "ng lint"
   },
   "dependencies": {

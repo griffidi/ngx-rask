@@ -1,6 +1,3 @@
 /*
- * Public API Surface of theme
+ * Public API Surface of @ngx-rask/theme
  */
-
-export * from './lib/theme.service';
-export * from './lib/theme.component';

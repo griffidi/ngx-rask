@@ -30,9 +30,7 @@
     "strictPropertyInitialization": true,
     "target": "ES2022",
     "paths": {
-      "theme": [
-        "dist/theme"
-      ]
+      "@ngx-rask/theme": ["dist/@ngx-rask/theme"]
     },
     "types": ["jest"],
     "useDefineForClassFields": false,

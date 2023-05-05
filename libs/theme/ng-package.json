@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/theme",
+  "dest": "../../dist/@ngx-rask/theme",
   "lib": {
     "entryFile": "src/public-api.ts"
   }
