@@ -5,7 +5,7 @@
   &:has(> :nth-child(-n + 2):last-child) {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
   }
 }
 

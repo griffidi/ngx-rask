@@ -1,15 +1,33 @@
-<app-header [isAuthenticated]="authService.isAuthenticated()" />
-
 <mat-drawer-container>
   <mat-drawer
-    mode="side"
+    #drawer
+    mode="over"
     opened>
-    Drawer Content
+    <div class="drawer__title">
+      <h3>Site Links</h3>
+      <button
+        mat-icon-button
+        aria-label="Close Drawer"
+        (click)="drawer.toggle()">
+        <mat-icon>menu_open</mat-icon>
+      </button>
+    </div>
   </mat-drawer>
 
   <mat-drawer-content>
-    <router-outlet />
+    <app-header [isAuthenticated]="authService.isAuthenticated()">
+      <button
+        *ngIf="!drawer.opened"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </app-header>
+
+    <section>
+      <router-outlet />
+    </section>
+
+    <app-footer />
   </mat-drawer-content>
 </mat-drawer-container>
-
-<app-footer />

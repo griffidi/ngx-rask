@@ -2,21 +2,52 @@
 @use 'variables' as vars;
 
 :host {
+  --_toggle-button-offset: 20px;
+  --_drawer-content-padding-inline-start: 80px; // calc(var(--_toggle-button-offset) * 4);
+
   display: block;
   block-size: 100%;
 }
 
 .mat-drawer-container {
-  block-size: calc(100% - var(--app-site-header-block-size));
+  block-size: 100%;
 }
 
 .mat-drawer {
   @include mat.elevation(2);
 
-  background: vars.$surface-color-1;
   inline-size: 300px;
+  background: vars.$surface-color-1;
+  border-start-end-radius: 25px;
+  border-end-end-radius: 25px;
+}
+
+::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+  background-color: rgba(189, 189, 189, 0.1);
+}
+
+.mat-drawer-inner-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .mat-drawer-content {
-  padding: 16px;
+  position: relative;
+
+  section {
+    padding-inline: var(--_toggle-button-offset);
+    padding-block: var(--_toggle-button-offset);
+  }
+}
+
+.drawer__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 16px;
+  padding-block: 16px;
+
+  h3 {
+    margin: 0;
+  }
 }

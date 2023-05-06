@@ -111,7 +111,7 @@
       "libs": true,
       "**/.git": true,
       "**/dist": true,
-      "**/node_modules": false
+      "**/node_modules": true
     },
 
     "workbench.iconTheme": "vscode-icons",

@@ -1,4 +1,7 @@
+import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from '../common/services';
@@ -10,7 +13,7 @@ import { LayoutFooter, LayoutHeader } from '../ui/layout';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LayoutFooter, LayoutHeader, MatSidenavModule, RouterOutlet],
+  imports: [LayoutFooter, LayoutHeader, MatButtonModule, MatIconModule, MatSidenavModule, NgIf, RouterOutlet],
 })
 export default class Layout {
   protected readonly authService = inject(AuthService);
