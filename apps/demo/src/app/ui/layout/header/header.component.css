@@ -1,6 +1,3 @@
-@use 'variables' as vars;
-@use 'layout';
-
 header,
 nav {
   display: flex;
@@ -13,7 +10,7 @@ header {
   padding-inline: var(--app-site-header-footer-padding);
   padding-block: var(--app-site-header-footer-padding);
   block-size: var(--app-site-header-block-size);
-  background: vars.$surface-color-1;
+  background: var(--app-color-surface-1);
   overflow: hidden;
 }
 

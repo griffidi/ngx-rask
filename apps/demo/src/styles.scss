@@ -1,7 +1,7 @@
-@use '@angular/material' as mat;
-@use 'theme';
-@use 'variables' as vars;
-@use 'modern-css';
+@import url(./styles/moderncss.css);
+@import url(./styles/variables.css);
+@import url(./styles/layout.css);
+@import url(./styles/layout.css);
 
 body {
   font-family: 'Inter var experimental', 'Inter var', Inter;

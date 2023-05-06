@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiConfiguration } from './api-configuration';
 
 @Injectable()
-export class BaseApiClient {
+export class BaseApi {
   constructor(protected config: ApiConfiguration, protected http: HttpClient) {}
 
   #rootUrl: string = '';

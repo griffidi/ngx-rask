@@ -10,10 +10,10 @@ export type AuthStatus = 'idle' | 'authenticated' | 'unauthenticated';
 })
 export class AuthService {
   // readonly #userService = inject(UserService);
-  readonly #router = inject(Router);
   readonly #isServer = injectIsServer();
-  readonly #user = signal<User | null>(null);
+  readonly #router = inject(Router);
   readonly #status = signal<AuthStatus>('idle');
+  readonly #user = signal<User | null>(null);
 
   readonly isAuthenticated = computed(() => this.#status() === 'authenticated');
   readonly isAuthenticating = computed(() => this.#status() === 'idle');

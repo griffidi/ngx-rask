@@ -1,0 +1,11 @@
+/* layout */
+:root {
+  --app-site-header-block-size: 68px;
+  --app-site-footer-block-size: 58px;
+  --app-site-header-footer-padding: 20px;
+}
+
+/* nav */
+:root {
+  --app-nav-link-color: #ffffff;
+}

@@ -11,7 +11,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
+          "style": "css",
           "standalone": true,
           "changeDetection": "OnPush",
           "skipImport": true,
@@ -38,7 +38,11 @@
             "tsConfig": "apps/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/demo/src/favicon.svg", "apps/demo/src/assets"],
-            "styles": ["@angular/material/prebuilt-themes/purple-green.css", "apps/demo/src/styles.scss"],
+            "styles": [
+              "@angular/material/prebuilt-themes/purple-green.css",
+              "apps/demo/src/theme.scss",
+              "apps/demo/src/styles.scss"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": ["apps/demo/src/styles"]
             },

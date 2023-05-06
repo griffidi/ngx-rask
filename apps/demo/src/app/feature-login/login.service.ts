@@ -1,9 +1,9 @@
+import { AuthService } from '#/app/common/auth';
+import { type ApiStatus, type LoginUser } from '#/app/common/models';
+import { UserService } from '#/app/common/user';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { AuthService } from '../common/auth';
-import { FormErrorsService } from '../common/form-service';
-import type { ApiStatus, LoginUser } from '../common/models';
-import { UserService } from '../common/user/user.service';
+import { FormErrorsService } from '../common/form-errors';
 
 @Injectable()
 export class LoginService {

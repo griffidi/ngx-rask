@@ -2,13 +2,13 @@ import { HttpClient, HttpResponse, type HttpContext } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, filter, lastValueFrom, map } from 'rxjs';
 import { ApiConfiguration, RequestBuilder, type StrictHttpResponse } from '../api';
-import { BaseApiClient } from '../api/base-api.service';
+import { BaseApi } from '../api/base-api.service';
 import type { LoginUser, User } from '../models';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService extends BaseApiClient {
+export class UserService extends BaseApi {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
   }

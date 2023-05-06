@@ -1,12 +1,8 @@
-@use '@angular/material' as mat;
-@use 'variables' as vars;
-
 :host {
   --_toggle-button-offset: 20px;
-  --_drawer-content-padding-inline-start: 80px; // calc(var(--_toggle-button-offset) * 4);
 
   display: block;
-  block-size: 100%;
+  block-size: calc(100% - var(--app-site-header-block-size));
 }
 
 .mat-drawer-container {

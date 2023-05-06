@@ -1,8 +1,8 @@
+import { authInterceptor } from '#/app/common/auth';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideZoneChangeDetection, type ApplicationConfig } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
-import { authInterceptor } from './common/auth/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

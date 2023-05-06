@@ -1,6 +1,6 @@
+import { AuthService } from '#/app/common/auth';
 import { Component, inject, type OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AuthService } from './common/auth';
 
 @Component({
   selector: 'app-root',

@@ -213,9 +213,10 @@ class HeaderParameter extends Parameter {
  * Helper to build http requests from parameters
  */
 export class RequestBuilder {
-  private _path = new Map<string, PathParameter>();
-  private _query = new Map<string, QueryParameter>();
-  private _header = new Map<string, HeaderParameter>();
+  #path = new Map<string, PathParameter>();
+  #query = new Map<string, QueryParameter>();
+  #header = new Map<string, HeaderParameter>();
+
   _bodyContent: any | null;
   _bodyContentType?: string;
 
@@ -225,21 +226,21 @@ export class RequestBuilder {
    * Sets a path parameter
    */
   path(name: string, value: any, options?: ParameterOptions): void {
-    this._path.set(name, new PathParameter(name, value, options || {}));
+    this.#path.set(name, new PathParameter(name, value, options || {}));
   }
 
   /**
    * Sets a query parameter
    */
   query(name: string, value: any, options?: ParameterOptions): void {
-    this._query.set(name, new QueryParameter(name, value, options || {}));
+    this.#query.set(name, new QueryParameter(name, value, options || {}));
   }
 
   /**
    * Sets a header parameter
    */
   header(name: string, value: any, options?: ParameterOptions): void {
-    this._header.set(name, new HeaderParameter(name, value, options || {}));
+    this.#header.set(name, new HeaderParameter(name, value, options || {}));
   }
 
   /**
@@ -260,7 +261,7 @@ export class RequestBuilder {
           val = [val];
         }
         for (const v of val) {
-          const formValue = this.formDataValue(v);
+          const formValue = this.#formDataValue(v);
           if (formValue !== null) {
             pairs.push([key, formValue]);
           }
@@ -275,13 +276,13 @@ export class RequestBuilder {
           const val = value[key];
           if (val instanceof Array) {
             for (const v of val) {
-              const toAppend = this.formDataValue(v);
+              const toAppend = this.#formDataValue(v);
               if (toAppend !== null) {
                 formData.append(key, toAppend);
               }
             }
           } else {
-            const toAppend = this.formDataValue(val);
+            const toAppend = this.#formDataValue(val);
             if (toAppend !== null) {
               formData.set(key, toAppend);
             }
@@ -295,7 +296,7 @@ export class RequestBuilder {
     }
   }
 
-  private formDataValue(value: any): any {
+  #formDataValue(value: any): any {
     if (value === null || value === undefined) {
       return null;
     }
@@ -328,7 +329,7 @@ export class RequestBuilder {
 
     // Path parameters
     let path = this.operationPath;
-    for (const pathParam of this._path.values()) {
+    for (const pathParam of this.#path.values()) {
       path = pathParam.append(path);
     }
     const url = this.rootUrl + path;
@@ -337,7 +338,7 @@ export class RequestBuilder {
     let httpParams = new HttpParams({
       encoder: ParameterCodecInstance,
     });
-    for (const queryParam of this._query.values()) {
+    for (const queryParam of this.#query.values()) {
       httpParams = queryParam.append(httpParams);
     }
 
@@ -346,7 +347,7 @@ export class RequestBuilder {
     if (options.accept) {
       httpHeaders = httpHeaders.append('Accept', options.accept);
     }
-    for (const headerParam of this._header.values()) {
+    for (const headerParam of this.#header.values()) {
       httpHeaders = headerParam.append(httpHeaders);
     }
 
