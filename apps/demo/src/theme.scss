@@ -27,9 +27,9 @@ $surface-color-5: mat.get-color-from-palette(mat.$grey-palette, 500);
 
 /* surface */
 :root {
-  --app-color-surface-1: $surface-color-1;
-  --app-color-surface-2: $surface-color-2;
-  --app-color-surface-3: $surface-color-3;
-  --app-color-surface-4: $surface-color-4;
-  --app-color-surface-5: $surface-color-5;
+  --app-color-surface-1: #{$surface-color-1};
+  --app-color-surface-2: #{$surface-color-2};
+  --app-color-surface-3: #{$surface-color-3};
+  --app-color-surface-4: #{$surface-color-4};
+  --app-color-surface-5: #{$surface-color-5};
 }

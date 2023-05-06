@@ -30,7 +30,7 @@
 .mat-drawer-content {
   position: relative;
 
-  section {
+  & section {
     padding-inline: var(--_toggle-button-offset);
     padding-block: var(--_toggle-button-offset);
   }
@@ -43,7 +43,7 @@
   padding-inline: 16px;
   padding-block: 16px;
 
-  h3 {
+  & h3 {
     margin: 0;
   }
 }
