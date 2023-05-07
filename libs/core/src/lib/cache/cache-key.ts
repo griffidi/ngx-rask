@@ -8,7 +8,7 @@ export type CacheKey = `${string}|${string}`;
  *
  * @param {string} type Category type name.
  * @param {string} name Name with in type category.
- * @returns
+ * @returns {CacheKey} Cache key.
  */
 export function createCacheKey(type: string, name: string): CacheKey {
   return `${type}|${name}`;

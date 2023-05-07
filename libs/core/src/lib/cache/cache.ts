@@ -1,13 +1,17 @@
 import { effect, Injectable, signal, type Signal } from '@angular/core';
 import type { CacheKey } from './cache-key.js';
-import { type CacheStorage } from './cache-storage.js';
 import { InMemoryStorage } from './in-memory-storage.js';
-import type { StorageType } from './storage-type.js';
 
 /**
  * Cache item signal type.
  */
 export type CacheItemSignalType<T> = Signal<T | undefined>;
+
+type StorageType = 'localStorage' | 'sessionStorage';
+
+interface CacheStorage {
+  storage: Storage | undefined;
+}
 
 /**
  * Reactive cache.
