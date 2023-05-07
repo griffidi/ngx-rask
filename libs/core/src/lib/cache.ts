@@ -1,11 +1,25 @@
 import { effect, Injectable, signal, type Signal } from '@angular/core';
-import type { CacheKey } from './cache-key.js';
-import { InMemoryStorage } from './in-memory-storage.js';
 
 /**
  * Cache item signal type.
  */
 export type CacheItemSignalType<T> = Signal<T | undefined>;
+
+/**
+ * Cache key template literal type.
+ */
+export type CacheKey = `${string}|${string}`;
+
+/**
+ * Create key used to store items in cache.
+ *
+ * @param {string} type Category type name.
+ * @param {string} name Name with in type category.
+ * @returns {CacheKey} Cache key.
+ */
+export function createCacheKey(type: string, name: string): CacheKey {
+  return `${type}|${name}`;
+}
 
 type StorageType = 'localStorage' | 'sessionStorage';
 
@@ -38,7 +52,7 @@ export class Cache {
   }
 
   constructor() {
-    this.#cache.storage = (window[this.storageType] as Storage) ?? new InMemoryStorage();
+    this.#cache.storage = window[this.storageType] as Storage;
   }
 
   /**
