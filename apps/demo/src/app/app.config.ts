@@ -20,8 +20,8 @@ export const appConfig: ApplicationConfig = {
       [
         {
           path: '',
-          loadComponent: () => import('./feature/layout/layout.component'),
-          loadChildren: () => import('./feature/layout/layout.routes'),
+          loadComponent: () => import('./features/layout/layout.component'),
+          loadChildren: () => import('./features/layout/layout.routes'),
         },
       ],
       withComponentInputBinding(),

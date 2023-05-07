@@ -1,6 +1,10 @@
 {
   "name": "@ngx-rask/core",
   "version": "0.0.1",
+  "exports": {
+    "./cache/*": "./src/lib/cache/*",
+    "./common/*": "./src/lib/common/*"
+  },
   "peerDependencies": {
     "@angular/common": "^16.0.0",
     "@angular/core": "^16.0.0"
