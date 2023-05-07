@@ -5,14 +5,14 @@ export default [
   {
     path: '',
     canActivate: [authGuard('protected')],
-    loadComponent: () => import('../feature-home/home.component'),
+    loadComponent: () => import('../home/home.component'),
     data: { revalidate: 60 },
     title: 'Home',
   },
   {
     path: 'login',
     canActivate: [authGuard('unprotected')],
-    loadComponent: () => import('../feature-login/login.component'),
+    loadComponent: () => import('../login/login.component'),
     data: { revalidate: 60 },
     title: 'Sign in',
   },

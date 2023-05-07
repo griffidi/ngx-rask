@@ -35,13 +35,13 @@
             "index": "apps/demo/src/index.html",
             "main": "apps/demo/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "apps/demo/tsconfig.app.json",
+            "tsConfig": "apps/demo/tsconfig.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/demo/src/favicon.svg", "apps/demo/src/assets"],
             "styles": [
               "@angular/material/prebuilt-themes/purple-green.css",
-              "apps/demo/src/theme.scss",
-              "apps/demo/src/styles.scss"
+              "apps/demo/src/styles.css",
+              "apps/demo/src/theme.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["apps/demo/src/styles"]
@@ -125,10 +125,10 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/core/tsconfig.lib.prod.json"
+              "tsConfig": "libs/core/tsconfig.prod.json"
             },
             "development": {
-              "tsConfig": "libs/core/tsconfig.lib.json"
+              "tsConfig": "libs/core/tsconfig.json"
             }
           },
           "defaultConfiguration": "production"
@@ -161,10 +161,10 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/theme/tsconfig.lib.prod.json"
+              "tsConfig": "libs/theme/tsconfig.prod.json"
             },
             "development": {
-              "tsConfig": "libs/theme/tsconfig.lib.json"
+              "tsConfig": "libs/theme/tsconfig.json"
             }
           },
           "defaultConfiguration": "production"

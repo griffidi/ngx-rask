@@ -1,0 +1,28 @@
+:host {
+  display: grid;
+  place-content: center;
+  block-size: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  inline-size: 375px;
+  padding-inline: 40px;
+  padding-block-start: 40px;
+  padding-block-end: 40px;
+  background: var(--app-color-surface-2);
+  border-radius: var(--app-shape-medium);
+}
+
+header,
+footer {
+  inline-size: 100%;
+}
+
+button[type="submit"] {
+  inline-size: 100%;
+  text-transform: uppercase;
+  background: var(--app-color-linear-gradient-primary-accent);
+}

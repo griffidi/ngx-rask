@@ -9,8 +9,17 @@
   }
 }
 
+header,
+footer {
+  color: #ffffff;
+}
+
 header {
   .nav-link {
     color: var(--app-nav-link-color);
   }
+}
+
+footer {
+  font-size: 0.8rem;
 }

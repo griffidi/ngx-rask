@@ -2,16 +2,15 @@
   <nav>
     <ng-content></ng-content>
     <a
-      class="nav-link"
+      class="nav-link brand"
       routerLink="/">
-      <img
-        src="../../../../assets/images/rask.svg"
-        alt="logo"
-        width="32px"
-        height="32px" />
-      @ngx-rask/demo
+      ngx-rask/demo
     </a>
   </nav>
 
-  <mat-icon class="profile">person</mat-icon>
+  <mat-icon
+    *ngIf="isAuthenticated"
+    class="profile">
+    person
+  </mat-icon>
 </header>

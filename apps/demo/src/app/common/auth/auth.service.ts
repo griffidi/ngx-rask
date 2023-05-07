@@ -38,8 +38,10 @@ export class AuthService {
     //     return { user: null };
     //   });
 
-    this.#user.set(null);
-    this.#status.set(null ? 'authenticated' : 'unauthenticated');
+    const user = JSON.parse(localStorage.getItem('auth-user') || 'null');
+
+    this.#user.set(user);
+    this.#status.set(user ? 'authenticated' : 'unauthenticated');
     localStorage.setItem('auth-token', JSON.stringify(null));
   }
 

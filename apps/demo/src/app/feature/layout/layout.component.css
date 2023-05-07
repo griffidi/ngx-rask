@@ -6,20 +6,22 @@
 }
 
 .mat-drawer-container {
+  position: static;
   block-size: 100%;
+  background: var(--app-color-background);
 }
 
 .mat-drawer {
   @include mat.elevation(2);
 
   inline-size: 300px;
-  background: vars.$surface-color-1;
+  background: var(--app-color-surface-2);
   border-start-end-radius: 25px;
   border-end-end-radius: 25px;
 }
 
 ::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
-  background-color: rgba(189, 189, 189, 0.1);
+  background-color: rgba(189, 189, 189, 0.05);
 }
 
 .mat-drawer-inner-container {
@@ -31,6 +33,7 @@
   position: relative;
 
   & section {
+    block-size: 100%;
     padding-inline: var(--_toggle-button-offset);
     padding-block: var(--_toggle-button-offset);
   }

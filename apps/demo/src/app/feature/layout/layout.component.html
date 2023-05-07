@@ -1,17 +1,14 @@
 <app-header [isAuthenticated]="isAuthenticated()">
-  <ng-container *ngIf="isAuthenticated()">
-    <button
-      *ngIf="!opened"
-      mat-icon-button
-      (click)="toggleDrawer()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </ng-container>
+  <button
+    mat-icon-button
+    (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
 </app-header>
 
 <mat-drawer-container>
   <mat-drawer
-    *ngIf="isAuthenticated()"
+    #drawer
     mode="over"
     opened>
     <div class="drawer__title">
@@ -19,7 +16,7 @@
       <button
         mat-icon-button
         aria-label="Close Drawer"
-        (click)="toggleDrawer()">
+        (click)="drawer.toggle()">
         <mat-icon>menu_open</mat-icon>
       </button>
     </div>

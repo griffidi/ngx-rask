@@ -8,9 +8,8 @@ nav {
 header {
   gap: 40px;
   padding-inline: var(--app-site-header-footer-padding);
-  padding-block: var(--app-site-header-footer-padding);
   block-size: var(--app-site-header-block-size);
-  background: var(--app-color-surface-1);
+  background: var(--app-color-background);
   overflow: hidden;
 }
 
@@ -21,6 +20,15 @@ nav {
 
 .nav-link {
   font-size: 1.2rem;
+}
+
+.brand {
+  font-size: 1.9em;
+  line-height: 1.9;
+  font-weight: 600;
+  background-image: var(--app-color-linear-gradient-primary-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 mat-icon.profile {

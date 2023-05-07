@@ -4,5 +4,6 @@
 @import url(./styles/layout.css);
 
 body {
-  font-family: 'Inter var experimental', 'Inter var', Inter;
+  font-family: "Inter var experimental", "Inter var", Inter;
+  background: var(--app-color-background);
 }

@@ -5,10 +5,12 @@ import ts from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
 import eslint from 'eslint';
 import prettier from 'eslint-config-prettier';
+import jsdoc from 'eslint-plugin-jsdoc';
 import prettierPlugin from 'eslint-plugin-prettier';
 
 const sharedPlugins = {
   ts,
+  ngplugin,
   prettierPlugin,
 };
 
@@ -24,8 +26,9 @@ const sharedRules = {
   ...ngtemplate.rules['process-inline-templates'],
   ...ts.rules['stylistic-type-checked'],
   ...ts.rules['strict-type-checked'],
+  ...jsdoc['recommended'],
   ...prettier.rules,
-  '@angular-eslint/no-empty-lifecycle-method': 'error',
+  'ngplugin/no-empty-lifecycle-method': 'error',
   'ts/ban-types': 'warn',
   'ts/consistent-type-exports': [
     'error',
@@ -43,7 +46,7 @@ const sharedRules = {
 };
 
 const sharedAppRules = {
-  '@angular-eslint/directive-selector': [
+  'ngplugin/directive-selector': [
     'error',
     {
       type: 'attribute',
@@ -51,7 +54,7 @@ const sharedAppRules = {
       style: 'camelCase',
     },
   ],
-  '@angular-eslint/component-selector': [
+  'ngplugin/component-selector': [
     'error',
     {
       type: 'element',
@@ -62,7 +65,7 @@ const sharedAppRules = {
 };
 
 const sharedLibRules = {
-  '@angular-eslint/directive-selector': [
+  'ngplugin/directive-selector': [
     'error',
     {
       type: 'attribute',
@@ -70,7 +73,7 @@ const sharedLibRules = {
       style: 'camelCase',
     },
   ],
-  '@angular-eslint/component-selector': [
+  'ngplugin/component-selector': [
     'error',
     {
       type: 'element',
@@ -100,7 +103,7 @@ const libConfig = {
   },
 };
 
-export default /** @type {import("eslint").FlatConfig} */ [
+export default [
   {
     files: ['apps/*/src/**/*.ts'],
     languageOptions: {
@@ -109,7 +112,7 @@ export default /** @type {import("eslint").FlatConfig} */ [
       parser,
       parserOptions: {
         project: true,
-        tsconfigRootDir: import.meta.url,
+        tsconfigRootDir: 'apps/*',
       },
       globals: {
         ...sharedBrowserGlobals,
@@ -125,7 +128,7 @@ export default /** @type {import("eslint").FlatConfig} */ [
       parser,
       parserOptions: {
         project: true,
-        tsconfigRootDir: import.meta.url,
+        tsconfigRootDir: 'libs/*',
       },
       globals: {
         ...sharedBrowserGlobals,
@@ -141,7 +144,7 @@ export default /** @type {import("eslint").FlatConfig} */ [
       sourceType: 'module',
       parserOptions: {
         project: true,
-        tsconfigRootDir: import.meta.url,
+        tsconfigRootDir: '(apps|libs)/*',
       },
       globals: {
         ...sharedBrowserGlobals,
