@@ -1,0 +1,120 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider               = "typegraphql-prisma"
+  output                 = "../node_modules/@prisma/generated/type-graphql"
+  // output                 = "../prisma/generated/type-graphql"
+  contextPrismaKey       = "prisma"
+  emitRedundantTypesInfo = true
+  simpleResolvers        = true
+  useSimpleInputs        = true
+}
+
+model Customer {
+  id            String    @id @default(nanoid(10))
+  firstName     String
+  lastName      String
+  email         String    @unique
+  phone         String
+  streetAddress String
+  city          String
+  state         String
+  zipCode       String
+  dateCreated   DateTime  @default(now())
+  dateUpdated   DateTime? @updatedAt
+}
+
+model Department {
+  id          String     @id @default(nanoid(10))
+  name        String     @unique
+  employees   Employee[]
+  dateCreated DateTime   @default(now())
+  dateUpdated DateTime?  @updatedAt
+}
+
+model Size {
+  id          String        @id @default(nanoid(10))
+  name        String        @unique
+  dateCreated DateTime      @default(now())
+  dateUpdated DateTime?     @updatedAt
+  inventory   Inventory[]
+  productSale ProductSale[]
+}
+
+model Product {
+  id          String        @id @default(nanoid(10))
+  name        String        @unique
+  dateCreated DateTime      @default(now())
+  dateUpdated DateTime?     @updatedAt
+  inventory   Inventory[]
+  productSale ProductSale[]
+}
+
+model Inventory {
+  id          String    @id @default(nanoid(10))
+  productId   String
+  quantity    Int
+  sizeId      String
+  dateCreated DateTime  @default(now())
+  dateUpdated DateTime? @updatedAt
+  product     Product   @relation(fields: [productId], references: [id])
+  size        Size      @relation(fields: [sizeId], references: [id])
+}
+
+model ProductSale {
+  id          String    @id @default(nanoid(10))
+  productId   String
+  quantity    Int
+  sizeId      String
+  dateCreated DateTime  @default(now())
+  dateUpdated DateTime? @updatedAt
+  product     Product   @relation(fields: [productId], references: [id])
+  size        Size      @relation(fields: [sizeId], references: [id])
+}
+
+model Employee {
+  id            String     @id @default(nanoid(10))
+  firstName     String
+  lastName      String
+  email         String     @unique
+  gender        String
+  phone         String
+  streetAddress String
+  city          String
+  state         String
+  zipCode       String
+  jobTitle      String
+  departmentId  String
+  dateStarted   DateTime   @default(now())
+  dateUpdated   DateTime?  @updatedAt
+  department    Department @relation(fields: [departmentId], references: [id])
+}
+
+model User {
+  id          String    @id @default(nanoid(10))
+  userName    String    @unique
+  password    String
+  email       String    @unique
+  firstName   String
+  lastName    String
+  roleId      String
+  dateCreated DateTime  @default(now())
+  dateUpdated DateTime? @updatedAt
+  role        Role      @relation(fields: [roleId], references: [id])
+}
+
+model Role {
+  id          String    @id @unique @default(nanoid(10))
+  name        String    @unique
+  description String
+  dateCreated DateTime  @default(now())
+  dateUpdated DateTime? @updatedAt
+  users       User[]
+}

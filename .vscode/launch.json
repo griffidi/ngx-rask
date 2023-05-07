@@ -1,6 +1,19 @@
 {
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+    // {
+    //   "name": "ng serve",
+    //   "type": "msedge",
+    //   "request": "launch",
+    //   "preLaunchTask": "npm: start",
+    //   "runtimeExecutable": "dev",
+    //   "url": "http://localhost:4200/",
+    //   "webRoot": "${workspaceFolder}/apps/demo/src",
+    //   "userDataDir": "${workspaceFolder}/.out/edge/apps/demo",
+    //   "skipFiles": ["<node_internals>/**"],
+    //   "smartStep": true
+    // },
     {
       "name": "ng serve: demo",
       "type": "node-terminal",
@@ -18,9 +31,11 @@
       "type": "pwa-msedge",
       "request": "launch",
       "runtimeExecutable": "dev",
-      "url": "http://localhost:4400",
+      "url": "http://localhost:4200",
       "webRoot": "${workspaceFolder}",
       "userDataDir": "${workspaceFolder}/.out/edge",
+      "skipFiles": ["<node_internals>/**"],
+      "smartStep": true,
       "presentation": {
         "hidden": false,
         "group": "demo",

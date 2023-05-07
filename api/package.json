@@ -1,0 +1,87 @@
+{
+  "name": "@ngx-rask/api",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Dustin Griffith",
+    "email": "dustingriffith@outlook.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/griffidi/ngx-rask.git"
+  },
+  "packageManager": "pnpm@8.4.0",
+  "engines": {
+    "node": ">=18.11",
+    "pnpm": ">=8.4.0"
+  },
+  "type": "module",
+  "exports": {
+    "./enums/*": "./prisma/enums/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src/**/*.{map.js,js}",
+    "README.md"
+  ],
+  "scripts": {
+    "preprisma:generate": "rimraf prisma/dev.db",
+    "prisma:generate": "prisma generate",
+    "postprisma:generate": "cd $PWD && cd ./node_modules/@prisma/generated/type-graphql && pnpm init",
+    "prisma:push": "prisma db push",
+    "preprisma:seed": "pnpm build:seed",
+    "prisma:seed": "prisma db seed",
+    "db:generate": "pnpm prisma:generate && pnpm prisma:push && pnpm prisma:seed",
+    "prebuild:seed": "rimraf dist/seed.js",
+    "build:seed": "esbuild prisma/seed.ts --tsconfig=tsconfig.json --outfile=dist/seed.js --bundle --format=esm --packages=external --platform=node",
+    "prebuild:dev": "rimraf dist/index.js dist/index.js.map",
+    "build:dev": "esbuild src/index.ts --tsconfig=tsconfig.json --outfile=dist/index.js --bundle --format=esm --packages=external --platform=node --sourcemap",
+    "predev": "pnpm build:dev --watch",
+    "dev": "node --watch --inspect dist/index.js",
+    "dev:tsnode": "ts-node-esm --ignoreDiagnostics 5104 --transpile-only src/index.ts",
+    "//postinstall": "pnpm db:generate"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.7.1",
+    "@apollo/utils.keyvaluecache": "^3.0.0",
+    "@as-integrations/koa": "^1.0.0",
+    "@koa/cors": "^4.0.0",
+    "@prisma/client": "^4.13.0",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "graphql-fields": "^2.0.3",
+    "graphql-scalars": "^1.21.3",
+    "jsonwebtoken": "^9.0.0",
+    "koa": "^2.14.2",
+    "koa-bodyparser": "^4.4.0",
+    "koa-jwt": "^4.0.4",
+    "reflect-metadata": "^0.1.13",
+    "tslib": "^2.5.0",
+    "type-graphql": "2.0.0-beta.1"
+  },
+  "devDependencies": {
+    "@ngneat/falso": "^6.4.0",
+    "@types/graphql-fields": "^1.3.5",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/koa": "^2.13.6",
+    "@types/koa-bodyparser": "^4.3.10",
+    "@types/koa__cors": "^4.0.0",
+    "@types/node": "^20.0.0",
+    "class-validator": "^0.14.0",
+    "esbuild": "^0.17.18",
+    "graphql-tag": "^2.12.6",
+    "nanoid": "^4.0.2",
+    "prisma": "^4.13.0",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typegraphql-prisma": "0.25.0",
+    "typescript": "5.1.0-beta"
+  },
+  "peerDependencies": {
+    "typescript": "5.*"
+  },
+  "prisma": {
+    "seed": "node dist/seed.js"
+  }
+}

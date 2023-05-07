@@ -1,0 +1,25 @@
+.nav-link {
+  text-decoration: none;
+
+  /* link has 2 or more children */
+  &:has(> :nth-child(-n + 2):last-child) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+header,
+footer {
+  color: #ffffff;
+}
+
+header {
+  .nav-link {
+    color: var(--app-nav-link-color);
+  }
+}
+
+footer {
+  font-size: 0.8rem;
+}

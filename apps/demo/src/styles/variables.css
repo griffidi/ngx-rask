@@ -1,0 +1,49 @@
+:root {
+  --app-color-primary: hsl(262, 52%, 47%);
+  --app-color-accent: hsl(151, 82%, 68%);
+  --app-color-secondary: #3e403f;
+  --app-color-background: #0b0c0e;
+}
+
+/* gradients */
+:root {
+  --app-color-linear-gradient-primary-accent: linear-gradient(
+    90deg in oklab,
+    var(--app-color-primary) 20% 20%,
+    var(--app-color-accent) 90% 100%
+  );
+  --app-color-linear-gradient-accent-primary: linear-gradient(
+    90deg in oklab,
+    var(--app-color-accent) 20% 20%,
+    var(--app-color-primary) 90% 100%
+  );
+}
+
+/* surface */
+:root {
+  --app-color-surface-1: #111113;
+  --app-color-surface-2: color-mix(in srgb, var(--app-color-surface-1) 94%, white);
+  --app-color-surface-3: color-mix(in srgb, var(--app-color-surface-1) 88%, white);
+  --app-color-surface-4: color-mix(in srgb, var(--app-color-surface-1) 82%, white);
+  --app-color-surface-5: color-mix(in srgb, var(--app-color-surface-1) 76%, white);
+}
+
+/* layout */
+:root {
+  --app-site-header-block-size: 68px;
+  --app-site-footer-block-size: 58px;
+  --app-site-header-footer-padding: 20px;
+}
+
+/* shape */
+:root {
+  --app-shape-small: 8px;
+  --app-shape-medium: 16px;
+  --app-shape-large: 24px;
+}
+
+/* nav */
+:root {
+  --app-nav-link-color: #ffffff;
+  --app: #51eaca;
+}

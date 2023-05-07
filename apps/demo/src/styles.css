@@ -1,0 +1,9 @@
+@import url(./styles/moderncss.css);
+@import url(./styles/variables.css);
+@import url(./styles/layout.css);
+@import url(./styles/layout.css);
+
+body {
+  font-family: "Inter var experimental", "Inter var", Inter;
+  background: var(--app-color-background);
+}

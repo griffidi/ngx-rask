@@ -1,24 +1,34 @@
+import { authInterceptor } from '#/app/common/auth';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { ApplicationConfig } from '@angular/core';
-import { provideClientHydration } from '@angular/platform-browser';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
-import { ApiConfiguration } from './shared-data-access-api';
-import { authInterceptor } from './shared-data-access-auth/auth.interceptor';
+import { provideZoneChangeDetection, type ApplicationConfig } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import {
+  PreloadAllModules,
+  provideRouter,
+  withComponentInputBinding,
+  withPreloading,
+  withRouterConfig,
+} from '@angular/router';
 
 export const appConfig: ApplicationConfig = {
-    providers: [
-        { provide: ApiConfiguration, useValue: { rootUrl: 'https://api.realworld.io/api' } },
-        provideRouter(
-            [
-                {
-                    path: '',
-                    loadComponent: () => import('./feature-layout/layout.component'),
-                    loadChildren: () => import('./feature-layout/layout.routes'),
-                },
-            ],
-            withComponentInputBinding()
-        ),
-        provideHttpClient(withInterceptors([authInterceptor()])),
-        provideClientHydration(),
-    ],
+  providers: [
+    provideZoneChangeDetection({
+      eventCoalescing: true,
+      runCoalescing: true,
+    }),
+    provideRouter(
+      [
+        {
+          path: '',
+          loadComponent: () => import('./feature/layout/layout.component'),
+          loadChildren: () => import('./feature/layout/layout.routes'),
+        },
+      ],
+      withComponentInputBinding(),
+      withPreloading(PreloadAllModules),
+      withRouterConfig({ paramsInheritanceStrategy: 'always' })
+    ),
+    provideHttpClient(withInterceptors([authInterceptor()])),
+    provideAnimations(),
+  ],
 };
