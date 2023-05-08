@@ -18,4 +18,8 @@ import { RouterOutlet } from '@angular/router';
 export default class Layout {
   protected readonly authService = inject(AuthService);
   protected readonly isAuthenticated = computed(() => this.authService.isAuthenticated());
+
+  protected logout(): void {
+    this.authService.logout();
+  }
 }

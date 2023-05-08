@@ -9,6 +9,7 @@ import {
   withPreloading,
   withRouterConfig,
 } from '@angular/router';
+import { provideCoreOptions } from '@ngx-rask/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,5 +31,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClient(withInterceptors([authInterceptor()])),
     provideAnimations(),
+    provideCoreOptions(),
   ],
 };

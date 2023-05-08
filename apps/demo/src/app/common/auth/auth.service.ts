@@ -1,7 +1,10 @@
+import type { User } from '#/app/common/models';
+import { injectIsServer } from '#/app/common/utils';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import type { User } from '../models';
-import { injectIsServer } from '../utils';
+import { Cache } from '@ngx-rask/core';
+import { AUTH_TOKEN_CACHE_KEY } from './auth-token-cache-key';
+import { AUTH_USER_CACHE_KEY } from './auth-user-cache-key';
 
 export type AuthStatus = 'idle' | 'authenticated' | 'unauthenticated';
 
@@ -9,7 +12,7 @@ export type AuthStatus = 'idle' | 'authenticated' | 'unauthenticated';
   providedIn: 'root',
 })
 export class AuthService {
-  // readonly #userService = inject(UserService);
+  readonly #cache = new Cache();
   readonly #isServer = injectIsServer();
   readonly #router = inject(Router);
   readonly #status = signal<AuthStatus>('idle');
@@ -47,5 +50,16 @@ export class AuthService {
 
   authenticate(urlSegments: string[] = ['/']) {
     this.refresh().then(() => this.#router.navigate(urlSegments));
+  }
+
+  logout() {
+    this.#user.set(null);
+    this.#status.set('unauthenticated');
+    this.#router.navigate(['/']);
+
+    if (!this.#isServer) {
+      this.#cache.remove(AUTH_TOKEN_CACHE_KEY);
+      this.#cache.remove(AUTH_USER_CACHE_KEY);
+    }
   }
 }
