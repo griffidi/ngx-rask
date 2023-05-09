@@ -2,9 +2,7 @@ import type { User } from '#/app/common/models';
 import { injectIsServer } from '#/app/common/utils';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cache } from '@ngx-rask/core';
-import { AUTH_TOKEN_CACHE_KEY } from './auth-token-cache-key';
-import { AUTH_USER_CACHE_KEY } from './auth-user-cache-key';
+import { AUTH_TOKEN_CACHE_KEY, AUTH_USER_CACHE_KEY, Cache } from '@ngx-rask/core';
 
 export type AuthStatus = 'idle' | 'authenticated' | 'unauthenticated';
 

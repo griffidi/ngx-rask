@@ -22,13 +22,10 @@ const sharedBrowserGlobals = {
 
 const sharedRules = {
   ...eslint['recommended'],
-  ...ngplugin.rules.recommended,
-  ...ngtemplate.rules['process-inline-templates'],
   ...ts.rules['stylistic-type-checked'],
   ...ts.rules['strict-type-checked'],
   ...jsdoc['recommended'],
   ...prettier.rules,
-  'ngplugin/no-empty-lifecycle-method': 'error',
   'ts/ban-types': 'warn',
   'ts/consistent-type-exports': [
     'error',
@@ -45,7 +42,14 @@ const sharedRules = {
   ],
 };
 
+const sharedNgRules = {
+  ...ngplugin.rules.recommended,
+  ...ngtemplate.rules['process-inline-templates'],
+  'ngplugin/no-empty-lifecycle-method': 'error',
+};
+
 const sharedAppRules = {
+  ...sharedNgRules,
   'ngplugin/directive-selector': [
     'error',
     {
@@ -65,6 +69,7 @@ const sharedAppRules = {
 };
 
 const sharedLibRules = {
+  ...sharedNgRules,
   'ngplugin/directive-selector': [
     'error',
     {
@@ -81,6 +86,12 @@ const sharedLibRules = {
       style: 'kebab-case',
     },
   ],
+};
+
+const sharedNodeGlobals = {
+  browser: 'readonly',
+  node: 'writable',
+  es2022: 'writable',
 };
 
 const appConfig = {
@@ -103,7 +114,32 @@ const libConfig = {
   },
 };
 
+const nodeConfig = {
+  plugins: {
+    ...sharedPlugins,
+  },
+  rules: {
+    ...sharedRules,
+  },
+};
+
 export default [
+  {
+    files: ['api/src/**/*.ts', 'api/prisma/**/*.ts'],
+    languageOptions: {
+      sourceType: 'module',
+      ecmaVersion: 2022,
+      parser,
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: 'api/*',
+      },
+      globals: {
+        ...sharedNodeGlobals,
+      },
+    },
+    ...nodeConfig,
+  },
   {
     files: ['apps/*/src/**/*.ts'],
     languageOptions: {

@@ -1,7 +1,8 @@
-import { AUTH_TOKEN_CACHE_KEY, AUTH_USER_CACHE_KEY, AuthService } from '#/app/common/auth';
+import { AuthService } from '#/app/common/auth';
 import { FormErrorsService } from '#/app/common/form-errors';
 import { type ApiStatus, type LoginUser } from '#/app/common/models';
 import { Injectable, computed, inject, signal } from '@angular/core';
+import { AUTH_TOKEN_CACHE_KEY, AUTH_USER_CACHE_KEY } from '@ngx-rask/core';
 
 @Injectable()
 export class LoginService {
