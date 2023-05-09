@@ -26,7 +26,7 @@ export class AuthService {
   async refresh() {
     if (this.#isServer) return;
 
-    const token = localStorage.getItem('auth-token');
+    const token = localStorage.getItem(AUTH_TOKEN_CACHE_KEY);
     if (!token) {
       this.#user.set(null);
       this.#status.set('unauthenticated');
@@ -41,11 +41,11 @@ export class AuthService {
     //     return { user: null };
     //   });
 
-    const user = JSON.parse(localStorage.getItem('auth-user') || 'null');
+    const user = JSON.parse(localStorage.getItem(AUTH_USER_CACHE_KEY) || 'null');
 
     this.#user.set(user);
     this.#status.set(user ? 'authenticated' : 'unauthenticated');
-    localStorage.setItem('auth-token', JSON.stringify(null));
+    localStorage.setItem(AUTH_TOKEN_CACHE_KEY, JSON.stringify(null));
   }
 
   authenticate(urlSegments: string[] = ['/']) {

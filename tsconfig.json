@@ -31,7 +31,7 @@
     "paths": {
       "#/app/common/*": ["apps/demo/src/app/common/*/index.ts"],
       "#/app/ui/*": ["apps/demo/src/app/ui/*/index.ts"],
-      "@ngx-rask/core": ["dist/@ngx-rask/core/lib"]
+      "@ngx-rask/core": ["libs/core/src/index.ts"]
     },
     "types": ["jest"],
     "useDefineForClassFields": false,

@@ -2,12 +2,11 @@ import { AUTH_TOKEN_CACHE_KEY, AUTH_USER_CACHE_KEY, AuthService } from '#/app/co
 import { FormErrorsService } from '#/app/common/form-errors';
 import { type ApiStatus, type LoginUser } from '#/app/common/models';
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { Cache } from '@ngx-rask/core';
 
 @Injectable()
 export class LoginService {
   readonly #authService = inject(AuthService);
-  readonly #cache = inject(Cache);
+  // readonly #cache = inject(Cache);
   readonly #formErrorsService = inject(FormErrorsService);
   readonly #status = signal<ApiStatus>('idle');
 
@@ -19,8 +18,10 @@ export class LoginService {
 
     setTimeout(() => {
       this.#status.set('success');
-      this.#cache.set(AUTH_USER_CACHE_KEY, data);
-      this.#cache.set(AUTH_TOKEN_CACHE_KEY, 'fake-token');
+      localStorage.setItem(AUTH_USER_CACHE_KEY, JSON.stringify(data));
+      localStorage.setItem(AUTH_TOKEN_CACHE_KEY, 'fake-token');
+      // this.#cache.set(AUTH_USER_CACHE_KEY, data);
+      // this.#cache.set(AUTH_TOKEN_CACHE_KEY, 'fake-token');
       this.#authService.authenticate();
     }, 1000);
   }

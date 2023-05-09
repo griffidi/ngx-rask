@@ -90,10 +90,9 @@ export class Cache {
    * @param {T} data Data to store in cache.
    * @returns {CacheItemSignalType<T>} Item in cache and if it doesn't exists then undefined is returned.
    */
-  set<T>(key: CacheKey, data: T): CacheItemSignalType<T> {
+  set<T>(key: CacheKey, data: T) {
     this.#storage.setItem(key, JSON.stringify(data));
-
-    return this.get<T>(key);
+    // return this.get<T>(key);
   }
 
   /**
