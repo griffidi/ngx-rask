@@ -1,0 +1,15 @@
+fragment EmployeeParts on Employee {
+  id
+  firstName
+  lastName
+  email
+  gender
+  phone
+  streetAddress
+  city
+  state
+  zipCode
+  jobTitle
+  departmentId
+  dateStarted
+}

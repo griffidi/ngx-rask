@@ -1,0 +1,12 @@
+fragment ProductSaleParts on ProductSale {
+  id
+  product {
+    id
+    name
+  }
+  size {
+    id
+    name
+  }
+  quantity
+}

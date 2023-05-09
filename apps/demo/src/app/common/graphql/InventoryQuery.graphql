@@ -1,0 +1,17 @@
+query GetInventoryByProductId($id: String!) {
+  inventories(where: { productId: { equals: $id } }) {
+    ...InventoryParts
+    product {
+      ...ProductParts
+    }
+  }
+}
+
+query GetInventoryBySize($sizeId: String!) {
+  inventories(where: { sizeId: { equals: $sizeId } }) {
+    ...InventoryParts
+    product {
+      ...ProductParts
+    }
+  }
+}

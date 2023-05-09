@@ -3,8 +3,8 @@ debug: true
 verbose: true
 errorsOnly: false
 emitLegacyCommonJSImports: false
-schema: '../../api/prisma/schema.graphql'
-documents: ['./src/graphql/**/*.graphql']
+schema: 'api/prisma/schema.graphql'
+documents: ['apps/demo/src/app/common/graphql/**/*.graphql']
 config:
   avoidOptionals: false
   # allowEnumStringTypes: true
@@ -19,7 +19,7 @@ config:
   useIndexSignature: true
   useTypeImports: true
 generates:
-  ./src/types/graphql.ts:
+  ./apps/demo/src/types/graphql.d.ts:
     plugins:
       - typescript
       - typescript-operations

@@ -1,0 +1,11 @@
+query GetEmployees {
+  employees {
+    ...EmployeeParts
+  }
+}
+
+query GetEmployeeById($id: String) {
+  employee(where: { id: $id }) {
+    ...EmployeeParts
+  }
+}

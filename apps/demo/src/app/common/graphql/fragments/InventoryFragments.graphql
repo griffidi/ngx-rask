@@ -1,0 +1,6 @@
+fragment InventoryParts on Inventory {
+  id
+  productId
+  quantity
+  sizeId
+}

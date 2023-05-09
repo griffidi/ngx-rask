@@ -40,6 +40,9 @@ dependencies:
   graphql:
     specifier: ^16.6.0
     version: 16.6.0
+  graphql-http:
+    specifier: ^1.18.0
+    version: 1.18.0(graphql@16.6.0)
   rxjs:
     specifier: ~7.8.0
     version: 7.8.0
@@ -7098,6 +7101,15 @@ packages:
       - encoding
       - utf-8-validate
     dev: true
+
+  /graphql-http@1.18.0(graphql@16.6.0):
+    resolution: {integrity: sha512-r2sIo6jCTQi1aj7s+Srg7oU3+r5pUUgxgDD5JDZOmFzrbXVGz+yMhIKhvqW0cV10DcnVIFCOzuFuc1qvnjJ7yQ==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      graphql: '>=0.11 <=16'
+    dependencies:
+      graphql: 16.6.0
+    dev: false
 
   /graphql-request@6.0.0(graphql@16.6.0):
     resolution: {integrity: sha512-2BmHTuglonjZvmNVw6ZzCfFlW/qkIPds0f+Qdi/Lvjsl3whJg2uvHmSvHnLWhUTEw6zcxPYAHiZoPvSVKOZ7Jw==}

@@ -8,14 +8,17 @@ import {
   type QueryOptions,
   type TypedDocumentNode,
 } from '@apollo/client/core';
+import { extractDataFromQueryResult, unwrapMutateResult } from '../utils/operation-result-unwrapper.js';
 import { createApolloClient } from './create-apollo-client.js';
-import { extractDataFromQueryResult, unwrapMutateResult } from './operation-result-unwrapper.js';
 
 // TODO: get GRAPHQL API from environment
 const GRAPHQL_URI = 'http://localhost:8018'; // localStorage.getItem(GRAPHQL_URI_CACHE_KEY);
 
-interface ClientQueryOptions extends Omit<QueryOptions, 'query'> {}
+export interface ClientQueryOptions extends Omit<QueryOptions, 'query'> {}
 
+/**
+ * GraphQL client service.
+ */
 @Injectable({ providedIn: 'root' })
 export class Client {
   #apolloClient: ApolloClient<NormalizedCacheObject> | undefined;

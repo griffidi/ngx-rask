@@ -7,7 +7,7 @@ import {
   type TypePolicies,
 } from '@apollo/client/core';
 import { onError } from '@apollo/client/link/error';
-import { AUTH_TOKEN_CACHE_KEY } from '@ngx-rask/core';
+import { AUTH_TOKEN_CACHE_KEY, type CachedToken } from '@ngx-rask/core';
 
 export interface ApolloClientOptions {
   uri: string;
@@ -24,7 +24,6 @@ export const createApolloClient = (options?: ApolloClientOptions): ApolloClient<
   }
 
   const cache = new InMemoryCache({
-    // addTypename: false,
     typePolicies: typePolicies ?? {},
   });
 
@@ -43,14 +42,14 @@ export const createApolloClient = (options?: ApolloClientOptions): ApolloClient<
     },
   });
 
-  const cachedToken = localStorage.getItem(AUTH_TOKEN_CACHE_KEY);
+  const { token = null } = JSON.parse(localStorage.getItem(AUTH_TOKEN_CACHE_KEY) ?? '') as CachedToken;
 
   const authLink = new ApolloLink((operation, forward) => {
     // add the authorization to the headers
     operation.setContext(({ headers = {} }) => ({
       headers: {
         ...headers,
-        authorization: 'Bearer afjaslfdsakljfdsal;fdsaf', //cachedToken?.token ? `Bearer ${cachedToken.token}` : '',
+        authorization: token ? `Bearer ${token}` : '',
       },
     }));
 
