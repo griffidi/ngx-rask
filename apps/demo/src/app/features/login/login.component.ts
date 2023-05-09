@@ -11,8 +11,8 @@ import { LoginService } from './login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatInputModule, ReactiveFormsModule],
   providers: [LoginService, FormErrorsService],
+  imports: [MatButtonModule, MatInputModule, ReactiveFormsModule],
 })
 export default class Login {
   protected form = new FormBuilder().nonNullable.group({

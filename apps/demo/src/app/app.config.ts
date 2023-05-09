@@ -2,13 +2,7 @@ import { authInterceptor } from '#/app/common/auth';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideZoneChangeDetection, type ApplicationConfig } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import {
-  PreloadAllModules,
-  provideRouter,
-  withComponentInputBinding,
-  withPreloading,
-  withRouterConfig,
-} from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideCoreOptions } from '@ngx-rask/core';
 
 export const appConfig: ApplicationConfig = {
@@ -25,9 +19,9 @@ export const appConfig: ApplicationConfig = {
           loadChildren: () => import('./features/layout/layout.routes'),
         },
       ],
-      withComponentInputBinding(),
-      withPreloading(PreloadAllModules),
-      withRouterConfig({ paramsInheritanceStrategy: 'always' })
+      withComponentInputBinding()
+      // withPreloading(PreloadAllModules),
+      // withRouterConfig({ paramsInheritanceStrategy: 'always' })
     ),
     provideHttpClient(withInterceptors([authInterceptor()])),
     provideAnimations(),

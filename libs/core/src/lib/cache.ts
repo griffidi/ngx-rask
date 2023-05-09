@@ -35,7 +35,9 @@ interface CacheStorage {
  * not available then in-memory storage is used. Cached items are tracked so that when
  * they change they are updated in the cache.
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class Cache {
   #cache: CacheStorage = {
     storage: undefined,
