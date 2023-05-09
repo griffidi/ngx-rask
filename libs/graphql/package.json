@@ -10,7 +10,6 @@
     "graphql": "*"
   },
   "dependencies": {
-    "apollo3-cache-persist": "^0.14.1",
     "tslib": "^2.3.0"
   },
   "sideEffects": false
