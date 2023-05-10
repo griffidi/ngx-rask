@@ -29,7 +29,8 @@
     "watch": "ng build @ngx-rask/demo --watch --configuration development",
     "lint": "ng lint",
     "test": "pnpx jest",
-    "codegen:demo": "graphql-codegen --config apps/demo/codegen.yml"
+    "codegen:demo": "graphql-codegen --config apps/demo/codegen.yml",
+    "postinstall": "cd api && pnpm install && pnpm db:generate"
   },
   "dependencies": {
     "@angular/animations": "^16.0.0",
