@@ -11,5 +11,6 @@
       "@ngx-rask/core": ["dist/@ngx-rask/core/lib"]
     }
   },
-  "exclude": ["**/*.spec.ts"]
+  "exclude": ["**/*.spec.ts"],
+  "include": ["**/*.ts"]
 }

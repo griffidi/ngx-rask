@@ -3,6 +3,63 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "build core",
+      "detail": "ng build @ngx-rask/core --watch",
+      "type": "npm",
+      "script": "watch:core",
+      "isBackground": true,
+      "group": "build",
+      "problemMatcher": {
+        "owner": "npm",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^File change detected.*",
+          "endsPattern": "^Compilation complete.*"
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    },
+    {
+      "label": "build web",
+      "detail": "ng build @ngx-rask/graphql --watch",
+      "type": "npm",
+      "script": "watch:web",
+      "isBackground": true,
+      "group": "build",
+      "problemMatcher": {
+        "owner": "npm",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^File change detected.*",
+          "endsPattern": "^Compilation complete.*"
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    },
+    {
+      "label": "build libs",
+      "type": "shell",
+      "command": "echo build finished...",
+      "isBackground": true,
+      "dependsOrder": "sequence",
+      "dependsOn": ["build core", "build graphql"],
+      "problemMatcher": {
+        "owner": "npm",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "build finished..."
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    },
+    {
       "type": "npm",
       "script": "start",
       "isBackground": true,

@@ -15,15 +15,18 @@ import { LoginService } from './login.service';
   imports: [MatButtonModule, MatInputModule, ReactiveFormsModule],
 })
 export default class Login {
-  protected form = new FormBuilder().nonNullable.group({
-    email: ['', Validators.required, Validators.email],
-    password: ['', Validators.required],
-  });
+  protected form = new FormBuilder().nonNullable.group(
+    {
+      userName: ['', Validators.required],
+      password: ['', Validators.required],
+    },
+    { updateOn: 'blur' }
+  );
 
   protected readonly loginService = inject(LoginService);
 
   onSubmit() {
-    const { email = '', password = '' } = this.form.value;
-    this.loginService.login({ email, password });
+    const { userName = '', password = '' } = this.form.value;
+    this.loginService.login({ userName, password });
   }
 }

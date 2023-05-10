@@ -28,6 +28,7 @@
     "build": "ng build @ngx-rask/demo",
     "watch": "ng build @ngx-rask/demo --watch --configuration development",
     "lint": "ng lint",
+    "test": "pnpx jest",
     "codegen:demo": "graphql-codegen --config apps/demo/codegen.yml"
   },
   "dependencies": {
@@ -42,9 +43,9 @@
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
     "@apollo/client": "^3.7.14",
+    "apollo-angular": "^4.2.1",
     "apollo3-cache-persist": "^0.14.1",
     "graphql": "^16.6.0",
-    "graphql-http": "^1.18.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -64,6 +65,7 @@
     "@graphql-codegen/typescript-operations": "^3.0.4",
     "@graphql-typed-document-node/core": "^3.2.0",
     "@types/jest": "^29.5.1",
+    "@types/node": "^20.1.1",
     "@typescript-eslint/eslint-plugin": "5.59.2",
     "@typescript-eslint/parser": "5.59.2",
     "eslint": "^8.39.0",

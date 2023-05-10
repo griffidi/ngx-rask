@@ -4,5 +4,5 @@
     "noEmit": true
   },
   "include": ["api/src/**/*.ts", "apps/*/src/**/*.ts", "libs/*/src/**/*.ts"],
-  "exclude": ["**/.cache/**/*", "**/.next/**/*", "**/build/**/*", "**/dist/**/*", "**/node_modules/**/*"]
+  "exclude": ["**/.cache/**/*", "**/.next/**/*", "**/build/**/*", "**/dist/**/*", "**/node_modules/**/*", ".out/**/*"]
 }

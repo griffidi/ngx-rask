@@ -9,3 +9,9 @@ query GetUserById($id: String!) {
     ...UserParts
   }
 }
+
+query GetUserByUserName($userName: String!) {
+  user(where: { userName: $userName }) {
+    ...UserParts
+  }
+}

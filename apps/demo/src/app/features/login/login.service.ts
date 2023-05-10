@@ -1,11 +1,15 @@
 import { AuthService } from '#/app/common/auth';
 import { FormErrorsService } from '#/app/common/form-errors';
 import { type ApiStatus, type LoginUser } from '#/app/common/models';
+import { LoginDocument } from '#/app/types/graphql';
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { AUTH_TOKEN_CACHE_KEY, AUTH_USER_CACHE_KEY } from '@ngx-rask/core';
+import { AUTH_TOKEN_CACHE_KEY, type CachedToken } from '@ngx-rask/core';
+import { Apollo } from 'apollo-angular';
+import { catchError, map, take, tap } from 'rxjs';
 
 @Injectable()
 export class LoginService {
+  readonly #apollo = inject(Apollo);
   readonly #authService = inject(AuthService);
   // readonly #cache = inject(Cache);
   readonly #formErrorsService = inject(FormErrorsService);
@@ -14,16 +18,33 @@ export class LoginService {
   readonly errors = this.#formErrorsService.formErrors;
   readonly isLoading = computed(() => this.#status() === 'loading');
 
-  login(data: LoginUser) {
+  login(user: LoginUser) {
     this.#status.set('loading');
 
-    setTimeout(() => {
-      this.#status.set('success');
-      localStorage.setItem(AUTH_USER_CACHE_KEY, JSON.stringify(data));
-      localStorage.setItem(AUTH_TOKEN_CACHE_KEY, 'fake-token');
-      // this.#cache.set(AUTH_USER_CACHE_KEY, data);
-      // this.#cache.set(AUTH_TOKEN_CACHE_KEY, 'fake-token');
-      this.#authService.authenticate();
-    }, 1000);
+    const { userName, password } = user;
+
+    this.#apollo
+      .query({ query: LoginDocument, variables: { userName, password } })
+      .pipe(
+        take(1),
+        map(({ data }) => data.login),
+        tap(token => {
+          if (!token) {
+            throw new Error('Invalid user name or password');
+          }
+
+          const cachedToken: CachedToken = { token, userName };
+
+          localStorage.setItem(AUTH_TOKEN_CACHE_KEY, JSON.stringify(cachedToken));
+          this.#status.set('success');
+          this.#authService.authenticate();
+        }),
+        catchError(error => {
+          this.#status.set('error');
+          this.#formErrorsService.setErrors(error);
+          return [];
+        })
+      )
+      .subscribe();
   }
 }

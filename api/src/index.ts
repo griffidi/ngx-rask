@@ -24,10 +24,7 @@ import { LoginResolver } from './resolvers/login.js';
 await prisma.$connect();
 
 const schema = await buildSchema({
-  resolvers: [
-    ...resolvers,
-    LoginResolver,
-  ],
+  resolvers: [...resolvers, LoginResolver],
   emitSchemaFile: './prisma/schema.graphql',
   validate: false,
 });
@@ -38,13 +35,10 @@ const server = new ApolloServer<Context>({
   cache: new InMemoryLRUCache(),
   schema,
   introspection: IS_DEV_MODE,
-  plugins: [
-    ApolloServerPluginDrainHttpServer({ httpServer }),
-    ApolloServerPluginUsageReportingDisabled(),
-  ],
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer }), ApolloServerPluginUsageReportingDisabled()],
   formatError(formattedError, error) {
-    console.log((error as any).extensions.http.headers); // { status: 400, headers: HeaderMap(0) [Map] {} }
-    console.log(error);
+    console.error((error as any).extensions?.http?.headers); // { status: 400, headers: HeaderMap(0) [Map] {} }
+    console.error(error);
 
     return formattedError;
   },
@@ -54,10 +48,7 @@ await server.start();
 
 app.use(
   cors({
-    allowMethods: [
-      'POST',
-      'OPTIONS',
-    ],
+    allowMethods: ['POST', 'OPTIONS'],
     origin: CORS_ORIGINS,
   })
 );
@@ -66,7 +57,7 @@ app.use(
   koaMiddleware<Context>(server, {
     context: async ({ ctx }) => {
       // @ts-ignore
-      const token = ctx.headers.authorization;
+      // const token = ctx.headers.authorization;
 
       return { prisma };
     },

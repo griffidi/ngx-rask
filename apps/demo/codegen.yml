@@ -19,7 +19,7 @@ config:
   useIndexSignature: true
   useTypeImports: true
 generates:
-  ./apps/demo/src/types/graphql.d.ts:
+  ./apps/demo/src/types/graphql.ts:
     plugins:
       - typescript
       - typescript-operations

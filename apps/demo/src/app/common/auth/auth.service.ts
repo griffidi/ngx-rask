@@ -1,8 +1,13 @@
 import type { User } from '#/app/common/models';
 import { injectIsServer } from '#/app/common/utils';
+import { GetUserByUserNameDocument, type GetUserByUserNameQuery } from '#/app/types/graphql';
+import type { HttpErrorResponse } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { AUTH_TOKEN_CACHE_KEY, AUTH_USER_CACHE_KEY, Cache } from '@ngx-rask/core';
+import type { ApolloQueryResult } from '@apollo/client/core';
+import { AUTH_TOKEN_CACHE_KEY, AUTH_USER_CACHE_KEY, Cache, type CachedToken } from '@ngx-rask/core';
+import { Apollo } from 'apollo-angular';
+import { firstValueFrom } from 'rxjs';
 
 export type AuthStatus = 'idle' | 'authenticated' | 'unauthenticated';
 
@@ -10,6 +15,7 @@ export type AuthStatus = 'idle' | 'authenticated' | 'unauthenticated';
   providedIn: 'root',
 })
 export class AuthService {
+  readonly #apollo = inject(Apollo);
   readonly #cache = new Cache();
   readonly #isServer = injectIsServer();
   readonly #router = inject(Router);
@@ -24,22 +30,27 @@ export class AuthService {
   async refresh() {
     if (this.#isServer) return;
 
-    const token = localStorage.getItem(AUTH_TOKEN_CACHE_KEY);
-    if (!token) {
+    const tokenRaw = localStorage.getItem(AUTH_TOKEN_CACHE_KEY);
+    if (!tokenRaw) {
       this.#user.set(null);
       this.#status.set('unauthenticated');
       return;
     }
 
-    // const currentUserResponse = await this.#userAndAuthenticationApiClient
-    //   .getCurrentUser()
-    //   .catch(({ error }: HttpErrorResponse) => {
-    //     console.error(`error refreshing user -->`, error);
-    //     this.#user.set(null);
-    //     return { user: null };
-    //   });
+    const { userName = '' } = JSON.parse(tokenRaw) as CachedToken;
 
-    const user = JSON.parse(localStorage.getItem(AUTH_USER_CACHE_KEY) || 'null');
+    const currentUserResponse = (await firstValueFrom(
+      this.#apollo.query({
+        query: GetUserByUserNameDocument,
+        variables: { userName },
+      })
+    ).catch(({ error }: HttpErrorResponse) => {
+      console.error(`error refreshing user -->`, error);
+      this.#user.set(null);
+      return { user: null };
+    })) as ApolloQueryResult<GetUserByUserNameQuery>;
+
+    const user = currentUserResponse.data?.user as unknown as User;
 
     this.#user.set(user);
     this.#status.set(user ? 'authenticated' : 'unauthenticated');
