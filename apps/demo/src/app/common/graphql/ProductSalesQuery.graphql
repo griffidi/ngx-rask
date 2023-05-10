@@ -1,0 +1,11 @@
+query GetProductSales {
+  productSales(orderBy: { quantity: desc }) {
+    ...ProductSaleParts
+  }
+}
+
+query GetTopProductSalesByProductId($productId: String!) {
+  productSales(where: { productId: { equals: $productId } }, orderBy: { quantity: desc }) {
+    ...ProductSaleParts
+  }
+}

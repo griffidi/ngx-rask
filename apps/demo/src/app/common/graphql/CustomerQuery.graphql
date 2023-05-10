@@ -1,0 +1,11 @@
+query GetCustomers {
+  customers {
+    ...CustomerParts
+  }
+}
+
+query GetCustomerById($id: String!) {
+  customer(where: { id: $id }) {
+    ...CustomerParts
+  }
+}

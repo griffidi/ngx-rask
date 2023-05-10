@@ -2,18 +2,22 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-    // {
-    //   "name": "ng serve",
-    //   "type": "msedge",
-    //   "request": "launch",
-    //   "preLaunchTask": "npm: start",
-    //   "runtimeExecutable": "dev",
-    //   "url": "http://localhost:4200/",
-    //   "webRoot": "${workspaceFolder}/apps/demo/src",
-    //   "userDataDir": "${workspaceFolder}/.out/edge/apps/demo",
-    //   "skipFiles": ["<node_internals>/**"],
-    //   "smartStep": true
-    // },
+    {
+      "name": "Debug api",
+      "cwd": "${workspaceFolder}/api",
+      "request": "launch",
+      "type": "node",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev:tsnode"],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "presentation": {
+        "hidden": false,
+        "group": "api",
+        "order": 1
+      }
+    },
     {
       "name": "ng serve: demo",
       "type": "node-terminal",
@@ -46,7 +50,7 @@
   "compounds": [
     {
       "name": "Launch demo",
-      "configurations": ["ng serve: demo", "Debug demo (edge)"],
+      "configurations": ["Debug api", "ng serve: demo", "Debug demo (edge)"],
       "stopAll": true
     }
   ]

@@ -8,9 +8,17 @@
     </a>
   </nav>
 
-  <mat-icon
+  <button
     *ngIf="isAuthenticated"
-    class="profile">
-    person
-  </mat-icon>
+    mat-mini-fab
+    [matMenuTriggerFor]="menu">
+    {{ userInitials }}
+  </button>
+  <mat-menu #menu="matMenu">
+    <button
+      mat-menu-item
+      (click)="logout.emit()">
+      Logout
+    </button>
+  </mat-menu>
 </header>

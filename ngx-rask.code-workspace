@@ -8,10 +8,16 @@
       "path": "api"
     },
     {
-      "path": "apps"
+      "name": "demo",
+      "path": "apps/demo"
     },
     {
-      "path": "libs"
+      "name": "core",
+      "path": "libs/core"
+    },
+    {
+      "name": "graphql",
+      "path": "libs/graphql"
     }
   ],
   "settings": {

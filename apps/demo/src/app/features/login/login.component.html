@@ -1,0 +1,34 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()">
+  <header><h1>Sign In</h1></header>
+
+  <mat-form-field>
+    <mat-label>User Name</mat-label>
+    <input
+      matInput
+      name="userName"
+      formControlName="userName"
+      required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      name="password"
+      type="password"
+      formControlName="password"
+      required />
+  </mat-form-field>
+
+  <footer>
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      [disabled]="loginService.isLoading()">
+      Sign In
+    </button>
+  </footer>
+</form>

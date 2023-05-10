@@ -28,7 +28,7 @@
   "scripts": {
     "preprisma:generate": "rimraf prisma/dev.db",
     "prisma:generate": "prisma generate",
-    "postprisma:generate": "cd $PWD && cd ./node_modules/@prisma/generated/type-graphql && pnpm init",
+    "postprisma:generate": "cd ./node_modules/@prisma/generated/type-graphql && pnpm init",
     "prisma:push": "prisma db push",
     "preprisma:seed": "pnpm build:seed",
     "prisma:seed": "prisma db seed",
@@ -76,7 +76,7 @@
     "rimraf": "^5.0.0",
     "ts-node": "^10.9.1",
     "typegraphql-prisma": "0.25.0",
-    "typescript": "5.1.0-beta"
+    "typescript": "5.0.4"
   },
   "peerDependencies": {
     "typescript": "5.*"

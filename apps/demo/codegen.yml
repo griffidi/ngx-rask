@@ -1,0 +1,28 @@
+overwrite: true
+debug: true
+verbose: true
+errorsOnly: false
+emitLegacyCommonJSImports: false
+schema: 'api/prisma/schema.graphql'
+documents: ['apps/demo/src/app/common/graphql/**/*.graphql']
+config:
+  avoidOptionals: false
+  # allowEnumStringTypes: true
+  numericEnums: true
+  # dedupeOperationSuffix: true
+  enumsAsConst: true
+  overwrite: true
+  declarationKind: 'interface'
+  immutableTypes: false
+  maybeValue: 'T | undefined'
+  # preResolveTypes: true
+  useIndexSignature: true
+  useTypeImports: true
+generates:
+  ./apps/demo/src/types/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typed-document-node
+hooks:
+  afterAllFileWrite: ['prettier --write']

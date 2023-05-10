@@ -1,7 +1,7 @@
 import { GraphQLError } from 'graphql';
 import jwt from 'jsonwebtoken';
 import { Args, ArgsType, Ctx, Field, Query, Resolver } from 'type-graphql';
-import type { Context } from '../client/context.js';
+import { type Context } from '../client/context.js';
 import { JWT_SECRET } from '../constants.js';
 import { compareHash } from '../crypto/hash.js';
 

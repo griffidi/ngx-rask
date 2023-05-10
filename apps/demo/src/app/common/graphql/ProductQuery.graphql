@@ -1,0 +1,11 @@
+query GetProducts {
+  products {
+    ...ProductParts
+  }
+}
+
+query GetProductById($id: String!) {
+  product(where: { id: $id }) {
+    ...ProductParts
+  }
+}

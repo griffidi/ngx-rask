@@ -30,12 +30,3 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-mat-icon.profile {
-  --_icon-size: 36px;
-
-  font-size: var(--_icon-size);
-  width: var(--_icon-size);
-  height: var(--_icon-size);
-  line-height: var(--_icon-size);
-}

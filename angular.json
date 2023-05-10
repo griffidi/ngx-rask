@@ -70,7 +70,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/demo/src/environments/environment.ts",
+                  "with": "apps/demo/src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -148,23 +154,23 @@
         }
       }
     },
-    "@ngx-rask/theme": {
+    "@ngx-rask/graphql": {
       "projectType": "library",
-      "root": "libs/theme",
-      "sourceRoot": "libs/theme/src",
+      "root": "libs/graphql",
+      "sourceRoot": "libs/graphql/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "libs/theme/ng-package.json"
+            "project": "libs/graphql/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/theme/tsconfig.prod.json"
+              "tsConfig": "libs/graphql/tsconfig.prod.json"
             },
             "development": {
-              "tsConfig": "libs/theme/tsconfig.json"
+              "tsConfig": "libs/graphql/tsconfig.json"
             }
           },
           "defaultConfiguration": "production"
@@ -172,14 +178,14 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "libs/theme/tsconfig.spec.json",
+            "tsConfig": "libs/graphql/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["libs/theme/**/*.ts", "libs/theme/**/*.html"]
+            "lintFilePatterns": ["libs/graphql/**/*.ts", "libs/graphql/**/*.html"]
           }
         }
       }

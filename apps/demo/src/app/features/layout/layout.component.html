@@ -1,0 +1,35 @@
+<app-header
+  [isAuthenticated]="isAuthenticated()"
+  [userInitials]="userInitials()"
+  (logout)="logout()">
+  <button
+    *ngIf="isAuthenticated()"
+    mat-icon-button
+    (click)="toggleDrawer()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</app-header>
+
+<mat-drawer-container>
+  <mat-drawer
+    *ngIf="isAuthenticated()"
+    mode="over">
+    <div class="drawer__title">
+      <h3>Site Links</h3>
+      <button
+        mat-icon-button
+        aria-label="Close Drawer"
+        (click)="toggleDrawer()">
+        <mat-icon>menu_open</mat-icon>
+      </button>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <section>
+      <router-outlet />
+    </section>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<app-footer />
