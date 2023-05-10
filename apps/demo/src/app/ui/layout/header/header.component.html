@@ -10,9 +10,9 @@
 
   <button
     *ngIf="isAuthenticated"
-    mat-icon-button
+    mat-mini-fab
     [matMenuTriggerFor]="menu">
-    <mat-icon>person</mat-icon>
+    {{ userInitials }}
   </button>
   <mat-menu #menu="matMenu">
     <button

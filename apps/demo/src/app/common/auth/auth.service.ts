@@ -1,6 +1,5 @@
-import type { User } from '#/app/common/models';
 import { injectIsServer } from '#/app/common/utils';
-import { GetUserByUserNameDocument, type GetUserByUserNameQuery } from '#/app/types/graphql';
+import { GetUserByUserNameDocument, type GetUserByUserNameQuery, type User } from '#/app/types/graphql';
 import type { HttpErrorResponse } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
@@ -25,7 +24,7 @@ export class AuthService {
   readonly isAuthenticated = computed(() => this.#status() === 'authenticated');
   readonly isAuthenticating = computed(() => this.#status() === 'idle');
   readonly user = this.#user.asReadonly();
-  readonly username = computed(() => this.#user()?.username || '');
+  readonly userName = computed(() => this.#user()?.userName || '');
 
   async refresh() {
     if (this.#isServer) return;
@@ -36,7 +35,7 @@ export class AuthService {
       this.#status.set('unauthenticated');
       return;
     }
-
+    ``;
     const { userName = '' } = JSON.parse(tokenRaw) as CachedToken;
 
     const currentUserResponse = (await firstValueFrom(
@@ -54,7 +53,7 @@ export class AuthService {
 
     this.#user.set(user);
     this.#status.set(user ? 'authenticated' : 'unauthenticated');
-    localStorage.setItem(AUTH_TOKEN_CACHE_KEY, JSON.stringify(null));
+    // localStorage.setItem(AUTH_TOKEN_CACHE_KEY, JSON.stringify(null));
   }
 
   authenticate(urlSegments: string[] = ['/']) {

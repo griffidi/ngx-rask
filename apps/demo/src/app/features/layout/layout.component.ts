@@ -18,6 +18,10 @@ import { RouterOutlet } from '@angular/router';
 export default class Layout {
   protected readonly authService = inject(AuthService);
   protected readonly isAuthenticated = computed(() => this.authService.isAuthenticated());
+  protected readonly userInitials = computed(() => {
+    const { firstName = '', lastName = '' } = this.authService.user() ?? {};
+    return `${firstName[0]}${lastName[0]}`;
+  });
 
   @ViewChild(MatDrawer) private readonly drawer!: MatDrawer;
 

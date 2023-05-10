@@ -1,5 +1,6 @@
 <app-header
   [isAuthenticated]="isAuthenticated()"
+  [userInitials]="userInitials()"
   (logout)="logout()">
   <button
     *ngIf="isAuthenticated()"
