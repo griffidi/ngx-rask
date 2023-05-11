@@ -27,6 +27,13 @@
     <nav>
       <a
         class="nav-link"
+        routerLink="/employees"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        Employees
+      </a>
+      <a
+        class="nav-link"
         routerLink="/products"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }">

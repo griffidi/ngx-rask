@@ -15,6 +15,11 @@ export default [
     title: 'Sign in',
   },
   {
+    path: 'employees',
+    canActivate: [authGuard('protected')],
+    loadChildren: () => import('../employees/routes'),
+  },
+  {
     path: 'products',
     canActivate: [authGuard('protected')],
     loadChildren: () => import('../products/routes'),
