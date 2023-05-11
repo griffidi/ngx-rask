@@ -7,4 +7,5 @@
 .mat-mdc-card {
   padding-inline: 20px;
   padding-block: 20px;
+  border-radius: var(--app-shape-large);
 }
