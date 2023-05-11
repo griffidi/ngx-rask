@@ -1,8 +1,9 @@
 :root {
   --app-color-primary: hsl(262, 52%, 47%);
   --app-color-accent: hsl(340, 100%, 63%);
-  --app-color-secondary: #3e403f;
-  --app-color-background: #0b0c0e;
+  --app-color-secondary: hsl(150, 2%, 25%);
+  --app-color-background: hsl(220, 12%, 5%);
+  --app-color-background-hover: hsl(240, 1%, 34%);
 }
 
 :root {

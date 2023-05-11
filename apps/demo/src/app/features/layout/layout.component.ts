@@ -4,8 +4,9 @@ import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ViewChild, computed, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -13,7 +14,18 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LayoutFooter, LayoutHeader, MatButtonModule, MatIconModule, MatSidenavModule, NgIf, RouterOutlet],
+  imports: [
+    LayoutFooter,
+    LayoutHeader,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatSidenavModule,
+    NgIf,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+  ],
 })
 export default class Layout {
   protected readonly authService = inject(AuthService);

@@ -18,6 +18,10 @@
     {
       "name": "graphql",
       "path": "libs/graphql"
+    },
+    {
+      "name": "components",
+      "path": "libs/components"
     }
   ],
   "settings": {

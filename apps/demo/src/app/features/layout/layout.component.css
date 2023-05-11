@@ -24,9 +24,10 @@
   background-color: rgba(189, 189, 189, 0.05);
 }
 
-.mat-drawer-inner-container {
+::ng-deep .mat-drawer .mat-drawer-inner-container {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .mat-drawer-content {
@@ -48,5 +49,23 @@
 
   & h3 {
     margin: 0;
+  }
+}
+
+nav {
+  padding-inline: 12px;
+
+  & .nav-link {
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    block-size: 48px;
+    padding-inline: 18px;
+    border-radius: var(--app-shape-large);
+    color: #ffffff;
+
+    &:hover {
+      background: var(--app-color-background-hover);
+    }
   }
 }

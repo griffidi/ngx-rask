@@ -18,4 +18,12 @@ $theme: mat.define-dark-theme(
   )
 );
 
+// $config: mat.get-color-config($theme);
+// $background: map.get-color-from-palette(mat.$deep-purple-palette, 'background');
+// $background-hover: mat.get-color-from-palette($background, 'hover');
+
 @include mat.all-component-themes($theme);
+
+// :root {
+//   --app-color-background-hover: #{$background-hover};
+// }
