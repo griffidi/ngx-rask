@@ -51,6 +51,7 @@ model Size {
 model Product {
   id          String        @id @default(nanoid(10))
   name        String        @unique
+  cost        Float
   dateCreated DateTime      @default(now())
   dateUpdated DateTime?     @updatedAt
   inventory   Inventory[]

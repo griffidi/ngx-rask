@@ -1,1 +1,4 @@
-<p>product-list works!</p>
+<mat-card *ngFor="let product of products()">
+  <mat-card-title>{{ product.name }}</mat-card-title>
+  <mat-card-content>{{ product.cost | currency }}</mat-card-content>
+</mat-card>

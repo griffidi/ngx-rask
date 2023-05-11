@@ -52,9 +52,11 @@ export interface AggregateInventory {
 
 export interface AggregateProduct {
   __typename?: 'AggregateProduct';
+  _avg?: Maybe<ProductAvgAggregate>;
   _count?: Maybe<ProductCountAggregate>;
   _max?: Maybe<ProductMaxAggregate>;
   _min?: Maybe<ProductMinAggregate>;
+  _sum?: Maybe<ProductSumAggregate>;
 }
 
 export interface AggregateProductSale {
@@ -981,6 +983,33 @@ export interface EmployeeWhereUniqueInput {
   id?: InputMaybe<Scalars['String']>;
 }
 
+export interface FloatFilter {
+  equals?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<Scalars['Float']>>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  not?: InputMaybe<NestedFloatFilter>;
+  notIn?: InputMaybe<Array<Scalars['Float']>>;
+}
+
+export interface FloatWithAggregatesFilter {
+  _avg?: InputMaybe<NestedFloatFilter>;
+  _count?: InputMaybe<NestedIntFilter>;
+  _max?: InputMaybe<NestedFloatFilter>;
+  _min?: InputMaybe<NestedFloatFilter>;
+  _sum?: InputMaybe<NestedFloatFilter>;
+  equals?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<Scalars['Float']>>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  not?: InputMaybe<NestedFloatWithAggregatesFilter>;
+  notIn?: InputMaybe<Array<Scalars['Float']>>;
+}
+
 export interface IntFilter {
   equals?: InputMaybe<Scalars['Int']>;
   gt?: InputMaybe<Scalars['Int']>;
@@ -1705,6 +1734,22 @@ export interface NestedFloatFilter {
   notIn?: InputMaybe<Array<Scalars['Float']>>;
 }
 
+export interface NestedFloatWithAggregatesFilter {
+  _avg?: InputMaybe<NestedFloatFilter>;
+  _count?: InputMaybe<NestedIntFilter>;
+  _max?: InputMaybe<NestedFloatFilter>;
+  _min?: InputMaybe<NestedFloatFilter>;
+  _sum?: InputMaybe<NestedFloatFilter>;
+  equals?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<Scalars['Float']>>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  not?: InputMaybe<NestedFloatWithAggregatesFilter>;
+  notIn?: InputMaybe<Array<Scalars['Float']>>;
+}
+
 export interface NestedIntFilter {
   equals?: InputMaybe<Scalars['Int']>;
   gt?: InputMaybe<Scalars['Int']>;
@@ -1777,6 +1822,7 @@ export interface NestedStringWithAggregatesFilter {
 export interface Product {
   __typename?: 'Product';
   _count?: Maybe<ProductCount>;
+  cost: Scalars['Float'];
   dateCreated: Scalars['DateTime'];
   dateUpdated?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
@@ -1803,6 +1849,15 @@ export interface ProductProductSaleArgs {
   where?: InputMaybe<ProductSaleWhereInput>;
 }
 
+export interface ProductAvgAggregate {
+  __typename?: 'ProductAvgAggregate';
+  cost?: Maybe<Scalars['Float']>;
+}
+
+export interface ProductAvgOrderByAggregateInput {
+  cost?: InputMaybe<SortOrder>;
+}
+
 export interface ProductCount {
   __typename?: 'ProductCount';
   inventory: Scalars['Int'];
@@ -1812,6 +1867,7 @@ export interface ProductCount {
 export interface ProductCountAggregate {
   __typename?: 'ProductCountAggregate';
   _all: Scalars['Int'];
+  cost: Scalars['Int'];
   dateCreated: Scalars['Int'];
   dateUpdated: Scalars['Int'];
   id: Scalars['Int'];
@@ -1819,6 +1875,7 @@ export interface ProductCountAggregate {
 }
 
 export interface ProductCountOrderByAggregateInput {
+  cost?: InputMaybe<SortOrder>;
   dateCreated?: InputMaybe<SortOrder>;
   dateUpdated?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
@@ -1826,6 +1883,7 @@ export interface ProductCountOrderByAggregateInput {
 }
 
 export interface ProductCreateInput {
+  cost: Scalars['Float'];
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
@@ -1857,6 +1915,7 @@ export interface ProductCreateOrConnectWithoutProductSaleInput {
 }
 
 export interface ProductCreateWithoutInventoryInput {
+  cost: Scalars['Float'];
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
@@ -1865,6 +1924,7 @@ export interface ProductCreateWithoutInventoryInput {
 }
 
 export interface ProductCreateWithoutProductSaleInput {
+  cost: Scalars['Float'];
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
@@ -1874,9 +1934,12 @@ export interface ProductCreateWithoutProductSaleInput {
 
 export interface ProductGroupBy {
   __typename?: 'ProductGroupBy';
+  _avg?: Maybe<ProductAvgAggregate>;
   _count?: Maybe<ProductCountAggregate>;
   _max?: Maybe<ProductMaxAggregate>;
   _min?: Maybe<ProductMinAggregate>;
+  _sum?: Maybe<ProductSumAggregate>;
+  cost: Scalars['Float'];
   dateCreated: Scalars['DateTime'];
   dateUpdated?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
@@ -1885,6 +1948,7 @@ export interface ProductGroupBy {
 
 export interface ProductMaxAggregate {
   __typename?: 'ProductMaxAggregate';
+  cost?: Maybe<Scalars['Float']>;
   dateCreated?: Maybe<Scalars['DateTime']>;
   dateUpdated?: Maybe<Scalars['DateTime']>;
   id?: Maybe<Scalars['String']>;
@@ -1892,6 +1956,7 @@ export interface ProductMaxAggregate {
 }
 
 export interface ProductMaxOrderByAggregateInput {
+  cost?: InputMaybe<SortOrder>;
   dateCreated?: InputMaybe<SortOrder>;
   dateUpdated?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
@@ -1900,6 +1965,7 @@ export interface ProductMaxOrderByAggregateInput {
 
 export interface ProductMinAggregate {
   __typename?: 'ProductMinAggregate';
+  cost?: Maybe<Scalars['Float']>;
   dateCreated?: Maybe<Scalars['DateTime']>;
   dateUpdated?: Maybe<Scalars['DateTime']>;
   id?: Maybe<Scalars['String']>;
@@ -1907,6 +1973,7 @@ export interface ProductMinAggregate {
 }
 
 export interface ProductMinOrderByAggregateInput {
+  cost?: InputMaybe<SortOrder>;
   dateCreated?: InputMaybe<SortOrder>;
   dateUpdated?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
@@ -1914,9 +1981,12 @@ export interface ProductMinOrderByAggregateInput {
 }
 
 export interface ProductOrderByWithAggregationInput {
+  _avg?: InputMaybe<ProductAvgOrderByAggregateInput>;
   _count?: InputMaybe<ProductCountOrderByAggregateInput>;
   _max?: InputMaybe<ProductMaxOrderByAggregateInput>;
   _min?: InputMaybe<ProductMinOrderByAggregateInput>;
+  _sum?: InputMaybe<ProductSumOrderByAggregateInput>;
+  cost?: InputMaybe<SortOrder>;
   dateCreated?: InputMaybe<SortOrder>;
   dateUpdated?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
@@ -1924,6 +1994,7 @@ export interface ProductOrderByWithAggregationInput {
 }
 
 export interface ProductOrderByWithRelationInput {
+  cost?: InputMaybe<SortOrder>;
   dateCreated?: InputMaybe<SortOrder>;
   dateUpdated?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
@@ -2264,23 +2335,35 @@ export interface ProductSaleWhereUniqueInput {
 }
 
 export enum ProductScalarFieldEnum {
-  DateCreated = 0,
-  DateUpdated = 1,
-  Id = 2,
-  Name = 3,
+  Cost = 0,
+  DateCreated = 1,
+  DateUpdated = 2,
+  Id = 3,
+  Name = 4,
 }
 
 export interface ProductScalarWhereWithAggregatesInput {
   AND?: InputMaybe<Array<ProductScalarWhereWithAggregatesInput>>;
   NOT?: InputMaybe<Array<ProductScalarWhereWithAggregatesInput>>;
   OR?: InputMaybe<Array<ProductScalarWhereWithAggregatesInput>>;
+  cost?: InputMaybe<FloatWithAggregatesFilter>;
   dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
   dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
   id?: InputMaybe<StringWithAggregatesFilter>;
   name?: InputMaybe<StringWithAggregatesFilter>;
 }
 
+export interface ProductSumAggregate {
+  __typename?: 'ProductSumAggregate';
+  cost?: Maybe<Scalars['Float']>;
+}
+
+export interface ProductSumOrderByAggregateInput {
+  cost?: InputMaybe<SortOrder>;
+}
+
 export interface ProductUpdateInput {
+  cost?: InputMaybe<Scalars['Float']>;
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
@@ -2290,6 +2373,7 @@ export interface ProductUpdateInput {
 }
 
 export interface ProductUpdateManyMutationInput {
+  cost?: InputMaybe<Scalars['Float']>;
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
@@ -2313,6 +2397,7 @@ export interface ProductUpdateOneRequiredWithoutProductSaleNestedInput {
 }
 
 export interface ProductUpdateWithoutInventoryInput {
+  cost?: InputMaybe<Scalars['Float']>;
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
@@ -2321,6 +2406,7 @@ export interface ProductUpdateWithoutInventoryInput {
 }
 
 export interface ProductUpdateWithoutProductSaleInput {
+  cost?: InputMaybe<Scalars['Float']>;
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
@@ -2342,6 +2428,7 @@ export interface ProductWhereInput {
   AND?: InputMaybe<Array<ProductWhereInput>>;
   NOT?: InputMaybe<Array<ProductWhereInput>>;
   OR?: InputMaybe<Array<ProductWhereInput>>;
+  cost?: InputMaybe<FloatFilter>;
   dateCreated?: InputMaybe<DateTimeFilter>;
   dateUpdated?: InputMaybe<DateTimeNullableFilter>;
   id?: InputMaybe<StringFilter>;
@@ -3808,7 +3895,7 @@ export type GetInventoryByProductIdQuery = {
     productId: string;
     quantity: number;
     sizeId: string;
-    product: { __typename?: 'Product'; id: string; name: string };
+    product: { __typename?: 'Product'; id: string; name: string; cost: number };
   }>;
 };
 
@@ -3824,7 +3911,7 @@ export type GetInventoryBySizeQuery = {
     productId: string;
     quantity: number;
     sizeId: string;
-    product: { __typename?: 'Product'; id: string; name: string };
+    product: { __typename?: 'Product'; id: string; name: string; cost: number };
   }>;
 };
 
@@ -3839,7 +3926,7 @@ export type GetProductsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProductsQuery = {
   __typename?: 'Query';
-  products: Array<{ __typename?: 'Product'; id: string; name: string }>;
+  products: Array<{ __typename?: 'Product'; id: string; name: string; cost: number }>;
 };
 
 export type GetProductByIdQueryVariables = Exact<{
@@ -3848,7 +3935,7 @@ export type GetProductByIdQueryVariables = Exact<{
 
 export type GetProductByIdQuery = {
   __typename?: 'Query';
-  product?: { __typename?: 'Product'; id: string; name: string } | undefined;
+  product?: { __typename?: 'Product'; id: string; name: string; cost: number } | undefined;
 };
 
 export type GetProductSalesQueryVariables = Exact<{ [key: string]: never }>;
@@ -3953,7 +4040,7 @@ export type InventoryPartsFragment = {
   sizeId: string;
 };
 
-export type ProductPartsFragment = { __typename?: 'Product'; id: string; name: string };
+export type ProductPartsFragment = { __typename?: 'Product'; id: string; name: string; cost: number };
 
 export type ProductSalePartsFragment = {
   __typename?: 'ProductSale';
@@ -4055,6 +4142,7 @@ export const ProductPartsFragmentDoc = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -4427,6 +4515,7 @@ export const GetInventoryByProductIdDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -4518,6 +4607,7 @@ export const GetInventoryBySizeDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -4596,6 +4686,7 @@ export const GetProductsDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -4654,6 +4745,7 @@ export const GetProductByIdDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
