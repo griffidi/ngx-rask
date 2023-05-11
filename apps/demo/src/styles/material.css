@@ -1,19 +1,16 @@
 button.mdc-button {
   border-radius: var(--app-shape-medium);
 }
-/*
+
 .mat-mdc-form-field {
-  &,
-  &:hover {
-    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-      background: transparent !important;
-    }
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background: transparent !important;
   }
 }
 
 .mdc-text-field {
   padding-inline: 8px !important;
-} */
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {

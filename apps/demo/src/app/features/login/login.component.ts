@@ -15,13 +15,10 @@ import { LoginService } from './login.service';
   imports: [MatButtonModule, MatInputModule, ReactiveFormsModule],
 })
 export default class Login {
-  protected form = new FormBuilder().nonNullable.group(
-    {
-      userName: ['', Validators.required],
-      password: ['', Validators.required],
-    },
-    { updateOn: 'blur' }
-  );
+  protected form = new FormBuilder().nonNullable.group({
+    userName: ['', Validators.required],
+    password: ['', Validators.required],
+  });
 
   protected readonly loginService = inject(LoginService);
 
