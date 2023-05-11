@@ -1,4 +1,4 @@
-# 🐇 @rask/api
+# 🐇 @ngx-rask/api
 
 A [Node.js](https://nodejs.org/) based [GraphQL](https://graphql.org/) project written in [TypeScript](https://typescriptlang.org) that uses [Prisma](https://www.prisma.io) to model, generate and seed a [SQLite](https://sqlite.org/index.html) database. [TypeGraphQL Prisma](https://prisma.typegraphql.com/) for generating type classes and CRUD resolvers from Prisma's `schema.prisma`. The data is randomly generated using [@ngneat/falso](https://ngneat.github.io/falso/), [Koa](https://koajs.com/) for the web framework and a GraphQL API server, [Apollo Server](https://www.apollographql.com/docs/apollo-server).
 
