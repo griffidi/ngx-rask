@@ -23,6 +23,25 @@
         <mat-icon>menu_open</mat-icon>
       </button>
     </div>
+
+    <nav>
+      <a
+        class="nav-link"
+        routerLink="/employees"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon>badge</mat-icon>
+        <span>Employees</span>
+      </a>
+      <a
+        class="nav-link"
+        routerLink="/products"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon>widgets</mat-icon>
+        <span>Products</span>
+      </a>
+    </nav>
   </mat-drawer>
 
   <mat-drawer-content>
