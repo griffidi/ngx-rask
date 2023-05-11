@@ -24,7 +24,8 @@
   "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve @ngx-rask/demo --hmr",
+    "start": "ng serve @ngx-rask/demo",
+    "start:hmr": "ng serve @ngx-rask/demo --hmr",
     "build": "ng build @ngx-rask/demo",
     "watch": "ng build @ngx-rask/demo --watch --configuration development",
     "lint": "ng lint",
