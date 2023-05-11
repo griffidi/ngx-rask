@@ -53,15 +53,13 @@
 }
 
 nav {
-  padding-inline: 12px;
-
   & .nav-link {
     display: flex;
     align-items: center;
     inline-size: 100%;
     block-size: 48px;
     padding-inline: 18px;
-    border-radius: var(--app-shape-large);
+    gap: 30px;
     color: #ffffff;
 
     &:hover {
