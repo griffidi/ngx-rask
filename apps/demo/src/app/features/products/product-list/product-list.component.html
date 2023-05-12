@@ -1,4 +1,29 @@
 <mat-card *ngFor="let product of products()">
-  <mat-card-title>{{ product.name }}</mat-card-title>
-  <mat-card-content>{{ product.cost | currency }}</mat-card-content>
+  <mat-card-title>
+    <img
+      src="{{ product.name | createPath : imagePath }}"
+      loading=""
+      width="100%"
+      height="100%" />
+  </mat-card-title>
+  <mat-card-content>
+    <div class="details">
+      <span class="title">{{ product.name }}</span>
+      <span class="cost">{{ product.cost | currency }}</span>
+    </div>
+    <div class="actions">
+      <button
+        mat-stroked-button
+        color="primary"
+        [routerLink]="['/products', product.id]">
+        View
+      </button>
+      <button
+        mat-stroked-button
+        color="accent"
+        [routerLink]="['/products', product.id, 'edit']">
+        Edit
+      </button>
+    </div>
+  </mat-card-content>
 </mat-card>

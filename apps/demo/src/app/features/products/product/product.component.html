@@ -1,1 +1,12 @@
-<p>product works!</p>
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input
+      matInput
+      name="name"
+      placeholder="Name"
+      formControlName="name"
+      required />
+  </mat-form-field>
+</form>
