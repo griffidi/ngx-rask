@@ -24,8 +24,7 @@
   "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve @ngx-rask/demo",
-    "start:hmr": "ng serve @ngx-rask/demo --hmr",
+    "start": "ng serve @ngx-rask/demo --hmr",
     "build": "ng build @ngx-rask/demo",
     "build:core": "ng build @ngx-rask/core",
     "build:graphql": "ng build @ngx-rask/graphql",
