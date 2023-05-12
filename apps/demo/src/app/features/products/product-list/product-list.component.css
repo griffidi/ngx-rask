@@ -41,7 +41,11 @@
 }
 
 .title {
-  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.cost {
+  font-size: 1.3em;
   font-weight: 500;
 }
 

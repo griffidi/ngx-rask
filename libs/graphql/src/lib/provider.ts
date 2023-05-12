@@ -1,5 +1,5 @@
-import { makeEnvironmentProviders, type EnvironmentProviders, type Provider } from '@angular/core';
-import { APOLLO_OPTIONS } from 'apollo-angular';
+import { importProvidersFrom, makeEnvironmentProviders, type EnvironmentProviders, type Provider } from '@angular/core';
+import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { createApollo } from './apollo';
 import { GRAPHQL_URI_TOKEN } from './graphql-uri-token';
@@ -14,7 +14,7 @@ export interface ApolloOptions {
  * @param {ApolloOptions} options The Apollo Options.
  * @returns {EnvironmentProviders} The Environment Providers.
  */
-export const provideApollo = (options: ApolloOptions): EnvironmentProviders => {
+export const provideGraphQL = (options: ApolloOptions): EnvironmentProviders => {
   const providers: Provider[] = [
     {
       provide: GRAPHQL_URI_TOKEN,
@@ -27,5 +27,12 @@ export const provideApollo = (options: ApolloOptions): EnvironmentProviders => {
     },
   ];
 
-  return makeEnvironmentProviders(providers);
+  return makeEnvironmentProviders([
+    /**
+     * Import the Apollo Module. Event though Angular 16 support has
+     * been added, the ApolloModule is till needing to be imported.
+     */
+    importProvidersFrom(ApolloModule),
+    providers,
+  ]);
 };

@@ -1,11 +1,11 @@
+import { provideAssets } from '#/app/common/assets';
 import { authInterceptor } from '#/app/common/auth';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { importProvidersFrom, provideZoneChangeDetection, type ApplicationConfig } from '@angular/core';
+import { provideZoneChangeDetection, type ApplicationConfig } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { PreloadAllModules, provideRouter, withComponentInputBinding, withPreloading } from '@angular/router';
 import { provideCoreOptions } from '@ngx-rask/core';
-import { provideApollo } from '@ngx-rask/graphql';
-import { ApolloModule } from 'apollo-angular';
+import { provideGraphQL } from '@ngx-rask/graphql';
 import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
@@ -16,6 +16,11 @@ export const appConfig: ApplicationConfig = {
     }),
     provideRouter(
       [
+        /**
+         * The default route is the layout component. This is the
+         * component that will be loaded when the application is
+         * first loaded.
+         */
         {
           path: '',
           loadComponent: () => import('./features/layout/layout.component'),
@@ -28,7 +33,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([authInterceptor()])),
     provideAnimations(),
     provideCoreOptions(),
-    importProvidersFrom(ApolloModule),
-    provideApollo({ uri: environment.graphqlUri }),
+    provideGraphQL({ uri: environment.graphqlUri }),
+    provideAssets({ path: environment.assetsPath }),
   ],
 };

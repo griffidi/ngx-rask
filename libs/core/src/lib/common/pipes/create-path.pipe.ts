@@ -5,8 +5,9 @@ import { Pipe, type PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class CreatePathPipe implements PipeTransform {
-  transform(value: string, path: string): any {
-    const resolvedPath = `${path}/${value.toLocaleLowerCase()}.jpg`;
+  transform(value: string, path: string, subpath = value, ext = 'jpg'): any {
+    value = value.toLocaleLowerCase().replace(/ /g, '-');
+    const resolvedPath = `${path}/${subpath.toLocaleLowerCase()}/${value}.${ext}`;
     return resolvedPath;
   }
 }

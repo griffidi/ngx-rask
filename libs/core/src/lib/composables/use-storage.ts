@@ -16,9 +16,8 @@ function parseValue(value: string) {
 
 export function useStorage(key: string, type: 'localStorage' | 'sessionStorage' = 'localStorage') {
   // state encapsulated and managed by the composable
-  const value = signal('');
+  const value = signal<string | null>('');
   const storage = type === 'localStorage' ? localStorage : sessionStorage;
-
   const serializedVal = storage.getItem(key);
 
   if (serializedVal !== null) {

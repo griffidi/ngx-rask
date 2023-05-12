@@ -1,15 +1,13 @@
 import { GetProductsDocument, type Product } from '#/app/types/graphql';
-import { CurrencyPipe, NgFor, NgOptimizedImage } from '@angular/common';
+import { CurrencyPipe, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal, type OnInit, type WritableSignal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { CreatePathPipe } from '@ngx-rask/core';
-import { Apollo } from 'apollo-angular';
-import { map, tap } from 'rxjs';
-
-export const IMAGE_PATH = '../../../../assets/images';
+import { Client } from '@ngx-rask/graphql';
+import { IMAGE_PATH_TOKEN } from '../../../common/assets/image-path-token';
 
 @Component({
   selector: 'app-product-list',
@@ -17,31 +15,16 @@ export const IMAGE_PATH = '../../../../assets/images';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CreatePathPipe,
-    CurrencyPipe,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    NgFor,
-    NgOptimizedImage,
-    RouterLink,
-  ],
+  imports: [CreatePathPipe, CurrencyPipe, MatButtonModule, MatCardModule, MatIconModule, NgFor, RouterLink],
 })
 export default class ProductList implements OnInit {
-  #apollo = inject(Apollo);
+  #client = inject(Client);
 
-  protected products: WritableSignal<Product[]> = signal([]);
+  protected readonly imagePath = inject(IMAGE_PATH_TOKEN);
+  protected readonly products: WritableSignal<Product[]> = signal([]);
 
-  protected imagePath = IMAGE_PATH;
-
-  ngOnInit(): void {
-    this.#apollo
-      .query<{ products: Product[] }>({ query: GetProductsDocument })
-      .pipe(
-        map(({ data }) => data.products),
-        tap(products => this.products.set(products))
-      )
-      .subscribe();
+  async ngOnInit() {
+    const { products } = await this.#client.query(GetProductsDocument);
+    this.products.set(products as Product[]);
   }
 }

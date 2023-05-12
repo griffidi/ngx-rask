@@ -1,12 +1,9 @@
 import { injectIsServer } from '#/app/common/utils';
-import { GetUserByUserNameDocument, type GetUserByUserNameQuery, type User } from '#/app/types/graphql';
-import type { HttpErrorResponse } from '@angular/common/http';
+import { GetUserByUserNameDocument, type User } from '#/app/types/graphql';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import type { ApolloQueryResult } from '@apollo/client/core';
-import { AUTH_TOKEN_CACHE_KEY, AUTH_USER_CACHE_KEY, Cache, type CachedToken } from '@ngx-rask/core';
-import { Apollo } from 'apollo-angular';
-import { firstValueFrom } from 'rxjs';
+import { AUTH_TOKEN_CACHE_KEY, AUTH_USER_CACHE_KEY, type CachedToken } from '@ngx-rask/core';
+import { Client } from '@ngx-rask/graphql';
 
 export type AuthStatus = 'idle' | 'authenticated' | 'unauthenticated';
 
@@ -14,8 +11,7 @@ export type AuthStatus = 'idle' | 'authenticated' | 'unauthenticated';
   providedIn: 'root',
 })
 export class AuthService {
-  readonly #apollo = inject(Apollo);
-  readonly #cache = new Cache();
+  readonly #client = inject(Client);
   readonly #isServer = injectIsServer();
   readonly #router = inject(Router);
   readonly #status = signal<AuthStatus>('idle');
@@ -26,6 +22,11 @@ export class AuthService {
   readonly user = this.#user.asReadonly();
   readonly userName = computed(() => this.#user()?.userName || '');
 
+  /**
+   * Refresh the user authentication status.
+   *
+   * @returns {Promise<void>} - A promise that resolves when the user is authenticated.
+   */
   async refresh() {
     if (this.#isServer) return;
 
@@ -35,39 +36,40 @@ export class AuthService {
       this.#status.set('unauthenticated');
       return;
     }
-    ``;
+
     const { userName = '' } = JSON.parse(tokenRaw) as CachedToken;
+    const { user } = await this.#client.query(GetUserByUserNameDocument, { userName });
 
-    const currentUserResponse = (await firstValueFrom(
-      this.#apollo.query({
-        query: GetUserByUserNameDocument,
-        variables: { userName },
-      })
-    ).catch(({ error }: HttpErrorResponse) => {
-      console.error(`error refreshing user -->`, error);
-      this.#user.set(null);
-      return { user: null };
-    })) as ApolloQueryResult<GetUserByUserNameQuery>;
-
-    const user = currentUserResponse.data?.user as unknown as User;
-
-    this.#user.set(user);
+    this.#user.set(user as User);
     this.#status.set(user ? 'authenticated' : 'unauthenticated');
-    // localStorage.setItem(AUTH_TOKEN_CACHE_KEY, JSON.stringify(null));
   }
 
+  /**
+   * Authenticate the user and redirect to the specified url.
+   *
+   * @param {string[]} urlSegments - The url segments to navigate to after authentication.
+   */
   authenticate(urlSegments: string[] = ['/']) {
     this.refresh().then(() => this.#router.navigate(urlSegments));
   }
 
+  /**
+   * Logout the user and redirect to the home page.
+   */
   logout() {
     this.#user.set(null);
     this.#status.set('unauthenticated');
     this.#router.navigate(['/']);
 
+    // reset cache
     if (!this.#isServer) {
-      this.#cache.remove(AUTH_TOKEN_CACHE_KEY);
-      this.#cache.remove(AUTH_USER_CACHE_KEY);
+      localStorage.removeItem(AUTH_TOKEN_CACHE_KEY);
+      localStorage.removeItem(AUTH_USER_CACHE_KEY);
+      // const { value: tokenValue } = useStorage(AUTH_TOKEN_CACHE_KEY);
+      // tokenValue.set(null);
+
+      // const { value: userValue } = useStorage(AUTH_USER_CACHE_KEY);
+      // userValue.set(null);
     }
   }
 }

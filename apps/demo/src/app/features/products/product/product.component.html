@@ -9,4 +9,14 @@
       formControlName="name"
       required />
   </mat-form-field>
+
+  <div>
+    <img
+      *ngIf="product().name"
+      src="{{ productImageName() | createPath : imagePath : product().name : 'png' }}"
+      alt="Picture"
+      loading="eager"
+      width="200px"
+      height="200px" />
+  </div>
 </form>
