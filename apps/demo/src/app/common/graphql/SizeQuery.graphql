@@ -1,0 +1,6 @@
+query GetSizes {
+  sizes {
+    id
+    name
+  }
+}

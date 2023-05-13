@@ -3966,6 +3966,10 @@ export type GetTopProductSalesByProductIdQuery = {
   }>;
 };
 
+export type GetSizesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetSizesQuery = { __typename?: 'Query'; sizes: Array<{ __typename?: 'Size'; id: string; name: string }> };
+
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUsersQuery = {
@@ -4927,6 +4931,32 @@ export const GetTopProductSalesByProductIdDocument = {
     },
   ],
 } as unknown as DocumentNode<GetTopProductSalesByProductIdQuery, GetTopProductSalesByProductIdQueryVariables>;
+export const GetSizesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetSizes' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'sizes' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetSizesQuery, GetSizesQueryVariables>;
 export const GetUsersDocument = {
   kind: 'Document',
   definitions: [
