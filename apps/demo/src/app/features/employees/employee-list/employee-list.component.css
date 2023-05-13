@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  padding-inline: 20px;
+  padding-block: 20px;
+}
+
+mat-table {
+  border: 1px solid var(--app-color-surface-2);
+  border-radius: var(--app-shape-medium);
+  overflow: hidden;
+  /* background: var(--app-color-surface-2); */
+  background: transparent;
+}

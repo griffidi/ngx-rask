@@ -8,6 +8,7 @@ import { Client } from '@ngx-rask/graphql';
 
 @Injectable()
 export class LoginService {
+  // readonly #authToken: WritableSignal<CachedToken | null>;
   readonly #client = inject(Client);
   readonly #authService = inject(AuthService);
   // readonly #cache = inject(Cache);
@@ -16,6 +17,11 @@ export class LoginService {
 
   readonly errors = this.#formErrorsService.formErrors;
   readonly isLoading = computed(() => this.#status() === 'loading');
+
+  // constructor() {
+  //   const { value } = useStorage<CachedToken>(AUTH_TOKEN_CACHE_KEY);
+  //   this.#authToken = value;
+  // }
 
   async login(user: LoginUser) {
     this.#status.set('loading');
@@ -27,7 +33,7 @@ export class LoginService {
       const cachedToken: CachedToken = { token, userName };
 
       localStorage.setItem(AUTH_TOKEN_CACHE_KEY, JSON.stringify(cachedToken));
-
+      // this.#authToken.set(cachedToken);
       this.#status.set('success');
       this.#authService.authenticate();
     }

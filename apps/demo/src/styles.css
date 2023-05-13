@@ -3,6 +3,7 @@
 @import url(./styles/clothing-colors.css);
 @import url(./styles/layout.css);
 @import url(./styles/material.css);
+@import url(./styles/scrollable.css);
 
 body {
   font-family: "Inter var experimental", "Inter var", Inter;

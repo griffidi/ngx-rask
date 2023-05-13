@@ -45,8 +45,10 @@
   </mat-drawer>
 
   <mat-drawer-content>
-    <section>
-      <router-outlet />
+    <section
+      scrollable
+      [@routeAnimations]="ro?.activatedRouteData?.['animation']">
+      <router-outlet #ro="outlet" />
     </section>
   </mat-drawer-content>
 </mat-drawer-container>

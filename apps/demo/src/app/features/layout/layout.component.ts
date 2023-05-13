@@ -1,4 +1,5 @@
 import { AuthService } from '#/app/common/auth';
+import { slideInAnimation } from '#/app/common/router';
 import { LayoutFooter, LayoutHeader } from '#/app/ui/layout';
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ViewChild, computed, inject } from '@angular/core';
@@ -24,6 +25,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     RouterLinkActive,
     RouterOutlet,
   ],
+  animations: [slideInAnimation],
 })
 export default class Layout {
   protected readonly authService = inject(AuthService);

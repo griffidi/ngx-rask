@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+/*
+  I am not sure why, but using custom properties in the
+  vendor specific scrollbar pseudo-elements do not work.
+  So we have to use the actual values.
+
+  TODO: Research why custom properties do not work in
+  vendor specific scrollbar pseudo-elements.
+*/
+[scrollable] {
+  overflow: hidden auto;
+
+  &::-webkit-scrollbar {
+    inline-size: 20px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 4px solid transparent;
+    border-radius: 14px;
+    background: var(--app-color-surface-2);
+    background-clip: content-box;
+  }
+}
