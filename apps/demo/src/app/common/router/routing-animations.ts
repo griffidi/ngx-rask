@@ -7,9 +7,9 @@ export const slideInAnimation = trigger('routeAnimations', [
       ':enter, :leave',
       [
         style({
-          left: 0,
           position: 'absolute',
-          top: 20,
+          top: 0,
+          left: 0,
           width: '100%',
         }),
       ],
@@ -18,26 +18,9 @@ export const slideInAnimation = trigger('routeAnimations', [
     query(':enter', [style({ left: '-100%', opacity: 0 })], { optional: true }),
     query(':leave', animateChild(), { optional: true }),
     group([
-      query(':leave', [animate('300ms ease-out', style({ left: '100%', opacity: 0 }))], { optional: true }),
-      query(':enter', [animate('600ms ease-in', style({ left: '0%', opacity: 1 }))], { optional: true }),
+      query(':leave', [animate('400ms ease-in-out', style({ left: '100%', opacity: 0 }))], { optional: true }),
+      query(':enter', [animate('900ms ease-in-out', style({ left: '0%', opacity: 1 }))], { optional: true }),
     ]),
-  ]),
-  transition('* <=> *', [
-    style({ position: 'relative' }),
-    query(':enter, :leave', [
-      style({
-        left: 0,
-        position: 'absolute',
-        top: 20,
-        width: '100%',
-      }),
-    ]),
-    query(':enter', [style({ left: '-100%' })]),
-    query(':leave', animateChild()),
-    group([
-      query(':leave', [animate('200ms ease-out', style({ left: '100%', opacity: 0 }))]),
-      query(':enter', [animate('600ms ease-in', style({ left: '0%' }))]),
-      query('@*', animateChild()),
-    ]),
+    query(':enter', animateChild(), { optional: true }),
   ]),
 ]);

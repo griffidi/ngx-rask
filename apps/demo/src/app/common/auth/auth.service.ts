@@ -59,7 +59,6 @@ export class AuthService {
   logout() {
     this.#user.set(null);
     this.#status.set('unauthenticated');
-    this.#router.navigate(['/']);
 
     // reset cache
     if (!this.#isServer) {
@@ -71,5 +70,7 @@ export class AuthService {
       // const { value: userValue } = useStorage(AUTH_USER_CACHE_KEY);
       // userValue.set(null);
     }
+
+    this.#router.navigate(['/']);
   }
 }

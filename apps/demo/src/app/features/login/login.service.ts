@@ -39,30 +39,5 @@ export class LoginService {
     }
 
     this.#status.set('error');
-    // this.#formErrorsService.setErrors(new Error('Invalid user name or password'));
-
-    // this.#client
-    //   .query({ query: LoginDocument, variables: { userName, password } })
-    //   .pipe(
-    //     take(1),
-    //     map(({ data }) => data.login),
-    //     tap(token => {
-    //       if (!token) {
-    //         throw new Error('Invalid user name or password');
-    //       }
-
-    //       const cachedToken: CachedToken = { token, userName };
-
-    //       localStorage.setItem(AUTH_TOKEN_CACHE_KEY, JSON.stringify(cachedToken));
-    //       this.#status.set('success');
-    //       this.#authService.authenticate();
-    //     }),
-    //     catchError(error => {
-    //       this.#status.set('error');
-    //       this.#formErrorsService.setErrors(error);
-    //       return [];
-    //     })
-    //   )
-    //   .subscribe();
   }
 }

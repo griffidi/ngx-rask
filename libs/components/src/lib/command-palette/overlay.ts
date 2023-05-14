@@ -19,7 +19,7 @@ export class Overlay implements OnDestroy {
     this.#componentRef = this.#overlayRef.attach(portal);
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.#componentRef?.destroy();
     this.#overlayRef?.detach();
   }

@@ -37,11 +37,11 @@ export default class Layout {
 
   @ViewChild(MatDrawer) private readonly drawer!: MatDrawer;
 
-  protected logout(): void {
+  protected logout() {
     this.authService.logout();
   }
 
-  protected toggleDrawer(): void {
+  protected toggleDrawer() {
     this.drawer.toggle();
   }
 }

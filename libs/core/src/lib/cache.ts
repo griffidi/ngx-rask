@@ -100,7 +100,7 @@ export class Cache {
    *
    * @param {string} key Key of item to remove from cache.
    */
-  remove(key: CacheKey): void {
+  remove(key: CacheKey) {
     this.#storage.removeItem(key);
   }
 
@@ -110,7 +110,7 @@ export class Cache {
    * @param {CacheKey} key Cache item key.
    * @param {Signal<T>} item Cache item to track.
    */
-  #trackCacheItem<T>(key: CacheKey, item: Signal<T>): void {
+  #trackCacheItem<T>(key: CacheKey, item: Signal<T>) {
     effect(() => {
       this.#storage.setItem(key, JSON.stringify(item()));
     });
