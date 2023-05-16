@@ -40,22 +40,24 @@ model Department {
 }
 
 model Size {
-  id          String        @id @default(nanoid(10))
-  name        String        @unique
-  dateCreated DateTime      @default(now())
-  dateUpdated DateTime?     @updatedAt
-  inventory   Inventory[]
-  productSale ProductSale[]
+  id                 String               @id @default(nanoid(10))
+  name               String               @unique
+  dateCreated        DateTime             @default(now())
+  dateUpdated        DateTime?            @updatedAt
+  inventory          Inventory[]
+  productSale        ProductSale[]
+  ProductTransaction ProductTransaction[]
 }
 
 model Product {
-  id          String        @id @default(nanoid(10))
-  name        String        @unique
-  cost        Float
-  dateCreated DateTime      @default(now())
-  dateUpdated DateTime?     @updatedAt
-  inventory   Inventory[]
-  productSale ProductSale[]
+  id                 String               @id @default(nanoid(10))
+  name               String               @unique
+  cost               Float
+  dateCreated        DateTime             @default(now())
+  dateUpdated        DateTime?            @updatedAt
+  inventory          Inventory[]
+  productSale        ProductSale[]
+  productTransaction ProductTransaction[]
 }
 
 model Inventory {
@@ -67,6 +69,17 @@ model Inventory {
   dateUpdated DateTime? @updatedAt
   product     Product   @relation(fields: [productId], references: [id])
   size        Size      @relation(fields: [sizeId], references: [id])
+}
+
+model ProductTransaction {
+  id          String   @id @default(nanoid(10))
+  productId   String
+  quantity    Int
+  sizeId      String
+  price       Float
+  dateCreated DateTime @default(now())
+  product     Product  @relation(fields: [productId], references: [id])
+  size        Size     @relation(fields: [sizeId], references: [id])
 }
 
 model ProductSale {
