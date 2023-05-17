@@ -7,6 +7,11 @@ export default [
     title: 'Products',
   },
   {
+    path: 'sales',
+    loadComponent: () => import('./product-sales/product-sales.component'),
+    title: 'Product Sales',
+  },
+  {
     path: ':id',
     loadComponent: () => import('./product/product.component'),
     title: 'Product',

@@ -1,0 +1,17 @@
+query GetProductTransactions {
+  productTransactions {
+    ...ProductTransactionParts
+  }
+}
+
+query GetProductTransactionsByProductId($productId: String!) {
+  productTransactions(where: { productId: { equals: $productId } }) {
+    ...ProductTransactionParts
+  }
+}
+
+query GetProductTransactionsByProductIdAndDateRange($productId: String!, $fromDate: DateTime!, $toDate: DateTime!) {
+  productTransactions(where: { productId: { equals: $productId }, dateCreated: { gte: $fromDate, lte: $toDate } }) {
+    ...ProductTransactionParts
+  }
+}
