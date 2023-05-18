@@ -108,16 +108,17 @@
       "source.fixAll.markdownlint": true
     },
 
-    "eslint.workingDirectories": [{ "mode": "auto" }],
-    "eslint.codeActionsOnSave.mode": "problems",
-    "eslint.experimental.useFlatConfig": true,
+    // "eslint.workingDirectories": [{ "mode": "auto" }],
+    // "eslint.codeActionsOnSave.mode": "problems",
+    // "eslint.experimental.useFlatConfig": true,
     "eslint.packageManager": "pnpm",
     "eslint.validate": ["json", "javascript", "typescript", "html", "css"],
-    "eslint.debug": true,
+    // "eslint.debug": true,
 
     "npm.packageManager": "pnpm",
 
     "files.exclude": {
+      ".angular": true,
       ".out": true,
       "api": true,
       "apps": true,

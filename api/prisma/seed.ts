@@ -4,6 +4,7 @@ import { customers } from './data/customers.js';
 import { departments } from './data/departments.js';
 import { employees } from './data/employees.js';
 import { inventories } from './data/inventories.js';
+import { locationStates } from './data/location-states.js';
 import { productSales } from './data/product-sales.js';
 import { productTransations } from './data/product-transactions.js';
 import { products } from './data/products.js';
@@ -26,6 +27,13 @@ const load = async () => {
   const startTime = performance.now();
 
   await prisma.$connect();
+
+  console.log('Loading locationState data...');
+  for (let i = 0, len = locationStates.length; i < len; i++) {
+    await prisma.locationState.create({
+      data: locationStates[i],
+    });
+  }
 
   console.log('Loading department data...');
   for (let i = 0, len = departments.length; i < len; i++) {

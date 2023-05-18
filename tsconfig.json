@@ -35,7 +35,12 @@
       "#/app/ui/*": ["apps/demo/src/app/ui/*/index.ts"],
       "@ngx-rask/core": ["libs/core/src/index.ts"],
       "@ngx-rask/graphql": ["libs/graphql/src/index.ts"],
-      "@ngx-rask/components": ["libs/components/src/index.ts"]
+      "@ngx-rask/components": [
+        "libs/components/src/index.ts"
+      ],
+      "fake-lib": [
+        "dist/fake-lib"
+      ]
     },
     "types": ["jest"],
     "useDefineForClassFields": false,

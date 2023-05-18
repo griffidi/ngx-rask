@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Client } from '@ngx-rask/graphql';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-product-sales',
@@ -11,5 +10,5 @@ import { Client } from '@ngx-rask/graphql';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ProductSales {
-  #client = inject(Client);
+  // #client = inject(Client);
 }

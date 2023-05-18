@@ -5,7 +5,7 @@ import { products } from './products.js';
 import { SIZE_LARGE_ID, SIZE_MEDIUM_ID, SIZE_SMALL_ID } from './sizes.js';
 
 export const productTransations = [
-  ...Array.from({ length: 8_500 }, () => {
+  ...Array.from({ length: 850 }, () => {
     return {
       id: nanoid(10),
       productId: ProductIds.tshirt,
@@ -15,7 +15,7 @@ export const productTransations = [
       dateCreated: randPastDate({ years: 10 }),
     };
   }),
-  ...Array.from({ length: 3_500 }, () => {
+  ...Array.from({ length: 350 }, () => {
     return {
       id: nanoid(10),
       productId: ProductIds.pants,
@@ -25,7 +25,7 @@ export const productTransations = [
       dateCreated: randPastDate({ years: 10 }),
     };
   }),
-  ...Array.from({ length: 2_500 }, () => {
+  ...Array.from({ length: 250 }, () => {
     return {
       id: nanoid(10),
       productId: ProductIds.shorts,
@@ -35,7 +35,7 @@ export const productTransations = [
       dateCreated: randPastDate({ years: 10 }),
     };
   }),
-  ...Array.from({ length: 4_500 }, () => {
+  ...Array.from({ length: 450 }, () => {
     return {
       id: nanoid(10),
       productId: ProductIds.sweater,
@@ -45,7 +45,7 @@ export const productTransations = [
       dateCreated: randPastDate({ years: 10 }),
     };
   }),
-  ...Array.from({ length: 2_500 }, () => {
+  ...Array.from({ length: 250 }, () => {
     return {
       id: nanoid(10),
       productId: ProductIds.hat,
@@ -55,7 +55,7 @@ export const productTransations = [
       dateCreated: randPastDate({ years: 10 }),
     };
   }),
-  ...Array.from({ length: 1_200 }, () => {
+  ...Array.from({ length: 120 }, () => {
     return {
       id: nanoid(10),
       productId: ProductIds.hoodie,
