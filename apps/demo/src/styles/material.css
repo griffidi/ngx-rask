@@ -25,9 +25,9 @@ mat-table mat-row {
   &:hover {
     & mat-cell {
       /* border-color: var(--app-color-primary); */
-      /* background: var(--app-color-background-hover); */
+      background: var(--app-color-background-hover);
       /* background: color-mix(in srgb, var(--app-color-accent), transparent 50%); */
-      background: var(--app-color-accent);
+      /* background: var(--app-color-accent); */
     }
   }
 }

@@ -4,14 +4,30 @@ query GetProductTransactions {
   }
 }
 
-query GetProductTransactionsByProductId($productId: String!) {
-  productTransactions(where: { productId: { equals: $productId } }) {
+query GetProductTransactionsByProductId($take: Int!, $skip: Int!, $productId: String!) {
+  productTransactions(take: $take, skip: $skip, where: { productId: { equals: $productId } }) {
     ...ProductTransactionParts
+    product {
+      name
+    }
+    size {
+      name
+    }
   }
 }
 
-query GetProductTransactionsByProductIdAndDateRange($productId: String!, $fromDate: DateTime!, $toDate: DateTime!) {
-  productTransactions(where: { productId: { equals: $productId }, dateCreated: { gte: $fromDate, lte: $toDate } }) {
+query GetProductTransactionsByProductIdAndDateRange(
+  $take: Int!
+  $skip: Int!
+  $productId: String!
+  $fromDate: DateTime!
+  $toDate: DateTime!
+) {
+  productTransactions(
+    take: $take
+    skip: $skip
+    where: { productId: { equals: $productId }, dateCreated: { gte: $fromDate, lte: $toDate } }
+  ) {
     ...ProductTransactionParts
   }
 }

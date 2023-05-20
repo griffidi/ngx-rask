@@ -46,7 +46,7 @@
     },
     "npm.autoDetect": "off",
     // "typescript.tsc.autoDetect": "off",
-    // "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
     "typescript.tsdk": ".root\\node_modules\\typescript\\lib",
     "typescript.preferences.quoteStyle": "single",
     "[typescript]": {
@@ -108,12 +108,12 @@
       "source.fixAll.markdownlint": true
     },
 
-    // "eslint.workingDirectories": [{ "mode": "auto" }],
-    // "eslint.codeActionsOnSave.mode": "problems",
-    // "eslint.experimental.useFlatConfig": true,
+    "eslint.workingDirectories": [{ "mode": "auto" }],
+    "eslint.codeActionsOnSave.mode": "problems",
+    "eslint.experimental.useFlatConfig": true,
     "eslint.packageManager": "pnpm",
     "eslint.validate": ["json", "javascript", "typescript", "html", "css"],
-    // "eslint.debug": true,
+    "eslint.debug": true,
 
     "npm.packageManager": "pnpm",
 

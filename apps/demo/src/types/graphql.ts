@@ -50,6 +50,13 @@ export interface AggregateInventory {
   _sum?: Maybe<InventorySumAggregate>;
 }
 
+export interface AggregateLocationState {
+  __typename?: 'AggregateLocationState';
+  _count?: Maybe<LocationStateCountAggregate>;
+  _max?: Maybe<LocationStateMaxAggregate>;
+  _min?: Maybe<LocationStateMinAggregate>;
+}
+
 export interface AggregateProduct {
   __typename?: 'AggregateProduct';
   _avg?: Maybe<ProductAvgAggregate>;
@@ -107,8 +114,9 @@ export interface Customer {
   firstName: Scalars['String'];
   id: Scalars['String'];
   lastName: Scalars['String'];
+  locationState?: Maybe<LocationState>;
   phone: Scalars['String'];
-  state: Scalars['String'];
+  stateId: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -124,7 +132,7 @@ export interface CustomerCountAggregate {
   id: Scalars['Int'];
   lastName: Scalars['Int'];
   phone: Scalars['Int'];
-  state: Scalars['Int'];
+  stateId: Scalars['Int'];
   streetAddress: Scalars['Int'];
   zipCode: Scalars['Int'];
 }
@@ -138,7 +146,7 @@ export interface CustomerCountOrderByAggregateInput {
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -151,8 +159,32 @@ export interface CustomerCreateInput {
   firstName: Scalars['String'];
   id?: InputMaybe<Scalars['String']>;
   lastName: Scalars['String'];
+  locationState?: InputMaybe<LocationStateCreateNestedOneWithoutCustomersInput>;
   phone: Scalars['String'];
-  state: Scalars['String'];
+  streetAddress: Scalars['String'];
+  zipCode: Scalars['String'];
+}
+
+export interface CustomerCreateNestedManyWithoutLocationStateInput {
+  connect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<CustomerCreateOrConnectWithoutLocationStateInput>>;
+  create?: InputMaybe<Array<CustomerCreateWithoutLocationStateInput>>;
+}
+
+export interface CustomerCreateOrConnectWithoutLocationStateInput {
+  create: CustomerCreateWithoutLocationStateInput;
+  where: CustomerWhereUniqueInput;
+}
+
+export interface CustomerCreateWithoutLocationStateInput {
+  city: Scalars['String'];
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  email: Scalars['String'];
+  firstName: Scalars['String'];
+  id?: InputMaybe<Scalars['String']>;
+  lastName: Scalars['String'];
+  phone: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -170,9 +202,15 @@ export interface CustomerGroupBy {
   id: Scalars['String'];
   lastName: Scalars['String'];
   phone: Scalars['String'];
-  state: Scalars['String'];
+  stateId: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
+}
+
+export interface CustomerListRelationFilter {
+  every?: InputMaybe<CustomerWhereInput>;
+  none?: InputMaybe<CustomerWhereInput>;
+  some?: InputMaybe<CustomerWhereInput>;
 }
 
 export interface CustomerMaxAggregate {
@@ -185,7 +223,7 @@ export interface CustomerMaxAggregate {
   id?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
-  state?: Maybe<Scalars['String']>;
+  stateId?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
 }
@@ -199,7 +237,7 @@ export interface CustomerMaxOrderByAggregateInput {
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -214,7 +252,7 @@ export interface CustomerMinAggregate {
   id?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
-  state?: Maybe<Scalars['String']>;
+  stateId?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
 }
@@ -228,9 +266,13 @@ export interface CustomerMinOrderByAggregateInput {
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
+}
+
+export interface CustomerOrderByRelationAggregateInput {
+  _count?: InputMaybe<SortOrder>;
 }
 
 export interface CustomerOrderByWithAggregationInput {
@@ -245,7 +287,7 @@ export interface CustomerOrderByWithAggregationInput {
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -258,8 +300,9 @@ export interface CustomerOrderByWithRelationInput {
   firstName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  locationState?: InputMaybe<LocationStateOrderByWithRelationInput>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -273,9 +316,26 @@ export enum CustomerScalarFieldEnum {
   Id = 5,
   LastName = 6,
   Phone = 7,
-  State = 8,
+  StateId = 8,
   StreetAddress = 9,
   ZipCode = 10,
+}
+
+export interface CustomerScalarWhereInput {
+  AND?: InputMaybe<Array<CustomerScalarWhereInput>>;
+  NOT?: InputMaybe<Array<CustomerScalarWhereInput>>;
+  OR?: InputMaybe<Array<CustomerScalarWhereInput>>;
+  city?: InputMaybe<StringFilter>;
+  dateCreated?: InputMaybe<DateTimeFilter>;
+  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  email?: InputMaybe<StringFilter>;
+  firstName?: InputMaybe<StringFilter>;
+  id?: InputMaybe<StringFilter>;
+  lastName?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
+  stateId?: InputMaybe<StringFilter>;
+  streetAddress?: InputMaybe<StringFilter>;
+  zipCode?: InputMaybe<StringFilter>;
 }
 
 export interface CustomerScalarWhereWithAggregatesInput {
@@ -290,7 +350,7 @@ export interface CustomerScalarWhereWithAggregatesInput {
   id?: InputMaybe<StringWithAggregatesFilter>;
   lastName?: InputMaybe<StringWithAggregatesFilter>;
   phone?: InputMaybe<StringWithAggregatesFilter>;
-  state?: InputMaybe<StringWithAggregatesFilter>;
+  stateId?: InputMaybe<StringWithAggregatesFilter>;
   streetAddress?: InputMaybe<StringWithAggregatesFilter>;
   zipCode?: InputMaybe<StringWithAggregatesFilter>;
 }
@@ -303,8 +363,8 @@ export interface CustomerUpdateInput {
   firstName?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
+  locationState?: InputMaybe<LocationStateUpdateOneWithoutCustomersNestedInput>;
   phone?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
 }
@@ -318,9 +378,50 @@ export interface CustomerUpdateManyMutationInput {
   id?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
   phone?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
+}
+
+export interface CustomerUpdateManyWithWhereWithoutLocationStateInput {
+  data: CustomerUpdateManyMutationInput;
+  where: CustomerScalarWhereInput;
+}
+
+export interface CustomerUpdateManyWithoutLocationStateNestedInput {
+  connect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<CustomerCreateOrConnectWithoutLocationStateInput>>;
+  create?: InputMaybe<Array<CustomerCreateWithoutLocationStateInput>>;
+  delete?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<CustomerScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  set?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  update?: InputMaybe<Array<CustomerUpdateWithWhereUniqueWithoutLocationStateInput>>;
+  updateMany?: InputMaybe<Array<CustomerUpdateManyWithWhereWithoutLocationStateInput>>;
+  upsert?: InputMaybe<Array<CustomerUpsertWithWhereUniqueWithoutLocationStateInput>>;
+}
+
+export interface CustomerUpdateWithWhereUniqueWithoutLocationStateInput {
+  data: CustomerUpdateWithoutLocationStateInput;
+  where: CustomerWhereUniqueInput;
+}
+
+export interface CustomerUpdateWithoutLocationStateInput {
+  city?: InputMaybe<Scalars['String']>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  email?: InputMaybe<Scalars['String']>;
+  firstName?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lastName?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  streetAddress?: InputMaybe<Scalars['String']>;
+  zipCode?: InputMaybe<Scalars['String']>;
+}
+
+export interface CustomerUpsertWithWhereUniqueWithoutLocationStateInput {
+  create: CustomerCreateWithoutLocationStateInput;
+  update: CustomerUpdateWithoutLocationStateInput;
+  where: CustomerWhereUniqueInput;
 }
 
 export interface CustomerWhereInput {
@@ -334,8 +435,9 @@ export interface CustomerWhereInput {
   firstName?: InputMaybe<StringFilter>;
   id?: InputMaybe<StringFilter>;
   lastName?: InputMaybe<StringFilter>;
+  locationState?: InputMaybe<LocationStateRelationFilter>;
   phone?: InputMaybe<StringFilter>;
-  state?: InputMaybe<StringFilter>;
+  stateId?: InputMaybe<StringFilter>;
   streetAddress?: InputMaybe<StringFilter>;
   zipCode?: InputMaybe<StringFilter>;
 }
@@ -606,8 +708,9 @@ export interface Employee {
   id: Scalars['String'];
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
+  locationState: LocationState;
   phone: Scalars['String'];
-  state: Scalars['String'];
+  stateId: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -626,7 +729,7 @@ export interface EmployeeCountAggregate {
   jobTitle: Scalars['Int'];
   lastName: Scalars['Int'];
   phone: Scalars['Int'];
-  state: Scalars['Int'];
+  stateId: Scalars['Int'];
   streetAddress: Scalars['Int'];
   zipCode: Scalars['Int'];
 }
@@ -643,7 +746,7 @@ export interface EmployeeCountOrderByAggregateInput {
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -659,8 +762,8 @@ export interface EmployeeCreateInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
+  locationState: LocationStateCreateNestedOneWithoutEmployeesInput;
   phone: Scalars['String'];
-  state: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -671,8 +774,19 @@ export interface EmployeeCreateNestedManyWithoutDepartmentInput {
   create?: InputMaybe<Array<EmployeeCreateWithoutDepartmentInput>>;
 }
 
+export interface EmployeeCreateNestedManyWithoutLocationStateInput {
+  connect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<EmployeeCreateOrConnectWithoutLocationStateInput>>;
+  create?: InputMaybe<Array<EmployeeCreateWithoutLocationStateInput>>;
+}
+
 export interface EmployeeCreateOrConnectWithoutDepartmentInput {
   create: EmployeeCreateWithoutDepartmentInput;
+  where: EmployeeWhereUniqueInput;
+}
+
+export interface EmployeeCreateOrConnectWithoutLocationStateInput {
+  create: EmployeeCreateWithoutLocationStateInput;
   where: EmployeeWhereUniqueInput;
 }
 
@@ -686,8 +800,24 @@ export interface EmployeeCreateWithoutDepartmentInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
+  locationState: LocationStateCreateNestedOneWithoutEmployeesInput;
   phone: Scalars['String'];
-  state: Scalars['String'];
+  streetAddress: Scalars['String'];
+  zipCode: Scalars['String'];
+}
+
+export interface EmployeeCreateWithoutLocationStateInput {
+  city: Scalars['String'];
+  dateStarted?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  department: DepartmentCreateNestedOneWithoutEmployeesInput;
+  email: Scalars['String'];
+  firstName: Scalars['String'];
+  gender: Scalars['String'];
+  id?: InputMaybe<Scalars['String']>;
+  jobTitle: Scalars['String'];
+  lastName: Scalars['String'];
+  phone: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -708,7 +838,7 @@ export interface EmployeeGroupBy {
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
   phone: Scalars['String'];
-  state: Scalars['String'];
+  stateId: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -732,7 +862,7 @@ export interface EmployeeMaxAggregate {
   jobTitle?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
-  state?: Maybe<Scalars['String']>;
+  stateId?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
 }
@@ -749,7 +879,7 @@ export interface EmployeeMaxOrderByAggregateInput {
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -767,7 +897,7 @@ export interface EmployeeMinAggregate {
   jobTitle?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
-  state?: Maybe<Scalars['String']>;
+  stateId?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
 }
@@ -784,7 +914,7 @@ export interface EmployeeMinOrderByAggregateInput {
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -808,7 +938,7 @@ export interface EmployeeOrderByWithAggregationInput {
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -825,8 +955,9 @@ export interface EmployeeOrderByWithRelationInput {
   id?: InputMaybe<SortOrder>;
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  locationState?: InputMaybe<LocationStateOrderByWithRelationInput>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -843,7 +974,7 @@ export enum EmployeeScalarFieldEnum {
   JobTitle = 8,
   LastName = 9,
   Phone = 10,
-  State = 11,
+  StateId = 11,
   StreetAddress = 12,
   ZipCode = 13,
 }
@@ -863,7 +994,7 @@ export interface EmployeeScalarWhereInput {
   jobTitle?: InputMaybe<StringFilter>;
   lastName?: InputMaybe<StringFilter>;
   phone?: InputMaybe<StringFilter>;
-  state?: InputMaybe<StringFilter>;
+  stateId?: InputMaybe<StringFilter>;
   streetAddress?: InputMaybe<StringFilter>;
   zipCode?: InputMaybe<StringFilter>;
 }
@@ -883,7 +1014,7 @@ export interface EmployeeScalarWhereWithAggregatesInput {
   jobTitle?: InputMaybe<StringWithAggregatesFilter>;
   lastName?: InputMaybe<StringWithAggregatesFilter>;
   phone?: InputMaybe<StringWithAggregatesFilter>;
-  state?: InputMaybe<StringWithAggregatesFilter>;
+  stateId?: InputMaybe<StringWithAggregatesFilter>;
   streetAddress?: InputMaybe<StringWithAggregatesFilter>;
   zipCode?: InputMaybe<StringWithAggregatesFilter>;
 }
@@ -899,8 +1030,8 @@ export interface EmployeeUpdateInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
+  locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeesNestedInput>;
   phone?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
 }
@@ -916,12 +1047,16 @@ export interface EmployeeUpdateManyMutationInput {
   jobTitle?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
   phone?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
 }
 
 export interface EmployeeUpdateManyWithWhereWithoutDepartmentInput {
+  data: EmployeeUpdateManyMutationInput;
+  where: EmployeeScalarWhereInput;
+}
+
+export interface EmployeeUpdateManyWithWhereWithoutLocationStateInput {
   data: EmployeeUpdateManyMutationInput;
   where: EmployeeScalarWhereInput;
 }
@@ -939,8 +1074,26 @@ export interface EmployeeUpdateManyWithoutDepartmentNestedInput {
   upsert?: InputMaybe<Array<EmployeeUpsertWithWhereUniqueWithoutDepartmentInput>>;
 }
 
+export interface EmployeeUpdateManyWithoutLocationStateNestedInput {
+  connect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<EmployeeCreateOrConnectWithoutLocationStateInput>>;
+  create?: InputMaybe<Array<EmployeeCreateWithoutLocationStateInput>>;
+  delete?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<EmployeeScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
+  set?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
+  update?: InputMaybe<Array<EmployeeUpdateWithWhereUniqueWithoutLocationStateInput>>;
+  updateMany?: InputMaybe<Array<EmployeeUpdateManyWithWhereWithoutLocationStateInput>>;
+  upsert?: InputMaybe<Array<EmployeeUpsertWithWhereUniqueWithoutLocationStateInput>>;
+}
+
 export interface EmployeeUpdateWithWhereUniqueWithoutDepartmentInput {
   data: EmployeeUpdateWithoutDepartmentInput;
+  where: EmployeeWhereUniqueInput;
+}
+
+export interface EmployeeUpdateWithWhereUniqueWithoutLocationStateInput {
+  data: EmployeeUpdateWithoutLocationStateInput;
   where: EmployeeWhereUniqueInput;
 }
 
@@ -954,8 +1107,24 @@ export interface EmployeeUpdateWithoutDepartmentInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
+  locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeesNestedInput>;
   phone?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
+  streetAddress?: InputMaybe<Scalars['String']>;
+  zipCode?: InputMaybe<Scalars['String']>;
+}
+
+export interface EmployeeUpdateWithoutLocationStateInput {
+  city?: InputMaybe<Scalars['String']>;
+  dateStarted?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  department?: InputMaybe<DepartmentUpdateOneRequiredWithoutEmployeesNestedInput>;
+  email?: InputMaybe<Scalars['String']>;
+  firstName?: InputMaybe<Scalars['String']>;
+  gender?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  jobTitle?: InputMaybe<Scalars['String']>;
+  lastName?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
 }
@@ -963,6 +1132,12 @@ export interface EmployeeUpdateWithoutDepartmentInput {
 export interface EmployeeUpsertWithWhereUniqueWithoutDepartmentInput {
   create: EmployeeCreateWithoutDepartmentInput;
   update: EmployeeUpdateWithoutDepartmentInput;
+  where: EmployeeWhereUniqueInput;
+}
+
+export interface EmployeeUpsertWithWhereUniqueWithoutLocationStateInput {
+  create: EmployeeCreateWithoutLocationStateInput;
+  update: EmployeeUpdateWithoutLocationStateInput;
   where: EmployeeWhereUniqueInput;
 }
 
@@ -981,8 +1156,9 @@ export interface EmployeeWhereInput {
   id?: InputMaybe<StringFilter>;
   jobTitle?: InputMaybe<StringFilter>;
   lastName?: InputMaybe<StringFilter>;
+  locationState?: InputMaybe<LocationStateRelationFilter>;
   phone?: InputMaybe<StringFilter>;
-  state?: InputMaybe<StringFilter>;
+  stateId?: InputMaybe<StringFilter>;
   streetAddress?: InputMaybe<StringFilter>;
   zipCode?: InputMaybe<StringFilter>;
 }
@@ -1372,12 +1548,291 @@ export interface InventoryWhereUniqueInput {
   id?: InputMaybe<Scalars['String']>;
 }
 
+export interface LocationState {
+  __typename?: 'LocationState';
+  _count?: Maybe<LocationStateCount>;
+  customers: Array<Customer>;
+  dateCreated: Scalars['DateTime'];
+  dateUpdated?: Maybe<Scalars['DateTime']>;
+  employees: Array<Employee>;
+  id: Scalars['String'];
+  name: Scalars['String'];
+  shortName: Scalars['String'];
+}
+
+export interface LocationStateCustomersArgs {
+  cursor?: InputMaybe<CustomerWhereUniqueInput>;
+  distinct?: InputMaybe<Array<CustomerScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<CustomerOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<CustomerWhereInput>;
+}
+
+export interface LocationStateEmployeesArgs {
+  cursor?: InputMaybe<EmployeeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<EmployeeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<EmployeeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<EmployeeWhereInput>;
+}
+
+export interface LocationStateCount {
+  __typename?: 'LocationStateCount';
+  customers: Scalars['Int'];
+  employees: Scalars['Int'];
+}
+
+export interface LocationStateCountAggregate {
+  __typename?: 'LocationStateCountAggregate';
+  _all: Scalars['Int'];
+  dateCreated: Scalars['Int'];
+  dateUpdated: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['Int'];
+  shortName: Scalars['Int'];
+}
+
+export interface LocationStateCountOrderByAggregateInput {
+  dateCreated?: InputMaybe<SortOrder>;
+  dateUpdated?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  shortName?: InputMaybe<SortOrder>;
+}
+
+export interface LocationStateCreateInput {
+  customers?: InputMaybe<CustomerCreateNestedManyWithoutLocationStateInput>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  employees?: InputMaybe<EmployeeCreateNestedManyWithoutLocationStateInput>;
+  id?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  shortName: Scalars['String'];
+}
+
+export interface LocationStateCreateNestedOneWithoutCustomersInput {
+  connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutCustomersInput>;
+  create?: InputMaybe<LocationStateCreateWithoutCustomersInput>;
+}
+
+export interface LocationStateCreateNestedOneWithoutEmployeesInput {
+  connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutEmployeesInput>;
+  create?: InputMaybe<LocationStateCreateWithoutEmployeesInput>;
+}
+
+export interface LocationStateCreateOrConnectWithoutCustomersInput {
+  create: LocationStateCreateWithoutCustomersInput;
+  where: LocationStateWhereUniqueInput;
+}
+
+export interface LocationStateCreateOrConnectWithoutEmployeesInput {
+  create: LocationStateCreateWithoutEmployeesInput;
+  where: LocationStateWhereUniqueInput;
+}
+
+export interface LocationStateCreateWithoutCustomersInput {
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  employees?: InputMaybe<EmployeeCreateNestedManyWithoutLocationStateInput>;
+  id?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  shortName: Scalars['String'];
+}
+
+export interface LocationStateCreateWithoutEmployeesInput {
+  customers?: InputMaybe<CustomerCreateNestedManyWithoutLocationStateInput>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  shortName: Scalars['String'];
+}
+
+export interface LocationStateGroupBy {
+  __typename?: 'LocationStateGroupBy';
+  _count?: Maybe<LocationStateCountAggregate>;
+  _max?: Maybe<LocationStateMaxAggregate>;
+  _min?: Maybe<LocationStateMinAggregate>;
+  dateCreated: Scalars['DateTime'];
+  dateUpdated?: Maybe<Scalars['DateTime']>;
+  id: Scalars['String'];
+  name: Scalars['String'];
+  shortName: Scalars['String'];
+}
+
+export interface LocationStateMaxAggregate {
+  __typename?: 'LocationStateMaxAggregate';
+  dateCreated?: Maybe<Scalars['DateTime']>;
+  dateUpdated?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  shortName?: Maybe<Scalars['String']>;
+}
+
+export interface LocationStateMaxOrderByAggregateInput {
+  dateCreated?: InputMaybe<SortOrder>;
+  dateUpdated?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  shortName?: InputMaybe<SortOrder>;
+}
+
+export interface LocationStateMinAggregate {
+  __typename?: 'LocationStateMinAggregate';
+  dateCreated?: Maybe<Scalars['DateTime']>;
+  dateUpdated?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  shortName?: Maybe<Scalars['String']>;
+}
+
+export interface LocationStateMinOrderByAggregateInput {
+  dateCreated?: InputMaybe<SortOrder>;
+  dateUpdated?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  shortName?: InputMaybe<SortOrder>;
+}
+
+export interface LocationStateOrderByWithAggregationInput {
+  _count?: InputMaybe<LocationStateCountOrderByAggregateInput>;
+  _max?: InputMaybe<LocationStateMaxOrderByAggregateInput>;
+  _min?: InputMaybe<LocationStateMinOrderByAggregateInput>;
+  dateCreated?: InputMaybe<SortOrder>;
+  dateUpdated?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  shortName?: InputMaybe<SortOrder>;
+}
+
+export interface LocationStateOrderByWithRelationInput {
+  customers?: InputMaybe<CustomerOrderByRelationAggregateInput>;
+  dateCreated?: InputMaybe<SortOrder>;
+  dateUpdated?: InputMaybe<SortOrder>;
+  employees?: InputMaybe<EmployeeOrderByRelationAggregateInput>;
+  id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  shortName?: InputMaybe<SortOrder>;
+}
+
+export interface LocationStateRelationFilter {
+  is?: InputMaybe<LocationStateWhereInput>;
+  isNot?: InputMaybe<LocationStateWhereInput>;
+}
+
+export enum LocationStateScalarFieldEnum {
+  DateCreated = 0,
+  DateUpdated = 1,
+  Id = 2,
+  Name = 3,
+  ShortName = 4,
+}
+
+export interface LocationStateScalarWhereWithAggregatesInput {
+  AND?: InputMaybe<Array<LocationStateScalarWhereWithAggregatesInput>>;
+  NOT?: InputMaybe<Array<LocationStateScalarWhereWithAggregatesInput>>;
+  OR?: InputMaybe<Array<LocationStateScalarWhereWithAggregatesInput>>;
+  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  id?: InputMaybe<StringWithAggregatesFilter>;
+  name?: InputMaybe<StringWithAggregatesFilter>;
+  shortName?: InputMaybe<StringWithAggregatesFilter>;
+}
+
+export interface LocationStateUpdateInput {
+  customers?: InputMaybe<CustomerUpdateManyWithoutLocationStateNestedInput>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  employees?: InputMaybe<EmployeeUpdateManyWithoutLocationStateNestedInput>;
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortName?: InputMaybe<Scalars['String']>;
+}
+
+export interface LocationStateUpdateManyMutationInput {
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortName?: InputMaybe<Scalars['String']>;
+}
+
+export interface LocationStateUpdateOneRequiredWithoutEmployeesNestedInput {
+  connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutEmployeesInput>;
+  create?: InputMaybe<LocationStateCreateWithoutEmployeesInput>;
+  update?: InputMaybe<LocationStateUpdateWithoutEmployeesInput>;
+  upsert?: InputMaybe<LocationStateUpsertWithoutEmployeesInput>;
+}
+
+export interface LocationStateUpdateOneWithoutCustomersNestedInput {
+  connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutCustomersInput>;
+  create?: InputMaybe<LocationStateCreateWithoutCustomersInput>;
+  delete?: InputMaybe<Scalars['Boolean']>;
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  update?: InputMaybe<LocationStateUpdateWithoutCustomersInput>;
+  upsert?: InputMaybe<LocationStateUpsertWithoutCustomersInput>;
+}
+
+export interface LocationStateUpdateWithoutCustomersInput {
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  employees?: InputMaybe<EmployeeUpdateManyWithoutLocationStateNestedInput>;
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortName?: InputMaybe<Scalars['String']>;
+}
+
+export interface LocationStateUpdateWithoutEmployeesInput {
+  customers?: InputMaybe<CustomerUpdateManyWithoutLocationStateNestedInput>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortName?: InputMaybe<Scalars['String']>;
+}
+
+export interface LocationStateUpsertWithoutCustomersInput {
+  create: LocationStateCreateWithoutCustomersInput;
+  update: LocationStateUpdateWithoutCustomersInput;
+}
+
+export interface LocationStateUpsertWithoutEmployeesInput {
+  create: LocationStateCreateWithoutEmployeesInput;
+  update: LocationStateUpdateWithoutEmployeesInput;
+}
+
+export interface LocationStateWhereInput {
+  AND?: InputMaybe<Array<LocationStateWhereInput>>;
+  NOT?: InputMaybe<Array<LocationStateWhereInput>>;
+  OR?: InputMaybe<Array<LocationStateWhereInput>>;
+  customers?: InputMaybe<CustomerListRelationFilter>;
+  dateCreated?: InputMaybe<DateTimeFilter>;
+  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  employees?: InputMaybe<EmployeeListRelationFilter>;
+  id?: InputMaybe<StringFilter>;
+  name?: InputMaybe<StringFilter>;
+  shortName?: InputMaybe<StringFilter>;
+}
+
+export interface LocationStateWhereUniqueInput {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortName?: InputMaybe<Scalars['String']>;
+}
+
 export interface Mutation {
   __typename?: 'Mutation';
   createOneCustomer: Customer;
   createOneDepartment: Department;
   createOneEmployee: Employee;
   createOneInventory: Inventory;
+  createOneLocationState: LocationState;
   createOneProduct: Product;
   createOneProductSale: ProductSale;
   createOneProductTransaction: ProductTransaction;
@@ -1388,6 +1843,7 @@ export interface Mutation {
   deleteManyDepartment: AffectedRowsOutput;
   deleteManyEmployee: AffectedRowsOutput;
   deleteManyInventory: AffectedRowsOutput;
+  deleteManyLocationState: AffectedRowsOutput;
   deleteManyProduct: AffectedRowsOutput;
   deleteManyProductSale: AffectedRowsOutput;
   deleteManyProductTransaction: AffectedRowsOutput;
@@ -1398,6 +1854,7 @@ export interface Mutation {
   deleteOneDepartment?: Maybe<Department>;
   deleteOneEmployee?: Maybe<Employee>;
   deleteOneInventory?: Maybe<Inventory>;
+  deleteOneLocationState?: Maybe<LocationState>;
   deleteOneProduct?: Maybe<Product>;
   deleteOneProductSale?: Maybe<ProductSale>;
   deleteOneProductTransaction?: Maybe<ProductTransaction>;
@@ -1408,6 +1865,7 @@ export interface Mutation {
   updateManyDepartment: AffectedRowsOutput;
   updateManyEmployee: AffectedRowsOutput;
   updateManyInventory: AffectedRowsOutput;
+  updateManyLocationState: AffectedRowsOutput;
   updateManyProduct: AffectedRowsOutput;
   updateManyProductSale: AffectedRowsOutput;
   updateManyProductTransaction: AffectedRowsOutput;
@@ -1418,6 +1876,7 @@ export interface Mutation {
   updateOneDepartment?: Maybe<Department>;
   updateOneEmployee?: Maybe<Employee>;
   updateOneInventory?: Maybe<Inventory>;
+  updateOneLocationState?: Maybe<LocationState>;
   updateOneProduct?: Maybe<Product>;
   updateOneProductSale?: Maybe<ProductSale>;
   updateOneProductTransaction?: Maybe<ProductTransaction>;
@@ -1428,6 +1887,7 @@ export interface Mutation {
   upsertOneDepartment: Department;
   upsertOneEmployee: Employee;
   upsertOneInventory: Inventory;
+  upsertOneLocationState: LocationState;
   upsertOneProduct: Product;
   upsertOneProductSale: ProductSale;
   upsertOneProductTransaction: ProductTransaction;
@@ -1450,6 +1910,10 @@ export interface MutationCreateOneEmployeeArgs {
 
 export interface MutationCreateOneInventoryArgs {
   data: InventoryCreateInput;
+}
+
+export interface MutationCreateOneLocationStateArgs {
+  data: LocationStateCreateInput;
 }
 
 export interface MutationCreateOneProductArgs {
@@ -1492,6 +1956,10 @@ export interface MutationDeleteManyInventoryArgs {
   where?: InputMaybe<InventoryWhereInput>;
 }
 
+export interface MutationDeleteManyLocationStateArgs {
+  where?: InputMaybe<LocationStateWhereInput>;
+}
+
 export interface MutationDeleteManyProductArgs {
   where?: InputMaybe<ProductWhereInput>;
 }
@@ -1530,6 +1998,10 @@ export interface MutationDeleteOneEmployeeArgs {
 
 export interface MutationDeleteOneInventoryArgs {
   where: InventoryWhereUniqueInput;
+}
+
+export interface MutationDeleteOneLocationStateArgs {
+  where: LocationStateWhereUniqueInput;
 }
 
 export interface MutationDeleteOneProductArgs {
@@ -1574,6 +2046,11 @@ export interface MutationUpdateManyEmployeeArgs {
 export interface MutationUpdateManyInventoryArgs {
   data: InventoryUpdateManyMutationInput;
   where?: InputMaybe<InventoryWhereInput>;
+}
+
+export interface MutationUpdateManyLocationStateArgs {
+  data: LocationStateUpdateManyMutationInput;
+  where?: InputMaybe<LocationStateWhereInput>;
 }
 
 export interface MutationUpdateManyProductArgs {
@@ -1624,6 +2101,11 @@ export interface MutationUpdateOneEmployeeArgs {
 export interface MutationUpdateOneInventoryArgs {
   data: InventoryUpdateInput;
   where: InventoryWhereUniqueInput;
+}
+
+export interface MutationUpdateOneLocationStateArgs {
+  data: LocationStateUpdateInput;
+  where: LocationStateWhereUniqueInput;
 }
 
 export interface MutationUpdateOneProductArgs {
@@ -1678,6 +2160,12 @@ export interface MutationUpsertOneInventoryArgs {
   create: InventoryCreateInput;
   update: InventoryUpdateInput;
   where: InventoryWhereUniqueInput;
+}
+
+export interface MutationUpsertOneLocationStateArgs {
+  create: LocationStateCreateInput;
+  update: LocationStateUpdateInput;
+  where: LocationStateWhereUniqueInput;
 }
 
 export interface MutationUpsertOneProductArgs {
@@ -1871,8 +2359,8 @@ export interface Product {
   id: Scalars['String'];
   inventory: Array<Inventory>;
   name: Scalars['String'];
-  productSale: Array<ProductSale>;
-  productTransaction: Array<ProductTransaction>;
+  productSales: Array<ProductSale>;
+  productTransactions: Array<ProductTransaction>;
 }
 
 export interface ProductInventoryArgs {
@@ -1884,7 +2372,7 @@ export interface ProductInventoryArgs {
   where?: InputMaybe<InventoryWhereInput>;
 }
 
-export interface ProductProductSaleArgs {
+export interface ProductProductSalesArgs {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
   distinct?: InputMaybe<Array<ProductSaleScalarFieldEnum>>;
   orderBy?: InputMaybe<Array<ProductSaleOrderByWithRelationInput>>;
@@ -1893,7 +2381,7 @@ export interface ProductProductSaleArgs {
   where?: InputMaybe<ProductSaleWhereInput>;
 }
 
-export interface ProductProductTransactionArgs {
+export interface ProductProductTransactionsArgs {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
   distinct?: InputMaybe<Array<ProductTransactionScalarFieldEnum>>;
   orderBy?: InputMaybe<Array<ProductTransactionOrderByWithRelationInput>>;
@@ -1914,8 +2402,8 @@ export interface ProductAvgOrderByAggregateInput {
 export interface ProductCount {
   __typename?: 'ProductCount';
   inventory: Scalars['Int'];
-  productSale: Scalars['Int'];
-  productTransaction: Scalars['Int'];
+  productSales: Scalars['Int'];
+  productTransactions: Scalars['Int'];
 }
 
 export interface ProductCountAggregate {
@@ -1943,8 +2431,8 @@ export interface ProductCreateInput {
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
   name: Scalars['String'];
-  productSale?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
-  productTransaction?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
+  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
+  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
 }
 
 export interface ProductCreateNestedOneWithoutInventoryInput {
@@ -1953,16 +2441,16 @@ export interface ProductCreateNestedOneWithoutInventoryInput {
   create?: InputMaybe<ProductCreateWithoutInventoryInput>;
 }
 
-export interface ProductCreateNestedOneWithoutProductSaleInput {
+export interface ProductCreateNestedOneWithoutProductSalesInput {
   connect?: InputMaybe<ProductWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductSaleInput>;
-  create?: InputMaybe<ProductCreateWithoutProductSaleInput>;
+  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductSalesInput>;
+  create?: InputMaybe<ProductCreateWithoutProductSalesInput>;
 }
 
-export interface ProductCreateNestedOneWithoutProductTransactionInput {
+export interface ProductCreateNestedOneWithoutProductTransactionsInput {
   connect?: InputMaybe<ProductWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductTransactionInput>;
-  create?: InputMaybe<ProductCreateWithoutProductTransactionInput>;
+  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductTransactionsInput>;
+  create?: InputMaybe<ProductCreateWithoutProductTransactionsInput>;
 }
 
 export interface ProductCreateOrConnectWithoutInventoryInput {
@@ -1970,13 +2458,13 @@ export interface ProductCreateOrConnectWithoutInventoryInput {
   where: ProductWhereUniqueInput;
 }
 
-export interface ProductCreateOrConnectWithoutProductSaleInput {
-  create: ProductCreateWithoutProductSaleInput;
+export interface ProductCreateOrConnectWithoutProductSalesInput {
+  create: ProductCreateWithoutProductSalesInput;
   where: ProductWhereUniqueInput;
 }
 
-export interface ProductCreateOrConnectWithoutProductTransactionInput {
-  create: ProductCreateWithoutProductTransactionInput;
+export interface ProductCreateOrConnectWithoutProductTransactionsInput {
+  create: ProductCreateWithoutProductTransactionsInput;
   where: ProductWhereUniqueInput;
 }
 
@@ -1986,28 +2474,28 @@ export interface ProductCreateWithoutInventoryInput {
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   name: Scalars['String'];
-  productSale?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
-  productTransaction?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
+  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
+  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
 }
 
-export interface ProductCreateWithoutProductSaleInput {
+export interface ProductCreateWithoutProductSalesInput {
   cost: Scalars['Float'];
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
   name: Scalars['String'];
-  productTransaction?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
+  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
 }
 
-export interface ProductCreateWithoutProductTransactionInput {
+export interface ProductCreateWithoutProductTransactionsInput {
   cost: Scalars['Float'];
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
   name: Scalars['String'];
-  productSale?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
+  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
 }
 
 export interface ProductGroupBy {
@@ -2078,8 +2566,8 @@ export interface ProductOrderByWithRelationInput {
   id?: InputMaybe<SortOrder>;
   inventory?: InputMaybe<InventoryOrderByRelationAggregateInput>;
   name?: InputMaybe<SortOrder>;
-  productSale?: InputMaybe<ProductSaleOrderByRelationAggregateInput>;
-  productTransaction?: InputMaybe<ProductTransactionOrderByRelationAggregateInput>;
+  productSales?: InputMaybe<ProductSaleOrderByRelationAggregateInput>;
+  productTransactions?: InputMaybe<ProductTransactionOrderByRelationAggregateInput>;
 }
 
 export interface ProductRelationFilter {
@@ -2132,9 +2620,9 @@ export interface ProductSaleCreateInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  product: ProductCreateNestedOneWithoutProductSaleInput;
+  product: ProductCreateNestedOneWithoutProductSalesInput;
   quantity: Scalars['Int'];
-  size: SizeCreateNestedOneWithoutProductSaleInput;
+  size: SizeCreateNestedOneWithoutProductSalesInput;
 }
 
 export interface ProductSaleCreateNestedManyWithoutProductInput {
@@ -2164,14 +2652,14 @@ export interface ProductSaleCreateWithoutProductInput {
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   quantity: Scalars['Int'];
-  size: SizeCreateNestedOneWithoutProductSaleInput;
+  size: SizeCreateNestedOneWithoutProductSalesInput;
 }
 
 export interface ProductSaleCreateWithoutSizeInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  product: ProductCreateNestedOneWithoutProductSaleInput;
+  product: ProductCreateNestedOneWithoutProductSalesInput;
   quantity: Scalars['Int'];
 }
 
@@ -2309,9 +2797,9 @@ export interface ProductSaleUpdateInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductSaleNestedInput>;
+  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductSalesNestedInput>;
   quantity?: InputMaybe<Scalars['Int']>;
-  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductSaleNestedInput>;
+  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductSalesNestedInput>;
 }
 
 export interface ProductSaleUpdateManyMutationInput {
@@ -2372,14 +2860,14 @@ export interface ProductSaleUpdateWithoutProductInput {
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   quantity?: InputMaybe<Scalars['Int']>;
-  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductSaleNestedInput>;
+  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductSalesNestedInput>;
 }
 
 export interface ProductSaleUpdateWithoutSizeInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductSaleNestedInput>;
+  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductSalesNestedInput>;
   quantity?: InputMaybe<Scalars['Int']>;
 }
 
@@ -2488,9 +2976,9 @@ export interface ProductTransactionCreateInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   price: Scalars['Float'];
-  product: ProductCreateNestedOneWithoutProductTransactionInput;
+  product: ProductCreateNestedOneWithoutProductTransactionsInput;
   quantity: Scalars['Int'];
-  size: SizeCreateNestedOneWithoutProductTransactionInput;
+  size: SizeCreateNestedOneWithoutProductTransactionsInput;
 }
 
 export interface ProductTransactionCreateNestedManyWithoutProductInput {
@@ -2520,14 +3008,14 @@ export interface ProductTransactionCreateWithoutProductInput {
   id?: InputMaybe<Scalars['String']>;
   price: Scalars['Float'];
   quantity: Scalars['Int'];
-  size: SizeCreateNestedOneWithoutProductTransactionInput;
+  size: SizeCreateNestedOneWithoutProductTransactionsInput;
 }
 
 export interface ProductTransactionCreateWithoutSizeInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   price: Scalars['Float'];
-  product: ProductCreateNestedOneWithoutProductTransactionInput;
+  product: ProductCreateNestedOneWithoutProductTransactionsInput;
   quantity: Scalars['Int'];
 }
 
@@ -2667,9 +3155,9 @@ export interface ProductTransactionUpdateInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Float']>;
-  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductTransactionNestedInput>;
+  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductTransactionsNestedInput>;
   quantity?: InputMaybe<Scalars['Int']>;
-  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductTransactionNestedInput>;
+  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductTransactionsNestedInput>;
 }
 
 export interface ProductTransactionUpdateManyMutationInput {
@@ -2730,14 +3218,14 @@ export interface ProductTransactionUpdateWithoutProductInput {
   id?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Float']>;
   quantity?: InputMaybe<Scalars['Int']>;
-  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductTransactionNestedInput>;
+  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductTransactionsNestedInput>;
 }
 
 export interface ProductTransactionUpdateWithoutSizeInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Float']>;
-  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductTransactionNestedInput>;
+  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductTransactionsNestedInput>;
   quantity?: InputMaybe<Scalars['Int']>;
 }
 
@@ -2778,8 +3266,8 @@ export interface ProductUpdateInput {
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
   name?: InputMaybe<Scalars['String']>;
-  productSale?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
-  productTransaction?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
+  productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
+  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
 }
 
 export interface ProductUpdateManyMutationInput {
@@ -2798,20 +3286,20 @@ export interface ProductUpdateOneRequiredWithoutInventoryNestedInput {
   upsert?: InputMaybe<ProductUpsertWithoutInventoryInput>;
 }
 
-export interface ProductUpdateOneRequiredWithoutProductSaleNestedInput {
+export interface ProductUpdateOneRequiredWithoutProductSalesNestedInput {
   connect?: InputMaybe<ProductWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductSaleInput>;
-  create?: InputMaybe<ProductCreateWithoutProductSaleInput>;
-  update?: InputMaybe<ProductUpdateWithoutProductSaleInput>;
-  upsert?: InputMaybe<ProductUpsertWithoutProductSaleInput>;
+  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductSalesInput>;
+  create?: InputMaybe<ProductCreateWithoutProductSalesInput>;
+  update?: InputMaybe<ProductUpdateWithoutProductSalesInput>;
+  upsert?: InputMaybe<ProductUpsertWithoutProductSalesInput>;
 }
 
-export interface ProductUpdateOneRequiredWithoutProductTransactionNestedInput {
+export interface ProductUpdateOneRequiredWithoutProductTransactionsNestedInput {
   connect?: InputMaybe<ProductWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductTransactionInput>;
-  create?: InputMaybe<ProductCreateWithoutProductTransactionInput>;
-  update?: InputMaybe<ProductUpdateWithoutProductTransactionInput>;
-  upsert?: InputMaybe<ProductUpsertWithoutProductTransactionInput>;
+  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductTransactionsInput>;
+  create?: InputMaybe<ProductCreateWithoutProductTransactionsInput>;
+  update?: InputMaybe<ProductUpdateWithoutProductTransactionsInput>;
+  upsert?: InputMaybe<ProductUpsertWithoutProductTransactionsInput>;
 }
 
 export interface ProductUpdateWithoutInventoryInput {
@@ -2820,28 +3308,28 @@ export interface ProductUpdateWithoutInventoryInput {
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
-  productSale?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
-  productTransaction?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
+  productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
+  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
 }
 
-export interface ProductUpdateWithoutProductSaleInput {
+export interface ProductUpdateWithoutProductSalesInput {
   cost?: InputMaybe<Scalars['Float']>;
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
   name?: InputMaybe<Scalars['String']>;
-  productTransaction?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
+  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
 }
 
-export interface ProductUpdateWithoutProductTransactionInput {
+export interface ProductUpdateWithoutProductTransactionsInput {
   cost?: InputMaybe<Scalars['Float']>;
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
   name?: InputMaybe<Scalars['String']>;
-  productSale?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
+  productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
 }
 
 export interface ProductUpsertWithoutInventoryInput {
@@ -2849,14 +3337,14 @@ export interface ProductUpsertWithoutInventoryInput {
   update: ProductUpdateWithoutInventoryInput;
 }
 
-export interface ProductUpsertWithoutProductSaleInput {
-  create: ProductCreateWithoutProductSaleInput;
-  update: ProductUpdateWithoutProductSaleInput;
+export interface ProductUpsertWithoutProductSalesInput {
+  create: ProductCreateWithoutProductSalesInput;
+  update: ProductUpdateWithoutProductSalesInput;
 }
 
-export interface ProductUpsertWithoutProductTransactionInput {
-  create: ProductCreateWithoutProductTransactionInput;
-  update: ProductUpdateWithoutProductTransactionInput;
+export interface ProductUpsertWithoutProductTransactionsInput {
+  create: ProductCreateWithoutProductTransactionsInput;
+  update: ProductUpdateWithoutProductTransactionsInput;
 }
 
 export interface ProductWhereInput {
@@ -2869,8 +3357,8 @@ export interface ProductWhereInput {
   id?: InputMaybe<StringFilter>;
   inventory?: InputMaybe<InventoryListRelationFilter>;
   name?: InputMaybe<StringFilter>;
-  productSale?: InputMaybe<ProductSaleListRelationFilter>;
-  productTransaction?: InputMaybe<ProductTransactionListRelationFilter>;
+  productSales?: InputMaybe<ProductSaleListRelationFilter>;
+  productTransactions?: InputMaybe<ProductTransactionListRelationFilter>;
 }
 
 export interface ProductWhereUniqueInput {
@@ -2884,6 +3372,7 @@ export interface Query {
   aggregateDepartment: AggregateDepartment;
   aggregateEmployee: AggregateEmployee;
   aggregateInventory: AggregateInventory;
+  aggregateLocationState: AggregateLocationState;
   aggregateProduct: AggregateProduct;
   aggregateProductSale: AggregateProductSale;
   aggregateProductTransaction: AggregateProductTransaction;
@@ -2904,6 +3393,8 @@ export interface Query {
   findFirstEmployeeOrThrow?: Maybe<Employee>;
   findFirstInventory?: Maybe<Inventory>;
   findFirstInventoryOrThrow?: Maybe<Inventory>;
+  findFirstLocationState?: Maybe<LocationState>;
+  findFirstLocationStateOrThrow?: Maybe<LocationState>;
   findFirstProduct?: Maybe<Product>;
   findFirstProductOrThrow?: Maybe<Product>;
   findFirstProductSale?: Maybe<ProductSale>;
@@ -2920,6 +3411,7 @@ export interface Query {
   getDepartment?: Maybe<Department>;
   getEmployee?: Maybe<Employee>;
   getInventory?: Maybe<Inventory>;
+  getLocationState?: Maybe<LocationState>;
   getProduct?: Maybe<Product>;
   getProductSale?: Maybe<ProductSale>;
   getProductTransaction?: Maybe<ProductTransaction>;
@@ -2930,6 +3422,7 @@ export interface Query {
   groupByDepartment: Array<DepartmentGroupBy>;
   groupByEmployee: Array<EmployeeGroupBy>;
   groupByInventory: Array<InventoryGroupBy>;
+  groupByLocationState: Array<LocationStateGroupBy>;
   groupByProduct: Array<ProductGroupBy>;
   groupByProductSale: Array<ProductSaleGroupBy>;
   groupByProductTransaction: Array<ProductTransactionGroupBy>;
@@ -2938,6 +3431,8 @@ export interface Query {
   groupByUser: Array<UserGroupBy>;
   inventories: Array<Inventory>;
   inventory?: Maybe<Inventory>;
+  locationState?: Maybe<LocationState>;
+  locationStates: Array<LocationState>;
   login?: Maybe<Scalars['String']>;
   product?: Maybe<Product>;
   productSale?: Maybe<ProductSale>;
@@ -2983,6 +3478,14 @@ export interface QueryAggregateInventoryArgs {
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<InventoryWhereInput>;
+}
+
+export interface QueryAggregateLocationStateArgs {
+  cursor?: InputMaybe<LocationStateWhereUniqueInput>;
+  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LocationStateWhereInput>;
 }
 
 export interface QueryAggregateProductArgs {
@@ -3144,6 +3647,24 @@ export interface QueryFindFirstInventoryOrThrowArgs {
   where?: InputMaybe<InventoryWhereInput>;
 }
 
+export interface QueryFindFirstLocationStateArgs {
+  cursor?: InputMaybe<LocationStateWhereUniqueInput>;
+  distinct?: InputMaybe<Array<LocationStateScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LocationStateWhereInput>;
+}
+
+export interface QueryFindFirstLocationStateOrThrowArgs {
+  cursor?: InputMaybe<LocationStateWhereUniqueInput>;
+  distinct?: InputMaybe<Array<LocationStateScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LocationStateWhereInput>;
+}
+
 export interface QueryFindFirstProductArgs {
   cursor?: InputMaybe<ProductWhereUniqueInput>;
   distinct?: InputMaybe<Array<ProductScalarFieldEnum>>;
@@ -3268,6 +3789,10 @@ export interface QueryGetInventoryArgs {
   where: InventoryWhereUniqueInput;
 }
 
+export interface QueryGetLocationStateArgs {
+  where: LocationStateWhereUniqueInput;
+}
+
 export interface QueryGetProductArgs {
   where: ProductWhereUniqueInput;
 }
@@ -3326,6 +3851,15 @@ export interface QueryGroupByInventoryArgs {
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<InventoryWhereInput>;
+}
+
+export interface QueryGroupByLocationStateArgs {
+  by: Array<LocationStateScalarFieldEnum>;
+  having?: InputMaybe<LocationStateScalarWhereWithAggregatesInput>;
+  orderBy?: InputMaybe<Array<LocationStateOrderByWithAggregationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LocationStateWhereInput>;
 }
 
 export interface QueryGroupByProductArgs {
@@ -3393,6 +3927,19 @@ export interface QueryInventoriesArgs {
 
 export interface QueryInventoryArgs {
   where: InventoryWhereUniqueInput;
+}
+
+export interface QueryLocationStateArgs {
+  where: LocationStateWhereUniqueInput;
+}
+
+export interface QueryLocationStatesArgs {
+  cursor?: InputMaybe<LocationStateWhereUniqueInput>;
+  distinct?: InputMaybe<Array<LocationStateScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LocationStateWhereInput>;
 }
 
 export interface QueryLoginArgs {
@@ -3696,23 +4243,14 @@ export interface RoleWhereUniqueInput {
 
 export interface Size {
   __typename?: 'Size';
-  ProductTransaction: Array<ProductTransaction>;
   _count?: Maybe<SizeCount>;
   dateCreated: Scalars['DateTime'];
   dateUpdated?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
   inventory: Array<Inventory>;
   name: Scalars['String'];
-  productSale: Array<ProductSale>;
-}
-
-export interface SizeProductTransactionArgs {
-  cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductTransactionScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductTransactionOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ProductTransactionWhereInput>;
+  productSales: Array<ProductSale>;
+  productTransactions: Array<ProductTransaction>;
 }
 
 export interface SizeInventoryArgs {
@@ -3724,7 +4262,7 @@ export interface SizeInventoryArgs {
   where?: InputMaybe<InventoryWhereInput>;
 }
 
-export interface SizeProductSaleArgs {
+export interface SizeProductSalesArgs {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
   distinct?: InputMaybe<Array<ProductSaleScalarFieldEnum>>;
   orderBy?: InputMaybe<Array<ProductSaleOrderByWithRelationInput>>;
@@ -3733,11 +4271,20 @@ export interface SizeProductSaleArgs {
   where?: InputMaybe<ProductSaleWhereInput>;
 }
 
+export interface SizeProductTransactionsArgs {
+  cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ProductTransactionScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ProductTransactionOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProductTransactionWhereInput>;
+}
+
 export interface SizeCount {
   __typename?: 'SizeCount';
-  ProductTransaction: Scalars['Int'];
   inventory: Scalars['Int'];
-  productSale: Scalars['Int'];
+  productSales: Scalars['Int'];
+  productTransactions: Scalars['Int'];
 }
 
 export interface SizeCountAggregate {
@@ -3757,13 +4304,13 @@ export interface SizeCountOrderByAggregateInput {
 }
 
 export interface SizeCreateInput {
-  ProductTransaction?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
   name: Scalars['String'];
-  productSale?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
+  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
+  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
 }
 
 export interface SizeCreateNestedOneWithoutInventoryInput {
@@ -3772,16 +4319,16 @@ export interface SizeCreateNestedOneWithoutInventoryInput {
   create?: InputMaybe<SizeCreateWithoutInventoryInput>;
 }
 
-export interface SizeCreateNestedOneWithoutProductSaleInput {
+export interface SizeCreateNestedOneWithoutProductSalesInput {
   connect?: InputMaybe<SizeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductSaleInput>;
-  create?: InputMaybe<SizeCreateWithoutProductSaleInput>;
+  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductSalesInput>;
+  create?: InputMaybe<SizeCreateWithoutProductSalesInput>;
 }
 
-export interface SizeCreateNestedOneWithoutProductTransactionInput {
+export interface SizeCreateNestedOneWithoutProductTransactionsInput {
   connect?: InputMaybe<SizeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductTransactionInput>;
-  create?: InputMaybe<SizeCreateWithoutProductTransactionInput>;
+  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductTransactionsInput>;
+  create?: InputMaybe<SizeCreateWithoutProductTransactionsInput>;
 }
 
 export interface SizeCreateOrConnectWithoutInventoryInput {
@@ -3789,41 +4336,41 @@ export interface SizeCreateOrConnectWithoutInventoryInput {
   where: SizeWhereUniqueInput;
 }
 
-export interface SizeCreateOrConnectWithoutProductSaleInput {
-  create: SizeCreateWithoutProductSaleInput;
+export interface SizeCreateOrConnectWithoutProductSalesInput {
+  create: SizeCreateWithoutProductSalesInput;
   where: SizeWhereUniqueInput;
 }
 
-export interface SizeCreateOrConnectWithoutProductTransactionInput {
-  create: SizeCreateWithoutProductTransactionInput;
+export interface SizeCreateOrConnectWithoutProductTransactionsInput {
+  create: SizeCreateWithoutProductTransactionsInput;
   where: SizeWhereUniqueInput;
 }
 
 export interface SizeCreateWithoutInventoryInput {
-  ProductTransaction?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   name: Scalars['String'];
-  productSale?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
+  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
+  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
 }
 
-export interface SizeCreateWithoutProductSaleInput {
-  ProductTransaction?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
+export interface SizeCreateWithoutProductSalesInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
   name: Scalars['String'];
+  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
 }
 
-export interface SizeCreateWithoutProductTransactionInput {
+export interface SizeCreateWithoutProductTransactionsInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
   name: Scalars['String'];
-  productSale?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
+  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
 }
 
 export interface SizeGroupBy {
@@ -3878,13 +4425,13 @@ export interface SizeOrderByWithAggregationInput {
 }
 
 export interface SizeOrderByWithRelationInput {
-  ProductTransaction?: InputMaybe<ProductTransactionOrderByRelationAggregateInput>;
   dateCreated?: InputMaybe<SortOrder>;
   dateUpdated?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   inventory?: InputMaybe<InventoryOrderByRelationAggregateInput>;
   name?: InputMaybe<SortOrder>;
-  productSale?: InputMaybe<ProductSaleOrderByRelationAggregateInput>;
+  productSales?: InputMaybe<ProductSaleOrderByRelationAggregateInput>;
+  productTransactions?: InputMaybe<ProductTransactionOrderByRelationAggregateInput>;
 }
 
 export interface SizeRelationFilter {
@@ -3910,13 +4457,13 @@ export interface SizeScalarWhereWithAggregatesInput {
 }
 
 export interface SizeUpdateInput {
-  ProductTransaction?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
   name?: InputMaybe<Scalars['String']>;
-  productSale?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
+  productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
+  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
 }
 
 export interface SizeUpdateManyMutationInput {
@@ -3934,47 +4481,47 @@ export interface SizeUpdateOneRequiredWithoutInventoryNestedInput {
   upsert?: InputMaybe<SizeUpsertWithoutInventoryInput>;
 }
 
-export interface SizeUpdateOneRequiredWithoutProductSaleNestedInput {
+export interface SizeUpdateOneRequiredWithoutProductSalesNestedInput {
   connect?: InputMaybe<SizeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductSaleInput>;
-  create?: InputMaybe<SizeCreateWithoutProductSaleInput>;
-  update?: InputMaybe<SizeUpdateWithoutProductSaleInput>;
-  upsert?: InputMaybe<SizeUpsertWithoutProductSaleInput>;
+  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductSalesInput>;
+  create?: InputMaybe<SizeCreateWithoutProductSalesInput>;
+  update?: InputMaybe<SizeUpdateWithoutProductSalesInput>;
+  upsert?: InputMaybe<SizeUpsertWithoutProductSalesInput>;
 }
 
-export interface SizeUpdateOneRequiredWithoutProductTransactionNestedInput {
+export interface SizeUpdateOneRequiredWithoutProductTransactionsNestedInput {
   connect?: InputMaybe<SizeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductTransactionInput>;
-  create?: InputMaybe<SizeCreateWithoutProductTransactionInput>;
-  update?: InputMaybe<SizeUpdateWithoutProductTransactionInput>;
-  upsert?: InputMaybe<SizeUpsertWithoutProductTransactionInput>;
+  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductTransactionsInput>;
+  create?: InputMaybe<SizeCreateWithoutProductTransactionsInput>;
+  update?: InputMaybe<SizeUpdateWithoutProductTransactionsInput>;
+  upsert?: InputMaybe<SizeUpsertWithoutProductTransactionsInput>;
 }
 
 export interface SizeUpdateWithoutInventoryInput {
-  ProductTransaction?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
-  productSale?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
+  productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
+  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
 }
 
-export interface SizeUpdateWithoutProductSaleInput {
-  ProductTransaction?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
+export interface SizeUpdateWithoutProductSalesInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
   name?: InputMaybe<Scalars['String']>;
+  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
 }
 
-export interface SizeUpdateWithoutProductTransactionInput {
+export interface SizeUpdateWithoutProductTransactionsInput {
   dateCreated?: InputMaybe<Scalars['DateTime']>;
   dateUpdated?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['String']>;
   inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
   name?: InputMaybe<Scalars['String']>;
-  productSale?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
+  productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
 }
 
 export interface SizeUpsertWithoutInventoryInput {
@@ -3982,27 +4529,27 @@ export interface SizeUpsertWithoutInventoryInput {
   update: SizeUpdateWithoutInventoryInput;
 }
 
-export interface SizeUpsertWithoutProductSaleInput {
-  create: SizeCreateWithoutProductSaleInput;
-  update: SizeUpdateWithoutProductSaleInput;
+export interface SizeUpsertWithoutProductSalesInput {
+  create: SizeCreateWithoutProductSalesInput;
+  update: SizeUpdateWithoutProductSalesInput;
 }
 
-export interface SizeUpsertWithoutProductTransactionInput {
-  create: SizeCreateWithoutProductTransactionInput;
-  update: SizeUpdateWithoutProductTransactionInput;
+export interface SizeUpsertWithoutProductTransactionsInput {
+  create: SizeCreateWithoutProductTransactionsInput;
+  update: SizeUpdateWithoutProductTransactionsInput;
 }
 
 export interface SizeWhereInput {
   AND?: InputMaybe<Array<SizeWhereInput>>;
   NOT?: InputMaybe<Array<SizeWhereInput>>;
   OR?: InputMaybe<Array<SizeWhereInput>>;
-  ProductTransaction?: InputMaybe<ProductTransactionListRelationFilter>;
   dateCreated?: InputMaybe<DateTimeFilter>;
   dateUpdated?: InputMaybe<DateTimeNullableFilter>;
   id?: InputMaybe<StringFilter>;
   inventory?: InputMaybe<InventoryListRelationFilter>;
   name?: InputMaybe<StringFilter>;
-  productSale?: InputMaybe<ProductSaleListRelationFilter>;
+  productSales?: InputMaybe<ProductSaleListRelationFilter>;
+  productTransactions?: InputMaybe<ProductTransactionListRelationFilter>;
 }
 
 export interface SizeWhereUniqueInput {
@@ -4364,7 +4911,7 @@ export type GetCustomersQuery = {
     phone: string;
     streetAddress: string;
     city: string;
-    state: string;
+    stateId: string;
     zipCode: string;
   }>;
 };
@@ -4385,7 +4932,7 @@ export type GetCustomerByIdQuery = {
         phone: string;
         streetAddress: string;
         city: string;
-        state: string;
+        stateId: string;
         zipCode: string;
       }
     | undefined;
@@ -4405,7 +4952,7 @@ export type GetEmployeesQuery = {
     phone: string;
     streetAddress: string;
     city: string;
-    state: string;
+    stateId: string;
     zipCode: string;
     jobTitle: string;
     departmentId: string;
@@ -4430,7 +4977,7 @@ export type GetEmployeeByIdQuery = {
         phone: string;
         streetAddress: string;
         city: string;
-        state: string;
+        stateId: string;
         zipCode: string;
         jobTitle: string;
         departmentId: string;
@@ -4451,7 +4998,7 @@ export type GetInventoryByProductIdQuery = {
     productId: string;
     quantity: number;
     sizeId: string;
-    product: { __typename?: 'Product'; id: string; name: string; cost: number };
+    product: { __typename?: 'Product'; id: string; name: string };
   }>;
 };
 
@@ -4467,7 +5014,7 @@ export type GetInventoryBySizeQuery = {
     productId: string;
     quantity: number;
     sizeId: string;
-    product: { __typename?: 'Product'; id: string; name: string; cost: number };
+    product: { __typename?: 'Product'; id: string; name: string };
   }>;
 };
 
@@ -4482,7 +5029,7 @@ export type GetProductsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProductsQuery = {
   __typename?: 'Query';
-  products: Array<{ __typename?: 'Product'; id: string; name: string; cost: number }>;
+  products: Array<{ __typename?: 'Product'; id: string; name: string }>;
 };
 
 export type GetProductByIdQueryVariables = Exact<{
@@ -4491,7 +5038,7 @@ export type GetProductByIdQueryVariables = Exact<{
 
 export type GetProductByIdQuery = {
   __typename?: 'Query';
-  product?: { __typename?: 'Product'; id: string; name: string; cost: number } | undefined;
+  product?: { __typename?: 'Product'; id: string; name: string } | undefined;
 };
 
 export type GetProductSalesQueryVariables = Exact<{ [key: string]: never }>;
@@ -4538,6 +5085,8 @@ export type GetProductTransactionsQuery = {
 };
 
 export type GetProductTransactionsByProductIdQueryVariables = Exact<{
+  take: Scalars['Int'];
+  skip: Scalars['Int'];
   productId: Scalars['String'];
 }>;
 
@@ -4551,10 +5100,14 @@ export type GetProductTransactionsByProductIdQuery = {
     quantity: number;
     price: number;
     dateCreated: any;
+    product: { __typename?: 'Product'; name: string };
+    size: { __typename?: 'Size'; name: string };
   }>;
 };
 
 export type GetProductTransactionsByProductIdAndDateRangeQueryVariables = Exact<{
+  take: Scalars['Int'];
+  skip: Scalars['Int'];
   productId: Scalars['String'];
   fromDate: Scalars['DateTime'];
   toDate: Scalars['DateTime'];
@@ -4575,7 +5128,10 @@ export type GetProductTransactionsByProductIdAndDateRangeQuery = {
 
 export type GetSizesQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetSizesQuery = { __typename?: 'Query'; sizes: Array<{ __typename?: 'Size'; id: string; name: string }> };
+export type GetSizesQuery = {
+  __typename?: 'Query';
+  sizes: Array<{ __typename?: 'Size'; id: string; name: string }>;
+};
 
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
@@ -4598,7 +5154,14 @@ export type GetUserByIdQueryVariables = Exact<{
 export type GetUserByIdQuery = {
   __typename?: 'Query';
   user?:
-    | { __typename?: 'User'; id: string; userName: string; firstName: string; lastName: string; email: string }
+    | {
+        __typename?: 'User';
+        id: string;
+        userName: string;
+        firstName: string;
+        lastName: string;
+        email: string;
+      }
     | undefined;
 };
 
@@ -4609,7 +5172,14 @@ export type GetUserByUserNameQueryVariables = Exact<{
 export type GetUserByUserNameQuery = {
   __typename?: 'Query';
   user?:
-    | { __typename?: 'User'; id: string; userName: string; firstName: string; lastName: string; email: string }
+    | {
+        __typename?: 'User';
+        id: string;
+        userName: string;
+        firstName: string;
+        lastName: string;
+        email: string;
+      }
     | undefined;
 };
 
@@ -4622,7 +5192,7 @@ export type CustomerPartsFragment = {
   phone: string;
   streetAddress: string;
   city: string;
-  state: string;
+  stateId: string;
   zipCode: string;
 };
 
@@ -4636,7 +5206,7 @@ export type EmployeePartsFragment = {
   phone: string;
   streetAddress: string;
   city: string;
-  state: string;
+  stateId: string;
   zipCode: string;
   jobTitle: string;
   departmentId: string;
@@ -4651,7 +5221,7 @@ export type InventoryPartsFragment = {
   sizeId: string;
 };
 
-export type ProductPartsFragment = { __typename?: 'Product'; id: string; name: string; cost: number };
+export type ProductPartsFragment = { __typename?: 'Product'; id: string; name: string };
 
 export type ProductSalePartsFragment = {
   __typename?: 'ProductSale';
@@ -4697,7 +5267,7 @@ export const CustomerPartsFragmentDoc = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
         ],
       },
@@ -4722,7 +5292,7 @@ export const EmployeePartsFragmentDoc = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
@@ -4763,7 +5333,6 @@ export const ProductPartsFragmentDoc = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -4864,7 +5433,9 @@ export const GetCustomersDocument = {
             name: { kind: 'Name', value: 'customers' },
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'CustomerParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'CustomerParts' } },
+              ],
             },
           },
         ],
@@ -4884,7 +5455,7 @@ export const GetCustomersDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
         ],
       },
@@ -4902,7 +5473,10 @@ export const GetCustomerByIdDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -4929,7 +5503,9 @@ export const GetCustomerByIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'CustomerParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'CustomerParts' } },
+              ],
             },
           },
         ],
@@ -4949,7 +5525,7 @@ export const GetCustomerByIdDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
         ],
       },
@@ -4971,7 +5547,9 @@ export const GetEmployeesDocument = {
             name: { kind: 'Name', value: 'employees' },
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } },
+              ],
             },
           },
         ],
@@ -4992,7 +5570,7 @@ export const GetEmployeesDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
@@ -5040,7 +5618,9 @@ export const GetEmployeeByIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } },
+              ],
             },
           },
         ],
@@ -5061,7 +5641,7 @@ export const GetEmployeeByIdDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
@@ -5082,7 +5662,10 @@ export const GetInventoryByProductIdDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -5125,7 +5708,9 @@ export const GetInventoryByProductIdDocument = {
                   name: { kind: 'Name', value: 'product' },
                   selectionSet: {
                     kind: 'SelectionSet',
-                    selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } }],
+                    selections: [
+                      { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } },
+                    ],
                   },
                 },
               ],
@@ -5157,7 +5742,6 @@ export const GetInventoryByProductIdDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -5174,7 +5758,10 @@ export const GetInventoryBySizeDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'sizeId' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -5217,7 +5804,9 @@ export const GetInventoryBySizeDocument = {
                   name: { kind: 'Name', value: 'product' },
                   selectionSet: {
                     kind: 'SelectionSet',
-                    selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } }],
+                    selections: [
+                      { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } },
+                    ],
                   },
                 },
               ],
@@ -5249,7 +5838,6 @@ export const GetInventoryBySizeDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -5266,12 +5854,18 @@ export const LoginDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'userName' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'password' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -5313,7 +5907,9 @@ export const GetProductsDocument = {
             name: { kind: 'Name', value: 'products' },
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } },
+              ],
             },
           },
         ],
@@ -5328,7 +5924,6 @@ export const GetProductsDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -5345,7 +5940,10 @@ export const GetProductByIdDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -5372,7 +5970,9 @@ export const GetProductByIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } },
+              ],
             },
           },
         ],
@@ -5387,7 +5987,6 @@ export const GetProductByIdDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -5424,7 +6023,9 @@ export const GetProductSalesDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductSaleParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductSaleParts' } },
+              ],
             },
           },
         ],
@@ -5477,7 +6078,10 @@ export const GetTopProductSalesByProductIdDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'productId' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -5527,7 +6131,9 @@ export const GetTopProductSalesByProductIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductSaleParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductSaleParts' } },
+              ],
             },
           },
         ],
@@ -5568,7 +6174,10 @@ export const GetTopProductSalesByProductIdDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<GetTopProductSalesByProductIdQuery, GetTopProductSalesByProductIdQueryVariables>;
+} as unknown as DocumentNode<
+  GetTopProductSalesByProductIdQuery,
+  GetTopProductSalesByProductIdQueryVariables
+>;
 export const GetProductTransactionsDocument = {
   kind: 'Document',
   definitions: [
@@ -5584,7 +6193,12 @@ export const GetProductTransactionsDocument = {
             name: { kind: 'Name', value: 'productTransactions' },
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductTransactionParts' } }],
+              selections: [
+                {
+                  kind: 'FragmentSpread',
+                  name: { kind: 'Name', value: 'ProductTransactionParts' },
+                },
+              ],
             },
           },
         ],
@@ -5618,8 +6232,27 @@ export const GetProductTransactionsByProductIdDocument = {
       variableDefinitions: [
         {
           kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'take' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'skip' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'productId' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -5629,6 +6262,16 @@ export const GetProductTransactionsByProductIdDocument = {
             kind: 'Field',
             name: { kind: 'Name', value: 'productTransactions' },
             arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'take' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'take' } },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'skip' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'skip' } },
+              },
               {
                 kind: 'Argument',
                 name: { kind: 'Name', value: 'where' },
@@ -5655,7 +6298,28 @@ export const GetProductTransactionsByProductIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductTransactionParts' } }],
+              selections: [
+                {
+                  kind: 'FragmentSpread',
+                  name: { kind: 'Name', value: 'ProductTransactionParts' },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'product' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'name' } }],
+                  },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'size' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'name' } }],
+                  },
+                },
+              ],
             },
           },
         ],
@@ -5678,7 +6342,10 @@ export const GetProductTransactionsByProductIdDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<GetProductTransactionsByProductIdQuery, GetProductTransactionsByProductIdQueryVariables>;
+} as unknown as DocumentNode<
+  GetProductTransactionsByProductIdQuery,
+  GetProductTransactionsByProductIdQueryVariables
+>;
 export const GetProductTransactionsByProductIdAndDateRangeDocument = {
   kind: 'Document',
   definitions: [
@@ -5689,18 +6356,43 @@ export const GetProductTransactionsByProductIdAndDateRangeDocument = {
       variableDefinitions: [
         {
           kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'take' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'skip' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'productId' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'fromDate' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'DateTime' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'DateTime' } },
+          },
         },
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'toDate' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'DateTime' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'DateTime' } },
+          },
         },
       ],
       selectionSet: {
@@ -5710,6 +6402,16 @@ export const GetProductTransactionsByProductIdAndDateRangeDocument = {
             kind: 'Field',
             name: { kind: 'Name', value: 'productTransactions' },
             arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'take' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'take' } },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'skip' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'skip' } },
+              },
               {
                 kind: 'Argument',
                 name: { kind: 'Name', value: 'where' },
@@ -5755,7 +6457,12 @@ export const GetProductTransactionsByProductIdAndDateRangeDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductTransactionParts' } }],
+              selections: [
+                {
+                  kind: 'FragmentSpread',
+                  name: { kind: 'Name', value: 'ProductTransactionParts' },
+                },
+              ],
             },
           },
         ],
@@ -5857,7 +6564,10 @@ export const GetUserByIdDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -5918,7 +6628,10 @@ export const GetUserByUserNameDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'userName' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
