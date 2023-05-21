@@ -1,15 +1,17 @@
-<mat-form-field>
-  <mat-label>Products</mat-label>
-  <mat-select
-    [value]="selectedProductId()"
-    (valueChange)="selectedProductId.set($event)">
-    <mat-option
-      *ngFor="let product of products()"
-      [value]="product.id">
-      {{ product.name }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<div class="filter-container">
+  <mat-form-field>
+    <mat-label>Products</mat-label>
+    <mat-select
+      [value]="selectedProductId()"
+      (valueChange)="selectedProductId.set($event)">
+      <mat-option
+        *ngFor="let product of products()"
+        [value]="product.id">
+        {{ product.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
 <mat-table
   [dataSource]="dataSource"
