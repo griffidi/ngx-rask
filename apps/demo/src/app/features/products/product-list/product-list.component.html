@@ -1,4 +1,6 @@
-<mat-card *ngFor="let product of products()">
+<mat-card
+  *ngFor="let product of products()"
+  (click)="onCardClick(product.id)">
   <mat-card-title>
     <img
       src="{{ product.name | createPath : imagePath }}"

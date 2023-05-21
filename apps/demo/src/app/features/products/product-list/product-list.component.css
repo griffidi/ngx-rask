@@ -9,6 +9,11 @@
   background: var(--app-color-surface-2);
   border-radius: var(--app-shape-large);
   block-size: minmax(150px, 100px);
+  transition: transform 200ms ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 }
 
 .mat-mdc-card-title {

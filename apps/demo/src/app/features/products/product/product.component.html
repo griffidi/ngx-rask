@@ -1,40 +1,10 @@
-<form
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()">
-  <div class="details">
-    <mat-form-field>
-      <input
-        matInput
-        name="name"
-        placeholder="Name"
-        formControlName="name"
-        required />
-    </mat-form-field>
-  </div>
-
-  <div class="options">
-    <div class="color-container">
-      <span
-        *ngFor="let color of colors()"
-        id="color{{ color }}"
-        class="color-option"
-        [ngClass]="color"
-        [attr.selected]="selectedColor() === color"
-        (mouseover)="mouseoverColor(color)"
-        (mouseout)="mouseoutColor()"
-        (click)="selectColor(color)"></span>
-    </div>
-
-    <mat-button-toggle-group>
-      <mat-button-toggle
-        *ngFor="let size of sizes()"
-        [value]="size">
-        {{ size.name }}
-      </mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
-
-  <div
-    class="image color-{{ selectedColor() }} hovered-color-{{ hoveredColor() }}"
-    [innerHTML]="svg"></div>
-</form>
+<mat-tab-group>
+  <mat-tab label="Detail">
+    <ng-template matTabContent>
+      <app-product-form [productId]="id" />
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Transactions">
+    <ng-template matTabContent>Transactions</ng-template>
+  </mat-tab>
+</mat-tab-group>
