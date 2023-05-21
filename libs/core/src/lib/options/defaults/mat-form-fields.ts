@@ -7,6 +7,6 @@ import {
 export const MAT_FORM_FIELDS: Provider = {
   provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
   useValue: {
-    appearance: 'fill',
+    appearance: 'outline',
   } as MatFormFieldDefaultOptions,
 };
