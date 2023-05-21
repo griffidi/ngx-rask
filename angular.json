@@ -35,7 +35,7 @@
             "index": "apps/demo/src/index.html",
             "main": "apps/demo/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "apps/demo/tsconfig.json",
+            "tsConfig": "apps/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/demo/src/favicon.svg", "apps/demo/src/assets"],
             "styles": [
@@ -131,10 +131,10 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/core/tsconfig.prod.json"
+              "tsConfig": "libs/core/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/core/tsconfig.json"
+              "tsConfig": "libs/core/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -167,10 +167,10 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/graphql/tsconfig.prod.json"
+              "tsConfig": "libs/graphql/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/graphql/tsconfig.json"
+              "tsConfig": "libs/graphql/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -218,10 +218,10 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/components/tsconfig.prod.json"
+              "tsConfig": "libs/components/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/components/tsconfig.json"
+              "tsConfig": "libs/components/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"

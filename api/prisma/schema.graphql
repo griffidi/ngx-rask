@@ -1785,6 +1785,7 @@ type Mutation {
   deleteOneRole(where: RoleWhereUniqueInput!): Role
   deleteOneSize(where: SizeWhereUniqueInput!): Size
   deleteOneUser(where: UserWhereUniqueInput!): User
+  login(password: String!, userName: String!): String
   updateManyCustomer(data: CustomerUpdateManyMutationInput!, where: CustomerWhereInput): AffectedRowsOutput!
   updateManyDepartment(data: DepartmentUpdateManyMutationInput!, where: DepartmentWhereInput): AffectedRowsOutput!
   updateManyEmployee(data: EmployeeUpdateManyMutationInput!, where: EmployeeWhereInput): AffectedRowsOutput!
@@ -2999,7 +3000,6 @@ type Query {
   inventory(where: InventoryWhereUniqueInput!): Inventory
   locationState(where: LocationStateWhereUniqueInput!): LocationState
   locationStates(cursor: LocationStateWhereUniqueInput, distinct: [LocationStateScalarFieldEnum!], orderBy: [LocationStateOrderByWithRelationInput!], skip: Int, take: Int, where: LocationStateWhereInput): [LocationState!]!
-  login(password: String!, userName: String!): String
   product(where: ProductWhereUniqueInput!): Product
   productSale(where: ProductSaleWhereUniqueInput!): ProductSale
   productSales(cursor: ProductSaleWhereUniqueInput, distinct: [ProductSaleScalarFieldEnum!], orderBy: [ProductSaleOrderByWithRelationInput!], skip: Int, take: Int, where: ProductSaleWhereInput): [ProductSale!]!

@@ -11,6 +11,33 @@ export class Client {
   #apollo = inject(Apollo);
 
   /**
+   * Mutate GraphQL API.
+   *
+   * @param {DocumentNode | TypedDocumentNode<T, V>} mutation Mutation document.
+   * @param {V} variables Mutation variables.
+   *
+   * @returns {Promise<T>} The unwrapped mutation result.
+   */
+  async mutate<T, V = OperationVariables>(
+    mutation: DocumentNode | TypedDocumentNode<T, V>,
+    variables?: V
+  ): Promise<T> {
+    return new Promise((resolve, reject) => {
+      this.#apollo
+        .mutate({ mutation, variables })
+        .pipe(
+          map(({ data }) => data),
+          tap(data => resolve(data as unknown as T)),
+          catchError(error => {
+            reject(error);
+            return [];
+          })
+        )
+        .subscribe();
+    });
+  }
+
+  /**
    * Query GraphQL API.
    *
    * @param {DocumentNode | TypedDocumentNode<T, V>} query Query document.
@@ -18,7 +45,10 @@ export class Client {
    *
    * @returns {Promise<T>} The unwrapped query result.
    */
-  async query<T, V = OperationVariables>(query: DocumentNode | TypedDocumentNode<T, V>, variables?: V): Promise<T> {
+  async query<T, V = OperationVariables>(
+    query: DocumentNode | TypedDocumentNode<T, V>,
+    variables?: V
+  ): Promise<T> {
     return new Promise((resolve, reject) => {
       this.#apollo
         .query({ query, variables })

@@ -1,6 +1,6 @@
 import { GraphQLError } from 'graphql';
 import jwt from 'jsonwebtoken';
-import { Args, ArgsType, Ctx, Field, Query, Resolver } from 'type-graphql';
+import { Args, ArgsType, Ctx, Field, Mutation, Resolver } from 'type-graphql';
 import { type Context } from '../client/context.js';
 import { JWT_SECRET } from '../constants.js';
 import { compareHash } from '../crypto/hash.js';
@@ -8,10 +8,10 @@ import { compareHash } from '../crypto/hash.js';
 @ArgsType()
 export class LoginArgs {
   @Field(() => String, { simple: true })
-  userName: string;
+  userName!: string;
 
   @Field(() => String, { simple: true })
-  password: string;
+  password!: string;
 }
 
 @Resolver()
@@ -23,7 +23,7 @@ export class LoginResolver {
    * @param {Context} { prisma } Prisma client.
    * @returns {Promise<string>} JWT if valid, null if invalid.
    */
-  @Query(() => String, { nullable: true })
+  @Mutation(() => String, { nullable: true })
   async login(
     @Args(() => LoginArgs) { userName, password }: LoginArgs,
     @Ctx() { prisma }: Context

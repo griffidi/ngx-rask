@@ -1861,6 +1861,7 @@ export interface Mutation {
   deleteOneRole?: Maybe<Role>;
   deleteOneSize?: Maybe<Size>;
   deleteOneUser?: Maybe<User>;
+  login?: Maybe<Scalars['String']>;
   updateManyCustomer: AffectedRowsOutput;
   updateManyDepartment: AffectedRowsOutput;
   updateManyEmployee: AffectedRowsOutput;
@@ -2026,6 +2027,11 @@ export interface MutationDeleteOneSizeArgs {
 
 export interface MutationDeleteOneUserArgs {
   where: UserWhereUniqueInput;
+}
+
+export interface MutationLoginArgs {
+  password: Scalars['String'];
+  userName: Scalars['String'];
 }
 
 export interface MutationUpdateManyCustomerArgs {
@@ -3433,7 +3439,6 @@ export interface Query {
   inventory?: Maybe<Inventory>;
   locationState?: Maybe<LocationState>;
   locationStates: Array<LocationState>;
-  login?: Maybe<Scalars['String']>;
   product?: Maybe<Product>;
   productSale?: Maybe<ProductSale>;
   productSales: Array<ProductSale>;
@@ -3940,11 +3945,6 @@ export interface QueryLocationStatesArgs {
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<LocationStateWhereInput>;
-}
-
-export interface QueryLoginArgs {
-  password: Scalars['String'];
-  userName: Scalars['String'];
 }
 
 export interface QueryProductArgs {
@@ -5018,12 +5018,12 @@ export type GetInventoryBySizeQuery = {
   }>;
 };
 
-export type LoginQueryVariables = Exact<{
+export type LoginMutationVariables = Exact<{
   userName: Scalars['String'];
   password: Scalars['String'];
 }>;
 
-export type LoginQuery = { __typename?: 'Query'; login?: string | undefined };
+export type LoginMutation = { __typename?: 'Mutation'; login?: string | undefined };
 
 export type GetProductsQueryVariables = Exact<{ [key: string]: never }>;
 
@@ -5848,7 +5848,7 @@ export const LoginDocument = {
   definitions: [
     {
       kind: 'OperationDefinition',
-      operation: 'query',
+      operation: 'mutation',
       name: { kind: 'Name', value: 'login' },
       variableDefinitions: [
         {
@@ -5891,7 +5891,7 @@ export const LoginDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<LoginQuery, LoginQueryVariables>;
+} as unknown as DocumentNode<LoginMutation, LoginMutationVariables>;
 export const GetProductsDocument = {
   kind: 'Document',
   definitions: [

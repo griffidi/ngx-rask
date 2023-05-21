@@ -1,16 +1,18 @@
 <mat-form-field>
   <mat-label>Products</mat-label>
-  <mat-select (valueChange)="onProductsChange($event.id)">
+  <mat-select
+    [value]="selectedProductId()"
+    (valueChange)="selectedProductId.set($event)">
     <mat-option
       *ngFor="let product of products()"
-      [value]="product">
+      [value]="product.id">
       {{ product.name }}
     </mat-option>
   </mat-select>
 </mat-form-field>
 
 <mat-table
-  [dataSource]="productTransactions()"
+  [dataSource]="dataSource"
   matSort>
   <ng-container matColumnDef="product">
     <mat-header-cell *matHeaderCellDef>Product</mat-header-cell>
@@ -29,7 +31,7 @@
 
   <ng-container matColumnDef="price">
     <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
-    <mat-cell *matCellDef="let item">{{ item.price }}</mat-cell>
+    <mat-cell *matCellDef="let item">{{ item.price | currency }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="dateCreated">
@@ -40,9 +42,12 @@
   <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
-  <mat-row *matNoDataRow>
+  <!-- <mat-row *matNoDataRow>
     <mat-cell colspan="5">No Data</mat-cell>
-  </mat-row>
+  </mat-row> -->
 </mat-table>
 
-<mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+<mat-paginator
+  aria-label="Select page of products"
+  [pageSize]="10"
+  [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
