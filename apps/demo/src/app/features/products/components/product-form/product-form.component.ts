@@ -1,18 +1,13 @@
 import { IMAGE_PATH_TOKEN } from '#/app/common/assets';
-import {
-  GetProductByIdDocument,
-  GetSizesDocument,
-  type Product as ProductType,
-  type Size,
-} from '#/app/types/graphql';
+import { ImageService, SizesService } from '#/app/common/services';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
+  Injector,
   Input,
   computed,
+  effect,
   inject,
   signal,
   type OnInit,
@@ -22,10 +17,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { DomSanitizer, type SafeHtml } from '@angular/platform-browser';
+import { type SafeHtml } from '@angular/platform-browser';
 import { CreatePathPipe } from '@ngx-rask/core';
-import { Client } from '@ngx-rask/graphql';
-import { tap } from 'rxjs';
+import { ProductsService } from '../../shared/services';
 
 @Component({
   selector: 'app-product-form',
@@ -33,6 +27,7 @@ import { tap } from 'rxjs';
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ImageService, ProductsService, SizesService],
   imports: [
     CreatePathPipe,
     MatButtonModule,
@@ -46,54 +41,53 @@ import { tap } from 'rxjs';
   ],
 })
 export default class ProductFormComponent implements OnInit {
-  #cdr = inject(ChangeDetectorRef);
-  #client = inject(Client);
-  #http = inject(HttpClient);
-  #sanitizer = inject(DomSanitizer);
+  // #cdr = inject(ChangeDetectorRef);
+  #injector = inject(Injector);
+  #imageService = inject(ImageService);
+  #productsService = inject(ProductsService);
+  #sizesService = inject(SizesService);
 
   protected readonly colors = signal(['black', 'blue', 'green', 'pink', 'red', 'white']);
   protected readonly imagePath = inject(IMAGE_PATH_TOKEN);
-  protected readonly product = signal<ProductType>({} as ProductType);
-  protected readonly productImageName = computed(() => `${this.product().name}-black-1`);
-  protected readonly sizes = signal<Size[]>([]);
+  protected readonly product = this.#productsService.product;
+  protected readonly productImageName = computed(() => `${this.product()?.name}-black-1`);
+  protected readonly sizes = this.#sizesService.sizes;
   protected svg: SafeHtml | undefined;
   protected readonly selectedColor = signal('black');
   protected readonly hoveredColor = signal('default');
+
   protected form = new FormBuilder().nonNullable.group({
     name: ['', Validators.required],
+    cost: [0, Validators.required],
   });
 
   @Input({ required: true }) accessor productId!: string;
 
-  async ngOnInit() {
-    const { product } = await this.#client.query(GetProductByIdDocument, { id: this.productId });
-    this.product.set(product as ProductType);
-    this.form.patchValue({ name: this.product().name });
+  ngOnInit() {
+    this.#sizesService.loadSizes();
+    this.#productsService.loadProductById(this.productId);
 
-    const { sizes } = await this.#client.query(GetSizesDocument);
-    this.sizes.set(sizes as Size[]);
+    effect(
+      async () => {
+        const product = this.product();
 
-    this.#loadImage();
+        if (product) {
+          const { cost, name } = product;
+          const path = `${
+            this.imagePath
+          }/${name.toLocaleLowerCase()}/${name.toLocaleLowerCase()}.svg`;
+
+          this.form.patchValue({ cost, name });
+          const svg = await this.#imageService.getImage(path);
+          this.svg = svg;
+        }
+      },
+      { injector: this.#injector, allowSignalWrites: true }
+    );
   }
 
   onSubmit() {
     console.log('Product submitted');
-  }
-
-  #loadImage() {
-    const { name } = this.product();
-
-    this.#http
-      .get(`${this.imagePath}/${name.toLocaleLowerCase()}/${name.toLocaleLowerCase()}.svg`, {
-        responseType: 'text',
-      })
-      .pipe(
-        tap(svg => {
-          this.svg = this.#sanitizer.bypassSecurityTrustHtml(svg);
-          this.#cdr.markForCheck();
-        })
-      )
-      .subscribe();
   }
 
   protected mouseoverColor(color: string) {
