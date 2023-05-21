@@ -16,6 +16,16 @@ query GetProductTransactionsByProductId($take: Int!, $skip: Int!, $productId: St
   }
 }
 
+# query GetProductTransactionsCountByProductId($take: Int!, $skip: Int!, $productId: String!) {
+#   productTransactions(take: $take, skip: $skip, where: { productId: { equals: $productId } }) {
+#     _avg {
+#       _count {
+#         _all
+#       }
+#     }
+#   }
+# }
+
 query GetProductTransactionsByProductIdAndDateRange(
   $take: Int!
   $skip: Int!

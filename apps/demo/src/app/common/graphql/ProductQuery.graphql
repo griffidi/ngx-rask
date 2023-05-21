@@ -1,6 +1,12 @@
 query GetProducts {
   products {
     ...ProductParts
+    # productTransactions(by: [productId]) {
+    #   ...ProductTransactionParts
+    #   _sum {
+    #     quantity: true
+    #   }
+    # }
   }
 }
 

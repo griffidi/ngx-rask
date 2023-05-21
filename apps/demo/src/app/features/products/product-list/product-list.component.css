@@ -1,14 +1,16 @@
 :host {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(200px, 240px));
   grid-gap: 2.2rem;
 }
 
 .mat-mdc-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   background: var(--app-color-surface-2);
-  border-radius: var(--app-shape-large);
-  block-size: minmax(150px, 100px);
+  border-radius: var(--app-shape-medium);
+  padding-inline: 10px;
   transition: transform 200ms ease-in-out;
 
   &:hover {
@@ -16,33 +18,10 @@
   }
 }
 
-.mat-mdc-card-title {
-  block-size: 50%;
-}
-
-.mat-mdc-card-content {
+.mat-mdc-card-actions {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  gap: 10px;
-  block-size: 100%;
-  padding-block-start: 24px;
-  padding-block-end: 12px;
-
-  & .details,
-  & .actions {
-    display: flex;
-    align-items: center;
-  }
-
-  & .details {
-    justify-content: space-between;
-  }
-
-  & .actions {
-    justify-content: flex-end;
-    gap: 15px;
-  }
+  padding-block: 10px;
 }
 
 .title {
@@ -59,4 +38,5 @@ img {
   border-start-end-radius: var(--app-shape-large);
   aspect-ratio: 1 / 1;
   clip-path: fill;
+  filter: grayscale(0.8);
 }

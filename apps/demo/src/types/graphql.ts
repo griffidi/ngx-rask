@@ -4998,7 +4998,7 @@ export type GetInventoryByProductIdQuery = {
     productId: string;
     quantity: number;
     sizeId: string;
-    product: { __typename?: 'Product'; id: string; name: string };
+    product: { __typename?: 'Product'; id: string; name: string; cost: number };
   }>;
 };
 
@@ -5014,7 +5014,7 @@ export type GetInventoryBySizeQuery = {
     productId: string;
     quantity: number;
     sizeId: string;
-    product: { __typename?: 'Product'; id: string; name: string };
+    product: { __typename?: 'Product'; id: string; name: string; cost: number };
   }>;
 };
 
@@ -5029,7 +5029,7 @@ export type GetProductsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProductsQuery = {
   __typename?: 'Query';
-  products: Array<{ __typename?: 'Product'; id: string; name: string }>;
+  products: Array<{ __typename?: 'Product'; id: string; name: string; cost: number }>;
 };
 
 export type GetProductByIdQueryVariables = Exact<{
@@ -5038,7 +5038,7 @@ export type GetProductByIdQueryVariables = Exact<{
 
 export type GetProductByIdQuery = {
   __typename?: 'Query';
-  product?: { __typename?: 'Product'; id: string; name: string } | undefined;
+  product?: { __typename?: 'Product'; id: string; name: string; cost: number } | undefined;
 };
 
 export type GetProductSalesQueryVariables = Exact<{ [key: string]: never }>;
@@ -5221,7 +5221,12 @@ export type InventoryPartsFragment = {
   sizeId: string;
 };
 
-export type ProductPartsFragment = { __typename?: 'Product'; id: string; name: string };
+export type ProductPartsFragment = {
+  __typename?: 'Product';
+  id: string;
+  name: string;
+  cost: number;
+};
 
 export type ProductSalePartsFragment = {
   __typename?: 'ProductSale';
@@ -5333,6 +5338,7 @@ export const ProductPartsFragmentDoc = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -5742,6 +5748,7 @@ export const GetInventoryByProductIdDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -5838,6 +5845,7 @@ export const GetInventoryBySizeDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -5924,6 +5932,7 @@ export const GetProductsDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
@@ -5987,6 +5996,7 @@ export const GetProductByIdDocument = {
         selections: [
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
         ],
       },
     },
