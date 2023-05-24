@@ -1,10 +1,6 @@
 {
   "folders": [
     {
-      "path": ".",
-      "name": ".root"
-    },
-    {
       "path": "api"
     },
     {
@@ -22,6 +18,10 @@
     {
       "name": "components",
       "path": "libs/components"
+    },
+    {
+      "path": ".",
+      "name": ".root"
     }
   ],
   "settings": {
@@ -125,7 +125,7 @@
       "libs": true,
       "**/.git": true,
       "**/dist": true,
-      "**/node_modules": false
+      "**/node_modules": true
     },
 
     "workbench.iconTheme": "vscode-icons",
