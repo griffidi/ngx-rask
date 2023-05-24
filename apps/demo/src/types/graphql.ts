@@ -3443,6 +3443,7 @@ export interface Query {
   productSale?: Maybe<ProductSale>;
   productSales: Array<ProductSale>;
   productTransaction?: Maybe<ProductTransaction>;
+  productTransactionCountByProductId?: Maybe<Scalars['String']>;
   productTransactions: Array<ProductTransaction>;
   products: Array<Product>;
   role?: Maybe<Role>;
@@ -3966,6 +3967,10 @@ export interface QueryProductSalesArgs {
 
 export interface QueryProductTransactionArgs {
   where: ProductTransactionWhereUniqueInput;
+}
+
+export interface QueryProductTransactionCountByProductIdArgs {
+  productId: Scalars['String'];
 }
 
 export interface QueryProductTransactionsArgs {
@@ -5103,6 +5108,15 @@ export type GetProductTransactionsByProductIdQuery = {
     product: { __typename?: 'Product'; name: string };
     size: { __typename?: 'Size'; name: string };
   }>;
+};
+
+export type GetProductTransactionsCountByProductIdQueryVariables = Exact<{
+  productId: Scalars['String'];
+}>;
+
+export type GetProductTransactionsCountByProductIdQuery = {
+  __typename?: 'Query';
+  productTransactionCountByProductId?: string | undefined;
 };
 
 export type GetProductTransactionsByProductIdAndDateRangeQueryVariables = Exact<{
@@ -6355,6 +6369,45 @@ export const GetProductTransactionsByProductIdDocument = {
 } as unknown as DocumentNode<
   GetProductTransactionsByProductIdQuery,
   GetProductTransactionsByProductIdQueryVariables
+>;
+export const GetProductTransactionsCountByProductIdDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetProductTransactionsCountByProductId' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'productId' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'productTransactionCountByProductId' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'productId' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'productId' } },
+              },
+            ],
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetProductTransactionsCountByProductIdQuery,
+  GetProductTransactionsCountByProductIdQueryVariables
 >;
 export const GetProductTransactionsByProductIdAndDateRangeDocument = {
   kind: 'Document',

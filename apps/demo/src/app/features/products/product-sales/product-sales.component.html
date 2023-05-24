@@ -51,5 +51,6 @@
 
 <mat-paginator
   aria-label="Select page of products"
+  [length]="productTransactionTotalCount()"
   [pageSize]="10"
   [pageSizeOptions]="[10, 25, 100]"></mat-paginator>

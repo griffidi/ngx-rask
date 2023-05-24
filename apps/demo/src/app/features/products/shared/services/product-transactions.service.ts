@@ -1,5 +1,7 @@
+import { type Pagination } from '#/app/common/*';
 import {
   GetProductTransactionsByProductIdDocument,
+  GetProductTransactionsCountByProductIdDocument,
   type ProductTransaction,
 } from '#/app/types/graphql';
 import { Injectable, inject, signal } from '@angular/core';
@@ -8,7 +10,10 @@ import { Client } from '@ngx-rask/graphql';
 @Injectable()
 export class ProductTransactionsService {
   #client = inject(Client);
-  #productTransactions = signal<ProductTransaction[]>([]);
+  #productTransactions = signal<Pagination<ProductTransaction>>({
+    data: [],
+    totalCount: 0,
+  });
 
   /**
    * Readonly product transactions.
@@ -25,18 +30,41 @@ export class ProductTransactionsService {
    * @param {string} productId Product id to get transactions for.
    */
   loadProductTransactionsByProduct(pageIndex: number, pageSize: number, productId: string) {
-    this.#client
-      .query(GetProductTransactionsByProductIdDocument, {
-        take: pageSize,
-        skip: pageIndex * pageSize,
-        productId,
-      })
-      .then(({ productTransactions }) =>
-        this.#productTransactions.set(productTransactions as ProductTransaction[])
-      )
-      .catch(error => {
-        // TODO: add toast and error handling
-        console.error(error);
+    Promise.all([
+      this.#loadProductTransactionsByProduct(pageIndex, pageSize, productId),
+      this.#getProductTransactionsByProductCount(productId),
+    ]).then(([{ productTransactions: data }, { productTransactionCountByProductId: count }]) => {
+      this.#productTransactions.mutate(item => {
+        item.data = data as ProductTransaction[];
+        item.totalCount = parseInt(count ?? '0');
       });
+    });
+  }
+
+  #loadProductTransactionsByProduct(pageIndex: number, pageSize: number, productId: string) {
+    return this.#client.query(GetProductTransactionsByProductIdDocument, {
+      take: pageSize,
+      skip: pageIndex * pageSize,
+      productId,
+    });
+    // .then(({ productTransactions }) =>
+    //   this.#productTransactions.mutate(
+    //     item => (item.data = productTransactions as ProductTransaction[])
+    //   )
+    // )
+    // .catch(error => {
+    //   // TODO: add toast and error handling
+    //   console.error(error);
+    // });
+  }
+
+  #getProductTransactionsByProductCount(productId: string) {
+    return this.#client.query(GetProductTransactionsCountByProductIdDocument, { productId });
+    // .then(({ productTransactionCountByProductId: count }) =>
+    //   this.#productTransactions.mutate(item => (item.totalCount = parseInt(count ?? '0')))
+    // )
+    // .catch(error => {
+    //   console.error(error);
+    // });
   }
 }

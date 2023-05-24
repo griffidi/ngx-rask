@@ -3004,6 +3004,7 @@ type Query {
   productSale(where: ProductSaleWhereUniqueInput!): ProductSale
   productSales(cursor: ProductSaleWhereUniqueInput, distinct: [ProductSaleScalarFieldEnum!], orderBy: [ProductSaleOrderByWithRelationInput!], skip: Int, take: Int, where: ProductSaleWhereInput): [ProductSale!]!
   productTransaction(where: ProductTransactionWhereUniqueInput!): ProductTransaction
+  productTransactionCountByProductId(productId: String!): String
   productTransactions(cursor: ProductTransactionWhereUniqueInput, distinct: [ProductTransactionScalarFieldEnum!], orderBy: [ProductTransactionOrderByWithRelationInput!], skip: Int, take: Int, where: ProductTransactionWhereInput): [ProductTransaction!]!
   products(cursor: ProductWhereUniqueInput, distinct: [ProductScalarFieldEnum!], orderBy: [ProductOrderByWithRelationInput!], skip: Int, take: Int, where: ProductWhereInput): [Product!]!
   role(where: RoleWhereUniqueInput!): Role

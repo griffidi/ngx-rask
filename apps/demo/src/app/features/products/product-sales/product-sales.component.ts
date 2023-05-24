@@ -47,6 +47,7 @@ export default class ProductSales implements AfterViewInit {
   protected readonly isLoading = signal(false);
   protected readonly selectedProductId = signal<string>('');
   protected readonly products = this.#productsService.products;
+  protected readonly productTransactionTotalCount = signal(0);
 
   @ViewChild(MatPaginator) protected paginator!: MatPaginator;
   @ViewChild(MatSort) protected sort!: MatSort;
@@ -70,7 +71,9 @@ export default class ProductSales implements AfterViewInit {
     // update product transactions data source
     effect(
       () => {
-        this.dataSource.data = this.#productTransactions();
+        const { data, totalCount } = this.#productTransactions();
+        this.dataSource.data = data;
+        this.productTransactionTotalCount.set(totalCount);
         this.isLoading.set(false);
       },
       { allowSignalWrites: true }

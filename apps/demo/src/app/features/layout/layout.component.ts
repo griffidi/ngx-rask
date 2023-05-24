@@ -48,18 +48,20 @@ export default class Layout implements AfterViewInit {
     return `${firstName[0]}${lastName[0]}`;
   });
 
-  @ViewChild(MatDrawer) private readonly _drawer!: MatDrawer;
+  @ViewChild(MatDrawer) private readonly _drawer: MatDrawer | undefined;
 
   ngAfterViewInit() {
-    this._drawer._content.nativeElement.focus();
-    // close drawer when nav-link is clicked
-    const links = this.#document.querySelectorAll('nav .nav-link');
-    fromEvent(links, 'click')
-      .pipe(
-        takeUntilDestroyed(this.#destroyRef),
-        tap(() => this._drawer.close())
-      )
-      .subscribe();
+    if (this._drawer) {
+      this._drawer._content.nativeElement.focus();
+      // close drawer when nav-link is clicked
+      const links = this.#document.querySelectorAll('nav .nav-link');
+      fromEvent(links, 'click')
+        .pipe(
+          takeUntilDestroyed(this.#destroyRef),
+          tap(() => this._drawer?.close())
+        )
+        .subscribe();
+    }
   }
 
   protected logout() {
@@ -67,6 +69,6 @@ export default class Layout implements AfterViewInit {
   }
 
   protected toggleDrawer() {
-    this._drawer.toggle();
+    this._drawer?.toggle();
   }
 }
