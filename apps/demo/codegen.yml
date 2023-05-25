@@ -12,8 +12,8 @@ config:
   # dedupeOperationSuffix: true
   enumsAsConst: true
   overwrite: true
-  declarationKind: 'interface'
-  immutableTypes: false
+  # declarationKind: 'interface'
+  immutableTypes: true
   maybeValue: 'T | undefined'
   # preResolveTypes: true
   useIndexSignature: true

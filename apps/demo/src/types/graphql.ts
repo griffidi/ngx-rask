@@ -5,7 +5,7 @@ export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K]
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
-export interface Scalars {
+export type Scalars = {
   ID: string;
   String: string;
   Boolean: boolean;
@@ -13,299 +13,301 @@ export interface Scalars {
   Float: number;
   /** The javascript `Date` as string. Type represents date and time as the ISO Date string. */
   DateTime: any;
-}
+};
 
-export interface AffectedRowsOutput {
-  __typename?: 'AffectedRowsOutput';
-  count: Scalars['Int'];
-}
+export type AffectedRowsOutput = {
+  readonly __typename?: 'AffectedRowsOutput';
+  readonly count: Scalars['Int'];
+};
 
-export interface AggregateCustomer {
-  __typename?: 'AggregateCustomer';
-  _count?: Maybe<CustomerCountAggregate>;
-  _max?: Maybe<CustomerMaxAggregate>;
-  _min?: Maybe<CustomerMinAggregate>;
-}
+export type AggregateCustomer = {
+  readonly __typename?: 'AggregateCustomer';
+  readonly _count?: Maybe<CustomerCountAggregate>;
+  readonly _max?: Maybe<CustomerMaxAggregate>;
+  readonly _min?: Maybe<CustomerMinAggregate>;
+};
 
-export interface AggregateDepartment {
-  __typename?: 'AggregateDepartment';
-  _count?: Maybe<DepartmentCountAggregate>;
-  _max?: Maybe<DepartmentMaxAggregate>;
-  _min?: Maybe<DepartmentMinAggregate>;
-}
+export type AggregateDepartment = {
+  readonly __typename?: 'AggregateDepartment';
+  readonly _count?: Maybe<DepartmentCountAggregate>;
+  readonly _max?: Maybe<DepartmentMaxAggregate>;
+  readonly _min?: Maybe<DepartmentMinAggregate>;
+};
 
-export interface AggregateEmployee {
-  __typename?: 'AggregateEmployee';
-  _count?: Maybe<EmployeeCountAggregate>;
-  _max?: Maybe<EmployeeMaxAggregate>;
-  _min?: Maybe<EmployeeMinAggregate>;
-}
+export type AggregateEmployee = {
+  readonly __typename?: 'AggregateEmployee';
+  readonly _count?: Maybe<EmployeeCountAggregate>;
+  readonly _max?: Maybe<EmployeeMaxAggregate>;
+  readonly _min?: Maybe<EmployeeMinAggregate>;
+};
 
-export interface AggregateInventory {
-  __typename?: 'AggregateInventory';
-  _avg?: Maybe<InventoryAvgAggregate>;
-  _count?: Maybe<InventoryCountAggregate>;
-  _max?: Maybe<InventoryMaxAggregate>;
-  _min?: Maybe<InventoryMinAggregate>;
-  _sum?: Maybe<InventorySumAggregate>;
-}
+export type AggregateInventory = {
+  readonly __typename?: 'AggregateInventory';
+  readonly _avg?: Maybe<InventoryAvgAggregate>;
+  readonly _count?: Maybe<InventoryCountAggregate>;
+  readonly _max?: Maybe<InventoryMaxAggregate>;
+  readonly _min?: Maybe<InventoryMinAggregate>;
+  readonly _sum?: Maybe<InventorySumAggregate>;
+};
 
-export interface AggregateLocationState {
-  __typename?: 'AggregateLocationState';
-  _count?: Maybe<LocationStateCountAggregate>;
-  _max?: Maybe<LocationStateMaxAggregate>;
-  _min?: Maybe<LocationStateMinAggregate>;
-}
+export type AggregateLocationState = {
+  readonly __typename?: 'AggregateLocationState';
+  readonly _count?: Maybe<LocationStateCountAggregate>;
+  readonly _max?: Maybe<LocationStateMaxAggregate>;
+  readonly _min?: Maybe<LocationStateMinAggregate>;
+};
 
-export interface AggregateProduct {
-  __typename?: 'AggregateProduct';
-  _avg?: Maybe<ProductAvgAggregate>;
-  _count?: Maybe<ProductCountAggregate>;
-  _max?: Maybe<ProductMaxAggregate>;
-  _min?: Maybe<ProductMinAggregate>;
-  _sum?: Maybe<ProductSumAggregate>;
-}
+export type AggregateProduct = {
+  readonly __typename?: 'AggregateProduct';
+  readonly _avg?: Maybe<ProductAvgAggregate>;
+  readonly _count?: Maybe<ProductCountAggregate>;
+  readonly _max?: Maybe<ProductMaxAggregate>;
+  readonly _min?: Maybe<ProductMinAggregate>;
+  readonly _sum?: Maybe<ProductSumAggregate>;
+};
 
-export interface AggregateProductSale {
-  __typename?: 'AggregateProductSale';
-  _avg?: Maybe<ProductSaleAvgAggregate>;
-  _count?: Maybe<ProductSaleCountAggregate>;
-  _max?: Maybe<ProductSaleMaxAggregate>;
-  _min?: Maybe<ProductSaleMinAggregate>;
-  _sum?: Maybe<ProductSaleSumAggregate>;
-}
+export type AggregateProductSale = {
+  readonly __typename?: 'AggregateProductSale';
+  readonly _avg?: Maybe<ProductSaleAvgAggregate>;
+  readonly _count?: Maybe<ProductSaleCountAggregate>;
+  readonly _max?: Maybe<ProductSaleMaxAggregate>;
+  readonly _min?: Maybe<ProductSaleMinAggregate>;
+  readonly _sum?: Maybe<ProductSaleSumAggregate>;
+};
 
-export interface AggregateProductTransaction {
-  __typename?: 'AggregateProductTransaction';
-  _avg?: Maybe<ProductTransactionAvgAggregate>;
-  _count?: Maybe<ProductTransactionCountAggregate>;
-  _max?: Maybe<ProductTransactionMaxAggregate>;
-  _min?: Maybe<ProductTransactionMinAggregate>;
-  _sum?: Maybe<ProductTransactionSumAggregate>;
-}
+export type AggregateProductTransaction = {
+  readonly __typename?: 'AggregateProductTransaction';
+  readonly _avg?: Maybe<ProductTransactionAvgAggregate>;
+  readonly _count?: Maybe<ProductTransactionCountAggregate>;
+  readonly _max?: Maybe<ProductTransactionMaxAggregate>;
+  readonly _min?: Maybe<ProductTransactionMinAggregate>;
+  readonly _sum?: Maybe<ProductTransactionSumAggregate>;
+};
 
-export interface AggregateRole {
-  __typename?: 'AggregateRole';
-  _count?: Maybe<RoleCountAggregate>;
-  _max?: Maybe<RoleMaxAggregate>;
-  _min?: Maybe<RoleMinAggregate>;
-}
+export type AggregateRole = {
+  readonly __typename?: 'AggregateRole';
+  readonly _count?: Maybe<RoleCountAggregate>;
+  readonly _max?: Maybe<RoleMaxAggregate>;
+  readonly _min?: Maybe<RoleMinAggregate>;
+};
 
-export interface AggregateSize {
-  __typename?: 'AggregateSize';
-  _count?: Maybe<SizeCountAggregate>;
-  _max?: Maybe<SizeMaxAggregate>;
-  _min?: Maybe<SizeMinAggregate>;
-}
+export type AggregateSize = {
+  readonly __typename?: 'AggregateSize';
+  readonly _count?: Maybe<SizeCountAggregate>;
+  readonly _max?: Maybe<SizeMaxAggregate>;
+  readonly _min?: Maybe<SizeMinAggregate>;
+};
 
-export interface AggregateUser {
-  __typename?: 'AggregateUser';
-  _count?: Maybe<UserCountAggregate>;
-  _max?: Maybe<UserMaxAggregate>;
-  _min?: Maybe<UserMinAggregate>;
-}
+export type AggregateUser = {
+  readonly __typename?: 'AggregateUser';
+  readonly _count?: Maybe<UserCountAggregate>;
+  readonly _max?: Maybe<UserMaxAggregate>;
+  readonly _min?: Maybe<UserMinAggregate>;
+};
 
-export interface Customer {
-  __typename?: 'Customer';
-  city: Scalars['String'];
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  id: Scalars['String'];
-  lastName: Scalars['String'];
-  locationState?: Maybe<LocationState>;
-  phone: Scalars['String'];
-  stateId: Scalars['String'];
-  streetAddress: Scalars['String'];
-  zipCode: Scalars['String'];
-}
+export type Customer = {
+  readonly __typename?: 'Customer';
+  readonly city: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly id: Scalars['String'];
+  readonly lastName: Scalars['String'];
+  readonly locationState?: Maybe<LocationState>;
+  readonly phone: Scalars['String'];
+  readonly stateId: Scalars['String'];
+  readonly streetAddress: Scalars['String'];
+  readonly zipCode: Scalars['String'];
+};
 
-export interface CustomerCountAggregate {
-  __typename?: 'CustomerCountAggregate';
-  _all: Scalars['Int'];
-  city: Scalars['Int'];
-  dateCreated: Scalars['Int'];
-  dateUpdated: Scalars['Int'];
-  email: Scalars['Int'];
-  firstName: Scalars['Int'];
-  id: Scalars['Int'];
-  lastName: Scalars['Int'];
-  phone: Scalars['Int'];
-  stateId: Scalars['Int'];
-  streetAddress: Scalars['Int'];
-  zipCode: Scalars['Int'];
-}
+export type CustomerCountAggregate = {
+  readonly __typename?: 'CustomerCountAggregate';
+  readonly _all: Scalars['Int'];
+  readonly city: Scalars['Int'];
+  readonly dateCreated: Scalars['Int'];
+  readonly dateUpdated: Scalars['Int'];
+  readonly email: Scalars['Int'];
+  readonly firstName: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly lastName: Scalars['Int'];
+  readonly phone: Scalars['Int'];
+  readonly stateId: Scalars['Int'];
+  readonly streetAddress: Scalars['Int'];
+  readonly zipCode: Scalars['Int'];
+};
 
-export interface CustomerCountOrderByAggregateInput {
-  city?: InputMaybe<SortOrder>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  phone?: InputMaybe<SortOrder>;
-  stateId?: InputMaybe<SortOrder>;
-  streetAddress?: InputMaybe<SortOrder>;
-  zipCode?: InputMaybe<SortOrder>;
-}
+export type CustomerCountOrderByAggregateInput = {
+  readonly city?: InputMaybe<SortOrder>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly phone?: InputMaybe<SortOrder>;
+  readonly stateId?: InputMaybe<SortOrder>;
+  readonly streetAddress?: InputMaybe<SortOrder>;
+  readonly zipCode?: InputMaybe<SortOrder>;
+};
 
-export interface CustomerCreateInput {
-  city: Scalars['String'];
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  id?: InputMaybe<Scalars['String']>;
-  lastName: Scalars['String'];
-  locationState?: InputMaybe<LocationStateCreateNestedOneWithoutCustomersInput>;
-  phone: Scalars['String'];
-  streetAddress: Scalars['String'];
-  zipCode: Scalars['String'];
-}
+export type CustomerCreateInput = {
+  readonly city: Scalars['String'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly lastName: Scalars['String'];
+  readonly locationState?: InputMaybe<LocationStateCreateNestedOneWithoutCustomersInput>;
+  readonly phone: Scalars['String'];
+  readonly streetAddress: Scalars['String'];
+  readonly zipCode: Scalars['String'];
+};
 
-export interface CustomerCreateNestedManyWithoutLocationStateInput {
-  connect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<CustomerCreateOrConnectWithoutLocationStateInput>>;
-  create?: InputMaybe<Array<CustomerCreateWithoutLocationStateInput>>;
-}
+export type CustomerCreateNestedManyWithoutLocationStateInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<CustomerWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<CustomerCreateOrConnectWithoutLocationStateInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<CustomerCreateWithoutLocationStateInput>>;
+};
 
-export interface CustomerCreateOrConnectWithoutLocationStateInput {
-  create: CustomerCreateWithoutLocationStateInput;
-  where: CustomerWhereUniqueInput;
-}
+export type CustomerCreateOrConnectWithoutLocationStateInput = {
+  readonly create: CustomerCreateWithoutLocationStateInput;
+  readonly where: CustomerWhereUniqueInput;
+};
 
-export interface CustomerCreateWithoutLocationStateInput {
-  city: Scalars['String'];
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  id?: InputMaybe<Scalars['String']>;
-  lastName: Scalars['String'];
-  phone: Scalars['String'];
-  streetAddress: Scalars['String'];
-  zipCode: Scalars['String'];
-}
+export type CustomerCreateWithoutLocationStateInput = {
+  readonly city: Scalars['String'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly lastName: Scalars['String'];
+  readonly phone: Scalars['String'];
+  readonly streetAddress: Scalars['String'];
+  readonly zipCode: Scalars['String'];
+};
 
-export interface CustomerGroupBy {
-  __typename?: 'CustomerGroupBy';
-  _count?: Maybe<CustomerCountAggregate>;
-  _max?: Maybe<CustomerMaxAggregate>;
-  _min?: Maybe<CustomerMinAggregate>;
-  city: Scalars['String'];
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  id: Scalars['String'];
-  lastName: Scalars['String'];
-  phone: Scalars['String'];
-  stateId: Scalars['String'];
-  streetAddress: Scalars['String'];
-  zipCode: Scalars['String'];
-}
+export type CustomerGroupBy = {
+  readonly __typename?: 'CustomerGroupBy';
+  readonly _count?: Maybe<CustomerCountAggregate>;
+  readonly _max?: Maybe<CustomerMaxAggregate>;
+  readonly _min?: Maybe<CustomerMinAggregate>;
+  readonly city: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly id: Scalars['String'];
+  readonly lastName: Scalars['String'];
+  readonly phone: Scalars['String'];
+  readonly stateId: Scalars['String'];
+  readonly streetAddress: Scalars['String'];
+  readonly zipCode: Scalars['String'];
+};
 
-export interface CustomerListRelationFilter {
-  every?: InputMaybe<CustomerWhereInput>;
-  none?: InputMaybe<CustomerWhereInput>;
-  some?: InputMaybe<CustomerWhereInput>;
-}
+export type CustomerListRelationFilter = {
+  readonly every?: InputMaybe<CustomerWhereInput>;
+  readonly none?: InputMaybe<CustomerWhereInput>;
+  readonly some?: InputMaybe<CustomerWhereInput>;
+};
 
-export interface CustomerMaxAggregate {
-  __typename?: 'CustomerMaxAggregate';
-  city?: Maybe<Scalars['String']>;
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  email?: Maybe<Scalars['String']>;
-  firstName?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  stateId?: Maybe<Scalars['String']>;
-  streetAddress?: Maybe<Scalars['String']>;
-  zipCode?: Maybe<Scalars['String']>;
-}
+export type CustomerMaxAggregate = {
+  readonly __typename?: 'CustomerMaxAggregate';
+  readonly city?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly email?: Maybe<Scalars['String']>;
+  readonly firstName?: Maybe<Scalars['String']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly lastName?: Maybe<Scalars['String']>;
+  readonly phone?: Maybe<Scalars['String']>;
+  readonly stateId?: Maybe<Scalars['String']>;
+  readonly streetAddress?: Maybe<Scalars['String']>;
+  readonly zipCode?: Maybe<Scalars['String']>;
+};
 
-export interface CustomerMaxOrderByAggregateInput {
-  city?: InputMaybe<SortOrder>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  phone?: InputMaybe<SortOrder>;
-  stateId?: InputMaybe<SortOrder>;
-  streetAddress?: InputMaybe<SortOrder>;
-  zipCode?: InputMaybe<SortOrder>;
-}
+export type CustomerMaxOrderByAggregateInput = {
+  readonly city?: InputMaybe<SortOrder>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly phone?: InputMaybe<SortOrder>;
+  readonly stateId?: InputMaybe<SortOrder>;
+  readonly streetAddress?: InputMaybe<SortOrder>;
+  readonly zipCode?: InputMaybe<SortOrder>;
+};
 
-export interface CustomerMinAggregate {
-  __typename?: 'CustomerMinAggregate';
-  city?: Maybe<Scalars['String']>;
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  email?: Maybe<Scalars['String']>;
-  firstName?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  stateId?: Maybe<Scalars['String']>;
-  streetAddress?: Maybe<Scalars['String']>;
-  zipCode?: Maybe<Scalars['String']>;
-}
+export type CustomerMinAggregate = {
+  readonly __typename?: 'CustomerMinAggregate';
+  readonly city?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly email?: Maybe<Scalars['String']>;
+  readonly firstName?: Maybe<Scalars['String']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly lastName?: Maybe<Scalars['String']>;
+  readonly phone?: Maybe<Scalars['String']>;
+  readonly stateId?: Maybe<Scalars['String']>;
+  readonly streetAddress?: Maybe<Scalars['String']>;
+  readonly zipCode?: Maybe<Scalars['String']>;
+};
 
-export interface CustomerMinOrderByAggregateInput {
-  city?: InputMaybe<SortOrder>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  phone?: InputMaybe<SortOrder>;
-  stateId?: InputMaybe<SortOrder>;
-  streetAddress?: InputMaybe<SortOrder>;
-  zipCode?: InputMaybe<SortOrder>;
-}
+export type CustomerMinOrderByAggregateInput = {
+  readonly city?: InputMaybe<SortOrder>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly phone?: InputMaybe<SortOrder>;
+  readonly stateId?: InputMaybe<SortOrder>;
+  readonly streetAddress?: InputMaybe<SortOrder>;
+  readonly zipCode?: InputMaybe<SortOrder>;
+};
 
-export interface CustomerOrderByRelationAggregateInput {
-  _count?: InputMaybe<SortOrder>;
-}
+export type CustomerOrderByRelationAggregateInput = {
+  readonly _count?: InputMaybe<SortOrder>;
+};
 
-export interface CustomerOrderByWithAggregationInput {
-  _count?: InputMaybe<CustomerCountOrderByAggregateInput>;
-  _max?: InputMaybe<CustomerMaxOrderByAggregateInput>;
-  _min?: InputMaybe<CustomerMinOrderByAggregateInput>;
-  city?: InputMaybe<SortOrder>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  phone?: InputMaybe<SortOrder>;
-  stateId?: InputMaybe<SortOrder>;
-  streetAddress?: InputMaybe<SortOrder>;
-  zipCode?: InputMaybe<SortOrder>;
-}
+export type CustomerOrderByWithAggregationInput = {
+  readonly _count?: InputMaybe<CustomerCountOrderByAggregateInput>;
+  readonly _max?: InputMaybe<CustomerMaxOrderByAggregateInput>;
+  readonly _min?: InputMaybe<CustomerMinOrderByAggregateInput>;
+  readonly city?: InputMaybe<SortOrder>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly phone?: InputMaybe<SortOrder>;
+  readonly stateId?: InputMaybe<SortOrder>;
+  readonly streetAddress?: InputMaybe<SortOrder>;
+  readonly zipCode?: InputMaybe<SortOrder>;
+};
 
-export interface CustomerOrderByWithRelationInput {
-  city?: InputMaybe<SortOrder>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  locationState?: InputMaybe<LocationStateOrderByWithRelationInput>;
-  phone?: InputMaybe<SortOrder>;
-  stateId?: InputMaybe<SortOrder>;
-  streetAddress?: InputMaybe<SortOrder>;
-  zipCode?: InputMaybe<SortOrder>;
-}
+export type CustomerOrderByWithRelationInput = {
+  readonly city?: InputMaybe<SortOrder>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly locationState?: InputMaybe<LocationStateOrderByWithRelationInput>;
+  readonly phone?: InputMaybe<SortOrder>;
+  readonly stateId?: InputMaybe<SortOrder>;
+  readonly streetAddress?: InputMaybe<SortOrder>;
+  readonly zipCode?: InputMaybe<SortOrder>;
+};
 
 export enum CustomerScalarFieldEnum {
   City = 0,
@@ -321,311 +323,319 @@ export enum CustomerScalarFieldEnum {
   ZipCode = 10,
 }
 
-export interface CustomerScalarWhereInput {
-  AND?: InputMaybe<Array<CustomerScalarWhereInput>>;
-  NOT?: InputMaybe<Array<CustomerScalarWhereInput>>;
-  OR?: InputMaybe<Array<CustomerScalarWhereInput>>;
-  city?: InputMaybe<StringFilter>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  email?: InputMaybe<StringFilter>;
-  firstName?: InputMaybe<StringFilter>;
-  id?: InputMaybe<StringFilter>;
-  lastName?: InputMaybe<StringFilter>;
-  phone?: InputMaybe<StringFilter>;
-  stateId?: InputMaybe<StringFilter>;
-  streetAddress?: InputMaybe<StringFilter>;
-  zipCode?: InputMaybe<StringFilter>;
-}
+export type CustomerScalarWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<CustomerScalarWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<CustomerScalarWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<CustomerScalarWhereInput>>;
+  readonly city?: InputMaybe<StringFilter>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly email?: InputMaybe<StringFilter>;
+  readonly firstName?: InputMaybe<StringFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly lastName?: InputMaybe<StringFilter>;
+  readonly phone?: InputMaybe<StringFilter>;
+  readonly stateId?: InputMaybe<StringFilter>;
+  readonly streetAddress?: InputMaybe<StringFilter>;
+  readonly zipCode?: InputMaybe<StringFilter>;
+};
 
-export interface CustomerScalarWhereWithAggregatesInput {
-  AND?: InputMaybe<Array<CustomerScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<CustomerScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<CustomerScalarWhereWithAggregatesInput>>;
-  city?: InputMaybe<StringWithAggregatesFilter>;
-  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
-  email?: InputMaybe<StringWithAggregatesFilter>;
-  firstName?: InputMaybe<StringWithAggregatesFilter>;
-  id?: InputMaybe<StringWithAggregatesFilter>;
-  lastName?: InputMaybe<StringWithAggregatesFilter>;
-  phone?: InputMaybe<StringWithAggregatesFilter>;
-  stateId?: InputMaybe<StringWithAggregatesFilter>;
-  streetAddress?: InputMaybe<StringWithAggregatesFilter>;
-  zipCode?: InputMaybe<StringWithAggregatesFilter>;
-}
+export type CustomerScalarWhereWithAggregatesInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<CustomerScalarWhereWithAggregatesInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<CustomerScalarWhereWithAggregatesInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<CustomerScalarWhereWithAggregatesInput>>;
+  readonly city?: InputMaybe<StringWithAggregatesFilter>;
+  readonly dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  readonly email?: InputMaybe<StringWithAggregatesFilter>;
+  readonly firstName?: InputMaybe<StringWithAggregatesFilter>;
+  readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly lastName?: InputMaybe<StringWithAggregatesFilter>;
+  readonly phone?: InputMaybe<StringWithAggregatesFilter>;
+  readonly stateId?: InputMaybe<StringWithAggregatesFilter>;
+  readonly streetAddress?: InputMaybe<StringWithAggregatesFilter>;
+  readonly zipCode?: InputMaybe<StringWithAggregatesFilter>;
+};
 
-export interface CustomerUpdateInput {
-  city?: InputMaybe<Scalars['String']>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
-  locationState?: InputMaybe<LocationStateUpdateOneWithoutCustomersNestedInput>;
-  phone?: InputMaybe<Scalars['String']>;
-  streetAddress?: InputMaybe<Scalars['String']>;
-  zipCode?: InputMaybe<Scalars['String']>;
-}
+export type CustomerUpdateInput = {
+  readonly city?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly firstName?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly locationState?: InputMaybe<LocationStateUpdateOneWithoutCustomersNestedInput>;
+  readonly phone?: InputMaybe<Scalars['String']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']>;
+  readonly zipCode?: InputMaybe<Scalars['String']>;
+};
 
-export interface CustomerUpdateManyMutationInput {
-  city?: InputMaybe<Scalars['String']>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
-  phone?: InputMaybe<Scalars['String']>;
-  streetAddress?: InputMaybe<Scalars['String']>;
-  zipCode?: InputMaybe<Scalars['String']>;
-}
+export type CustomerUpdateManyMutationInput = {
+  readonly city?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly firstName?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly phone?: InputMaybe<Scalars['String']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']>;
+  readonly zipCode?: InputMaybe<Scalars['String']>;
+};
 
-export interface CustomerUpdateManyWithWhereWithoutLocationStateInput {
-  data: CustomerUpdateManyMutationInput;
-  where: CustomerScalarWhereInput;
-}
+export type CustomerUpdateManyWithWhereWithoutLocationStateInput = {
+  readonly data: CustomerUpdateManyMutationInput;
+  readonly where: CustomerScalarWhereInput;
+};
 
-export interface CustomerUpdateManyWithoutLocationStateNestedInput {
-  connect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<CustomerCreateOrConnectWithoutLocationStateInput>>;
-  create?: InputMaybe<Array<CustomerCreateWithoutLocationStateInput>>;
-  delete?: InputMaybe<Array<CustomerWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<CustomerScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
-  set?: InputMaybe<Array<CustomerWhereUniqueInput>>;
-  update?: InputMaybe<Array<CustomerUpdateWithWhereUniqueWithoutLocationStateInput>>;
-  updateMany?: InputMaybe<Array<CustomerUpdateManyWithWhereWithoutLocationStateInput>>;
-  upsert?: InputMaybe<Array<CustomerUpsertWithWhereUniqueWithoutLocationStateInput>>;
-}
+export type CustomerUpdateManyWithoutLocationStateNestedInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<CustomerWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<CustomerCreateOrConnectWithoutLocationStateInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<CustomerCreateWithoutLocationStateInput>>;
+  readonly delete?: InputMaybe<ReadonlyArray<CustomerWhereUniqueInput>>;
+  readonly deleteMany?: InputMaybe<ReadonlyArray<CustomerScalarWhereInput>>;
+  readonly disconnect?: InputMaybe<ReadonlyArray<CustomerWhereUniqueInput>>;
+  readonly set?: InputMaybe<ReadonlyArray<CustomerWhereUniqueInput>>;
+  readonly update?: InputMaybe<
+    ReadonlyArray<CustomerUpdateWithWhereUniqueWithoutLocationStateInput>
+  >;
+  readonly updateMany?: InputMaybe<
+    ReadonlyArray<CustomerUpdateManyWithWhereWithoutLocationStateInput>
+  >;
+  readonly upsert?: InputMaybe<
+    ReadonlyArray<CustomerUpsertWithWhereUniqueWithoutLocationStateInput>
+  >;
+};
 
-export interface CustomerUpdateWithWhereUniqueWithoutLocationStateInput {
-  data: CustomerUpdateWithoutLocationStateInput;
-  where: CustomerWhereUniqueInput;
-}
+export type CustomerUpdateWithWhereUniqueWithoutLocationStateInput = {
+  readonly data: CustomerUpdateWithoutLocationStateInput;
+  readonly where: CustomerWhereUniqueInput;
+};
 
-export interface CustomerUpdateWithoutLocationStateInput {
-  city?: InputMaybe<Scalars['String']>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
-  phone?: InputMaybe<Scalars['String']>;
-  streetAddress?: InputMaybe<Scalars['String']>;
-  zipCode?: InputMaybe<Scalars['String']>;
-}
+export type CustomerUpdateWithoutLocationStateInput = {
+  readonly city?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly firstName?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly phone?: InputMaybe<Scalars['String']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']>;
+  readonly zipCode?: InputMaybe<Scalars['String']>;
+};
 
-export interface CustomerUpsertWithWhereUniqueWithoutLocationStateInput {
-  create: CustomerCreateWithoutLocationStateInput;
-  update: CustomerUpdateWithoutLocationStateInput;
-  where: CustomerWhereUniqueInput;
-}
+export type CustomerUpsertWithWhereUniqueWithoutLocationStateInput = {
+  readonly create: CustomerCreateWithoutLocationStateInput;
+  readonly update: CustomerUpdateWithoutLocationStateInput;
+  readonly where: CustomerWhereUniqueInput;
+};
 
-export interface CustomerWhereInput {
-  AND?: InputMaybe<Array<CustomerWhereInput>>;
-  NOT?: InputMaybe<Array<CustomerWhereInput>>;
-  OR?: InputMaybe<Array<CustomerWhereInput>>;
-  city?: InputMaybe<StringFilter>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  email?: InputMaybe<StringFilter>;
-  firstName?: InputMaybe<StringFilter>;
-  id?: InputMaybe<StringFilter>;
-  lastName?: InputMaybe<StringFilter>;
-  locationState?: InputMaybe<LocationStateRelationFilter>;
-  phone?: InputMaybe<StringFilter>;
-  stateId?: InputMaybe<StringFilter>;
-  streetAddress?: InputMaybe<StringFilter>;
-  zipCode?: InputMaybe<StringFilter>;
-}
+export type CustomerWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<CustomerWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<CustomerWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<CustomerWhereInput>>;
+  readonly city?: InputMaybe<StringFilter>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly email?: InputMaybe<StringFilter>;
+  readonly firstName?: InputMaybe<StringFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly lastName?: InputMaybe<StringFilter>;
+  readonly locationState?: InputMaybe<LocationStateRelationFilter>;
+  readonly phone?: InputMaybe<StringFilter>;
+  readonly stateId?: InputMaybe<StringFilter>;
+  readonly streetAddress?: InputMaybe<StringFilter>;
+  readonly zipCode?: InputMaybe<StringFilter>;
+};
 
-export interface CustomerWhereUniqueInput {
-  email?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-}
+export type CustomerWhereUniqueInput = {
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+};
 
-export interface DateTimeFilter {
-  equals?: InputMaybe<Scalars['DateTime']>;
-  gt?: InputMaybe<Scalars['DateTime']>;
-  gte?: InputMaybe<Scalars['DateTime']>;
-  in?: InputMaybe<Array<Scalars['DateTime']>>;
-  lt?: InputMaybe<Scalars['DateTime']>;
-  lte?: InputMaybe<Scalars['DateTime']>;
-  not?: InputMaybe<NestedDateTimeFilter>;
-  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
-}
+export type DateTimeFilter = {
+  readonly equals?: InputMaybe<Scalars['DateTime']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly not?: InputMaybe<NestedDateTimeFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+};
 
-export interface DateTimeNullableFilter {
-  equals?: InputMaybe<Scalars['DateTime']>;
-  gt?: InputMaybe<Scalars['DateTime']>;
-  gte?: InputMaybe<Scalars['DateTime']>;
-  in?: InputMaybe<Array<Scalars['DateTime']>>;
-  lt?: InputMaybe<Scalars['DateTime']>;
-  lte?: InputMaybe<Scalars['DateTime']>;
-  not?: InputMaybe<NestedDateTimeNullableFilter>;
-  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
-}
+export type DateTimeNullableFilter = {
+  readonly equals?: InputMaybe<Scalars['DateTime']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly not?: InputMaybe<NestedDateTimeNullableFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+};
 
-export interface DateTimeNullableWithAggregatesFilter {
-  _count?: InputMaybe<NestedIntNullableFilter>;
-  _max?: InputMaybe<NestedDateTimeNullableFilter>;
-  _min?: InputMaybe<NestedDateTimeNullableFilter>;
-  equals?: InputMaybe<Scalars['DateTime']>;
-  gt?: InputMaybe<Scalars['DateTime']>;
-  gte?: InputMaybe<Scalars['DateTime']>;
-  in?: InputMaybe<Array<Scalars['DateTime']>>;
-  lt?: InputMaybe<Scalars['DateTime']>;
-  lte?: InputMaybe<Scalars['DateTime']>;
-  not?: InputMaybe<NestedDateTimeNullableWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
-}
+export type DateTimeNullableWithAggregatesFilter = {
+  readonly _count?: InputMaybe<NestedIntNullableFilter>;
+  readonly _max?: InputMaybe<NestedDateTimeNullableFilter>;
+  readonly _min?: InputMaybe<NestedDateTimeNullableFilter>;
+  readonly equals?: InputMaybe<Scalars['DateTime']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly not?: InputMaybe<NestedDateTimeNullableWithAggregatesFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+};
 
-export interface DateTimeWithAggregatesFilter {
-  _count?: InputMaybe<NestedIntFilter>;
-  _max?: InputMaybe<NestedDateTimeFilter>;
-  _min?: InputMaybe<NestedDateTimeFilter>;
-  equals?: InputMaybe<Scalars['DateTime']>;
-  gt?: InputMaybe<Scalars['DateTime']>;
-  gte?: InputMaybe<Scalars['DateTime']>;
-  in?: InputMaybe<Array<Scalars['DateTime']>>;
-  lt?: InputMaybe<Scalars['DateTime']>;
-  lte?: InputMaybe<Scalars['DateTime']>;
-  not?: InputMaybe<NestedDateTimeWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
-}
+export type DateTimeWithAggregatesFilter = {
+  readonly _count?: InputMaybe<NestedIntFilter>;
+  readonly _max?: InputMaybe<NestedDateTimeFilter>;
+  readonly _min?: InputMaybe<NestedDateTimeFilter>;
+  readonly equals?: InputMaybe<Scalars['DateTime']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly not?: InputMaybe<NestedDateTimeWithAggregatesFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+};
 
-export interface Department {
-  __typename?: 'Department';
-  _count?: Maybe<DepartmentCount>;
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  employees: Array<Employee>;
-  id: Scalars['String'];
-  name: Scalars['String'];
-}
+export type Department = {
+  readonly __typename?: 'Department';
+  readonly _count?: Maybe<DepartmentCount>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly employees: ReadonlyArray<Employee>;
+  readonly id: Scalars['String'];
+  readonly name: Scalars['String'];
+};
 
-export interface DepartmentEmployeesArgs {
+export type DepartmentEmployeesArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
-  distinct?: InputMaybe<Array<EmployeeScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<EmployeeOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<EmployeeScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<EmployeeWhereInput>;
-}
+};
 
-export interface DepartmentCount {
-  __typename?: 'DepartmentCount';
-  employees: Scalars['Int'];
-}
+export type DepartmentCount = {
+  readonly __typename?: 'DepartmentCount';
+  readonly employees: Scalars['Int'];
+};
 
-export interface DepartmentCountAggregate {
-  __typename?: 'DepartmentCountAggregate';
-  _all: Scalars['Int'];
-  dateCreated: Scalars['Int'];
-  dateUpdated: Scalars['Int'];
-  id: Scalars['Int'];
-  name: Scalars['Int'];
-}
+export type DepartmentCountAggregate = {
+  readonly __typename?: 'DepartmentCountAggregate';
+  readonly _all: Scalars['Int'];
+  readonly dateCreated: Scalars['Int'];
+  readonly dateUpdated: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly name: Scalars['Int'];
+};
 
-export interface DepartmentCountOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type DepartmentCountOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface DepartmentCreateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  employees?: InputMaybe<EmployeeCreateNestedManyWithoutDepartmentInput>;
-  id?: InputMaybe<Scalars['String']>;
-  name: Scalars['String'];
-}
+export type DepartmentCreateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly employees?: InputMaybe<EmployeeCreateNestedManyWithoutDepartmentInput>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name: Scalars['String'];
+};
 
-export interface DepartmentCreateNestedOneWithoutEmployeesInput {
-  connect?: InputMaybe<DepartmentWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<DepartmentCreateOrConnectWithoutEmployeesInput>;
-  create?: InputMaybe<DepartmentCreateWithoutEmployeesInput>;
-}
+export type DepartmentCreateNestedOneWithoutEmployeesInput = {
+  readonly connect?: InputMaybe<DepartmentWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<DepartmentCreateOrConnectWithoutEmployeesInput>;
+  readonly create?: InputMaybe<DepartmentCreateWithoutEmployeesInput>;
+};
 
-export interface DepartmentCreateOrConnectWithoutEmployeesInput {
-  create: DepartmentCreateWithoutEmployeesInput;
-  where: DepartmentWhereUniqueInput;
-}
+export type DepartmentCreateOrConnectWithoutEmployeesInput = {
+  readonly create: DepartmentCreateWithoutEmployeesInput;
+  readonly where: DepartmentWhereUniqueInput;
+};
 
-export interface DepartmentCreateWithoutEmployeesInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name: Scalars['String'];
-}
+export type DepartmentCreateWithoutEmployeesInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name: Scalars['String'];
+};
 
-export interface DepartmentGroupBy {
-  __typename?: 'DepartmentGroupBy';
-  _count?: Maybe<DepartmentCountAggregate>;
-  _max?: Maybe<DepartmentMaxAggregate>;
-  _min?: Maybe<DepartmentMinAggregate>;
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id: Scalars['String'];
-  name: Scalars['String'];
-}
+export type DepartmentGroupBy = {
+  readonly __typename?: 'DepartmentGroupBy';
+  readonly _count?: Maybe<DepartmentCountAggregate>;
+  readonly _max?: Maybe<DepartmentMaxAggregate>;
+  readonly _min?: Maybe<DepartmentMinAggregate>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id: Scalars['String'];
+  readonly name: Scalars['String'];
+};
 
-export interface DepartmentMaxAggregate {
-  __typename?: 'DepartmentMaxAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-}
+export type DepartmentMaxAggregate = {
+  readonly __typename?: 'DepartmentMaxAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+};
 
-export interface DepartmentMaxOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type DepartmentMaxOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface DepartmentMinAggregate {
-  __typename?: 'DepartmentMinAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-}
+export type DepartmentMinAggregate = {
+  readonly __typename?: 'DepartmentMinAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+};
 
-export interface DepartmentMinOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type DepartmentMinOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface DepartmentOrderByWithAggregationInput {
-  _count?: InputMaybe<DepartmentCountOrderByAggregateInput>;
-  _max?: InputMaybe<DepartmentMaxOrderByAggregateInput>;
-  _min?: InputMaybe<DepartmentMinOrderByAggregateInput>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type DepartmentOrderByWithAggregationInput = {
+  readonly _count?: InputMaybe<DepartmentCountOrderByAggregateInput>;
+  readonly _max?: InputMaybe<DepartmentMaxOrderByAggregateInput>;
+  readonly _min?: InputMaybe<DepartmentMinOrderByAggregateInput>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface DepartmentOrderByWithRelationInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  employees?: InputMaybe<EmployeeOrderByRelationAggregateInput>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type DepartmentOrderByWithRelationInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly employees?: InputMaybe<EmployeeOrderByRelationAggregateInput>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface DepartmentRelationFilter {
-  is?: InputMaybe<DepartmentWhereInput>;
-  isNot?: InputMaybe<DepartmentWhereInput>;
-}
+export type DepartmentRelationFilter = {
+  readonly is?: InputMaybe<DepartmentWhereInput>;
+  readonly isNot?: InputMaybe<DepartmentWhereInput>;
+};
 
 export enum DepartmentScalarFieldEnum {
   DateCreated = 0,
@@ -634,333 +644,337 @@ export enum DepartmentScalarFieldEnum {
   Name = 3,
 }
 
-export interface DepartmentScalarWhereWithAggregatesInput {
-  AND?: InputMaybe<Array<DepartmentScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<DepartmentScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<DepartmentScalarWhereWithAggregatesInput>>;
-  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
-  id?: InputMaybe<StringWithAggregatesFilter>;
-  name?: InputMaybe<StringWithAggregatesFilter>;
-}
+export type DepartmentScalarWhereWithAggregatesInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<DepartmentScalarWhereWithAggregatesInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<DepartmentScalarWhereWithAggregatesInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<DepartmentScalarWhereWithAggregatesInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly name?: InputMaybe<StringWithAggregatesFilter>;
+};
 
-export interface DepartmentUpdateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  employees?: InputMaybe<EmployeeUpdateManyWithoutDepartmentNestedInput>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-}
+export type DepartmentUpdateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly employees?: InputMaybe<EmployeeUpdateManyWithoutDepartmentNestedInput>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+};
 
-export interface DepartmentUpdateManyMutationInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-}
+export type DepartmentUpdateManyMutationInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+};
 
-export interface DepartmentUpdateOneRequiredWithoutEmployeesNestedInput {
-  connect?: InputMaybe<DepartmentWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<DepartmentCreateOrConnectWithoutEmployeesInput>;
-  create?: InputMaybe<DepartmentCreateWithoutEmployeesInput>;
-  update?: InputMaybe<DepartmentUpdateWithoutEmployeesInput>;
-  upsert?: InputMaybe<DepartmentUpsertWithoutEmployeesInput>;
-}
+export type DepartmentUpdateOneRequiredWithoutEmployeesNestedInput = {
+  readonly connect?: InputMaybe<DepartmentWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<DepartmentCreateOrConnectWithoutEmployeesInput>;
+  readonly create?: InputMaybe<DepartmentCreateWithoutEmployeesInput>;
+  readonly update?: InputMaybe<DepartmentUpdateWithoutEmployeesInput>;
+  readonly upsert?: InputMaybe<DepartmentUpsertWithoutEmployeesInput>;
+};
 
-export interface DepartmentUpdateWithoutEmployeesInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-}
+export type DepartmentUpdateWithoutEmployeesInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+};
 
-export interface DepartmentUpsertWithoutEmployeesInput {
-  create: DepartmentCreateWithoutEmployeesInput;
-  update: DepartmentUpdateWithoutEmployeesInput;
-}
+export type DepartmentUpsertWithoutEmployeesInput = {
+  readonly create: DepartmentCreateWithoutEmployeesInput;
+  readonly update: DepartmentUpdateWithoutEmployeesInput;
+};
 
-export interface DepartmentWhereInput {
-  AND?: InputMaybe<Array<DepartmentWhereInput>>;
-  NOT?: InputMaybe<Array<DepartmentWhereInput>>;
-  OR?: InputMaybe<Array<DepartmentWhereInput>>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  employees?: InputMaybe<EmployeeListRelationFilter>;
-  id?: InputMaybe<StringFilter>;
-  name?: InputMaybe<StringFilter>;
-}
+export type DepartmentWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<DepartmentWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<DepartmentWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<DepartmentWhereInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly employees?: InputMaybe<EmployeeListRelationFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly name?: InputMaybe<StringFilter>;
+};
 
-export interface DepartmentWhereUniqueInput {
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-}
+export type DepartmentWhereUniqueInput = {
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+};
 
-export interface Employee {
-  __typename?: 'Employee';
-  city: Scalars['String'];
-  dateStarted: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  department: Department;
-  departmentId: Scalars['String'];
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  gender: Scalars['String'];
-  id: Scalars['String'];
-  jobTitle: Scalars['String'];
-  lastName: Scalars['String'];
-  locationState: LocationState;
-  phone: Scalars['String'];
-  stateId: Scalars['String'];
-  streetAddress: Scalars['String'];
-  zipCode: Scalars['String'];
-}
+export type Employee = {
+  readonly __typename?: 'Employee';
+  readonly city: Scalars['String'];
+  readonly dateStarted: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly department: Department;
+  readonly departmentId: Scalars['String'];
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly gender: Scalars['String'];
+  readonly id: Scalars['String'];
+  readonly jobTitle: Scalars['String'];
+  readonly lastName: Scalars['String'];
+  readonly locationState: LocationState;
+  readonly phone: Scalars['String'];
+  readonly stateId: Scalars['String'];
+  readonly streetAddress: Scalars['String'];
+  readonly zipCode: Scalars['String'];
+};
 
-export interface EmployeeCountAggregate {
-  __typename?: 'EmployeeCountAggregate';
-  _all: Scalars['Int'];
-  city: Scalars['Int'];
-  dateStarted: Scalars['Int'];
-  dateUpdated: Scalars['Int'];
-  departmentId: Scalars['Int'];
-  email: Scalars['Int'];
-  firstName: Scalars['Int'];
-  gender: Scalars['Int'];
-  id: Scalars['Int'];
-  jobTitle: Scalars['Int'];
-  lastName: Scalars['Int'];
-  phone: Scalars['Int'];
-  stateId: Scalars['Int'];
-  streetAddress: Scalars['Int'];
-  zipCode: Scalars['Int'];
-}
+export type EmployeeCountAggregate = {
+  readonly __typename?: 'EmployeeCountAggregate';
+  readonly _all: Scalars['Int'];
+  readonly city: Scalars['Int'];
+  readonly dateStarted: Scalars['Int'];
+  readonly dateUpdated: Scalars['Int'];
+  readonly departmentId: Scalars['Int'];
+  readonly email: Scalars['Int'];
+  readonly firstName: Scalars['Int'];
+  readonly gender: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly jobTitle: Scalars['Int'];
+  readonly lastName: Scalars['Int'];
+  readonly phone: Scalars['Int'];
+  readonly stateId: Scalars['Int'];
+  readonly streetAddress: Scalars['Int'];
+  readonly zipCode: Scalars['Int'];
+};
 
-export interface EmployeeCountOrderByAggregateInput {
-  city?: InputMaybe<SortOrder>;
-  dateStarted?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  departmentId?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  gender?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  jobTitle?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  phone?: InputMaybe<SortOrder>;
-  stateId?: InputMaybe<SortOrder>;
-  streetAddress?: InputMaybe<SortOrder>;
-  zipCode?: InputMaybe<SortOrder>;
-}
+export type EmployeeCountOrderByAggregateInput = {
+  readonly city?: InputMaybe<SortOrder>;
+  readonly dateStarted?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly departmentId?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly gender?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly jobTitle?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly phone?: InputMaybe<SortOrder>;
+  readonly stateId?: InputMaybe<SortOrder>;
+  readonly streetAddress?: InputMaybe<SortOrder>;
+  readonly zipCode?: InputMaybe<SortOrder>;
+};
 
-export interface EmployeeCreateInput {
-  city: Scalars['String'];
-  dateStarted?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  department: DepartmentCreateNestedOneWithoutEmployeesInput;
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  gender: Scalars['String'];
-  id?: InputMaybe<Scalars['String']>;
-  jobTitle: Scalars['String'];
-  lastName: Scalars['String'];
-  locationState: LocationStateCreateNestedOneWithoutEmployeesInput;
-  phone: Scalars['String'];
-  streetAddress: Scalars['String'];
-  zipCode: Scalars['String'];
-}
+export type EmployeeCreateInput = {
+  readonly city: Scalars['String'];
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly department: DepartmentCreateNestedOneWithoutEmployeesInput;
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly gender: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly jobTitle: Scalars['String'];
+  readonly lastName: Scalars['String'];
+  readonly locationState: LocationStateCreateNestedOneWithoutEmployeesInput;
+  readonly phone: Scalars['String'];
+  readonly streetAddress: Scalars['String'];
+  readonly zipCode: Scalars['String'];
+};
 
-export interface EmployeeCreateNestedManyWithoutDepartmentInput {
-  connect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<EmployeeCreateOrConnectWithoutDepartmentInput>>;
-  create?: InputMaybe<Array<EmployeeCreateWithoutDepartmentInput>>;
-}
+export type EmployeeCreateNestedManyWithoutDepartmentInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<EmployeeWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<EmployeeCreateOrConnectWithoutDepartmentInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<EmployeeCreateWithoutDepartmentInput>>;
+};
 
-export interface EmployeeCreateNestedManyWithoutLocationStateInput {
-  connect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<EmployeeCreateOrConnectWithoutLocationStateInput>>;
-  create?: InputMaybe<Array<EmployeeCreateWithoutLocationStateInput>>;
-}
+export type EmployeeCreateNestedManyWithoutLocationStateInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<EmployeeWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<EmployeeCreateOrConnectWithoutLocationStateInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<EmployeeCreateWithoutLocationStateInput>>;
+};
 
-export interface EmployeeCreateOrConnectWithoutDepartmentInput {
-  create: EmployeeCreateWithoutDepartmentInput;
-  where: EmployeeWhereUniqueInput;
-}
+export type EmployeeCreateOrConnectWithoutDepartmentInput = {
+  readonly create: EmployeeCreateWithoutDepartmentInput;
+  readonly where: EmployeeWhereUniqueInput;
+};
 
-export interface EmployeeCreateOrConnectWithoutLocationStateInput {
-  create: EmployeeCreateWithoutLocationStateInput;
-  where: EmployeeWhereUniqueInput;
-}
+export type EmployeeCreateOrConnectWithoutLocationStateInput = {
+  readonly create: EmployeeCreateWithoutLocationStateInput;
+  readonly where: EmployeeWhereUniqueInput;
+};
 
-export interface EmployeeCreateWithoutDepartmentInput {
-  city: Scalars['String'];
-  dateStarted?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  gender: Scalars['String'];
-  id?: InputMaybe<Scalars['String']>;
-  jobTitle: Scalars['String'];
-  lastName: Scalars['String'];
-  locationState: LocationStateCreateNestedOneWithoutEmployeesInput;
-  phone: Scalars['String'];
-  streetAddress: Scalars['String'];
-  zipCode: Scalars['String'];
-}
+export type EmployeeCreateWithoutDepartmentInput = {
+  readonly city: Scalars['String'];
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly gender: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly jobTitle: Scalars['String'];
+  readonly lastName: Scalars['String'];
+  readonly locationState: LocationStateCreateNestedOneWithoutEmployeesInput;
+  readonly phone: Scalars['String'];
+  readonly streetAddress: Scalars['String'];
+  readonly zipCode: Scalars['String'];
+};
 
-export interface EmployeeCreateWithoutLocationStateInput {
-  city: Scalars['String'];
-  dateStarted?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  department: DepartmentCreateNestedOneWithoutEmployeesInput;
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  gender: Scalars['String'];
-  id?: InputMaybe<Scalars['String']>;
-  jobTitle: Scalars['String'];
-  lastName: Scalars['String'];
-  phone: Scalars['String'];
-  streetAddress: Scalars['String'];
-  zipCode: Scalars['String'];
-}
+export type EmployeeCreateWithoutLocationStateInput = {
+  readonly city: Scalars['String'];
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly department: DepartmentCreateNestedOneWithoutEmployeesInput;
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly gender: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly jobTitle: Scalars['String'];
+  readonly lastName: Scalars['String'];
+  readonly phone: Scalars['String'];
+  readonly streetAddress: Scalars['String'];
+  readonly zipCode: Scalars['String'];
+};
 
-export interface EmployeeGroupBy {
-  __typename?: 'EmployeeGroupBy';
-  _count?: Maybe<EmployeeCountAggregate>;
-  _max?: Maybe<EmployeeMaxAggregate>;
-  _min?: Maybe<EmployeeMinAggregate>;
-  city: Scalars['String'];
-  dateStarted: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  departmentId: Scalars['String'];
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  gender: Scalars['String'];
-  id: Scalars['String'];
-  jobTitle: Scalars['String'];
-  lastName: Scalars['String'];
-  phone: Scalars['String'];
-  stateId: Scalars['String'];
-  streetAddress: Scalars['String'];
-  zipCode: Scalars['String'];
-}
+export type EmployeeGroupBy = {
+  readonly __typename?: 'EmployeeGroupBy';
+  readonly _count?: Maybe<EmployeeCountAggregate>;
+  readonly _max?: Maybe<EmployeeMaxAggregate>;
+  readonly _min?: Maybe<EmployeeMinAggregate>;
+  readonly city: Scalars['String'];
+  readonly dateStarted: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly departmentId: Scalars['String'];
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly gender: Scalars['String'];
+  readonly id: Scalars['String'];
+  readonly jobTitle: Scalars['String'];
+  readonly lastName: Scalars['String'];
+  readonly phone: Scalars['String'];
+  readonly stateId: Scalars['String'];
+  readonly streetAddress: Scalars['String'];
+  readonly zipCode: Scalars['String'];
+};
 
-export interface EmployeeListRelationFilter {
-  every?: InputMaybe<EmployeeWhereInput>;
-  none?: InputMaybe<EmployeeWhereInput>;
-  some?: InputMaybe<EmployeeWhereInput>;
-}
+export type EmployeeListRelationFilter = {
+  readonly every?: InputMaybe<EmployeeWhereInput>;
+  readonly none?: InputMaybe<EmployeeWhereInput>;
+  readonly some?: InputMaybe<EmployeeWhereInput>;
+};
 
-export interface EmployeeMaxAggregate {
-  __typename?: 'EmployeeMaxAggregate';
-  city?: Maybe<Scalars['String']>;
-  dateStarted?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  departmentId?: Maybe<Scalars['String']>;
-  email?: Maybe<Scalars['String']>;
-  firstName?: Maybe<Scalars['String']>;
-  gender?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  jobTitle?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  stateId?: Maybe<Scalars['String']>;
-  streetAddress?: Maybe<Scalars['String']>;
-  zipCode?: Maybe<Scalars['String']>;
-}
+export type EmployeeMaxAggregate = {
+  readonly __typename?: 'EmployeeMaxAggregate';
+  readonly city?: Maybe<Scalars['String']>;
+  readonly dateStarted?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly departmentId?: Maybe<Scalars['String']>;
+  readonly email?: Maybe<Scalars['String']>;
+  readonly firstName?: Maybe<Scalars['String']>;
+  readonly gender?: Maybe<Scalars['String']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly jobTitle?: Maybe<Scalars['String']>;
+  readonly lastName?: Maybe<Scalars['String']>;
+  readonly phone?: Maybe<Scalars['String']>;
+  readonly stateId?: Maybe<Scalars['String']>;
+  readonly streetAddress?: Maybe<Scalars['String']>;
+  readonly zipCode?: Maybe<Scalars['String']>;
+};
 
-export interface EmployeeMaxOrderByAggregateInput {
-  city?: InputMaybe<SortOrder>;
-  dateStarted?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  departmentId?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  gender?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  jobTitle?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  phone?: InputMaybe<SortOrder>;
-  stateId?: InputMaybe<SortOrder>;
-  streetAddress?: InputMaybe<SortOrder>;
-  zipCode?: InputMaybe<SortOrder>;
-}
+export type EmployeeMaxOrderByAggregateInput = {
+  readonly city?: InputMaybe<SortOrder>;
+  readonly dateStarted?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly departmentId?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly gender?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly jobTitle?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly phone?: InputMaybe<SortOrder>;
+  readonly stateId?: InputMaybe<SortOrder>;
+  readonly streetAddress?: InputMaybe<SortOrder>;
+  readonly zipCode?: InputMaybe<SortOrder>;
+};
 
-export interface EmployeeMinAggregate {
-  __typename?: 'EmployeeMinAggregate';
-  city?: Maybe<Scalars['String']>;
-  dateStarted?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  departmentId?: Maybe<Scalars['String']>;
-  email?: Maybe<Scalars['String']>;
-  firstName?: Maybe<Scalars['String']>;
-  gender?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  jobTitle?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  stateId?: Maybe<Scalars['String']>;
-  streetAddress?: Maybe<Scalars['String']>;
-  zipCode?: Maybe<Scalars['String']>;
-}
+export type EmployeeMinAggregate = {
+  readonly __typename?: 'EmployeeMinAggregate';
+  readonly city?: Maybe<Scalars['String']>;
+  readonly dateStarted?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly departmentId?: Maybe<Scalars['String']>;
+  readonly email?: Maybe<Scalars['String']>;
+  readonly firstName?: Maybe<Scalars['String']>;
+  readonly gender?: Maybe<Scalars['String']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly jobTitle?: Maybe<Scalars['String']>;
+  readonly lastName?: Maybe<Scalars['String']>;
+  readonly phone?: Maybe<Scalars['String']>;
+  readonly stateId?: Maybe<Scalars['String']>;
+  readonly streetAddress?: Maybe<Scalars['String']>;
+  readonly zipCode?: Maybe<Scalars['String']>;
+};
 
-export interface EmployeeMinOrderByAggregateInput {
-  city?: InputMaybe<SortOrder>;
-  dateStarted?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  departmentId?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  gender?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  jobTitle?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  phone?: InputMaybe<SortOrder>;
-  stateId?: InputMaybe<SortOrder>;
-  streetAddress?: InputMaybe<SortOrder>;
-  zipCode?: InputMaybe<SortOrder>;
-}
+export type EmployeeMinOrderByAggregateInput = {
+  readonly city?: InputMaybe<SortOrder>;
+  readonly dateStarted?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly departmentId?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly gender?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly jobTitle?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly phone?: InputMaybe<SortOrder>;
+  readonly stateId?: InputMaybe<SortOrder>;
+  readonly streetAddress?: InputMaybe<SortOrder>;
+  readonly zipCode?: InputMaybe<SortOrder>;
+};
 
-export interface EmployeeOrderByRelationAggregateInput {
-  _count?: InputMaybe<SortOrder>;
-}
+export type EmployeeOrderByRelationAggregateInput = {
+  readonly _count?: InputMaybe<SortOrder>;
+};
 
-export interface EmployeeOrderByWithAggregationInput {
-  _count?: InputMaybe<EmployeeCountOrderByAggregateInput>;
-  _max?: InputMaybe<EmployeeMaxOrderByAggregateInput>;
-  _min?: InputMaybe<EmployeeMinOrderByAggregateInput>;
-  city?: InputMaybe<SortOrder>;
-  dateStarted?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  departmentId?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  gender?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  jobTitle?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  phone?: InputMaybe<SortOrder>;
-  stateId?: InputMaybe<SortOrder>;
-  streetAddress?: InputMaybe<SortOrder>;
-  zipCode?: InputMaybe<SortOrder>;
-}
+export type EmployeeOrderByWithAggregationInput = {
+  readonly _count?: InputMaybe<EmployeeCountOrderByAggregateInput>;
+  readonly _max?: InputMaybe<EmployeeMaxOrderByAggregateInput>;
+  readonly _min?: InputMaybe<EmployeeMinOrderByAggregateInput>;
+  readonly city?: InputMaybe<SortOrder>;
+  readonly dateStarted?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly departmentId?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly gender?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly jobTitle?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly phone?: InputMaybe<SortOrder>;
+  readonly stateId?: InputMaybe<SortOrder>;
+  readonly streetAddress?: InputMaybe<SortOrder>;
+  readonly zipCode?: InputMaybe<SortOrder>;
+};
 
-export interface EmployeeOrderByWithRelationInput {
-  city?: InputMaybe<SortOrder>;
-  dateStarted?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  department?: InputMaybe<DepartmentOrderByWithRelationInput>;
-  departmentId?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  gender?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  jobTitle?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  locationState?: InputMaybe<LocationStateOrderByWithRelationInput>;
-  phone?: InputMaybe<SortOrder>;
-  stateId?: InputMaybe<SortOrder>;
-  streetAddress?: InputMaybe<SortOrder>;
-  zipCode?: InputMaybe<SortOrder>;
-}
+export type EmployeeOrderByWithRelationInput = {
+  readonly city?: InputMaybe<SortOrder>;
+  readonly dateStarted?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly department?: InputMaybe<DepartmentOrderByWithRelationInput>;
+  readonly departmentId?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly gender?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly jobTitle?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly locationState?: InputMaybe<LocationStateOrderByWithRelationInput>;
+  readonly phone?: InputMaybe<SortOrder>;
+  readonly stateId?: InputMaybe<SortOrder>;
+  readonly streetAddress?: InputMaybe<SortOrder>;
+  readonly zipCode?: InputMaybe<SortOrder>;
+};
 
 export enum EmployeeScalarFieldEnum {
   City = 0,
@@ -979,424 +993,436 @@ export enum EmployeeScalarFieldEnum {
   ZipCode = 13,
 }
 
-export interface EmployeeScalarWhereInput {
-  AND?: InputMaybe<Array<EmployeeScalarWhereInput>>;
-  NOT?: InputMaybe<Array<EmployeeScalarWhereInput>>;
-  OR?: InputMaybe<Array<EmployeeScalarWhereInput>>;
-  city?: InputMaybe<StringFilter>;
-  dateStarted?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  departmentId?: InputMaybe<StringFilter>;
-  email?: InputMaybe<StringFilter>;
-  firstName?: InputMaybe<StringFilter>;
-  gender?: InputMaybe<StringFilter>;
-  id?: InputMaybe<StringFilter>;
-  jobTitle?: InputMaybe<StringFilter>;
-  lastName?: InputMaybe<StringFilter>;
-  phone?: InputMaybe<StringFilter>;
-  stateId?: InputMaybe<StringFilter>;
-  streetAddress?: InputMaybe<StringFilter>;
-  zipCode?: InputMaybe<StringFilter>;
-}
+export type EmployeeScalarWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<EmployeeScalarWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<EmployeeScalarWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<EmployeeScalarWhereInput>>;
+  readonly city?: InputMaybe<StringFilter>;
+  readonly dateStarted?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly departmentId?: InputMaybe<StringFilter>;
+  readonly email?: InputMaybe<StringFilter>;
+  readonly firstName?: InputMaybe<StringFilter>;
+  readonly gender?: InputMaybe<StringFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly jobTitle?: InputMaybe<StringFilter>;
+  readonly lastName?: InputMaybe<StringFilter>;
+  readonly phone?: InputMaybe<StringFilter>;
+  readonly stateId?: InputMaybe<StringFilter>;
+  readonly streetAddress?: InputMaybe<StringFilter>;
+  readonly zipCode?: InputMaybe<StringFilter>;
+};
 
-export interface EmployeeScalarWhereWithAggregatesInput {
-  AND?: InputMaybe<Array<EmployeeScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<EmployeeScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<EmployeeScalarWhereWithAggregatesInput>>;
-  city?: InputMaybe<StringWithAggregatesFilter>;
-  dateStarted?: InputMaybe<DateTimeWithAggregatesFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
-  departmentId?: InputMaybe<StringWithAggregatesFilter>;
-  email?: InputMaybe<StringWithAggregatesFilter>;
-  firstName?: InputMaybe<StringWithAggregatesFilter>;
-  gender?: InputMaybe<StringWithAggregatesFilter>;
-  id?: InputMaybe<StringWithAggregatesFilter>;
-  jobTitle?: InputMaybe<StringWithAggregatesFilter>;
-  lastName?: InputMaybe<StringWithAggregatesFilter>;
-  phone?: InputMaybe<StringWithAggregatesFilter>;
-  stateId?: InputMaybe<StringWithAggregatesFilter>;
-  streetAddress?: InputMaybe<StringWithAggregatesFilter>;
-  zipCode?: InputMaybe<StringWithAggregatesFilter>;
-}
+export type EmployeeScalarWhereWithAggregatesInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<EmployeeScalarWhereWithAggregatesInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<EmployeeScalarWhereWithAggregatesInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<EmployeeScalarWhereWithAggregatesInput>>;
+  readonly city?: InputMaybe<StringWithAggregatesFilter>;
+  readonly dateStarted?: InputMaybe<DateTimeWithAggregatesFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  readonly departmentId?: InputMaybe<StringWithAggregatesFilter>;
+  readonly email?: InputMaybe<StringWithAggregatesFilter>;
+  readonly firstName?: InputMaybe<StringWithAggregatesFilter>;
+  readonly gender?: InputMaybe<StringWithAggregatesFilter>;
+  readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly jobTitle?: InputMaybe<StringWithAggregatesFilter>;
+  readonly lastName?: InputMaybe<StringWithAggregatesFilter>;
+  readonly phone?: InputMaybe<StringWithAggregatesFilter>;
+  readonly stateId?: InputMaybe<StringWithAggregatesFilter>;
+  readonly streetAddress?: InputMaybe<StringWithAggregatesFilter>;
+  readonly zipCode?: InputMaybe<StringWithAggregatesFilter>;
+};
 
-export interface EmployeeUpdateInput {
-  city?: InputMaybe<Scalars['String']>;
-  dateStarted?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  department?: InputMaybe<DepartmentUpdateOneRequiredWithoutEmployeesNestedInput>;
-  email?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  gender?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  jobTitle?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
-  locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeesNestedInput>;
-  phone?: InputMaybe<Scalars['String']>;
-  streetAddress?: InputMaybe<Scalars['String']>;
-  zipCode?: InputMaybe<Scalars['String']>;
-}
+export type EmployeeUpdateInput = {
+  readonly city?: InputMaybe<Scalars['String']>;
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly department?: InputMaybe<DepartmentUpdateOneRequiredWithoutEmployeesNestedInput>;
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly firstName?: InputMaybe<Scalars['String']>;
+  readonly gender?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly jobTitle?: InputMaybe<Scalars['String']>;
+  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeesNestedInput>;
+  readonly phone?: InputMaybe<Scalars['String']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']>;
+  readonly zipCode?: InputMaybe<Scalars['String']>;
+};
 
-export interface EmployeeUpdateManyMutationInput {
-  city?: InputMaybe<Scalars['String']>;
-  dateStarted?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  gender?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  jobTitle?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
-  phone?: InputMaybe<Scalars['String']>;
-  streetAddress?: InputMaybe<Scalars['String']>;
-  zipCode?: InputMaybe<Scalars['String']>;
-}
+export type EmployeeUpdateManyMutationInput = {
+  readonly city?: InputMaybe<Scalars['String']>;
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly firstName?: InputMaybe<Scalars['String']>;
+  readonly gender?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly jobTitle?: InputMaybe<Scalars['String']>;
+  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly phone?: InputMaybe<Scalars['String']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']>;
+  readonly zipCode?: InputMaybe<Scalars['String']>;
+};
 
-export interface EmployeeUpdateManyWithWhereWithoutDepartmentInput {
-  data: EmployeeUpdateManyMutationInput;
-  where: EmployeeScalarWhereInput;
-}
+export type EmployeeUpdateManyWithWhereWithoutDepartmentInput = {
+  readonly data: EmployeeUpdateManyMutationInput;
+  readonly where: EmployeeScalarWhereInput;
+};
 
-export interface EmployeeUpdateManyWithWhereWithoutLocationStateInput {
-  data: EmployeeUpdateManyMutationInput;
-  where: EmployeeScalarWhereInput;
-}
+export type EmployeeUpdateManyWithWhereWithoutLocationStateInput = {
+  readonly data: EmployeeUpdateManyMutationInput;
+  readonly where: EmployeeScalarWhereInput;
+};
 
-export interface EmployeeUpdateManyWithoutDepartmentNestedInput {
-  connect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<EmployeeCreateOrConnectWithoutDepartmentInput>>;
-  create?: InputMaybe<Array<EmployeeCreateWithoutDepartmentInput>>;
-  delete?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<EmployeeScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
-  set?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
-  update?: InputMaybe<Array<EmployeeUpdateWithWhereUniqueWithoutDepartmentInput>>;
-  updateMany?: InputMaybe<Array<EmployeeUpdateManyWithWhereWithoutDepartmentInput>>;
-  upsert?: InputMaybe<Array<EmployeeUpsertWithWhereUniqueWithoutDepartmentInput>>;
-}
+export type EmployeeUpdateManyWithoutDepartmentNestedInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<EmployeeWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<EmployeeCreateOrConnectWithoutDepartmentInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<EmployeeCreateWithoutDepartmentInput>>;
+  readonly delete?: InputMaybe<ReadonlyArray<EmployeeWhereUniqueInput>>;
+  readonly deleteMany?: InputMaybe<ReadonlyArray<EmployeeScalarWhereInput>>;
+  readonly disconnect?: InputMaybe<ReadonlyArray<EmployeeWhereUniqueInput>>;
+  readonly set?: InputMaybe<ReadonlyArray<EmployeeWhereUniqueInput>>;
+  readonly update?: InputMaybe<ReadonlyArray<EmployeeUpdateWithWhereUniqueWithoutDepartmentInput>>;
+  readonly updateMany?: InputMaybe<
+    ReadonlyArray<EmployeeUpdateManyWithWhereWithoutDepartmentInput>
+  >;
+  readonly upsert?: InputMaybe<ReadonlyArray<EmployeeUpsertWithWhereUniqueWithoutDepartmentInput>>;
+};
 
-export interface EmployeeUpdateManyWithoutLocationStateNestedInput {
-  connect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<EmployeeCreateOrConnectWithoutLocationStateInput>>;
-  create?: InputMaybe<Array<EmployeeCreateWithoutLocationStateInput>>;
-  delete?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<EmployeeScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
-  set?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
-  update?: InputMaybe<Array<EmployeeUpdateWithWhereUniqueWithoutLocationStateInput>>;
-  updateMany?: InputMaybe<Array<EmployeeUpdateManyWithWhereWithoutLocationStateInput>>;
-  upsert?: InputMaybe<Array<EmployeeUpsertWithWhereUniqueWithoutLocationStateInput>>;
-}
+export type EmployeeUpdateManyWithoutLocationStateNestedInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<EmployeeWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<EmployeeCreateOrConnectWithoutLocationStateInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<EmployeeCreateWithoutLocationStateInput>>;
+  readonly delete?: InputMaybe<ReadonlyArray<EmployeeWhereUniqueInput>>;
+  readonly deleteMany?: InputMaybe<ReadonlyArray<EmployeeScalarWhereInput>>;
+  readonly disconnect?: InputMaybe<ReadonlyArray<EmployeeWhereUniqueInput>>;
+  readonly set?: InputMaybe<ReadonlyArray<EmployeeWhereUniqueInput>>;
+  readonly update?: InputMaybe<
+    ReadonlyArray<EmployeeUpdateWithWhereUniqueWithoutLocationStateInput>
+  >;
+  readonly updateMany?: InputMaybe<
+    ReadonlyArray<EmployeeUpdateManyWithWhereWithoutLocationStateInput>
+  >;
+  readonly upsert?: InputMaybe<
+    ReadonlyArray<EmployeeUpsertWithWhereUniqueWithoutLocationStateInput>
+  >;
+};
 
-export interface EmployeeUpdateWithWhereUniqueWithoutDepartmentInput {
-  data: EmployeeUpdateWithoutDepartmentInput;
-  where: EmployeeWhereUniqueInput;
-}
+export type EmployeeUpdateWithWhereUniqueWithoutDepartmentInput = {
+  readonly data: EmployeeUpdateWithoutDepartmentInput;
+  readonly where: EmployeeWhereUniqueInput;
+};
 
-export interface EmployeeUpdateWithWhereUniqueWithoutLocationStateInput {
-  data: EmployeeUpdateWithoutLocationStateInput;
-  where: EmployeeWhereUniqueInput;
-}
+export type EmployeeUpdateWithWhereUniqueWithoutLocationStateInput = {
+  readonly data: EmployeeUpdateWithoutLocationStateInput;
+  readonly where: EmployeeWhereUniqueInput;
+};
 
-export interface EmployeeUpdateWithoutDepartmentInput {
-  city?: InputMaybe<Scalars['String']>;
-  dateStarted?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  gender?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  jobTitle?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
-  locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeesNestedInput>;
-  phone?: InputMaybe<Scalars['String']>;
-  streetAddress?: InputMaybe<Scalars['String']>;
-  zipCode?: InputMaybe<Scalars['String']>;
-}
+export type EmployeeUpdateWithoutDepartmentInput = {
+  readonly city?: InputMaybe<Scalars['String']>;
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly firstName?: InputMaybe<Scalars['String']>;
+  readonly gender?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly jobTitle?: InputMaybe<Scalars['String']>;
+  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeesNestedInput>;
+  readonly phone?: InputMaybe<Scalars['String']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']>;
+  readonly zipCode?: InputMaybe<Scalars['String']>;
+};
 
-export interface EmployeeUpdateWithoutLocationStateInput {
-  city?: InputMaybe<Scalars['String']>;
-  dateStarted?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  department?: InputMaybe<DepartmentUpdateOneRequiredWithoutEmployeesNestedInput>;
-  email?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  gender?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  jobTitle?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
-  phone?: InputMaybe<Scalars['String']>;
-  streetAddress?: InputMaybe<Scalars['String']>;
-  zipCode?: InputMaybe<Scalars['String']>;
-}
+export type EmployeeUpdateWithoutLocationStateInput = {
+  readonly city?: InputMaybe<Scalars['String']>;
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly department?: InputMaybe<DepartmentUpdateOneRequiredWithoutEmployeesNestedInput>;
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly firstName?: InputMaybe<Scalars['String']>;
+  readonly gender?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly jobTitle?: InputMaybe<Scalars['String']>;
+  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly phone?: InputMaybe<Scalars['String']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']>;
+  readonly zipCode?: InputMaybe<Scalars['String']>;
+};
 
-export interface EmployeeUpsertWithWhereUniqueWithoutDepartmentInput {
-  create: EmployeeCreateWithoutDepartmentInput;
-  update: EmployeeUpdateWithoutDepartmentInput;
-  where: EmployeeWhereUniqueInput;
-}
+export type EmployeeUpsertWithWhereUniqueWithoutDepartmentInput = {
+  readonly create: EmployeeCreateWithoutDepartmentInput;
+  readonly update: EmployeeUpdateWithoutDepartmentInput;
+  readonly where: EmployeeWhereUniqueInput;
+};
 
-export interface EmployeeUpsertWithWhereUniqueWithoutLocationStateInput {
-  create: EmployeeCreateWithoutLocationStateInput;
-  update: EmployeeUpdateWithoutLocationStateInput;
-  where: EmployeeWhereUniqueInput;
-}
+export type EmployeeUpsertWithWhereUniqueWithoutLocationStateInput = {
+  readonly create: EmployeeCreateWithoutLocationStateInput;
+  readonly update: EmployeeUpdateWithoutLocationStateInput;
+  readonly where: EmployeeWhereUniqueInput;
+};
 
-export interface EmployeeWhereInput {
-  AND?: InputMaybe<Array<EmployeeWhereInput>>;
-  NOT?: InputMaybe<Array<EmployeeWhereInput>>;
-  OR?: InputMaybe<Array<EmployeeWhereInput>>;
-  city?: InputMaybe<StringFilter>;
-  dateStarted?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  department?: InputMaybe<DepartmentRelationFilter>;
-  departmentId?: InputMaybe<StringFilter>;
-  email?: InputMaybe<StringFilter>;
-  firstName?: InputMaybe<StringFilter>;
-  gender?: InputMaybe<StringFilter>;
-  id?: InputMaybe<StringFilter>;
-  jobTitle?: InputMaybe<StringFilter>;
-  lastName?: InputMaybe<StringFilter>;
-  locationState?: InputMaybe<LocationStateRelationFilter>;
-  phone?: InputMaybe<StringFilter>;
-  stateId?: InputMaybe<StringFilter>;
-  streetAddress?: InputMaybe<StringFilter>;
-  zipCode?: InputMaybe<StringFilter>;
-}
+export type EmployeeWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<EmployeeWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<EmployeeWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<EmployeeWhereInput>>;
+  readonly city?: InputMaybe<StringFilter>;
+  readonly dateStarted?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly department?: InputMaybe<DepartmentRelationFilter>;
+  readonly departmentId?: InputMaybe<StringFilter>;
+  readonly email?: InputMaybe<StringFilter>;
+  readonly firstName?: InputMaybe<StringFilter>;
+  readonly gender?: InputMaybe<StringFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly jobTitle?: InputMaybe<StringFilter>;
+  readonly lastName?: InputMaybe<StringFilter>;
+  readonly locationState?: InputMaybe<LocationStateRelationFilter>;
+  readonly phone?: InputMaybe<StringFilter>;
+  readonly stateId?: InputMaybe<StringFilter>;
+  readonly streetAddress?: InputMaybe<StringFilter>;
+  readonly zipCode?: InputMaybe<StringFilter>;
+};
 
-export interface EmployeeWhereUniqueInput {
-  email?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-}
+export type EmployeeWhereUniqueInput = {
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+};
 
-export interface FloatFilter {
-  equals?: InputMaybe<Scalars['Float']>;
-  gt?: InputMaybe<Scalars['Float']>;
-  gte?: InputMaybe<Scalars['Float']>;
-  in?: InputMaybe<Array<Scalars['Float']>>;
-  lt?: InputMaybe<Scalars['Float']>;
-  lte?: InputMaybe<Scalars['Float']>;
-  not?: InputMaybe<NestedFloatFilter>;
-  notIn?: InputMaybe<Array<Scalars['Float']>>;
-}
+export type FloatFilter = {
+  readonly equals?: InputMaybe<Scalars['Float']>;
+  readonly gt?: InputMaybe<Scalars['Float']>;
+  readonly gte?: InputMaybe<Scalars['Float']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+  readonly lt?: InputMaybe<Scalars['Float']>;
+  readonly lte?: InputMaybe<Scalars['Float']>;
+  readonly not?: InputMaybe<NestedFloatFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+};
 
-export interface FloatWithAggregatesFilter {
-  _avg?: InputMaybe<NestedFloatFilter>;
-  _count?: InputMaybe<NestedIntFilter>;
-  _max?: InputMaybe<NestedFloatFilter>;
-  _min?: InputMaybe<NestedFloatFilter>;
-  _sum?: InputMaybe<NestedFloatFilter>;
-  equals?: InputMaybe<Scalars['Float']>;
-  gt?: InputMaybe<Scalars['Float']>;
-  gte?: InputMaybe<Scalars['Float']>;
-  in?: InputMaybe<Array<Scalars['Float']>>;
-  lt?: InputMaybe<Scalars['Float']>;
-  lte?: InputMaybe<Scalars['Float']>;
-  not?: InputMaybe<NestedFloatWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['Float']>>;
-}
+export type FloatWithAggregatesFilter = {
+  readonly _avg?: InputMaybe<NestedFloatFilter>;
+  readonly _count?: InputMaybe<NestedIntFilter>;
+  readonly _max?: InputMaybe<NestedFloatFilter>;
+  readonly _min?: InputMaybe<NestedFloatFilter>;
+  readonly _sum?: InputMaybe<NestedFloatFilter>;
+  readonly equals?: InputMaybe<Scalars['Float']>;
+  readonly gt?: InputMaybe<Scalars['Float']>;
+  readonly gte?: InputMaybe<Scalars['Float']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+  readonly lt?: InputMaybe<Scalars['Float']>;
+  readonly lte?: InputMaybe<Scalars['Float']>;
+  readonly not?: InputMaybe<NestedFloatWithAggregatesFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+};
 
-export interface IntFilter {
-  equals?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  gte?: InputMaybe<Scalars['Int']>;
-  in?: InputMaybe<Array<Scalars['Int']>>;
-  lt?: InputMaybe<Scalars['Int']>;
-  lte?: InputMaybe<Scalars['Int']>;
-  not?: InputMaybe<NestedIntFilter>;
-  notIn?: InputMaybe<Array<Scalars['Int']>>;
-}
+export type IntFilter = {
+  readonly equals?: InputMaybe<Scalars['Int']>;
+  readonly gt?: InputMaybe<Scalars['Int']>;
+  readonly gte?: InputMaybe<Scalars['Int']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+  readonly lt?: InputMaybe<Scalars['Int']>;
+  readonly lte?: InputMaybe<Scalars['Int']>;
+  readonly not?: InputMaybe<NestedIntFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+};
 
-export interface IntWithAggregatesFilter {
-  _avg?: InputMaybe<NestedFloatFilter>;
-  _count?: InputMaybe<NestedIntFilter>;
-  _max?: InputMaybe<NestedIntFilter>;
-  _min?: InputMaybe<NestedIntFilter>;
-  _sum?: InputMaybe<NestedIntFilter>;
-  equals?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  gte?: InputMaybe<Scalars['Int']>;
-  in?: InputMaybe<Array<Scalars['Int']>>;
-  lt?: InputMaybe<Scalars['Int']>;
-  lte?: InputMaybe<Scalars['Int']>;
-  not?: InputMaybe<NestedIntWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['Int']>>;
-}
+export type IntWithAggregatesFilter = {
+  readonly _avg?: InputMaybe<NestedFloatFilter>;
+  readonly _count?: InputMaybe<NestedIntFilter>;
+  readonly _max?: InputMaybe<NestedIntFilter>;
+  readonly _min?: InputMaybe<NestedIntFilter>;
+  readonly _sum?: InputMaybe<NestedIntFilter>;
+  readonly equals?: InputMaybe<Scalars['Int']>;
+  readonly gt?: InputMaybe<Scalars['Int']>;
+  readonly gte?: InputMaybe<Scalars['Int']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+  readonly lt?: InputMaybe<Scalars['Int']>;
+  readonly lte?: InputMaybe<Scalars['Int']>;
+  readonly not?: InputMaybe<NestedIntWithAggregatesFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+};
 
-export interface Inventory {
-  __typename?: 'Inventory';
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id: Scalars['String'];
-  product: Product;
-  productId: Scalars['String'];
-  quantity: Scalars['Int'];
-  size: Size;
-  sizeId: Scalars['String'];
-}
+export type Inventory = {
+  readonly __typename?: 'Inventory';
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id: Scalars['String'];
+  readonly product: Product;
+  readonly productId: Scalars['String'];
+  readonly quantity: Scalars['Int'];
+  readonly size: Size;
+  readonly sizeId: Scalars['String'];
+};
 
-export interface InventoryAvgAggregate {
-  __typename?: 'InventoryAvgAggregate';
-  quantity?: Maybe<Scalars['Float']>;
-}
+export type InventoryAvgAggregate = {
+  readonly __typename?: 'InventoryAvgAggregate';
+  readonly quantity?: Maybe<Scalars['Float']>;
+};
 
-export interface InventoryAvgOrderByAggregateInput {
-  quantity?: InputMaybe<SortOrder>;
-}
+export type InventoryAvgOrderByAggregateInput = {
+  readonly quantity?: InputMaybe<SortOrder>;
+};
 
-export interface InventoryCountAggregate {
-  __typename?: 'InventoryCountAggregate';
-  _all: Scalars['Int'];
-  dateCreated: Scalars['Int'];
-  dateUpdated: Scalars['Int'];
-  id: Scalars['Int'];
-  productId: Scalars['Int'];
-  quantity: Scalars['Int'];
-  sizeId: Scalars['Int'];
-}
+export type InventoryCountAggregate = {
+  readonly __typename?: 'InventoryCountAggregate';
+  readonly _all: Scalars['Int'];
+  readonly dateCreated: Scalars['Int'];
+  readonly dateUpdated: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly productId: Scalars['Int'];
+  readonly quantity: Scalars['Int'];
+  readonly sizeId: Scalars['Int'];
+};
 
-export interface InventoryCountOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type InventoryCountOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface InventoryCreateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  product: ProductCreateNestedOneWithoutInventoryInput;
-  quantity: Scalars['Int'];
-  size: SizeCreateNestedOneWithoutInventoryInput;
-}
+export type InventoryCreateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly product: ProductCreateNestedOneWithoutInventoryInput;
+  readonly quantity: Scalars['Int'];
+  readonly size: SizeCreateNestedOneWithoutInventoryInput;
+};
 
-export interface InventoryCreateNestedManyWithoutProductInput {
-  connect?: InputMaybe<Array<InventoryWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<InventoryCreateOrConnectWithoutProductInput>>;
-  create?: InputMaybe<Array<InventoryCreateWithoutProductInput>>;
-}
+export type InventoryCreateNestedManyWithoutProductInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<InventoryWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<ReadonlyArray<InventoryCreateOrConnectWithoutProductInput>>;
+  readonly create?: InputMaybe<ReadonlyArray<InventoryCreateWithoutProductInput>>;
+};
 
-export interface InventoryCreateNestedManyWithoutSizeInput {
-  connect?: InputMaybe<Array<InventoryWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<InventoryCreateOrConnectWithoutSizeInput>>;
-  create?: InputMaybe<Array<InventoryCreateWithoutSizeInput>>;
-}
+export type InventoryCreateNestedManyWithoutSizeInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<InventoryWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<ReadonlyArray<InventoryCreateOrConnectWithoutSizeInput>>;
+  readonly create?: InputMaybe<ReadonlyArray<InventoryCreateWithoutSizeInput>>;
+};
 
-export interface InventoryCreateOrConnectWithoutProductInput {
-  create: InventoryCreateWithoutProductInput;
-  where: InventoryWhereUniqueInput;
-}
+export type InventoryCreateOrConnectWithoutProductInput = {
+  readonly create: InventoryCreateWithoutProductInput;
+  readonly where: InventoryWhereUniqueInput;
+};
 
-export interface InventoryCreateOrConnectWithoutSizeInput {
-  create: InventoryCreateWithoutSizeInput;
-  where: InventoryWhereUniqueInput;
-}
+export type InventoryCreateOrConnectWithoutSizeInput = {
+  readonly create: InventoryCreateWithoutSizeInput;
+  readonly where: InventoryWhereUniqueInput;
+};
 
-export interface InventoryCreateWithoutProductInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  quantity: Scalars['Int'];
-  size: SizeCreateNestedOneWithoutInventoryInput;
-}
+export type InventoryCreateWithoutProductInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly quantity: Scalars['Int'];
+  readonly size: SizeCreateNestedOneWithoutInventoryInput;
+};
 
-export interface InventoryCreateWithoutSizeInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  product: ProductCreateNestedOneWithoutInventoryInput;
-  quantity: Scalars['Int'];
-}
+export type InventoryCreateWithoutSizeInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly product: ProductCreateNestedOneWithoutInventoryInput;
+  readonly quantity: Scalars['Int'];
+};
 
-export interface InventoryGroupBy {
-  __typename?: 'InventoryGroupBy';
-  _avg?: Maybe<InventoryAvgAggregate>;
-  _count?: Maybe<InventoryCountAggregate>;
-  _max?: Maybe<InventoryMaxAggregate>;
-  _min?: Maybe<InventoryMinAggregate>;
-  _sum?: Maybe<InventorySumAggregate>;
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id: Scalars['String'];
-  productId: Scalars['String'];
-  quantity: Scalars['Int'];
-  sizeId: Scalars['String'];
-}
+export type InventoryGroupBy = {
+  readonly __typename?: 'InventoryGroupBy';
+  readonly _avg?: Maybe<InventoryAvgAggregate>;
+  readonly _count?: Maybe<InventoryCountAggregate>;
+  readonly _max?: Maybe<InventoryMaxAggregate>;
+  readonly _min?: Maybe<InventoryMinAggregate>;
+  readonly _sum?: Maybe<InventorySumAggregate>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id: Scalars['String'];
+  readonly productId: Scalars['String'];
+  readonly quantity: Scalars['Int'];
+  readonly sizeId: Scalars['String'];
+};
 
-export interface InventoryListRelationFilter {
-  every?: InputMaybe<InventoryWhereInput>;
-  none?: InputMaybe<InventoryWhereInput>;
-  some?: InputMaybe<InventoryWhereInput>;
-}
+export type InventoryListRelationFilter = {
+  readonly every?: InputMaybe<InventoryWhereInput>;
+  readonly none?: InputMaybe<InventoryWhereInput>;
+  readonly some?: InputMaybe<InventoryWhereInput>;
+};
 
-export interface InventoryMaxAggregate {
-  __typename?: 'InventoryMaxAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  productId?: Maybe<Scalars['String']>;
-  quantity?: Maybe<Scalars['Int']>;
-  sizeId?: Maybe<Scalars['String']>;
-}
+export type InventoryMaxAggregate = {
+  readonly __typename?: 'InventoryMaxAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly productId?: Maybe<Scalars['String']>;
+  readonly quantity?: Maybe<Scalars['Int']>;
+  readonly sizeId?: Maybe<Scalars['String']>;
+};
 
-export interface InventoryMaxOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type InventoryMaxOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface InventoryMinAggregate {
-  __typename?: 'InventoryMinAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  productId?: Maybe<Scalars['String']>;
-  quantity?: Maybe<Scalars['Int']>;
-  sizeId?: Maybe<Scalars['String']>;
-}
+export type InventoryMinAggregate = {
+  readonly __typename?: 'InventoryMinAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly productId?: Maybe<Scalars['String']>;
+  readonly quantity?: Maybe<Scalars['Int']>;
+  readonly sizeId?: Maybe<Scalars['String']>;
+};
 
-export interface InventoryMinOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type InventoryMinOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface InventoryOrderByRelationAggregateInput {
-  _count?: InputMaybe<SortOrder>;
-}
+export type InventoryOrderByRelationAggregateInput = {
+  readonly _count?: InputMaybe<SortOrder>;
+};
 
-export interface InventoryOrderByWithAggregationInput {
-  _avg?: InputMaybe<InventoryAvgOrderByAggregateInput>;
-  _count?: InputMaybe<InventoryCountOrderByAggregateInput>;
-  _max?: InputMaybe<InventoryMaxOrderByAggregateInput>;
-  _min?: InputMaybe<InventoryMinOrderByAggregateInput>;
-  _sum?: InputMaybe<InventorySumOrderByAggregateInput>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type InventoryOrderByWithAggregationInput = {
+  readonly _avg?: InputMaybe<InventoryAvgOrderByAggregateInput>;
+  readonly _count?: InputMaybe<InventoryCountOrderByAggregateInput>;
+  readonly _max?: InputMaybe<InventoryMaxOrderByAggregateInput>;
+  readonly _min?: InputMaybe<InventoryMinOrderByAggregateInput>;
+  readonly _sum?: InputMaybe<InventorySumOrderByAggregateInput>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface InventoryOrderByWithRelationInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  product?: InputMaybe<ProductOrderByWithRelationInput>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  size?: InputMaybe<SizeOrderByWithRelationInput>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type InventoryOrderByWithRelationInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly product?: InputMaybe<ProductOrderByWithRelationInput>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly size?: InputMaybe<SizeOrderByWithRelationInput>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
 export enum InventoryScalarFieldEnum {
   DateCreated = 0,
@@ -1407,322 +1433,322 @@ export enum InventoryScalarFieldEnum {
   SizeId = 5,
 }
 
-export interface InventoryScalarWhereInput {
-  AND?: InputMaybe<Array<InventoryScalarWhereInput>>;
-  NOT?: InputMaybe<Array<InventoryScalarWhereInput>>;
-  OR?: InputMaybe<Array<InventoryScalarWhereInput>>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  id?: InputMaybe<StringFilter>;
-  productId?: InputMaybe<StringFilter>;
-  quantity?: InputMaybe<IntFilter>;
-  sizeId?: InputMaybe<StringFilter>;
-}
+export type InventoryScalarWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<InventoryScalarWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<InventoryScalarWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<InventoryScalarWhereInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly productId?: InputMaybe<StringFilter>;
+  readonly quantity?: InputMaybe<IntFilter>;
+  readonly sizeId?: InputMaybe<StringFilter>;
+};
 
-export interface InventoryScalarWhereWithAggregatesInput {
-  AND?: InputMaybe<Array<InventoryScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<InventoryScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<InventoryScalarWhereWithAggregatesInput>>;
-  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
-  id?: InputMaybe<StringWithAggregatesFilter>;
-  productId?: InputMaybe<StringWithAggregatesFilter>;
-  quantity?: InputMaybe<IntWithAggregatesFilter>;
-  sizeId?: InputMaybe<StringWithAggregatesFilter>;
-}
+export type InventoryScalarWhereWithAggregatesInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<InventoryScalarWhereWithAggregatesInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<InventoryScalarWhereWithAggregatesInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<InventoryScalarWhereWithAggregatesInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly productId?: InputMaybe<StringWithAggregatesFilter>;
+  readonly quantity?: InputMaybe<IntWithAggregatesFilter>;
+  readonly sizeId?: InputMaybe<StringWithAggregatesFilter>;
+};
 
-export interface InventorySumAggregate {
-  __typename?: 'InventorySumAggregate';
-  quantity?: Maybe<Scalars['Int']>;
-}
+export type InventorySumAggregate = {
+  readonly __typename?: 'InventorySumAggregate';
+  readonly quantity?: Maybe<Scalars['Int']>;
+};
 
-export interface InventorySumOrderByAggregateInput {
-  quantity?: InputMaybe<SortOrder>;
-}
+export type InventorySumOrderByAggregateInput = {
+  readonly quantity?: InputMaybe<SortOrder>;
+};
 
-export interface InventoryUpdateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  product?: InputMaybe<ProductUpdateOneRequiredWithoutInventoryNestedInput>;
-  quantity?: InputMaybe<Scalars['Int']>;
-  size?: InputMaybe<SizeUpdateOneRequiredWithoutInventoryNestedInput>;
-}
+export type InventoryUpdateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutInventoryNestedInput>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutInventoryNestedInput>;
+};
 
-export interface InventoryUpdateManyMutationInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  quantity?: InputMaybe<Scalars['Int']>;
-}
+export type InventoryUpdateManyMutationInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+};
 
-export interface InventoryUpdateManyWithWhereWithoutProductInput {
-  data: InventoryUpdateManyMutationInput;
-  where: InventoryScalarWhereInput;
-}
+export type InventoryUpdateManyWithWhereWithoutProductInput = {
+  readonly data: InventoryUpdateManyMutationInput;
+  readonly where: InventoryScalarWhereInput;
+};
 
-export interface InventoryUpdateManyWithWhereWithoutSizeInput {
-  data: InventoryUpdateManyMutationInput;
-  where: InventoryScalarWhereInput;
-}
+export type InventoryUpdateManyWithWhereWithoutSizeInput = {
+  readonly data: InventoryUpdateManyMutationInput;
+  readonly where: InventoryScalarWhereInput;
+};
 
-export interface InventoryUpdateManyWithoutProductNestedInput {
-  connect?: InputMaybe<Array<InventoryWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<InventoryCreateOrConnectWithoutProductInput>>;
-  create?: InputMaybe<Array<InventoryCreateWithoutProductInput>>;
-  delete?: InputMaybe<Array<InventoryWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<InventoryScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<InventoryWhereUniqueInput>>;
-  set?: InputMaybe<Array<InventoryWhereUniqueInput>>;
-  update?: InputMaybe<Array<InventoryUpdateWithWhereUniqueWithoutProductInput>>;
-  updateMany?: InputMaybe<Array<InventoryUpdateManyWithWhereWithoutProductInput>>;
-  upsert?: InputMaybe<Array<InventoryUpsertWithWhereUniqueWithoutProductInput>>;
-}
+export type InventoryUpdateManyWithoutProductNestedInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<InventoryWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<ReadonlyArray<InventoryCreateOrConnectWithoutProductInput>>;
+  readonly create?: InputMaybe<ReadonlyArray<InventoryCreateWithoutProductInput>>;
+  readonly delete?: InputMaybe<ReadonlyArray<InventoryWhereUniqueInput>>;
+  readonly deleteMany?: InputMaybe<ReadonlyArray<InventoryScalarWhereInput>>;
+  readonly disconnect?: InputMaybe<ReadonlyArray<InventoryWhereUniqueInput>>;
+  readonly set?: InputMaybe<ReadonlyArray<InventoryWhereUniqueInput>>;
+  readonly update?: InputMaybe<ReadonlyArray<InventoryUpdateWithWhereUniqueWithoutProductInput>>;
+  readonly updateMany?: InputMaybe<ReadonlyArray<InventoryUpdateManyWithWhereWithoutProductInput>>;
+  readonly upsert?: InputMaybe<ReadonlyArray<InventoryUpsertWithWhereUniqueWithoutProductInput>>;
+};
 
-export interface InventoryUpdateManyWithoutSizeNestedInput {
-  connect?: InputMaybe<Array<InventoryWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<InventoryCreateOrConnectWithoutSizeInput>>;
-  create?: InputMaybe<Array<InventoryCreateWithoutSizeInput>>;
-  delete?: InputMaybe<Array<InventoryWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<InventoryScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<InventoryWhereUniqueInput>>;
-  set?: InputMaybe<Array<InventoryWhereUniqueInput>>;
-  update?: InputMaybe<Array<InventoryUpdateWithWhereUniqueWithoutSizeInput>>;
-  updateMany?: InputMaybe<Array<InventoryUpdateManyWithWhereWithoutSizeInput>>;
-  upsert?: InputMaybe<Array<InventoryUpsertWithWhereUniqueWithoutSizeInput>>;
-}
+export type InventoryUpdateManyWithoutSizeNestedInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<InventoryWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<ReadonlyArray<InventoryCreateOrConnectWithoutSizeInput>>;
+  readonly create?: InputMaybe<ReadonlyArray<InventoryCreateWithoutSizeInput>>;
+  readonly delete?: InputMaybe<ReadonlyArray<InventoryWhereUniqueInput>>;
+  readonly deleteMany?: InputMaybe<ReadonlyArray<InventoryScalarWhereInput>>;
+  readonly disconnect?: InputMaybe<ReadonlyArray<InventoryWhereUniqueInput>>;
+  readonly set?: InputMaybe<ReadonlyArray<InventoryWhereUniqueInput>>;
+  readonly update?: InputMaybe<ReadonlyArray<InventoryUpdateWithWhereUniqueWithoutSizeInput>>;
+  readonly updateMany?: InputMaybe<ReadonlyArray<InventoryUpdateManyWithWhereWithoutSizeInput>>;
+  readonly upsert?: InputMaybe<ReadonlyArray<InventoryUpsertWithWhereUniqueWithoutSizeInput>>;
+};
 
-export interface InventoryUpdateWithWhereUniqueWithoutProductInput {
-  data: InventoryUpdateWithoutProductInput;
-  where: InventoryWhereUniqueInput;
-}
+export type InventoryUpdateWithWhereUniqueWithoutProductInput = {
+  readonly data: InventoryUpdateWithoutProductInput;
+  readonly where: InventoryWhereUniqueInput;
+};
 
-export interface InventoryUpdateWithWhereUniqueWithoutSizeInput {
-  data: InventoryUpdateWithoutSizeInput;
-  where: InventoryWhereUniqueInput;
-}
+export type InventoryUpdateWithWhereUniqueWithoutSizeInput = {
+  readonly data: InventoryUpdateWithoutSizeInput;
+  readonly where: InventoryWhereUniqueInput;
+};
 
-export interface InventoryUpdateWithoutProductInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  quantity?: InputMaybe<Scalars['Int']>;
-  size?: InputMaybe<SizeUpdateOneRequiredWithoutInventoryNestedInput>;
-}
+export type InventoryUpdateWithoutProductInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutInventoryNestedInput>;
+};
 
-export interface InventoryUpdateWithoutSizeInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  product?: InputMaybe<ProductUpdateOneRequiredWithoutInventoryNestedInput>;
-  quantity?: InputMaybe<Scalars['Int']>;
-}
+export type InventoryUpdateWithoutSizeInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutInventoryNestedInput>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+};
 
-export interface InventoryUpsertWithWhereUniqueWithoutProductInput {
-  create: InventoryCreateWithoutProductInput;
-  update: InventoryUpdateWithoutProductInput;
-  where: InventoryWhereUniqueInput;
-}
+export type InventoryUpsertWithWhereUniqueWithoutProductInput = {
+  readonly create: InventoryCreateWithoutProductInput;
+  readonly update: InventoryUpdateWithoutProductInput;
+  readonly where: InventoryWhereUniqueInput;
+};
 
-export interface InventoryUpsertWithWhereUniqueWithoutSizeInput {
-  create: InventoryCreateWithoutSizeInput;
-  update: InventoryUpdateWithoutSizeInput;
-  where: InventoryWhereUniqueInput;
-}
+export type InventoryUpsertWithWhereUniqueWithoutSizeInput = {
+  readonly create: InventoryCreateWithoutSizeInput;
+  readonly update: InventoryUpdateWithoutSizeInput;
+  readonly where: InventoryWhereUniqueInput;
+};
 
-export interface InventoryWhereInput {
-  AND?: InputMaybe<Array<InventoryWhereInput>>;
-  NOT?: InputMaybe<Array<InventoryWhereInput>>;
-  OR?: InputMaybe<Array<InventoryWhereInput>>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  id?: InputMaybe<StringFilter>;
-  product?: InputMaybe<ProductRelationFilter>;
-  productId?: InputMaybe<StringFilter>;
-  quantity?: InputMaybe<IntFilter>;
-  size?: InputMaybe<SizeRelationFilter>;
-  sizeId?: InputMaybe<StringFilter>;
-}
+export type InventoryWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<InventoryWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<InventoryWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<InventoryWhereInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly product?: InputMaybe<ProductRelationFilter>;
+  readonly productId?: InputMaybe<StringFilter>;
+  readonly quantity?: InputMaybe<IntFilter>;
+  readonly size?: InputMaybe<SizeRelationFilter>;
+  readonly sizeId?: InputMaybe<StringFilter>;
+};
 
-export interface InventoryWhereUniqueInput {
-  id?: InputMaybe<Scalars['String']>;
-}
+export type InventoryWhereUniqueInput = {
+  readonly id?: InputMaybe<Scalars['String']>;
+};
 
-export interface LocationState {
-  __typename?: 'LocationState';
-  _count?: Maybe<LocationStateCount>;
-  customers: Array<Customer>;
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  employees: Array<Employee>;
-  id: Scalars['String'];
-  name: Scalars['String'];
-  shortName: Scalars['String'];
-}
+export type LocationState = {
+  readonly __typename?: 'LocationState';
+  readonly _count?: Maybe<LocationStateCount>;
+  readonly customers: ReadonlyArray<Customer>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly employees: ReadonlyArray<Employee>;
+  readonly id: Scalars['String'];
+  readonly name: Scalars['String'];
+  readonly shortName: Scalars['String'];
+};
 
-export interface LocationStateCustomersArgs {
+export type LocationStateCustomersArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
-  distinct?: InputMaybe<Array<CustomerScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<CustomerOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<CustomerScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<CustomerWhereInput>;
-}
+};
 
-export interface LocationStateEmployeesArgs {
+export type LocationStateEmployeesArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
-  distinct?: InputMaybe<Array<EmployeeScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<EmployeeOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<EmployeeScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<EmployeeWhereInput>;
-}
+};
 
-export interface LocationStateCount {
-  __typename?: 'LocationStateCount';
-  customers: Scalars['Int'];
-  employees: Scalars['Int'];
-}
+export type LocationStateCount = {
+  readonly __typename?: 'LocationStateCount';
+  readonly customers: Scalars['Int'];
+  readonly employees: Scalars['Int'];
+};
 
-export interface LocationStateCountAggregate {
-  __typename?: 'LocationStateCountAggregate';
-  _all: Scalars['Int'];
-  dateCreated: Scalars['Int'];
-  dateUpdated: Scalars['Int'];
-  id: Scalars['Int'];
-  name: Scalars['Int'];
-  shortName: Scalars['Int'];
-}
+export type LocationStateCountAggregate = {
+  readonly __typename?: 'LocationStateCountAggregate';
+  readonly _all: Scalars['Int'];
+  readonly dateCreated: Scalars['Int'];
+  readonly dateUpdated: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly name: Scalars['Int'];
+  readonly shortName: Scalars['Int'];
+};
 
-export interface LocationStateCountOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-  shortName?: InputMaybe<SortOrder>;
-}
+export type LocationStateCountOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+  readonly shortName?: InputMaybe<SortOrder>;
+};
 
-export interface LocationStateCreateInput {
-  customers?: InputMaybe<CustomerCreateNestedManyWithoutLocationStateInput>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  employees?: InputMaybe<EmployeeCreateNestedManyWithoutLocationStateInput>;
-  id?: InputMaybe<Scalars['String']>;
-  name: Scalars['String'];
-  shortName: Scalars['String'];
-}
+export type LocationStateCreateInput = {
+  readonly customers?: InputMaybe<CustomerCreateNestedManyWithoutLocationStateInput>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly employees?: InputMaybe<EmployeeCreateNestedManyWithoutLocationStateInput>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name: Scalars['String'];
+  readonly shortName: Scalars['String'];
+};
 
-export interface LocationStateCreateNestedOneWithoutCustomersInput {
-  connect?: InputMaybe<LocationStateWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutCustomersInput>;
-  create?: InputMaybe<LocationStateCreateWithoutCustomersInput>;
-}
+export type LocationStateCreateNestedOneWithoutCustomersInput = {
+  readonly connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutCustomersInput>;
+  readonly create?: InputMaybe<LocationStateCreateWithoutCustomersInput>;
+};
 
-export interface LocationStateCreateNestedOneWithoutEmployeesInput {
-  connect?: InputMaybe<LocationStateWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutEmployeesInput>;
-  create?: InputMaybe<LocationStateCreateWithoutEmployeesInput>;
-}
+export type LocationStateCreateNestedOneWithoutEmployeesInput = {
+  readonly connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutEmployeesInput>;
+  readonly create?: InputMaybe<LocationStateCreateWithoutEmployeesInput>;
+};
 
-export interface LocationStateCreateOrConnectWithoutCustomersInput {
-  create: LocationStateCreateWithoutCustomersInput;
-  where: LocationStateWhereUniqueInput;
-}
+export type LocationStateCreateOrConnectWithoutCustomersInput = {
+  readonly create: LocationStateCreateWithoutCustomersInput;
+  readonly where: LocationStateWhereUniqueInput;
+};
 
-export interface LocationStateCreateOrConnectWithoutEmployeesInput {
-  create: LocationStateCreateWithoutEmployeesInput;
-  where: LocationStateWhereUniqueInput;
-}
+export type LocationStateCreateOrConnectWithoutEmployeesInput = {
+  readonly create: LocationStateCreateWithoutEmployeesInput;
+  readonly where: LocationStateWhereUniqueInput;
+};
 
-export interface LocationStateCreateWithoutCustomersInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  employees?: InputMaybe<EmployeeCreateNestedManyWithoutLocationStateInput>;
-  id?: InputMaybe<Scalars['String']>;
-  name: Scalars['String'];
-  shortName: Scalars['String'];
-}
+export type LocationStateCreateWithoutCustomersInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly employees?: InputMaybe<EmployeeCreateNestedManyWithoutLocationStateInput>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name: Scalars['String'];
+  readonly shortName: Scalars['String'];
+};
 
-export interface LocationStateCreateWithoutEmployeesInput {
-  customers?: InputMaybe<CustomerCreateNestedManyWithoutLocationStateInput>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name: Scalars['String'];
-  shortName: Scalars['String'];
-}
+export type LocationStateCreateWithoutEmployeesInput = {
+  readonly customers?: InputMaybe<CustomerCreateNestedManyWithoutLocationStateInput>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name: Scalars['String'];
+  readonly shortName: Scalars['String'];
+};
 
-export interface LocationStateGroupBy {
-  __typename?: 'LocationStateGroupBy';
-  _count?: Maybe<LocationStateCountAggregate>;
-  _max?: Maybe<LocationStateMaxAggregate>;
-  _min?: Maybe<LocationStateMinAggregate>;
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id: Scalars['String'];
-  name: Scalars['String'];
-  shortName: Scalars['String'];
-}
+export type LocationStateGroupBy = {
+  readonly __typename?: 'LocationStateGroupBy';
+  readonly _count?: Maybe<LocationStateCountAggregate>;
+  readonly _max?: Maybe<LocationStateMaxAggregate>;
+  readonly _min?: Maybe<LocationStateMinAggregate>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id: Scalars['String'];
+  readonly name: Scalars['String'];
+  readonly shortName: Scalars['String'];
+};
 
-export interface LocationStateMaxAggregate {
-  __typename?: 'LocationStateMaxAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  shortName?: Maybe<Scalars['String']>;
-}
+export type LocationStateMaxAggregate = {
+  readonly __typename?: 'LocationStateMaxAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+  readonly shortName?: Maybe<Scalars['String']>;
+};
 
-export interface LocationStateMaxOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-  shortName?: InputMaybe<SortOrder>;
-}
+export type LocationStateMaxOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+  readonly shortName?: InputMaybe<SortOrder>;
+};
 
-export interface LocationStateMinAggregate {
-  __typename?: 'LocationStateMinAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  shortName?: Maybe<Scalars['String']>;
-}
+export type LocationStateMinAggregate = {
+  readonly __typename?: 'LocationStateMinAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+  readonly shortName?: Maybe<Scalars['String']>;
+};
 
-export interface LocationStateMinOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-  shortName?: InputMaybe<SortOrder>;
-}
+export type LocationStateMinOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+  readonly shortName?: InputMaybe<SortOrder>;
+};
 
-export interface LocationStateOrderByWithAggregationInput {
-  _count?: InputMaybe<LocationStateCountOrderByAggregateInput>;
-  _max?: InputMaybe<LocationStateMaxOrderByAggregateInput>;
-  _min?: InputMaybe<LocationStateMinOrderByAggregateInput>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-  shortName?: InputMaybe<SortOrder>;
-}
+export type LocationStateOrderByWithAggregationInput = {
+  readonly _count?: InputMaybe<LocationStateCountOrderByAggregateInput>;
+  readonly _max?: InputMaybe<LocationStateMaxOrderByAggregateInput>;
+  readonly _min?: InputMaybe<LocationStateMinOrderByAggregateInput>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+  readonly shortName?: InputMaybe<SortOrder>;
+};
 
-export interface LocationStateOrderByWithRelationInput {
-  customers?: InputMaybe<CustomerOrderByRelationAggregateInput>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  employees?: InputMaybe<EmployeeOrderByRelationAggregateInput>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-  shortName?: InputMaybe<SortOrder>;
-}
+export type LocationStateOrderByWithRelationInput = {
+  readonly customers?: InputMaybe<CustomerOrderByRelationAggregateInput>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly employees?: InputMaybe<EmployeeOrderByRelationAggregateInput>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+  readonly shortName?: InputMaybe<SortOrder>;
+};
 
-export interface LocationStateRelationFilter {
-  is?: InputMaybe<LocationStateWhereInput>;
-  isNot?: InputMaybe<LocationStateWhereInput>;
-}
+export type LocationStateRelationFilter = {
+  readonly is?: InputMaybe<LocationStateWhereInput>;
+  readonly isNot?: InputMaybe<LocationStateWhereInput>;
+};
 
 export enum LocationStateScalarFieldEnum {
   DateCreated = 0,
@@ -1732,1030 +1758,1032 @@ export enum LocationStateScalarFieldEnum {
   ShortName = 4,
 }
 
-export interface LocationStateScalarWhereWithAggregatesInput {
-  AND?: InputMaybe<Array<LocationStateScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<LocationStateScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<LocationStateScalarWhereWithAggregatesInput>>;
-  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
-  id?: InputMaybe<StringWithAggregatesFilter>;
-  name?: InputMaybe<StringWithAggregatesFilter>;
-  shortName?: InputMaybe<StringWithAggregatesFilter>;
-}
+export type LocationStateScalarWhereWithAggregatesInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<LocationStateScalarWhereWithAggregatesInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<LocationStateScalarWhereWithAggregatesInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<LocationStateScalarWhereWithAggregatesInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly name?: InputMaybe<StringWithAggregatesFilter>;
+  readonly shortName?: InputMaybe<StringWithAggregatesFilter>;
+};
 
-export interface LocationStateUpdateInput {
-  customers?: InputMaybe<CustomerUpdateManyWithoutLocationStateNestedInput>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  employees?: InputMaybe<EmployeeUpdateManyWithoutLocationStateNestedInput>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortName?: InputMaybe<Scalars['String']>;
-}
+export type LocationStateUpdateInput = {
+  readonly customers?: InputMaybe<CustomerUpdateManyWithoutLocationStateNestedInput>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly employees?: InputMaybe<EmployeeUpdateManyWithoutLocationStateNestedInput>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly shortName?: InputMaybe<Scalars['String']>;
+};
 
-export interface LocationStateUpdateManyMutationInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortName?: InputMaybe<Scalars['String']>;
-}
+export type LocationStateUpdateManyMutationInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly shortName?: InputMaybe<Scalars['String']>;
+};
 
-export interface LocationStateUpdateOneRequiredWithoutEmployeesNestedInput {
-  connect?: InputMaybe<LocationStateWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutEmployeesInput>;
-  create?: InputMaybe<LocationStateCreateWithoutEmployeesInput>;
-  update?: InputMaybe<LocationStateUpdateWithoutEmployeesInput>;
-  upsert?: InputMaybe<LocationStateUpsertWithoutEmployeesInput>;
-}
+export type LocationStateUpdateOneRequiredWithoutEmployeesNestedInput = {
+  readonly connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutEmployeesInput>;
+  readonly create?: InputMaybe<LocationStateCreateWithoutEmployeesInput>;
+  readonly update?: InputMaybe<LocationStateUpdateWithoutEmployeesInput>;
+  readonly upsert?: InputMaybe<LocationStateUpsertWithoutEmployeesInput>;
+};
 
-export interface LocationStateUpdateOneWithoutCustomersNestedInput {
-  connect?: InputMaybe<LocationStateWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutCustomersInput>;
-  create?: InputMaybe<LocationStateCreateWithoutCustomersInput>;
-  delete?: InputMaybe<Scalars['Boolean']>;
-  disconnect?: InputMaybe<Scalars['Boolean']>;
-  update?: InputMaybe<LocationStateUpdateWithoutCustomersInput>;
-  upsert?: InputMaybe<LocationStateUpsertWithoutCustomersInput>;
-}
+export type LocationStateUpdateOneWithoutCustomersNestedInput = {
+  readonly connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutCustomersInput>;
+  readonly create?: InputMaybe<LocationStateCreateWithoutCustomersInput>;
+  readonly delete?: InputMaybe<Scalars['Boolean']>;
+  readonly disconnect?: InputMaybe<Scalars['Boolean']>;
+  readonly update?: InputMaybe<LocationStateUpdateWithoutCustomersInput>;
+  readonly upsert?: InputMaybe<LocationStateUpsertWithoutCustomersInput>;
+};
 
-export interface LocationStateUpdateWithoutCustomersInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  employees?: InputMaybe<EmployeeUpdateManyWithoutLocationStateNestedInput>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortName?: InputMaybe<Scalars['String']>;
-}
+export type LocationStateUpdateWithoutCustomersInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly employees?: InputMaybe<EmployeeUpdateManyWithoutLocationStateNestedInput>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly shortName?: InputMaybe<Scalars['String']>;
+};
 
-export interface LocationStateUpdateWithoutEmployeesInput {
-  customers?: InputMaybe<CustomerUpdateManyWithoutLocationStateNestedInput>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortName?: InputMaybe<Scalars['String']>;
-}
+export type LocationStateUpdateWithoutEmployeesInput = {
+  readonly customers?: InputMaybe<CustomerUpdateManyWithoutLocationStateNestedInput>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly shortName?: InputMaybe<Scalars['String']>;
+};
 
-export interface LocationStateUpsertWithoutCustomersInput {
-  create: LocationStateCreateWithoutCustomersInput;
-  update: LocationStateUpdateWithoutCustomersInput;
-}
+export type LocationStateUpsertWithoutCustomersInput = {
+  readonly create: LocationStateCreateWithoutCustomersInput;
+  readonly update: LocationStateUpdateWithoutCustomersInput;
+};
 
-export interface LocationStateUpsertWithoutEmployeesInput {
-  create: LocationStateCreateWithoutEmployeesInput;
-  update: LocationStateUpdateWithoutEmployeesInput;
-}
+export type LocationStateUpsertWithoutEmployeesInput = {
+  readonly create: LocationStateCreateWithoutEmployeesInput;
+  readonly update: LocationStateUpdateWithoutEmployeesInput;
+};
 
-export interface LocationStateWhereInput {
-  AND?: InputMaybe<Array<LocationStateWhereInput>>;
-  NOT?: InputMaybe<Array<LocationStateWhereInput>>;
-  OR?: InputMaybe<Array<LocationStateWhereInput>>;
-  customers?: InputMaybe<CustomerListRelationFilter>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  employees?: InputMaybe<EmployeeListRelationFilter>;
-  id?: InputMaybe<StringFilter>;
-  name?: InputMaybe<StringFilter>;
-  shortName?: InputMaybe<StringFilter>;
-}
+export type LocationStateWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<LocationStateWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<LocationStateWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<LocationStateWhereInput>>;
+  readonly customers?: InputMaybe<CustomerListRelationFilter>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly employees?: InputMaybe<EmployeeListRelationFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly name?: InputMaybe<StringFilter>;
+  readonly shortName?: InputMaybe<StringFilter>;
+};
 
-export interface LocationStateWhereUniqueInput {
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortName?: InputMaybe<Scalars['String']>;
-}
+export type LocationStateWhereUniqueInput = {
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly shortName?: InputMaybe<Scalars['String']>;
+};
 
-export interface Mutation {
-  __typename?: 'Mutation';
-  createOneCustomer: Customer;
-  createOneDepartment: Department;
-  createOneEmployee: Employee;
-  createOneInventory: Inventory;
-  createOneLocationState: LocationState;
-  createOneProduct: Product;
-  createOneProductSale: ProductSale;
-  createOneProductTransaction: ProductTransaction;
-  createOneRole: Role;
-  createOneSize: Size;
-  createOneUser: User;
-  deleteManyCustomer: AffectedRowsOutput;
-  deleteManyDepartment: AffectedRowsOutput;
-  deleteManyEmployee: AffectedRowsOutput;
-  deleteManyInventory: AffectedRowsOutput;
-  deleteManyLocationState: AffectedRowsOutput;
-  deleteManyProduct: AffectedRowsOutput;
-  deleteManyProductSale: AffectedRowsOutput;
-  deleteManyProductTransaction: AffectedRowsOutput;
-  deleteManyRole: AffectedRowsOutput;
-  deleteManySize: AffectedRowsOutput;
-  deleteManyUser: AffectedRowsOutput;
-  deleteOneCustomer?: Maybe<Customer>;
-  deleteOneDepartment?: Maybe<Department>;
-  deleteOneEmployee?: Maybe<Employee>;
-  deleteOneInventory?: Maybe<Inventory>;
-  deleteOneLocationState?: Maybe<LocationState>;
-  deleteOneProduct?: Maybe<Product>;
-  deleteOneProductSale?: Maybe<ProductSale>;
-  deleteOneProductTransaction?: Maybe<ProductTransaction>;
-  deleteOneRole?: Maybe<Role>;
-  deleteOneSize?: Maybe<Size>;
-  deleteOneUser?: Maybe<User>;
-  login?: Maybe<Scalars['String']>;
-  updateManyCustomer: AffectedRowsOutput;
-  updateManyDepartment: AffectedRowsOutput;
-  updateManyEmployee: AffectedRowsOutput;
-  updateManyInventory: AffectedRowsOutput;
-  updateManyLocationState: AffectedRowsOutput;
-  updateManyProduct: AffectedRowsOutput;
-  updateManyProductSale: AffectedRowsOutput;
-  updateManyProductTransaction: AffectedRowsOutput;
-  updateManyRole: AffectedRowsOutput;
-  updateManySize: AffectedRowsOutput;
-  updateManyUser: AffectedRowsOutput;
-  updateOneCustomer?: Maybe<Customer>;
-  updateOneDepartment?: Maybe<Department>;
-  updateOneEmployee?: Maybe<Employee>;
-  updateOneInventory?: Maybe<Inventory>;
-  updateOneLocationState?: Maybe<LocationState>;
-  updateOneProduct?: Maybe<Product>;
-  updateOneProductSale?: Maybe<ProductSale>;
-  updateOneProductTransaction?: Maybe<ProductTransaction>;
-  updateOneRole?: Maybe<Role>;
-  updateOneSize?: Maybe<Size>;
-  updateOneUser?: Maybe<User>;
-  upsertOneCustomer: Customer;
-  upsertOneDepartment: Department;
-  upsertOneEmployee: Employee;
-  upsertOneInventory: Inventory;
-  upsertOneLocationState: LocationState;
-  upsertOneProduct: Product;
-  upsertOneProductSale: ProductSale;
-  upsertOneProductTransaction: ProductTransaction;
-  upsertOneRole: Role;
-  upsertOneSize: Size;
-  upsertOneUser: User;
-}
+export type Mutation = {
+  readonly __typename?: 'Mutation';
+  readonly createOneCustomer: Customer;
+  readonly createOneDepartment: Department;
+  readonly createOneEmployee: Employee;
+  readonly createOneInventory: Inventory;
+  readonly createOneLocationState: LocationState;
+  readonly createOneProduct: Product;
+  readonly createOneProductSale: ProductSale;
+  readonly createOneProductTransaction: ProductTransaction;
+  readonly createOneRole: Role;
+  readonly createOneSize: Size;
+  readonly createOneUser: User;
+  readonly deleteManyCustomer: AffectedRowsOutput;
+  readonly deleteManyDepartment: AffectedRowsOutput;
+  readonly deleteManyEmployee: AffectedRowsOutput;
+  readonly deleteManyInventory: AffectedRowsOutput;
+  readonly deleteManyLocationState: AffectedRowsOutput;
+  readonly deleteManyProduct: AffectedRowsOutput;
+  readonly deleteManyProductSale: AffectedRowsOutput;
+  readonly deleteManyProductTransaction: AffectedRowsOutput;
+  readonly deleteManyRole: AffectedRowsOutput;
+  readonly deleteManySize: AffectedRowsOutput;
+  readonly deleteManyUser: AffectedRowsOutput;
+  readonly deleteOneCustomer?: Maybe<Customer>;
+  readonly deleteOneDepartment?: Maybe<Department>;
+  readonly deleteOneEmployee?: Maybe<Employee>;
+  readonly deleteOneInventory?: Maybe<Inventory>;
+  readonly deleteOneLocationState?: Maybe<LocationState>;
+  readonly deleteOneProduct?: Maybe<Product>;
+  readonly deleteOneProductSale?: Maybe<ProductSale>;
+  readonly deleteOneProductTransaction?: Maybe<ProductTransaction>;
+  readonly deleteOneRole?: Maybe<Role>;
+  readonly deleteOneSize?: Maybe<Size>;
+  readonly deleteOneUser?: Maybe<User>;
+  readonly login?: Maybe<Scalars['String']>;
+  readonly updateManyCustomer: AffectedRowsOutput;
+  readonly updateManyDepartment: AffectedRowsOutput;
+  readonly updateManyEmployee: AffectedRowsOutput;
+  readonly updateManyInventory: AffectedRowsOutput;
+  readonly updateManyLocationState: AffectedRowsOutput;
+  readonly updateManyProduct: AffectedRowsOutput;
+  readonly updateManyProductSale: AffectedRowsOutput;
+  readonly updateManyProductTransaction: AffectedRowsOutput;
+  readonly updateManyRole: AffectedRowsOutput;
+  readonly updateManySize: AffectedRowsOutput;
+  readonly updateManyUser: AffectedRowsOutput;
+  readonly updateOneCustomer?: Maybe<Customer>;
+  readonly updateOneDepartment?: Maybe<Department>;
+  readonly updateOneEmployee?: Maybe<Employee>;
+  readonly updateOneInventory?: Maybe<Inventory>;
+  readonly updateOneLocationState?: Maybe<LocationState>;
+  readonly updateOneProduct?: Maybe<Product>;
+  readonly updateOneProductSale?: Maybe<ProductSale>;
+  readonly updateOneProductTransaction?: Maybe<ProductTransaction>;
+  readonly updateOneRole?: Maybe<Role>;
+  readonly updateOneSize?: Maybe<Size>;
+  readonly updateOneUser?: Maybe<User>;
+  readonly upsertOneCustomer: Customer;
+  readonly upsertOneDepartment: Department;
+  readonly upsertOneEmployee: Employee;
+  readonly upsertOneInventory: Inventory;
+  readonly upsertOneLocationState: LocationState;
+  readonly upsertOneProduct: Product;
+  readonly upsertOneProductSale: ProductSale;
+  readonly upsertOneProductTransaction: ProductTransaction;
+  readonly upsertOneRole: Role;
+  readonly upsertOneSize: Size;
+  readonly upsertOneUser: User;
+};
 
-export interface MutationCreateOneCustomerArgs {
+export type MutationCreateOneCustomerArgs = {
   data: CustomerCreateInput;
-}
+};
 
-export interface MutationCreateOneDepartmentArgs {
+export type MutationCreateOneDepartmentArgs = {
   data: DepartmentCreateInput;
-}
+};
 
-export interface MutationCreateOneEmployeeArgs {
+export type MutationCreateOneEmployeeArgs = {
   data: EmployeeCreateInput;
-}
+};
 
-export interface MutationCreateOneInventoryArgs {
+export type MutationCreateOneInventoryArgs = {
   data: InventoryCreateInput;
-}
+};
 
-export interface MutationCreateOneLocationStateArgs {
+export type MutationCreateOneLocationStateArgs = {
   data: LocationStateCreateInput;
-}
+};
 
-export interface MutationCreateOneProductArgs {
+export type MutationCreateOneProductArgs = {
   data: ProductCreateInput;
-}
+};
 
-export interface MutationCreateOneProductSaleArgs {
+export type MutationCreateOneProductSaleArgs = {
   data: ProductSaleCreateInput;
-}
+};
 
-export interface MutationCreateOneProductTransactionArgs {
+export type MutationCreateOneProductTransactionArgs = {
   data: ProductTransactionCreateInput;
-}
+};
 
-export interface MutationCreateOneRoleArgs {
+export type MutationCreateOneRoleArgs = {
   data: RoleCreateInput;
-}
+};
 
-export interface MutationCreateOneSizeArgs {
+export type MutationCreateOneSizeArgs = {
   data: SizeCreateInput;
-}
+};
 
-export interface MutationCreateOneUserArgs {
+export type MutationCreateOneUserArgs = {
   data: UserCreateInput;
-}
+};
 
-export interface MutationDeleteManyCustomerArgs {
+export type MutationDeleteManyCustomerArgs = {
   where?: InputMaybe<CustomerWhereInput>;
-}
+};
 
-export interface MutationDeleteManyDepartmentArgs {
+export type MutationDeleteManyDepartmentArgs = {
   where?: InputMaybe<DepartmentWhereInput>;
-}
+};
 
-export interface MutationDeleteManyEmployeeArgs {
+export type MutationDeleteManyEmployeeArgs = {
   where?: InputMaybe<EmployeeWhereInput>;
-}
+};
 
-export interface MutationDeleteManyInventoryArgs {
+export type MutationDeleteManyInventoryArgs = {
   where?: InputMaybe<InventoryWhereInput>;
-}
+};
 
-export interface MutationDeleteManyLocationStateArgs {
+export type MutationDeleteManyLocationStateArgs = {
   where?: InputMaybe<LocationStateWhereInput>;
-}
+};
 
-export interface MutationDeleteManyProductArgs {
+export type MutationDeleteManyProductArgs = {
   where?: InputMaybe<ProductWhereInput>;
-}
+};
 
-export interface MutationDeleteManyProductSaleArgs {
+export type MutationDeleteManyProductSaleArgs = {
   where?: InputMaybe<ProductSaleWhereInput>;
-}
+};
 
-export interface MutationDeleteManyProductTransactionArgs {
+export type MutationDeleteManyProductTransactionArgs = {
   where?: InputMaybe<ProductTransactionWhereInput>;
-}
+};
 
-export interface MutationDeleteManyRoleArgs {
+export type MutationDeleteManyRoleArgs = {
   where?: InputMaybe<RoleWhereInput>;
-}
+};
 
-export interface MutationDeleteManySizeArgs {
+export type MutationDeleteManySizeArgs = {
   where?: InputMaybe<SizeWhereInput>;
-}
+};
 
-export interface MutationDeleteManyUserArgs {
+export type MutationDeleteManyUserArgs = {
   where?: InputMaybe<UserWhereInput>;
-}
+};
 
-export interface MutationDeleteOneCustomerArgs {
+export type MutationDeleteOneCustomerArgs = {
   where: CustomerWhereUniqueInput;
-}
+};
 
-export interface MutationDeleteOneDepartmentArgs {
+export type MutationDeleteOneDepartmentArgs = {
   where: DepartmentWhereUniqueInput;
-}
+};
 
-export interface MutationDeleteOneEmployeeArgs {
+export type MutationDeleteOneEmployeeArgs = {
   where: EmployeeWhereUniqueInput;
-}
+};
 
-export interface MutationDeleteOneInventoryArgs {
+export type MutationDeleteOneInventoryArgs = {
   where: InventoryWhereUniqueInput;
-}
+};
 
-export interface MutationDeleteOneLocationStateArgs {
+export type MutationDeleteOneLocationStateArgs = {
   where: LocationStateWhereUniqueInput;
-}
+};
 
-export interface MutationDeleteOneProductArgs {
+export type MutationDeleteOneProductArgs = {
   where: ProductWhereUniqueInput;
-}
+};
 
-export interface MutationDeleteOneProductSaleArgs {
+export type MutationDeleteOneProductSaleArgs = {
   where: ProductSaleWhereUniqueInput;
-}
+};
 
-export interface MutationDeleteOneProductTransactionArgs {
+export type MutationDeleteOneProductTransactionArgs = {
   where: ProductTransactionWhereUniqueInput;
-}
+};
 
-export interface MutationDeleteOneRoleArgs {
+export type MutationDeleteOneRoleArgs = {
   where: RoleWhereUniqueInput;
-}
+};
 
-export interface MutationDeleteOneSizeArgs {
+export type MutationDeleteOneSizeArgs = {
   where: SizeWhereUniqueInput;
-}
+};
 
-export interface MutationDeleteOneUserArgs {
+export type MutationDeleteOneUserArgs = {
   where: UserWhereUniqueInput;
-}
+};
 
-export interface MutationLoginArgs {
+export type MutationLoginArgs = {
   password: Scalars['String'];
   userName: Scalars['String'];
-}
+};
 
-export interface MutationUpdateManyCustomerArgs {
+export type MutationUpdateManyCustomerArgs = {
   data: CustomerUpdateManyMutationInput;
   where?: InputMaybe<CustomerWhereInput>;
-}
+};
 
-export interface MutationUpdateManyDepartmentArgs {
+export type MutationUpdateManyDepartmentArgs = {
   data: DepartmentUpdateManyMutationInput;
   where?: InputMaybe<DepartmentWhereInput>;
-}
+};
 
-export interface MutationUpdateManyEmployeeArgs {
+export type MutationUpdateManyEmployeeArgs = {
   data: EmployeeUpdateManyMutationInput;
   where?: InputMaybe<EmployeeWhereInput>;
-}
+};
 
-export interface MutationUpdateManyInventoryArgs {
+export type MutationUpdateManyInventoryArgs = {
   data: InventoryUpdateManyMutationInput;
   where?: InputMaybe<InventoryWhereInput>;
-}
+};
 
-export interface MutationUpdateManyLocationStateArgs {
+export type MutationUpdateManyLocationStateArgs = {
   data: LocationStateUpdateManyMutationInput;
   where?: InputMaybe<LocationStateWhereInput>;
-}
+};
 
-export interface MutationUpdateManyProductArgs {
+export type MutationUpdateManyProductArgs = {
   data: ProductUpdateManyMutationInput;
   where?: InputMaybe<ProductWhereInput>;
-}
+};
 
-export interface MutationUpdateManyProductSaleArgs {
+export type MutationUpdateManyProductSaleArgs = {
   data: ProductSaleUpdateManyMutationInput;
   where?: InputMaybe<ProductSaleWhereInput>;
-}
+};
 
-export interface MutationUpdateManyProductTransactionArgs {
+export type MutationUpdateManyProductTransactionArgs = {
   data: ProductTransactionUpdateManyMutationInput;
   where?: InputMaybe<ProductTransactionWhereInput>;
-}
+};
 
-export interface MutationUpdateManyRoleArgs {
+export type MutationUpdateManyRoleArgs = {
   data: RoleUpdateManyMutationInput;
   where?: InputMaybe<RoleWhereInput>;
-}
+};
 
-export interface MutationUpdateManySizeArgs {
+export type MutationUpdateManySizeArgs = {
   data: SizeUpdateManyMutationInput;
   where?: InputMaybe<SizeWhereInput>;
-}
+};
 
-export interface MutationUpdateManyUserArgs {
+export type MutationUpdateManyUserArgs = {
   data: UserUpdateManyMutationInput;
   where?: InputMaybe<UserWhereInput>;
-}
+};
 
-export interface MutationUpdateOneCustomerArgs {
+export type MutationUpdateOneCustomerArgs = {
   data: CustomerUpdateInput;
   where: CustomerWhereUniqueInput;
-}
+};
 
-export interface MutationUpdateOneDepartmentArgs {
+export type MutationUpdateOneDepartmentArgs = {
   data: DepartmentUpdateInput;
   where: DepartmentWhereUniqueInput;
-}
+};
 
-export interface MutationUpdateOneEmployeeArgs {
+export type MutationUpdateOneEmployeeArgs = {
   data: EmployeeUpdateInput;
   where: EmployeeWhereUniqueInput;
-}
+};
 
-export interface MutationUpdateOneInventoryArgs {
+export type MutationUpdateOneInventoryArgs = {
   data: InventoryUpdateInput;
   where: InventoryWhereUniqueInput;
-}
+};
 
-export interface MutationUpdateOneLocationStateArgs {
+export type MutationUpdateOneLocationStateArgs = {
   data: LocationStateUpdateInput;
   where: LocationStateWhereUniqueInput;
-}
+};
 
-export interface MutationUpdateOneProductArgs {
+export type MutationUpdateOneProductArgs = {
   data: ProductUpdateInput;
   where: ProductWhereUniqueInput;
-}
+};
 
-export interface MutationUpdateOneProductSaleArgs {
+export type MutationUpdateOneProductSaleArgs = {
   data: ProductSaleUpdateInput;
   where: ProductSaleWhereUniqueInput;
-}
+};
 
-export interface MutationUpdateOneProductTransactionArgs {
+export type MutationUpdateOneProductTransactionArgs = {
   data: ProductTransactionUpdateInput;
   where: ProductTransactionWhereUniqueInput;
-}
+};
 
-export interface MutationUpdateOneRoleArgs {
+export type MutationUpdateOneRoleArgs = {
   data: RoleUpdateInput;
   where: RoleWhereUniqueInput;
-}
+};
 
-export interface MutationUpdateOneSizeArgs {
+export type MutationUpdateOneSizeArgs = {
   data: SizeUpdateInput;
   where: SizeWhereUniqueInput;
-}
+};
 
-export interface MutationUpdateOneUserArgs {
+export type MutationUpdateOneUserArgs = {
   data: UserUpdateInput;
   where: UserWhereUniqueInput;
-}
+};
 
-export interface MutationUpsertOneCustomerArgs {
+export type MutationUpsertOneCustomerArgs = {
   create: CustomerCreateInput;
   update: CustomerUpdateInput;
   where: CustomerWhereUniqueInput;
-}
+};
 
-export interface MutationUpsertOneDepartmentArgs {
+export type MutationUpsertOneDepartmentArgs = {
   create: DepartmentCreateInput;
   update: DepartmentUpdateInput;
   where: DepartmentWhereUniqueInput;
-}
+};
 
-export interface MutationUpsertOneEmployeeArgs {
+export type MutationUpsertOneEmployeeArgs = {
   create: EmployeeCreateInput;
   update: EmployeeUpdateInput;
   where: EmployeeWhereUniqueInput;
-}
+};
 
-export interface MutationUpsertOneInventoryArgs {
+export type MutationUpsertOneInventoryArgs = {
   create: InventoryCreateInput;
   update: InventoryUpdateInput;
   where: InventoryWhereUniqueInput;
-}
+};
 
-export interface MutationUpsertOneLocationStateArgs {
+export type MutationUpsertOneLocationStateArgs = {
   create: LocationStateCreateInput;
   update: LocationStateUpdateInput;
   where: LocationStateWhereUniqueInput;
-}
+};
 
-export interface MutationUpsertOneProductArgs {
+export type MutationUpsertOneProductArgs = {
   create: ProductCreateInput;
   update: ProductUpdateInput;
   where: ProductWhereUniqueInput;
-}
+};
 
-export interface MutationUpsertOneProductSaleArgs {
+export type MutationUpsertOneProductSaleArgs = {
   create: ProductSaleCreateInput;
   update: ProductSaleUpdateInput;
   where: ProductSaleWhereUniqueInput;
-}
+};
 
-export interface MutationUpsertOneProductTransactionArgs {
+export type MutationUpsertOneProductTransactionArgs = {
   create: ProductTransactionCreateInput;
   update: ProductTransactionUpdateInput;
   where: ProductTransactionWhereUniqueInput;
-}
+};
 
-export interface MutationUpsertOneRoleArgs {
+export type MutationUpsertOneRoleArgs = {
   create: RoleCreateInput;
   update: RoleUpdateInput;
   where: RoleWhereUniqueInput;
-}
+};
 
-export interface MutationUpsertOneSizeArgs {
+export type MutationUpsertOneSizeArgs = {
   create: SizeCreateInput;
   update: SizeUpdateInput;
   where: SizeWhereUniqueInput;
-}
+};
 
-export interface MutationUpsertOneUserArgs {
+export type MutationUpsertOneUserArgs = {
   create: UserCreateInput;
   update: UserUpdateInput;
   where: UserWhereUniqueInput;
-}
+};
 
-export interface NestedDateTimeFilter {
-  equals?: InputMaybe<Scalars['DateTime']>;
-  gt?: InputMaybe<Scalars['DateTime']>;
-  gte?: InputMaybe<Scalars['DateTime']>;
-  in?: InputMaybe<Array<Scalars['DateTime']>>;
-  lt?: InputMaybe<Scalars['DateTime']>;
-  lte?: InputMaybe<Scalars['DateTime']>;
-  not?: InputMaybe<NestedDateTimeFilter>;
-  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
-}
+export type NestedDateTimeFilter = {
+  readonly equals?: InputMaybe<Scalars['DateTime']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly not?: InputMaybe<NestedDateTimeFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+};
 
-export interface NestedDateTimeNullableFilter {
-  equals?: InputMaybe<Scalars['DateTime']>;
-  gt?: InputMaybe<Scalars['DateTime']>;
-  gte?: InputMaybe<Scalars['DateTime']>;
-  in?: InputMaybe<Array<Scalars['DateTime']>>;
-  lt?: InputMaybe<Scalars['DateTime']>;
-  lte?: InputMaybe<Scalars['DateTime']>;
-  not?: InputMaybe<NestedDateTimeNullableFilter>;
-  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
-}
+export type NestedDateTimeNullableFilter = {
+  readonly equals?: InputMaybe<Scalars['DateTime']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly not?: InputMaybe<NestedDateTimeNullableFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+};
 
-export interface NestedDateTimeNullableWithAggregatesFilter {
-  _count?: InputMaybe<NestedIntNullableFilter>;
-  _max?: InputMaybe<NestedDateTimeNullableFilter>;
-  _min?: InputMaybe<NestedDateTimeNullableFilter>;
-  equals?: InputMaybe<Scalars['DateTime']>;
-  gt?: InputMaybe<Scalars['DateTime']>;
-  gte?: InputMaybe<Scalars['DateTime']>;
-  in?: InputMaybe<Array<Scalars['DateTime']>>;
-  lt?: InputMaybe<Scalars['DateTime']>;
-  lte?: InputMaybe<Scalars['DateTime']>;
-  not?: InputMaybe<NestedDateTimeNullableWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
-}
+export type NestedDateTimeNullableWithAggregatesFilter = {
+  readonly _count?: InputMaybe<NestedIntNullableFilter>;
+  readonly _max?: InputMaybe<NestedDateTimeNullableFilter>;
+  readonly _min?: InputMaybe<NestedDateTimeNullableFilter>;
+  readonly equals?: InputMaybe<Scalars['DateTime']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly not?: InputMaybe<NestedDateTimeNullableWithAggregatesFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+};
 
-export interface NestedDateTimeWithAggregatesFilter {
-  _count?: InputMaybe<NestedIntFilter>;
-  _max?: InputMaybe<NestedDateTimeFilter>;
-  _min?: InputMaybe<NestedDateTimeFilter>;
-  equals?: InputMaybe<Scalars['DateTime']>;
-  gt?: InputMaybe<Scalars['DateTime']>;
-  gte?: InputMaybe<Scalars['DateTime']>;
-  in?: InputMaybe<Array<Scalars['DateTime']>>;
-  lt?: InputMaybe<Scalars['DateTime']>;
-  lte?: InputMaybe<Scalars['DateTime']>;
-  not?: InputMaybe<NestedDateTimeWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
-}
+export type NestedDateTimeWithAggregatesFilter = {
+  readonly _count?: InputMaybe<NestedIntFilter>;
+  readonly _max?: InputMaybe<NestedDateTimeFilter>;
+  readonly _min?: InputMaybe<NestedDateTimeFilter>;
+  readonly equals?: InputMaybe<Scalars['DateTime']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly not?: InputMaybe<NestedDateTimeWithAggregatesFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+};
 
-export interface NestedFloatFilter {
-  equals?: InputMaybe<Scalars['Float']>;
-  gt?: InputMaybe<Scalars['Float']>;
-  gte?: InputMaybe<Scalars['Float']>;
-  in?: InputMaybe<Array<Scalars['Float']>>;
-  lt?: InputMaybe<Scalars['Float']>;
-  lte?: InputMaybe<Scalars['Float']>;
-  not?: InputMaybe<NestedFloatFilter>;
-  notIn?: InputMaybe<Array<Scalars['Float']>>;
-}
+export type NestedFloatFilter = {
+  readonly equals?: InputMaybe<Scalars['Float']>;
+  readonly gt?: InputMaybe<Scalars['Float']>;
+  readonly gte?: InputMaybe<Scalars['Float']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+  readonly lt?: InputMaybe<Scalars['Float']>;
+  readonly lte?: InputMaybe<Scalars['Float']>;
+  readonly not?: InputMaybe<NestedFloatFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+};
 
-export interface NestedFloatWithAggregatesFilter {
-  _avg?: InputMaybe<NestedFloatFilter>;
-  _count?: InputMaybe<NestedIntFilter>;
-  _max?: InputMaybe<NestedFloatFilter>;
-  _min?: InputMaybe<NestedFloatFilter>;
-  _sum?: InputMaybe<NestedFloatFilter>;
-  equals?: InputMaybe<Scalars['Float']>;
-  gt?: InputMaybe<Scalars['Float']>;
-  gte?: InputMaybe<Scalars['Float']>;
-  in?: InputMaybe<Array<Scalars['Float']>>;
-  lt?: InputMaybe<Scalars['Float']>;
-  lte?: InputMaybe<Scalars['Float']>;
-  not?: InputMaybe<NestedFloatWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['Float']>>;
-}
+export type NestedFloatWithAggregatesFilter = {
+  readonly _avg?: InputMaybe<NestedFloatFilter>;
+  readonly _count?: InputMaybe<NestedIntFilter>;
+  readonly _max?: InputMaybe<NestedFloatFilter>;
+  readonly _min?: InputMaybe<NestedFloatFilter>;
+  readonly _sum?: InputMaybe<NestedFloatFilter>;
+  readonly equals?: InputMaybe<Scalars['Float']>;
+  readonly gt?: InputMaybe<Scalars['Float']>;
+  readonly gte?: InputMaybe<Scalars['Float']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+  readonly lt?: InputMaybe<Scalars['Float']>;
+  readonly lte?: InputMaybe<Scalars['Float']>;
+  readonly not?: InputMaybe<NestedFloatWithAggregatesFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+};
 
-export interface NestedIntFilter {
-  equals?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  gte?: InputMaybe<Scalars['Int']>;
-  in?: InputMaybe<Array<Scalars['Int']>>;
-  lt?: InputMaybe<Scalars['Int']>;
-  lte?: InputMaybe<Scalars['Int']>;
-  not?: InputMaybe<NestedIntFilter>;
-  notIn?: InputMaybe<Array<Scalars['Int']>>;
-}
+export type NestedIntFilter = {
+  readonly equals?: InputMaybe<Scalars['Int']>;
+  readonly gt?: InputMaybe<Scalars['Int']>;
+  readonly gte?: InputMaybe<Scalars['Int']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+  readonly lt?: InputMaybe<Scalars['Int']>;
+  readonly lte?: InputMaybe<Scalars['Int']>;
+  readonly not?: InputMaybe<NestedIntFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+};
 
-export interface NestedIntNullableFilter {
-  equals?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  gte?: InputMaybe<Scalars['Int']>;
-  in?: InputMaybe<Array<Scalars['Int']>>;
-  lt?: InputMaybe<Scalars['Int']>;
-  lte?: InputMaybe<Scalars['Int']>;
-  not?: InputMaybe<NestedIntNullableFilter>;
-  notIn?: InputMaybe<Array<Scalars['Int']>>;
-}
+export type NestedIntNullableFilter = {
+  readonly equals?: InputMaybe<Scalars['Int']>;
+  readonly gt?: InputMaybe<Scalars['Int']>;
+  readonly gte?: InputMaybe<Scalars['Int']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+  readonly lt?: InputMaybe<Scalars['Int']>;
+  readonly lte?: InputMaybe<Scalars['Int']>;
+  readonly not?: InputMaybe<NestedIntNullableFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+};
 
-export interface NestedIntWithAggregatesFilter {
-  _avg?: InputMaybe<NestedFloatFilter>;
-  _count?: InputMaybe<NestedIntFilter>;
-  _max?: InputMaybe<NestedIntFilter>;
-  _min?: InputMaybe<NestedIntFilter>;
-  _sum?: InputMaybe<NestedIntFilter>;
-  equals?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  gte?: InputMaybe<Scalars['Int']>;
-  in?: InputMaybe<Array<Scalars['Int']>>;
-  lt?: InputMaybe<Scalars['Int']>;
-  lte?: InputMaybe<Scalars['Int']>;
-  not?: InputMaybe<NestedIntWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['Int']>>;
-}
+export type NestedIntWithAggregatesFilter = {
+  readonly _avg?: InputMaybe<NestedFloatFilter>;
+  readonly _count?: InputMaybe<NestedIntFilter>;
+  readonly _max?: InputMaybe<NestedIntFilter>;
+  readonly _min?: InputMaybe<NestedIntFilter>;
+  readonly _sum?: InputMaybe<NestedIntFilter>;
+  readonly equals?: InputMaybe<Scalars['Int']>;
+  readonly gt?: InputMaybe<Scalars['Int']>;
+  readonly gte?: InputMaybe<Scalars['Int']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+  readonly lt?: InputMaybe<Scalars['Int']>;
+  readonly lte?: InputMaybe<Scalars['Int']>;
+  readonly not?: InputMaybe<NestedIntWithAggregatesFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+};
 
-export interface NestedStringFilter {
-  contains?: InputMaybe<Scalars['String']>;
-  endsWith?: InputMaybe<Scalars['String']>;
-  equals?: InputMaybe<Scalars['String']>;
-  gt?: InputMaybe<Scalars['String']>;
-  gte?: InputMaybe<Scalars['String']>;
-  in?: InputMaybe<Array<Scalars['String']>>;
-  lt?: InputMaybe<Scalars['String']>;
-  lte?: InputMaybe<Scalars['String']>;
-  not?: InputMaybe<NestedStringFilter>;
-  notIn?: InputMaybe<Array<Scalars['String']>>;
-  startsWith?: InputMaybe<Scalars['String']>;
-}
+export type NestedStringFilter = {
+  readonly contains?: InputMaybe<Scalars['String']>;
+  readonly endsWith?: InputMaybe<Scalars['String']>;
+  readonly equals?: InputMaybe<Scalars['String']>;
+  readonly gt?: InputMaybe<Scalars['String']>;
+  readonly gte?: InputMaybe<Scalars['String']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']>>;
+  readonly lt?: InputMaybe<Scalars['String']>;
+  readonly lte?: InputMaybe<Scalars['String']>;
+  readonly not?: InputMaybe<NestedStringFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']>;
+};
 
-export interface NestedStringWithAggregatesFilter {
-  _count?: InputMaybe<NestedIntFilter>;
-  _max?: InputMaybe<NestedStringFilter>;
-  _min?: InputMaybe<NestedStringFilter>;
-  contains?: InputMaybe<Scalars['String']>;
-  endsWith?: InputMaybe<Scalars['String']>;
-  equals?: InputMaybe<Scalars['String']>;
-  gt?: InputMaybe<Scalars['String']>;
-  gte?: InputMaybe<Scalars['String']>;
-  in?: InputMaybe<Array<Scalars['String']>>;
-  lt?: InputMaybe<Scalars['String']>;
-  lte?: InputMaybe<Scalars['String']>;
-  not?: InputMaybe<NestedStringWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['String']>>;
-  startsWith?: InputMaybe<Scalars['String']>;
-}
+export type NestedStringWithAggregatesFilter = {
+  readonly _count?: InputMaybe<NestedIntFilter>;
+  readonly _max?: InputMaybe<NestedStringFilter>;
+  readonly _min?: InputMaybe<NestedStringFilter>;
+  readonly contains?: InputMaybe<Scalars['String']>;
+  readonly endsWith?: InputMaybe<Scalars['String']>;
+  readonly equals?: InputMaybe<Scalars['String']>;
+  readonly gt?: InputMaybe<Scalars['String']>;
+  readonly gte?: InputMaybe<Scalars['String']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']>>;
+  readonly lt?: InputMaybe<Scalars['String']>;
+  readonly lte?: InputMaybe<Scalars['String']>;
+  readonly not?: InputMaybe<NestedStringWithAggregatesFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']>;
+};
 
-export interface Product {
-  __typename?: 'Product';
-  _count?: Maybe<ProductCount>;
-  cost: Scalars['Float'];
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id: Scalars['String'];
-  inventory: Array<Inventory>;
-  name: Scalars['String'];
-  productSales: Array<ProductSale>;
-  productTransactions: Array<ProductTransaction>;
-}
+export type Product = {
+  readonly __typename?: 'Product';
+  readonly _count?: Maybe<ProductCount>;
+  readonly cost: Scalars['Float'];
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id: Scalars['String'];
+  readonly inventory: ReadonlyArray<Inventory>;
+  readonly name: Scalars['String'];
+  readonly productSales: ReadonlyArray<ProductSale>;
+  readonly productTransactions: ReadonlyArray<ProductTransaction>;
+};
 
-export interface ProductInventoryArgs {
+export type ProductInventoryArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
-  distinct?: InputMaybe<Array<InventoryScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<InventoryOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<InventoryScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<InventoryWhereInput>;
-}
+};
 
-export interface ProductProductSalesArgs {
+export type ProductProductSalesArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductSaleScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductSaleOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductSaleScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductSaleWhereInput>;
-}
+};
 
-export interface ProductProductTransactionsArgs {
+export type ProductProductTransactionsArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductTransactionScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductTransactionOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductTransactionScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
-}
+};
 
-export interface ProductAvgAggregate {
-  __typename?: 'ProductAvgAggregate';
-  cost?: Maybe<Scalars['Float']>;
-}
+export type ProductAvgAggregate = {
+  readonly __typename?: 'ProductAvgAggregate';
+  readonly cost?: Maybe<Scalars['Float']>;
+};
 
-export interface ProductAvgOrderByAggregateInput {
-  cost?: InputMaybe<SortOrder>;
-}
+export type ProductAvgOrderByAggregateInput = {
+  readonly cost?: InputMaybe<SortOrder>;
+};
 
-export interface ProductCount {
-  __typename?: 'ProductCount';
-  inventory: Scalars['Int'];
-  productSales: Scalars['Int'];
-  productTransactions: Scalars['Int'];
-}
+export type ProductCount = {
+  readonly __typename?: 'ProductCount';
+  readonly inventory: Scalars['Int'];
+  readonly productSales: Scalars['Int'];
+  readonly productTransactions: Scalars['Int'];
+};
 
-export interface ProductCountAggregate {
-  __typename?: 'ProductCountAggregate';
-  _all: Scalars['Int'];
-  cost: Scalars['Int'];
-  dateCreated: Scalars['Int'];
-  dateUpdated: Scalars['Int'];
-  id: Scalars['Int'];
-  name: Scalars['Int'];
-}
+export type ProductCountAggregate = {
+  readonly __typename?: 'ProductCountAggregate';
+  readonly _all: Scalars['Int'];
+  readonly cost: Scalars['Int'];
+  readonly dateCreated: Scalars['Int'];
+  readonly dateUpdated: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly name: Scalars['Int'];
+};
 
-export interface ProductCountOrderByAggregateInput {
-  cost?: InputMaybe<SortOrder>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type ProductCountOrderByAggregateInput = {
+  readonly cost?: InputMaybe<SortOrder>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface ProductCreateInput {
-  cost: Scalars['Float'];
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
-  name: Scalars['String'];
-  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
-  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
-}
+export type ProductCreateInput = {
+  readonly cost: Scalars['Float'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
+  readonly name: Scalars['String'];
+  readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
+  readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
+};
 
-export interface ProductCreateNestedOneWithoutInventoryInput {
-  connect?: InputMaybe<ProductWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutInventoryInput>;
-  create?: InputMaybe<ProductCreateWithoutInventoryInput>;
-}
+export type ProductCreateNestedOneWithoutInventoryInput = {
+  readonly connect?: InputMaybe<ProductWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutInventoryInput>;
+  readonly create?: InputMaybe<ProductCreateWithoutInventoryInput>;
+};
 
-export interface ProductCreateNestedOneWithoutProductSalesInput {
-  connect?: InputMaybe<ProductWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductSalesInput>;
-  create?: InputMaybe<ProductCreateWithoutProductSalesInput>;
-}
+export type ProductCreateNestedOneWithoutProductSalesInput = {
+  readonly connect?: InputMaybe<ProductWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductSalesInput>;
+  readonly create?: InputMaybe<ProductCreateWithoutProductSalesInput>;
+};
 
-export interface ProductCreateNestedOneWithoutProductTransactionsInput {
-  connect?: InputMaybe<ProductWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductTransactionsInput>;
-  create?: InputMaybe<ProductCreateWithoutProductTransactionsInput>;
-}
+export type ProductCreateNestedOneWithoutProductTransactionsInput = {
+  readonly connect?: InputMaybe<ProductWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductTransactionsInput>;
+  readonly create?: InputMaybe<ProductCreateWithoutProductTransactionsInput>;
+};
 
-export interface ProductCreateOrConnectWithoutInventoryInput {
-  create: ProductCreateWithoutInventoryInput;
-  where: ProductWhereUniqueInput;
-}
+export type ProductCreateOrConnectWithoutInventoryInput = {
+  readonly create: ProductCreateWithoutInventoryInput;
+  readonly where: ProductWhereUniqueInput;
+};
 
-export interface ProductCreateOrConnectWithoutProductSalesInput {
-  create: ProductCreateWithoutProductSalesInput;
-  where: ProductWhereUniqueInput;
-}
+export type ProductCreateOrConnectWithoutProductSalesInput = {
+  readonly create: ProductCreateWithoutProductSalesInput;
+  readonly where: ProductWhereUniqueInput;
+};
 
-export interface ProductCreateOrConnectWithoutProductTransactionsInput {
-  create: ProductCreateWithoutProductTransactionsInput;
-  where: ProductWhereUniqueInput;
-}
+export type ProductCreateOrConnectWithoutProductTransactionsInput = {
+  readonly create: ProductCreateWithoutProductTransactionsInput;
+  readonly where: ProductWhereUniqueInput;
+};
 
-export interface ProductCreateWithoutInventoryInput {
-  cost: Scalars['Float'];
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name: Scalars['String'];
-  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
-  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
-}
+export type ProductCreateWithoutInventoryInput = {
+  readonly cost: Scalars['Float'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name: Scalars['String'];
+  readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
+  readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
+};
 
-export interface ProductCreateWithoutProductSalesInput {
-  cost: Scalars['Float'];
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
-  name: Scalars['String'];
-  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
-}
+export type ProductCreateWithoutProductSalesInput = {
+  readonly cost: Scalars['Float'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
+  readonly name: Scalars['String'];
+  readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
+};
 
-export interface ProductCreateWithoutProductTransactionsInput {
-  cost: Scalars['Float'];
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
-  name: Scalars['String'];
-  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
-}
+export type ProductCreateWithoutProductTransactionsInput = {
+  readonly cost: Scalars['Float'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
+  readonly name: Scalars['String'];
+  readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
+};
 
-export interface ProductGroupBy {
-  __typename?: 'ProductGroupBy';
-  _avg?: Maybe<ProductAvgAggregate>;
-  _count?: Maybe<ProductCountAggregate>;
-  _max?: Maybe<ProductMaxAggregate>;
-  _min?: Maybe<ProductMinAggregate>;
-  _sum?: Maybe<ProductSumAggregate>;
-  cost: Scalars['Float'];
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id: Scalars['String'];
-  name: Scalars['String'];
-}
+export type ProductGroupBy = {
+  readonly __typename?: 'ProductGroupBy';
+  readonly _avg?: Maybe<ProductAvgAggregate>;
+  readonly _count?: Maybe<ProductCountAggregate>;
+  readonly _max?: Maybe<ProductMaxAggregate>;
+  readonly _min?: Maybe<ProductMinAggregate>;
+  readonly _sum?: Maybe<ProductSumAggregate>;
+  readonly cost: Scalars['Float'];
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id: Scalars['String'];
+  readonly name: Scalars['String'];
+};
 
-export interface ProductMaxAggregate {
-  __typename?: 'ProductMaxAggregate';
-  cost?: Maybe<Scalars['Float']>;
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-}
+export type ProductMaxAggregate = {
+  readonly __typename?: 'ProductMaxAggregate';
+  readonly cost?: Maybe<Scalars['Float']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+};
 
-export interface ProductMaxOrderByAggregateInput {
-  cost?: InputMaybe<SortOrder>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type ProductMaxOrderByAggregateInput = {
+  readonly cost?: InputMaybe<SortOrder>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface ProductMinAggregate {
-  __typename?: 'ProductMinAggregate';
-  cost?: Maybe<Scalars['Float']>;
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-}
+export type ProductMinAggregate = {
+  readonly __typename?: 'ProductMinAggregate';
+  readonly cost?: Maybe<Scalars['Float']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+};
 
-export interface ProductMinOrderByAggregateInput {
-  cost?: InputMaybe<SortOrder>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type ProductMinOrderByAggregateInput = {
+  readonly cost?: InputMaybe<SortOrder>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface ProductOrderByWithAggregationInput {
-  _avg?: InputMaybe<ProductAvgOrderByAggregateInput>;
-  _count?: InputMaybe<ProductCountOrderByAggregateInput>;
-  _max?: InputMaybe<ProductMaxOrderByAggregateInput>;
-  _min?: InputMaybe<ProductMinOrderByAggregateInput>;
-  _sum?: InputMaybe<ProductSumOrderByAggregateInput>;
-  cost?: InputMaybe<SortOrder>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type ProductOrderByWithAggregationInput = {
+  readonly _avg?: InputMaybe<ProductAvgOrderByAggregateInput>;
+  readonly _count?: InputMaybe<ProductCountOrderByAggregateInput>;
+  readonly _max?: InputMaybe<ProductMaxOrderByAggregateInput>;
+  readonly _min?: InputMaybe<ProductMinOrderByAggregateInput>;
+  readonly _sum?: InputMaybe<ProductSumOrderByAggregateInput>;
+  readonly cost?: InputMaybe<SortOrder>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface ProductOrderByWithRelationInput {
-  cost?: InputMaybe<SortOrder>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  inventory?: InputMaybe<InventoryOrderByRelationAggregateInput>;
-  name?: InputMaybe<SortOrder>;
-  productSales?: InputMaybe<ProductSaleOrderByRelationAggregateInput>;
-  productTransactions?: InputMaybe<ProductTransactionOrderByRelationAggregateInput>;
-}
+export type ProductOrderByWithRelationInput = {
+  readonly cost?: InputMaybe<SortOrder>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly inventory?: InputMaybe<InventoryOrderByRelationAggregateInput>;
+  readonly name?: InputMaybe<SortOrder>;
+  readonly productSales?: InputMaybe<ProductSaleOrderByRelationAggregateInput>;
+  readonly productTransactions?: InputMaybe<ProductTransactionOrderByRelationAggregateInput>;
+};
 
-export interface ProductRelationFilter {
-  is?: InputMaybe<ProductWhereInput>;
-  isNot?: InputMaybe<ProductWhereInput>;
-}
+export type ProductRelationFilter = {
+  readonly is?: InputMaybe<ProductWhereInput>;
+  readonly isNot?: InputMaybe<ProductWhereInput>;
+};
 
-export interface ProductSale {
-  __typename?: 'ProductSale';
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id: Scalars['String'];
-  product: Product;
-  productId: Scalars['String'];
-  quantity: Scalars['Int'];
-  size: Size;
-  sizeId: Scalars['String'];
-}
+export type ProductSale = {
+  readonly __typename?: 'ProductSale';
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id: Scalars['String'];
+  readonly product: Product;
+  readonly productId: Scalars['String'];
+  readonly quantity: Scalars['Int'];
+  readonly size: Size;
+  readonly sizeId: Scalars['String'];
+};
 
-export interface ProductSaleAvgAggregate {
-  __typename?: 'ProductSaleAvgAggregate';
-  quantity?: Maybe<Scalars['Float']>;
-}
+export type ProductSaleAvgAggregate = {
+  readonly __typename?: 'ProductSaleAvgAggregate';
+  readonly quantity?: Maybe<Scalars['Float']>;
+};
 
-export interface ProductSaleAvgOrderByAggregateInput {
-  quantity?: InputMaybe<SortOrder>;
-}
+export type ProductSaleAvgOrderByAggregateInput = {
+  readonly quantity?: InputMaybe<SortOrder>;
+};
 
-export interface ProductSaleCountAggregate {
-  __typename?: 'ProductSaleCountAggregate';
-  _all: Scalars['Int'];
-  dateCreated: Scalars['Int'];
-  dateUpdated: Scalars['Int'];
-  id: Scalars['Int'];
-  productId: Scalars['Int'];
-  quantity: Scalars['Int'];
-  sizeId: Scalars['Int'];
-}
+export type ProductSaleCountAggregate = {
+  readonly __typename?: 'ProductSaleCountAggregate';
+  readonly _all: Scalars['Int'];
+  readonly dateCreated: Scalars['Int'];
+  readonly dateUpdated: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly productId: Scalars['Int'];
+  readonly quantity: Scalars['Int'];
+  readonly sizeId: Scalars['Int'];
+};
 
-export interface ProductSaleCountOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type ProductSaleCountOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface ProductSaleCreateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  product: ProductCreateNestedOneWithoutProductSalesInput;
-  quantity: Scalars['Int'];
-  size: SizeCreateNestedOneWithoutProductSalesInput;
-}
+export type ProductSaleCreateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly product: ProductCreateNestedOneWithoutProductSalesInput;
+  readonly quantity: Scalars['Int'];
+  readonly size: SizeCreateNestedOneWithoutProductSalesInput;
+};
 
-export interface ProductSaleCreateNestedManyWithoutProductInput {
-  connect?: InputMaybe<Array<ProductSaleWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<ProductSaleCreateOrConnectWithoutProductInput>>;
-  create?: InputMaybe<Array<ProductSaleCreateWithoutProductInput>>;
-}
+export type ProductSaleCreateNestedManyWithoutProductInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<ProductSaleWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<ProductSaleCreateOrConnectWithoutProductInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<ProductSaleCreateWithoutProductInput>>;
+};
 
-export interface ProductSaleCreateNestedManyWithoutSizeInput {
-  connect?: InputMaybe<Array<ProductSaleWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<ProductSaleCreateOrConnectWithoutSizeInput>>;
-  create?: InputMaybe<Array<ProductSaleCreateWithoutSizeInput>>;
-}
+export type ProductSaleCreateNestedManyWithoutSizeInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<ProductSaleWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<ReadonlyArray<ProductSaleCreateOrConnectWithoutSizeInput>>;
+  readonly create?: InputMaybe<ReadonlyArray<ProductSaleCreateWithoutSizeInput>>;
+};
 
-export interface ProductSaleCreateOrConnectWithoutProductInput {
-  create: ProductSaleCreateWithoutProductInput;
-  where: ProductSaleWhereUniqueInput;
-}
+export type ProductSaleCreateOrConnectWithoutProductInput = {
+  readonly create: ProductSaleCreateWithoutProductInput;
+  readonly where: ProductSaleWhereUniqueInput;
+};
 
-export interface ProductSaleCreateOrConnectWithoutSizeInput {
-  create: ProductSaleCreateWithoutSizeInput;
-  where: ProductSaleWhereUniqueInput;
-}
+export type ProductSaleCreateOrConnectWithoutSizeInput = {
+  readonly create: ProductSaleCreateWithoutSizeInput;
+  readonly where: ProductSaleWhereUniqueInput;
+};
 
-export interface ProductSaleCreateWithoutProductInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  quantity: Scalars['Int'];
-  size: SizeCreateNestedOneWithoutProductSalesInput;
-}
+export type ProductSaleCreateWithoutProductInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly quantity: Scalars['Int'];
+  readonly size: SizeCreateNestedOneWithoutProductSalesInput;
+};
 
-export interface ProductSaleCreateWithoutSizeInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  product: ProductCreateNestedOneWithoutProductSalesInput;
-  quantity: Scalars['Int'];
-}
+export type ProductSaleCreateWithoutSizeInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly product: ProductCreateNestedOneWithoutProductSalesInput;
+  readonly quantity: Scalars['Int'];
+};
 
-export interface ProductSaleGroupBy {
-  __typename?: 'ProductSaleGroupBy';
-  _avg?: Maybe<ProductSaleAvgAggregate>;
-  _count?: Maybe<ProductSaleCountAggregate>;
-  _max?: Maybe<ProductSaleMaxAggregate>;
-  _min?: Maybe<ProductSaleMinAggregate>;
-  _sum?: Maybe<ProductSaleSumAggregate>;
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id: Scalars['String'];
-  productId: Scalars['String'];
-  quantity: Scalars['Int'];
-  sizeId: Scalars['String'];
-}
+export type ProductSaleGroupBy = {
+  readonly __typename?: 'ProductSaleGroupBy';
+  readonly _avg?: Maybe<ProductSaleAvgAggregate>;
+  readonly _count?: Maybe<ProductSaleCountAggregate>;
+  readonly _max?: Maybe<ProductSaleMaxAggregate>;
+  readonly _min?: Maybe<ProductSaleMinAggregate>;
+  readonly _sum?: Maybe<ProductSaleSumAggregate>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id: Scalars['String'];
+  readonly productId: Scalars['String'];
+  readonly quantity: Scalars['Int'];
+  readonly sizeId: Scalars['String'];
+};
 
-export interface ProductSaleListRelationFilter {
-  every?: InputMaybe<ProductSaleWhereInput>;
-  none?: InputMaybe<ProductSaleWhereInput>;
-  some?: InputMaybe<ProductSaleWhereInput>;
-}
+export type ProductSaleListRelationFilter = {
+  readonly every?: InputMaybe<ProductSaleWhereInput>;
+  readonly none?: InputMaybe<ProductSaleWhereInput>;
+  readonly some?: InputMaybe<ProductSaleWhereInput>;
+};
 
-export interface ProductSaleMaxAggregate {
-  __typename?: 'ProductSaleMaxAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  productId?: Maybe<Scalars['String']>;
-  quantity?: Maybe<Scalars['Int']>;
-  sizeId?: Maybe<Scalars['String']>;
-}
+export type ProductSaleMaxAggregate = {
+  readonly __typename?: 'ProductSaleMaxAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly productId?: Maybe<Scalars['String']>;
+  readonly quantity?: Maybe<Scalars['Int']>;
+  readonly sizeId?: Maybe<Scalars['String']>;
+};
 
-export interface ProductSaleMaxOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type ProductSaleMaxOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface ProductSaleMinAggregate {
-  __typename?: 'ProductSaleMinAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  productId?: Maybe<Scalars['String']>;
-  quantity?: Maybe<Scalars['Int']>;
-  sizeId?: Maybe<Scalars['String']>;
-}
+export type ProductSaleMinAggregate = {
+  readonly __typename?: 'ProductSaleMinAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly productId?: Maybe<Scalars['String']>;
+  readonly quantity?: Maybe<Scalars['Int']>;
+  readonly sizeId?: Maybe<Scalars['String']>;
+};
 
-export interface ProductSaleMinOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type ProductSaleMinOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface ProductSaleOrderByRelationAggregateInput {
-  _count?: InputMaybe<SortOrder>;
-}
+export type ProductSaleOrderByRelationAggregateInput = {
+  readonly _count?: InputMaybe<SortOrder>;
+};
 
-export interface ProductSaleOrderByWithAggregationInput {
-  _avg?: InputMaybe<ProductSaleAvgOrderByAggregateInput>;
-  _count?: InputMaybe<ProductSaleCountOrderByAggregateInput>;
-  _max?: InputMaybe<ProductSaleMaxOrderByAggregateInput>;
-  _min?: InputMaybe<ProductSaleMinOrderByAggregateInput>;
-  _sum?: InputMaybe<ProductSaleSumOrderByAggregateInput>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type ProductSaleOrderByWithAggregationInput = {
+  readonly _avg?: InputMaybe<ProductSaleAvgOrderByAggregateInput>;
+  readonly _count?: InputMaybe<ProductSaleCountOrderByAggregateInput>;
+  readonly _max?: InputMaybe<ProductSaleMaxOrderByAggregateInput>;
+  readonly _min?: InputMaybe<ProductSaleMinOrderByAggregateInput>;
+  readonly _sum?: InputMaybe<ProductSaleSumOrderByAggregateInput>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface ProductSaleOrderByWithRelationInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  product?: InputMaybe<ProductOrderByWithRelationInput>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  size?: InputMaybe<SizeOrderByWithRelationInput>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type ProductSaleOrderByWithRelationInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly product?: InputMaybe<ProductOrderByWithRelationInput>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly size?: InputMaybe<SizeOrderByWithRelationInput>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
 export enum ProductSaleScalarFieldEnum {
   DateCreated = 0,
@@ -2766,146 +2794,150 @@ export enum ProductSaleScalarFieldEnum {
   SizeId = 5,
 }
 
-export interface ProductSaleScalarWhereInput {
-  AND?: InputMaybe<Array<ProductSaleScalarWhereInput>>;
-  NOT?: InputMaybe<Array<ProductSaleScalarWhereInput>>;
-  OR?: InputMaybe<Array<ProductSaleScalarWhereInput>>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  id?: InputMaybe<StringFilter>;
-  productId?: InputMaybe<StringFilter>;
-  quantity?: InputMaybe<IntFilter>;
-  sizeId?: InputMaybe<StringFilter>;
-}
+export type ProductSaleScalarWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<ProductSaleScalarWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<ProductSaleScalarWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<ProductSaleScalarWhereInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly productId?: InputMaybe<StringFilter>;
+  readonly quantity?: InputMaybe<IntFilter>;
+  readonly sizeId?: InputMaybe<StringFilter>;
+};
 
-export interface ProductSaleScalarWhereWithAggregatesInput {
-  AND?: InputMaybe<Array<ProductSaleScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<ProductSaleScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<ProductSaleScalarWhereWithAggregatesInput>>;
-  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
-  id?: InputMaybe<StringWithAggregatesFilter>;
-  productId?: InputMaybe<StringWithAggregatesFilter>;
-  quantity?: InputMaybe<IntWithAggregatesFilter>;
-  sizeId?: InputMaybe<StringWithAggregatesFilter>;
-}
+export type ProductSaleScalarWhereWithAggregatesInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<ProductSaleScalarWhereWithAggregatesInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<ProductSaleScalarWhereWithAggregatesInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<ProductSaleScalarWhereWithAggregatesInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly productId?: InputMaybe<StringWithAggregatesFilter>;
+  readonly quantity?: InputMaybe<IntWithAggregatesFilter>;
+  readonly sizeId?: InputMaybe<StringWithAggregatesFilter>;
+};
 
-export interface ProductSaleSumAggregate {
-  __typename?: 'ProductSaleSumAggregate';
-  quantity?: Maybe<Scalars['Int']>;
-}
+export type ProductSaleSumAggregate = {
+  readonly __typename?: 'ProductSaleSumAggregate';
+  readonly quantity?: Maybe<Scalars['Int']>;
+};
 
-export interface ProductSaleSumOrderByAggregateInput {
-  quantity?: InputMaybe<SortOrder>;
-}
+export type ProductSaleSumOrderByAggregateInput = {
+  readonly quantity?: InputMaybe<SortOrder>;
+};
 
-export interface ProductSaleUpdateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductSalesNestedInput>;
-  quantity?: InputMaybe<Scalars['Int']>;
-  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductSalesNestedInput>;
-}
+export type ProductSaleUpdateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutProductSalesNestedInput>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutProductSalesNestedInput>;
+};
 
-export interface ProductSaleUpdateManyMutationInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  quantity?: InputMaybe<Scalars['Int']>;
-}
+export type ProductSaleUpdateManyMutationInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+};
 
-export interface ProductSaleUpdateManyWithWhereWithoutProductInput {
-  data: ProductSaleUpdateManyMutationInput;
-  where: ProductSaleScalarWhereInput;
-}
+export type ProductSaleUpdateManyWithWhereWithoutProductInput = {
+  readonly data: ProductSaleUpdateManyMutationInput;
+  readonly where: ProductSaleScalarWhereInput;
+};
 
-export interface ProductSaleUpdateManyWithWhereWithoutSizeInput {
-  data: ProductSaleUpdateManyMutationInput;
-  where: ProductSaleScalarWhereInput;
-}
+export type ProductSaleUpdateManyWithWhereWithoutSizeInput = {
+  readonly data: ProductSaleUpdateManyMutationInput;
+  readonly where: ProductSaleScalarWhereInput;
+};
 
-export interface ProductSaleUpdateManyWithoutProductNestedInput {
-  connect?: InputMaybe<Array<ProductSaleWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<ProductSaleCreateOrConnectWithoutProductInput>>;
-  create?: InputMaybe<Array<ProductSaleCreateWithoutProductInput>>;
-  delete?: InputMaybe<Array<ProductSaleWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<ProductSaleScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<ProductSaleWhereUniqueInput>>;
-  set?: InputMaybe<Array<ProductSaleWhereUniqueInput>>;
-  update?: InputMaybe<Array<ProductSaleUpdateWithWhereUniqueWithoutProductInput>>;
-  updateMany?: InputMaybe<Array<ProductSaleUpdateManyWithWhereWithoutProductInput>>;
-  upsert?: InputMaybe<Array<ProductSaleUpsertWithWhereUniqueWithoutProductInput>>;
-}
+export type ProductSaleUpdateManyWithoutProductNestedInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<ProductSaleWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<ProductSaleCreateOrConnectWithoutProductInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<ProductSaleCreateWithoutProductInput>>;
+  readonly delete?: InputMaybe<ReadonlyArray<ProductSaleWhereUniqueInput>>;
+  readonly deleteMany?: InputMaybe<ReadonlyArray<ProductSaleScalarWhereInput>>;
+  readonly disconnect?: InputMaybe<ReadonlyArray<ProductSaleWhereUniqueInput>>;
+  readonly set?: InputMaybe<ReadonlyArray<ProductSaleWhereUniqueInput>>;
+  readonly update?: InputMaybe<ReadonlyArray<ProductSaleUpdateWithWhereUniqueWithoutProductInput>>;
+  readonly updateMany?: InputMaybe<
+    ReadonlyArray<ProductSaleUpdateManyWithWhereWithoutProductInput>
+  >;
+  readonly upsert?: InputMaybe<ReadonlyArray<ProductSaleUpsertWithWhereUniqueWithoutProductInput>>;
+};
 
-export interface ProductSaleUpdateManyWithoutSizeNestedInput {
-  connect?: InputMaybe<Array<ProductSaleWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<ProductSaleCreateOrConnectWithoutSizeInput>>;
-  create?: InputMaybe<Array<ProductSaleCreateWithoutSizeInput>>;
-  delete?: InputMaybe<Array<ProductSaleWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<ProductSaleScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<ProductSaleWhereUniqueInput>>;
-  set?: InputMaybe<Array<ProductSaleWhereUniqueInput>>;
-  update?: InputMaybe<Array<ProductSaleUpdateWithWhereUniqueWithoutSizeInput>>;
-  updateMany?: InputMaybe<Array<ProductSaleUpdateManyWithWhereWithoutSizeInput>>;
-  upsert?: InputMaybe<Array<ProductSaleUpsertWithWhereUniqueWithoutSizeInput>>;
-}
+export type ProductSaleUpdateManyWithoutSizeNestedInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<ProductSaleWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<ReadonlyArray<ProductSaleCreateOrConnectWithoutSizeInput>>;
+  readonly create?: InputMaybe<ReadonlyArray<ProductSaleCreateWithoutSizeInput>>;
+  readonly delete?: InputMaybe<ReadonlyArray<ProductSaleWhereUniqueInput>>;
+  readonly deleteMany?: InputMaybe<ReadonlyArray<ProductSaleScalarWhereInput>>;
+  readonly disconnect?: InputMaybe<ReadonlyArray<ProductSaleWhereUniqueInput>>;
+  readonly set?: InputMaybe<ReadonlyArray<ProductSaleWhereUniqueInput>>;
+  readonly update?: InputMaybe<ReadonlyArray<ProductSaleUpdateWithWhereUniqueWithoutSizeInput>>;
+  readonly updateMany?: InputMaybe<ReadonlyArray<ProductSaleUpdateManyWithWhereWithoutSizeInput>>;
+  readonly upsert?: InputMaybe<ReadonlyArray<ProductSaleUpsertWithWhereUniqueWithoutSizeInput>>;
+};
 
-export interface ProductSaleUpdateWithWhereUniqueWithoutProductInput {
-  data: ProductSaleUpdateWithoutProductInput;
-  where: ProductSaleWhereUniqueInput;
-}
+export type ProductSaleUpdateWithWhereUniqueWithoutProductInput = {
+  readonly data: ProductSaleUpdateWithoutProductInput;
+  readonly where: ProductSaleWhereUniqueInput;
+};
 
-export interface ProductSaleUpdateWithWhereUniqueWithoutSizeInput {
-  data: ProductSaleUpdateWithoutSizeInput;
-  where: ProductSaleWhereUniqueInput;
-}
+export type ProductSaleUpdateWithWhereUniqueWithoutSizeInput = {
+  readonly data: ProductSaleUpdateWithoutSizeInput;
+  readonly where: ProductSaleWhereUniqueInput;
+};
 
-export interface ProductSaleUpdateWithoutProductInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  quantity?: InputMaybe<Scalars['Int']>;
-  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductSalesNestedInput>;
-}
+export type ProductSaleUpdateWithoutProductInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutProductSalesNestedInput>;
+};
 
-export interface ProductSaleUpdateWithoutSizeInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductSalesNestedInput>;
-  quantity?: InputMaybe<Scalars['Int']>;
-}
+export type ProductSaleUpdateWithoutSizeInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutProductSalesNestedInput>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+};
 
-export interface ProductSaleUpsertWithWhereUniqueWithoutProductInput {
-  create: ProductSaleCreateWithoutProductInput;
-  update: ProductSaleUpdateWithoutProductInput;
-  where: ProductSaleWhereUniqueInput;
-}
+export type ProductSaleUpsertWithWhereUniqueWithoutProductInput = {
+  readonly create: ProductSaleCreateWithoutProductInput;
+  readonly update: ProductSaleUpdateWithoutProductInput;
+  readonly where: ProductSaleWhereUniqueInput;
+};
 
-export interface ProductSaleUpsertWithWhereUniqueWithoutSizeInput {
-  create: ProductSaleCreateWithoutSizeInput;
-  update: ProductSaleUpdateWithoutSizeInput;
-  where: ProductSaleWhereUniqueInput;
-}
+export type ProductSaleUpsertWithWhereUniqueWithoutSizeInput = {
+  readonly create: ProductSaleCreateWithoutSizeInput;
+  readonly update: ProductSaleUpdateWithoutSizeInput;
+  readonly where: ProductSaleWhereUniqueInput;
+};
 
-export interface ProductSaleWhereInput {
-  AND?: InputMaybe<Array<ProductSaleWhereInput>>;
-  NOT?: InputMaybe<Array<ProductSaleWhereInput>>;
-  OR?: InputMaybe<Array<ProductSaleWhereInput>>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  id?: InputMaybe<StringFilter>;
-  product?: InputMaybe<ProductRelationFilter>;
-  productId?: InputMaybe<StringFilter>;
-  quantity?: InputMaybe<IntFilter>;
-  size?: InputMaybe<SizeRelationFilter>;
-  sizeId?: InputMaybe<StringFilter>;
-}
+export type ProductSaleWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<ProductSaleWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<ProductSaleWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<ProductSaleWhereInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly product?: InputMaybe<ProductRelationFilter>;
+  readonly productId?: InputMaybe<StringFilter>;
+  readonly quantity?: InputMaybe<IntFilter>;
+  readonly size?: InputMaybe<SizeRelationFilter>;
+  readonly sizeId?: InputMaybe<StringFilter>;
+};
 
-export interface ProductSaleWhereUniqueInput {
-  id?: InputMaybe<Scalars['String']>;
-}
+export type ProductSaleWhereUniqueInput = {
+  readonly id?: InputMaybe<Scalars['String']>;
+};
 
 export enum ProductScalarFieldEnum {
   Cost = 0,
@@ -2915,203 +2947,207 @@ export enum ProductScalarFieldEnum {
   Name = 4,
 }
 
-export interface ProductScalarWhereWithAggregatesInput {
-  AND?: InputMaybe<Array<ProductScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<ProductScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<ProductScalarWhereWithAggregatesInput>>;
-  cost?: InputMaybe<FloatWithAggregatesFilter>;
-  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
-  id?: InputMaybe<StringWithAggregatesFilter>;
-  name?: InputMaybe<StringWithAggregatesFilter>;
-}
+export type ProductScalarWhereWithAggregatesInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<ProductScalarWhereWithAggregatesInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<ProductScalarWhereWithAggregatesInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<ProductScalarWhereWithAggregatesInput>>;
+  readonly cost?: InputMaybe<FloatWithAggregatesFilter>;
+  readonly dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly name?: InputMaybe<StringWithAggregatesFilter>;
+};
 
-export interface ProductSumAggregate {
-  __typename?: 'ProductSumAggregate';
-  cost?: Maybe<Scalars['Float']>;
-}
+export type ProductSumAggregate = {
+  readonly __typename?: 'ProductSumAggregate';
+  readonly cost?: Maybe<Scalars['Float']>;
+};
 
-export interface ProductSumOrderByAggregateInput {
-  cost?: InputMaybe<SortOrder>;
-}
+export type ProductSumOrderByAggregateInput = {
+  readonly cost?: InputMaybe<SortOrder>;
+};
 
-export interface ProductTransaction {
-  __typename?: 'ProductTransaction';
-  dateCreated: Scalars['DateTime'];
-  id: Scalars['String'];
-  price: Scalars['Float'];
-  product: Product;
-  productId: Scalars['String'];
-  quantity: Scalars['Int'];
-  size: Size;
-  sizeId: Scalars['String'];
-}
+export type ProductTransaction = {
+  readonly __typename?: 'ProductTransaction';
+  readonly dateCreated: Scalars['DateTime'];
+  readonly id: Scalars['String'];
+  readonly price: Scalars['Float'];
+  readonly product: Product;
+  readonly productId: Scalars['String'];
+  readonly quantity: Scalars['Int'];
+  readonly size: Size;
+  readonly sizeId: Scalars['String'];
+};
 
-export interface ProductTransactionAvgAggregate {
-  __typename?: 'ProductTransactionAvgAggregate';
-  price?: Maybe<Scalars['Float']>;
-  quantity?: Maybe<Scalars['Float']>;
-}
+export type ProductTransactionAvgAggregate = {
+  readonly __typename?: 'ProductTransactionAvgAggregate';
+  readonly price?: Maybe<Scalars['Float']>;
+  readonly quantity?: Maybe<Scalars['Float']>;
+};
 
-export interface ProductTransactionAvgOrderByAggregateInput {
-  price?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-}
+export type ProductTransactionAvgOrderByAggregateInput = {
+  readonly price?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+};
 
-export interface ProductTransactionCountAggregate {
-  __typename?: 'ProductTransactionCountAggregate';
-  _all: Scalars['Int'];
-  dateCreated: Scalars['Int'];
-  id: Scalars['Int'];
-  price: Scalars['Int'];
-  productId: Scalars['Int'];
-  quantity: Scalars['Int'];
-  sizeId: Scalars['Int'];
-}
+export type ProductTransactionCountAggregate = {
+  readonly __typename?: 'ProductTransactionCountAggregate';
+  readonly _all: Scalars['Int'];
+  readonly dateCreated: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly price: Scalars['Int'];
+  readonly productId: Scalars['Int'];
+  readonly quantity: Scalars['Int'];
+  readonly sizeId: Scalars['Int'];
+};
 
-export interface ProductTransactionCountOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  price?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type ProductTransactionCountOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly price?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface ProductTransactionCreateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  price: Scalars['Float'];
-  product: ProductCreateNestedOneWithoutProductTransactionsInput;
-  quantity: Scalars['Int'];
-  size: SizeCreateNestedOneWithoutProductTransactionsInput;
-}
+export type ProductTransactionCreateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly price: Scalars['Float'];
+  readonly product: ProductCreateNestedOneWithoutProductTransactionsInput;
+  readonly quantity: Scalars['Int'];
+  readonly size: SizeCreateNestedOneWithoutProductTransactionsInput;
+};
 
-export interface ProductTransactionCreateNestedManyWithoutProductInput {
-  connect?: InputMaybe<Array<ProductTransactionWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<ProductTransactionCreateOrConnectWithoutProductInput>>;
-  create?: InputMaybe<Array<ProductTransactionCreateWithoutProductInput>>;
-}
+export type ProductTransactionCreateNestedManyWithoutProductInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<ProductTransactionWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<ProductTransactionCreateOrConnectWithoutProductInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<ProductTransactionCreateWithoutProductInput>>;
+};
 
-export interface ProductTransactionCreateNestedManyWithoutSizeInput {
-  connect?: InputMaybe<Array<ProductTransactionWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<ProductTransactionCreateOrConnectWithoutSizeInput>>;
-  create?: InputMaybe<Array<ProductTransactionCreateWithoutSizeInput>>;
-}
+export type ProductTransactionCreateNestedManyWithoutSizeInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<ProductTransactionWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<ProductTransactionCreateOrConnectWithoutSizeInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<ProductTransactionCreateWithoutSizeInput>>;
+};
 
-export interface ProductTransactionCreateOrConnectWithoutProductInput {
-  create: ProductTransactionCreateWithoutProductInput;
-  where: ProductTransactionWhereUniqueInput;
-}
+export type ProductTransactionCreateOrConnectWithoutProductInput = {
+  readonly create: ProductTransactionCreateWithoutProductInput;
+  readonly where: ProductTransactionWhereUniqueInput;
+};
 
-export interface ProductTransactionCreateOrConnectWithoutSizeInput {
-  create: ProductTransactionCreateWithoutSizeInput;
-  where: ProductTransactionWhereUniqueInput;
-}
+export type ProductTransactionCreateOrConnectWithoutSizeInput = {
+  readonly create: ProductTransactionCreateWithoutSizeInput;
+  readonly where: ProductTransactionWhereUniqueInput;
+};
 
-export interface ProductTransactionCreateWithoutProductInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  price: Scalars['Float'];
-  quantity: Scalars['Int'];
-  size: SizeCreateNestedOneWithoutProductTransactionsInput;
-}
+export type ProductTransactionCreateWithoutProductInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly price: Scalars['Float'];
+  readonly quantity: Scalars['Int'];
+  readonly size: SizeCreateNestedOneWithoutProductTransactionsInput;
+};
 
-export interface ProductTransactionCreateWithoutSizeInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  price: Scalars['Float'];
-  product: ProductCreateNestedOneWithoutProductTransactionsInput;
-  quantity: Scalars['Int'];
-}
+export type ProductTransactionCreateWithoutSizeInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly price: Scalars['Float'];
+  readonly product: ProductCreateNestedOneWithoutProductTransactionsInput;
+  readonly quantity: Scalars['Int'];
+};
 
-export interface ProductTransactionGroupBy {
-  __typename?: 'ProductTransactionGroupBy';
-  _avg?: Maybe<ProductTransactionAvgAggregate>;
-  _count?: Maybe<ProductTransactionCountAggregate>;
-  _max?: Maybe<ProductTransactionMaxAggregate>;
-  _min?: Maybe<ProductTransactionMinAggregate>;
-  _sum?: Maybe<ProductTransactionSumAggregate>;
-  dateCreated: Scalars['DateTime'];
-  id: Scalars['String'];
-  price: Scalars['Float'];
-  productId: Scalars['String'];
-  quantity: Scalars['Int'];
-  sizeId: Scalars['String'];
-}
+export type ProductTransactionGroupBy = {
+  readonly __typename?: 'ProductTransactionGroupBy';
+  readonly _avg?: Maybe<ProductTransactionAvgAggregate>;
+  readonly _count?: Maybe<ProductTransactionCountAggregate>;
+  readonly _max?: Maybe<ProductTransactionMaxAggregate>;
+  readonly _min?: Maybe<ProductTransactionMinAggregate>;
+  readonly _sum?: Maybe<ProductTransactionSumAggregate>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly id: Scalars['String'];
+  readonly price: Scalars['Float'];
+  readonly productId: Scalars['String'];
+  readonly quantity: Scalars['Int'];
+  readonly sizeId: Scalars['String'];
+};
 
-export interface ProductTransactionListRelationFilter {
-  every?: InputMaybe<ProductTransactionWhereInput>;
-  none?: InputMaybe<ProductTransactionWhereInput>;
-  some?: InputMaybe<ProductTransactionWhereInput>;
-}
+export type ProductTransactionListRelationFilter = {
+  readonly every?: InputMaybe<ProductTransactionWhereInput>;
+  readonly none?: InputMaybe<ProductTransactionWhereInput>;
+  readonly some?: InputMaybe<ProductTransactionWhereInput>;
+};
 
-export interface ProductTransactionMaxAggregate {
-  __typename?: 'ProductTransactionMaxAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  price?: Maybe<Scalars['Float']>;
-  productId?: Maybe<Scalars['String']>;
-  quantity?: Maybe<Scalars['Int']>;
-  sizeId?: Maybe<Scalars['String']>;
-}
+export type ProductTransactionMaxAggregate = {
+  readonly __typename?: 'ProductTransactionMaxAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly price?: Maybe<Scalars['Float']>;
+  readonly productId?: Maybe<Scalars['String']>;
+  readonly quantity?: Maybe<Scalars['Int']>;
+  readonly sizeId?: Maybe<Scalars['String']>;
+};
 
-export interface ProductTransactionMaxOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  price?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type ProductTransactionMaxOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly price?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface ProductTransactionMinAggregate {
-  __typename?: 'ProductTransactionMinAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  price?: Maybe<Scalars['Float']>;
-  productId?: Maybe<Scalars['String']>;
-  quantity?: Maybe<Scalars['Int']>;
-  sizeId?: Maybe<Scalars['String']>;
-}
+export type ProductTransactionMinAggregate = {
+  readonly __typename?: 'ProductTransactionMinAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly price?: Maybe<Scalars['Float']>;
+  readonly productId?: Maybe<Scalars['String']>;
+  readonly quantity?: Maybe<Scalars['Int']>;
+  readonly sizeId?: Maybe<Scalars['String']>;
+};
 
-export interface ProductTransactionMinOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  price?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type ProductTransactionMinOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly price?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface ProductTransactionOrderByRelationAggregateInput {
-  _count?: InputMaybe<SortOrder>;
-}
+export type ProductTransactionOrderByRelationAggregateInput = {
+  readonly _count?: InputMaybe<SortOrder>;
+};
 
-export interface ProductTransactionOrderByWithAggregationInput {
-  _avg?: InputMaybe<ProductTransactionAvgOrderByAggregateInput>;
-  _count?: InputMaybe<ProductTransactionCountOrderByAggregateInput>;
-  _max?: InputMaybe<ProductTransactionMaxOrderByAggregateInput>;
-  _min?: InputMaybe<ProductTransactionMinOrderByAggregateInput>;
-  _sum?: InputMaybe<ProductTransactionSumOrderByAggregateInput>;
-  dateCreated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  price?: InputMaybe<SortOrder>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type ProductTransactionOrderByWithAggregationInput = {
+  readonly _avg?: InputMaybe<ProductTransactionAvgOrderByAggregateInput>;
+  readonly _count?: InputMaybe<ProductTransactionCountOrderByAggregateInput>;
+  readonly _max?: InputMaybe<ProductTransactionMaxOrderByAggregateInput>;
+  readonly _min?: InputMaybe<ProductTransactionMinOrderByAggregateInput>;
+  readonly _sum?: InputMaybe<ProductTransactionSumOrderByAggregateInput>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly price?: InputMaybe<SortOrder>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
-export interface ProductTransactionOrderByWithRelationInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  price?: InputMaybe<SortOrder>;
-  product?: InputMaybe<ProductOrderByWithRelationInput>;
-  productId?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-  size?: InputMaybe<SizeOrderByWithRelationInput>;
-  sizeId?: InputMaybe<SortOrder>;
-}
+export type ProductTransactionOrderByWithRelationInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly price?: InputMaybe<SortOrder>;
+  readonly product?: InputMaybe<ProductOrderByWithRelationInput>;
+  readonly productId?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+  readonly size?: InputMaybe<SizeOrderByWithRelationInput>;
+  readonly sizeId?: InputMaybe<SortOrder>;
+};
 
 export enum ProductTransactionScalarFieldEnum {
   DateCreated = 0,
@@ -3122,1055 +3158,1071 @@ export enum ProductTransactionScalarFieldEnum {
   SizeId = 5,
 }
 
-export interface ProductTransactionScalarWhereInput {
-  AND?: InputMaybe<Array<ProductTransactionScalarWhereInput>>;
-  NOT?: InputMaybe<Array<ProductTransactionScalarWhereInput>>;
-  OR?: InputMaybe<Array<ProductTransactionScalarWhereInput>>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  id?: InputMaybe<StringFilter>;
-  price?: InputMaybe<FloatFilter>;
-  productId?: InputMaybe<StringFilter>;
-  quantity?: InputMaybe<IntFilter>;
-  sizeId?: InputMaybe<StringFilter>;
-}
+export type ProductTransactionScalarWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<ProductTransactionScalarWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<ProductTransactionScalarWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<ProductTransactionScalarWhereInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly price?: InputMaybe<FloatFilter>;
+  readonly productId?: InputMaybe<StringFilter>;
+  readonly quantity?: InputMaybe<IntFilter>;
+  readonly sizeId?: InputMaybe<StringFilter>;
+};
 
-export interface ProductTransactionScalarWhereWithAggregatesInput {
-  AND?: InputMaybe<Array<ProductTransactionScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<ProductTransactionScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<ProductTransactionScalarWhereWithAggregatesInput>>;
-  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
-  id?: InputMaybe<StringWithAggregatesFilter>;
-  price?: InputMaybe<FloatWithAggregatesFilter>;
-  productId?: InputMaybe<StringWithAggregatesFilter>;
-  quantity?: InputMaybe<IntWithAggregatesFilter>;
-  sizeId?: InputMaybe<StringWithAggregatesFilter>;
-}
+export type ProductTransactionScalarWhereWithAggregatesInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<ProductTransactionScalarWhereWithAggregatesInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<ProductTransactionScalarWhereWithAggregatesInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<ProductTransactionScalarWhereWithAggregatesInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly price?: InputMaybe<FloatWithAggregatesFilter>;
+  readonly productId?: InputMaybe<StringWithAggregatesFilter>;
+  readonly quantity?: InputMaybe<IntWithAggregatesFilter>;
+  readonly sizeId?: InputMaybe<StringWithAggregatesFilter>;
+};
 
-export interface ProductTransactionSumAggregate {
-  __typename?: 'ProductTransactionSumAggregate';
-  price?: Maybe<Scalars['Float']>;
-  quantity?: Maybe<Scalars['Int']>;
-}
+export type ProductTransactionSumAggregate = {
+  readonly __typename?: 'ProductTransactionSumAggregate';
+  readonly price?: Maybe<Scalars['Float']>;
+  readonly quantity?: Maybe<Scalars['Int']>;
+};
 
-export interface ProductTransactionSumOrderByAggregateInput {
-  price?: InputMaybe<SortOrder>;
-  quantity?: InputMaybe<SortOrder>;
-}
+export type ProductTransactionSumOrderByAggregateInput = {
+  readonly price?: InputMaybe<SortOrder>;
+  readonly quantity?: InputMaybe<SortOrder>;
+};
 
-export interface ProductTransactionUpdateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  price?: InputMaybe<Scalars['Float']>;
-  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductTransactionsNestedInput>;
-  quantity?: InputMaybe<Scalars['Int']>;
-  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductTransactionsNestedInput>;
-}
+export type ProductTransactionUpdateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly price?: InputMaybe<Scalars['Float']>;
+  readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutProductTransactionsNestedInput>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutProductTransactionsNestedInput>;
+};
 
-export interface ProductTransactionUpdateManyMutationInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  price?: InputMaybe<Scalars['Float']>;
-  quantity?: InputMaybe<Scalars['Int']>;
-}
+export type ProductTransactionUpdateManyMutationInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly price?: InputMaybe<Scalars['Float']>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+};
 
-export interface ProductTransactionUpdateManyWithWhereWithoutProductInput {
-  data: ProductTransactionUpdateManyMutationInput;
-  where: ProductTransactionScalarWhereInput;
-}
+export type ProductTransactionUpdateManyWithWhereWithoutProductInput = {
+  readonly data: ProductTransactionUpdateManyMutationInput;
+  readonly where: ProductTransactionScalarWhereInput;
+};
 
-export interface ProductTransactionUpdateManyWithWhereWithoutSizeInput {
-  data: ProductTransactionUpdateManyMutationInput;
-  where: ProductTransactionScalarWhereInput;
-}
+export type ProductTransactionUpdateManyWithWhereWithoutSizeInput = {
+  readonly data: ProductTransactionUpdateManyMutationInput;
+  readonly where: ProductTransactionScalarWhereInput;
+};
 
-export interface ProductTransactionUpdateManyWithoutProductNestedInput {
-  connect?: InputMaybe<Array<ProductTransactionWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<ProductTransactionCreateOrConnectWithoutProductInput>>;
-  create?: InputMaybe<Array<ProductTransactionCreateWithoutProductInput>>;
-  delete?: InputMaybe<Array<ProductTransactionWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<ProductTransactionScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<ProductTransactionWhereUniqueInput>>;
-  set?: InputMaybe<Array<ProductTransactionWhereUniqueInput>>;
-  update?: InputMaybe<Array<ProductTransactionUpdateWithWhereUniqueWithoutProductInput>>;
-  updateMany?: InputMaybe<Array<ProductTransactionUpdateManyWithWhereWithoutProductInput>>;
-  upsert?: InputMaybe<Array<ProductTransactionUpsertWithWhereUniqueWithoutProductInput>>;
-}
+export type ProductTransactionUpdateManyWithoutProductNestedInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<ProductTransactionWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<ProductTransactionCreateOrConnectWithoutProductInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<ProductTransactionCreateWithoutProductInput>>;
+  readonly delete?: InputMaybe<ReadonlyArray<ProductTransactionWhereUniqueInput>>;
+  readonly deleteMany?: InputMaybe<ReadonlyArray<ProductTransactionScalarWhereInput>>;
+  readonly disconnect?: InputMaybe<ReadonlyArray<ProductTransactionWhereUniqueInput>>;
+  readonly set?: InputMaybe<ReadonlyArray<ProductTransactionWhereUniqueInput>>;
+  readonly update?: InputMaybe<
+    ReadonlyArray<ProductTransactionUpdateWithWhereUniqueWithoutProductInput>
+  >;
+  readonly updateMany?: InputMaybe<
+    ReadonlyArray<ProductTransactionUpdateManyWithWhereWithoutProductInput>
+  >;
+  readonly upsert?: InputMaybe<
+    ReadonlyArray<ProductTransactionUpsertWithWhereUniqueWithoutProductInput>
+  >;
+};
 
-export interface ProductTransactionUpdateManyWithoutSizeNestedInput {
-  connect?: InputMaybe<Array<ProductTransactionWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<ProductTransactionCreateOrConnectWithoutSizeInput>>;
-  create?: InputMaybe<Array<ProductTransactionCreateWithoutSizeInput>>;
-  delete?: InputMaybe<Array<ProductTransactionWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<ProductTransactionScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<ProductTransactionWhereUniqueInput>>;
-  set?: InputMaybe<Array<ProductTransactionWhereUniqueInput>>;
-  update?: InputMaybe<Array<ProductTransactionUpdateWithWhereUniqueWithoutSizeInput>>;
-  updateMany?: InputMaybe<Array<ProductTransactionUpdateManyWithWhereWithoutSizeInput>>;
-  upsert?: InputMaybe<Array<ProductTransactionUpsertWithWhereUniqueWithoutSizeInput>>;
-}
+export type ProductTransactionUpdateManyWithoutSizeNestedInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<ProductTransactionWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<
+    ReadonlyArray<ProductTransactionCreateOrConnectWithoutSizeInput>
+  >;
+  readonly create?: InputMaybe<ReadonlyArray<ProductTransactionCreateWithoutSizeInput>>;
+  readonly delete?: InputMaybe<ReadonlyArray<ProductTransactionWhereUniqueInput>>;
+  readonly deleteMany?: InputMaybe<ReadonlyArray<ProductTransactionScalarWhereInput>>;
+  readonly disconnect?: InputMaybe<ReadonlyArray<ProductTransactionWhereUniqueInput>>;
+  readonly set?: InputMaybe<ReadonlyArray<ProductTransactionWhereUniqueInput>>;
+  readonly update?: InputMaybe<
+    ReadonlyArray<ProductTransactionUpdateWithWhereUniqueWithoutSizeInput>
+  >;
+  readonly updateMany?: InputMaybe<
+    ReadonlyArray<ProductTransactionUpdateManyWithWhereWithoutSizeInput>
+  >;
+  readonly upsert?: InputMaybe<
+    ReadonlyArray<ProductTransactionUpsertWithWhereUniqueWithoutSizeInput>
+  >;
+};
 
-export interface ProductTransactionUpdateWithWhereUniqueWithoutProductInput {
-  data: ProductTransactionUpdateWithoutProductInput;
-  where: ProductTransactionWhereUniqueInput;
-}
+export type ProductTransactionUpdateWithWhereUniqueWithoutProductInput = {
+  readonly data: ProductTransactionUpdateWithoutProductInput;
+  readonly where: ProductTransactionWhereUniqueInput;
+};
 
-export interface ProductTransactionUpdateWithWhereUniqueWithoutSizeInput {
-  data: ProductTransactionUpdateWithoutSizeInput;
-  where: ProductTransactionWhereUniqueInput;
-}
+export type ProductTransactionUpdateWithWhereUniqueWithoutSizeInput = {
+  readonly data: ProductTransactionUpdateWithoutSizeInput;
+  readonly where: ProductTransactionWhereUniqueInput;
+};
 
-export interface ProductTransactionUpdateWithoutProductInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  price?: InputMaybe<Scalars['Float']>;
-  quantity?: InputMaybe<Scalars['Int']>;
-  size?: InputMaybe<SizeUpdateOneRequiredWithoutProductTransactionsNestedInput>;
-}
+export type ProductTransactionUpdateWithoutProductInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly price?: InputMaybe<Scalars['Float']>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutProductTransactionsNestedInput>;
+};
 
-export interface ProductTransactionUpdateWithoutSizeInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  price?: InputMaybe<Scalars['Float']>;
-  product?: InputMaybe<ProductUpdateOneRequiredWithoutProductTransactionsNestedInput>;
-  quantity?: InputMaybe<Scalars['Int']>;
-}
+export type ProductTransactionUpdateWithoutSizeInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly price?: InputMaybe<Scalars['Float']>;
+  readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutProductTransactionsNestedInput>;
+  readonly quantity?: InputMaybe<Scalars['Int']>;
+};
 
-export interface ProductTransactionUpsertWithWhereUniqueWithoutProductInput {
-  create: ProductTransactionCreateWithoutProductInput;
-  update: ProductTransactionUpdateWithoutProductInput;
-  where: ProductTransactionWhereUniqueInput;
-}
+export type ProductTransactionUpsertWithWhereUniqueWithoutProductInput = {
+  readonly create: ProductTransactionCreateWithoutProductInput;
+  readonly update: ProductTransactionUpdateWithoutProductInput;
+  readonly where: ProductTransactionWhereUniqueInput;
+};
 
-export interface ProductTransactionUpsertWithWhereUniqueWithoutSizeInput {
-  create: ProductTransactionCreateWithoutSizeInput;
-  update: ProductTransactionUpdateWithoutSizeInput;
-  where: ProductTransactionWhereUniqueInput;
-}
+export type ProductTransactionUpsertWithWhereUniqueWithoutSizeInput = {
+  readonly create: ProductTransactionCreateWithoutSizeInput;
+  readonly update: ProductTransactionUpdateWithoutSizeInput;
+  readonly where: ProductTransactionWhereUniqueInput;
+};
 
-export interface ProductTransactionWhereInput {
-  AND?: InputMaybe<Array<ProductTransactionWhereInput>>;
-  NOT?: InputMaybe<Array<ProductTransactionWhereInput>>;
-  OR?: InputMaybe<Array<ProductTransactionWhereInput>>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  id?: InputMaybe<StringFilter>;
-  price?: InputMaybe<FloatFilter>;
-  product?: InputMaybe<ProductRelationFilter>;
-  productId?: InputMaybe<StringFilter>;
-  quantity?: InputMaybe<IntFilter>;
-  size?: InputMaybe<SizeRelationFilter>;
-  sizeId?: InputMaybe<StringFilter>;
-}
+export type ProductTransactionWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<ProductTransactionWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<ProductTransactionWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<ProductTransactionWhereInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly price?: InputMaybe<FloatFilter>;
+  readonly product?: InputMaybe<ProductRelationFilter>;
+  readonly productId?: InputMaybe<StringFilter>;
+  readonly quantity?: InputMaybe<IntFilter>;
+  readonly size?: InputMaybe<SizeRelationFilter>;
+  readonly sizeId?: InputMaybe<StringFilter>;
+};
 
-export interface ProductTransactionWhereUniqueInput {
-  id?: InputMaybe<Scalars['String']>;
-}
+export type ProductTransactionWhereUniqueInput = {
+  readonly id?: InputMaybe<Scalars['String']>;
+};
 
-export interface ProductUpdateInput {
-  cost?: InputMaybe<Scalars['Float']>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
-  name?: InputMaybe<Scalars['String']>;
-  productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
-  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
-}
+export type ProductUpdateInput = {
+  readonly cost?: InputMaybe<Scalars['Float']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
+  readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
+};
 
-export interface ProductUpdateManyMutationInput {
-  cost?: InputMaybe<Scalars['Float']>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-}
+export type ProductUpdateManyMutationInput = {
+  readonly cost?: InputMaybe<Scalars['Float']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+};
 
-export interface ProductUpdateOneRequiredWithoutInventoryNestedInput {
-  connect?: InputMaybe<ProductWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutInventoryInput>;
-  create?: InputMaybe<ProductCreateWithoutInventoryInput>;
-  update?: InputMaybe<ProductUpdateWithoutInventoryInput>;
-  upsert?: InputMaybe<ProductUpsertWithoutInventoryInput>;
-}
+export type ProductUpdateOneRequiredWithoutInventoryNestedInput = {
+  readonly connect?: InputMaybe<ProductWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutInventoryInput>;
+  readonly create?: InputMaybe<ProductCreateWithoutInventoryInput>;
+  readonly update?: InputMaybe<ProductUpdateWithoutInventoryInput>;
+  readonly upsert?: InputMaybe<ProductUpsertWithoutInventoryInput>;
+};
 
-export interface ProductUpdateOneRequiredWithoutProductSalesNestedInput {
-  connect?: InputMaybe<ProductWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductSalesInput>;
-  create?: InputMaybe<ProductCreateWithoutProductSalesInput>;
-  update?: InputMaybe<ProductUpdateWithoutProductSalesInput>;
-  upsert?: InputMaybe<ProductUpsertWithoutProductSalesInput>;
-}
+export type ProductUpdateOneRequiredWithoutProductSalesNestedInput = {
+  readonly connect?: InputMaybe<ProductWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductSalesInput>;
+  readonly create?: InputMaybe<ProductCreateWithoutProductSalesInput>;
+  readonly update?: InputMaybe<ProductUpdateWithoutProductSalesInput>;
+  readonly upsert?: InputMaybe<ProductUpsertWithoutProductSalesInput>;
+};
 
-export interface ProductUpdateOneRequiredWithoutProductTransactionsNestedInput {
-  connect?: InputMaybe<ProductWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductTransactionsInput>;
-  create?: InputMaybe<ProductCreateWithoutProductTransactionsInput>;
-  update?: InputMaybe<ProductUpdateWithoutProductTransactionsInput>;
-  upsert?: InputMaybe<ProductUpsertWithoutProductTransactionsInput>;
-}
+export type ProductUpdateOneRequiredWithoutProductTransactionsNestedInput = {
+  readonly connect?: InputMaybe<ProductWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<ProductCreateOrConnectWithoutProductTransactionsInput>;
+  readonly create?: InputMaybe<ProductCreateWithoutProductTransactionsInput>;
+  readonly update?: InputMaybe<ProductUpdateWithoutProductTransactionsInput>;
+  readonly upsert?: InputMaybe<ProductUpsertWithoutProductTransactionsInput>;
+};
 
-export interface ProductUpdateWithoutInventoryInput {
-  cost?: InputMaybe<Scalars['Float']>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
-  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
-}
+export type ProductUpdateWithoutInventoryInput = {
+  readonly cost?: InputMaybe<Scalars['Float']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
+  readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
+};
 
-export interface ProductUpdateWithoutProductSalesInput {
-  cost?: InputMaybe<Scalars['Float']>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
-  name?: InputMaybe<Scalars['String']>;
-  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
-}
+export type ProductUpdateWithoutProductSalesInput = {
+  readonly cost?: InputMaybe<Scalars['Float']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
+};
 
-export interface ProductUpdateWithoutProductTransactionsInput {
-  cost?: InputMaybe<Scalars['Float']>;
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
-  name?: InputMaybe<Scalars['String']>;
-  productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
-}
+export type ProductUpdateWithoutProductTransactionsInput = {
+  readonly cost?: InputMaybe<Scalars['Float']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
+};
 
-export interface ProductUpsertWithoutInventoryInput {
-  create: ProductCreateWithoutInventoryInput;
-  update: ProductUpdateWithoutInventoryInput;
-}
+export type ProductUpsertWithoutInventoryInput = {
+  readonly create: ProductCreateWithoutInventoryInput;
+  readonly update: ProductUpdateWithoutInventoryInput;
+};
 
-export interface ProductUpsertWithoutProductSalesInput {
-  create: ProductCreateWithoutProductSalesInput;
-  update: ProductUpdateWithoutProductSalesInput;
-}
+export type ProductUpsertWithoutProductSalesInput = {
+  readonly create: ProductCreateWithoutProductSalesInput;
+  readonly update: ProductUpdateWithoutProductSalesInput;
+};
 
-export interface ProductUpsertWithoutProductTransactionsInput {
-  create: ProductCreateWithoutProductTransactionsInput;
-  update: ProductUpdateWithoutProductTransactionsInput;
-}
+export type ProductUpsertWithoutProductTransactionsInput = {
+  readonly create: ProductCreateWithoutProductTransactionsInput;
+  readonly update: ProductUpdateWithoutProductTransactionsInput;
+};
 
-export interface ProductWhereInput {
-  AND?: InputMaybe<Array<ProductWhereInput>>;
-  NOT?: InputMaybe<Array<ProductWhereInput>>;
-  OR?: InputMaybe<Array<ProductWhereInput>>;
-  cost?: InputMaybe<FloatFilter>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  id?: InputMaybe<StringFilter>;
-  inventory?: InputMaybe<InventoryListRelationFilter>;
-  name?: InputMaybe<StringFilter>;
-  productSales?: InputMaybe<ProductSaleListRelationFilter>;
-  productTransactions?: InputMaybe<ProductTransactionListRelationFilter>;
-}
+export type ProductWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<ProductWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<ProductWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<ProductWhereInput>>;
+  readonly cost?: InputMaybe<FloatFilter>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly inventory?: InputMaybe<InventoryListRelationFilter>;
+  readonly name?: InputMaybe<StringFilter>;
+  readonly productSales?: InputMaybe<ProductSaleListRelationFilter>;
+  readonly productTransactions?: InputMaybe<ProductTransactionListRelationFilter>;
+};
 
-export interface ProductWhereUniqueInput {
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-}
+export type ProductWhereUniqueInput = {
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+};
 
-export interface Query {
-  __typename?: 'Query';
-  aggregateCustomer: AggregateCustomer;
-  aggregateDepartment: AggregateDepartment;
-  aggregateEmployee: AggregateEmployee;
-  aggregateInventory: AggregateInventory;
-  aggregateLocationState: AggregateLocationState;
-  aggregateProduct: AggregateProduct;
-  aggregateProductSale: AggregateProductSale;
-  aggregateProductTransaction: AggregateProductTransaction;
-  aggregateRole: AggregateRole;
-  aggregateSize: AggregateSize;
-  aggregateUser: AggregateUser;
-  customer?: Maybe<Customer>;
-  customers: Array<Customer>;
-  department?: Maybe<Department>;
-  departments: Array<Department>;
-  employee?: Maybe<Employee>;
-  employees: Array<Employee>;
-  findFirstCustomer?: Maybe<Customer>;
-  findFirstCustomerOrThrow?: Maybe<Customer>;
-  findFirstDepartment?: Maybe<Department>;
-  findFirstDepartmentOrThrow?: Maybe<Department>;
-  findFirstEmployee?: Maybe<Employee>;
-  findFirstEmployeeOrThrow?: Maybe<Employee>;
-  findFirstInventory?: Maybe<Inventory>;
-  findFirstInventoryOrThrow?: Maybe<Inventory>;
-  findFirstLocationState?: Maybe<LocationState>;
-  findFirstLocationStateOrThrow?: Maybe<LocationState>;
-  findFirstProduct?: Maybe<Product>;
-  findFirstProductOrThrow?: Maybe<Product>;
-  findFirstProductSale?: Maybe<ProductSale>;
-  findFirstProductSaleOrThrow?: Maybe<ProductSale>;
-  findFirstProductTransaction?: Maybe<ProductTransaction>;
-  findFirstProductTransactionOrThrow?: Maybe<ProductTransaction>;
-  findFirstRole?: Maybe<Role>;
-  findFirstRoleOrThrow?: Maybe<Role>;
-  findFirstSize?: Maybe<Size>;
-  findFirstSizeOrThrow?: Maybe<Size>;
-  findFirstUser?: Maybe<User>;
-  findFirstUserOrThrow?: Maybe<User>;
-  getCustomer?: Maybe<Customer>;
-  getDepartment?: Maybe<Department>;
-  getEmployee?: Maybe<Employee>;
-  getInventory?: Maybe<Inventory>;
-  getLocationState?: Maybe<LocationState>;
-  getProduct?: Maybe<Product>;
-  getProductSale?: Maybe<ProductSale>;
-  getProductTransaction?: Maybe<ProductTransaction>;
-  getRole?: Maybe<Role>;
-  getSize?: Maybe<Size>;
-  getUser?: Maybe<User>;
-  groupByCustomer: Array<CustomerGroupBy>;
-  groupByDepartment: Array<DepartmentGroupBy>;
-  groupByEmployee: Array<EmployeeGroupBy>;
-  groupByInventory: Array<InventoryGroupBy>;
-  groupByLocationState: Array<LocationStateGroupBy>;
-  groupByProduct: Array<ProductGroupBy>;
-  groupByProductSale: Array<ProductSaleGroupBy>;
-  groupByProductTransaction: Array<ProductTransactionGroupBy>;
-  groupByRole: Array<RoleGroupBy>;
-  groupBySize: Array<SizeGroupBy>;
-  groupByUser: Array<UserGroupBy>;
-  inventories: Array<Inventory>;
-  inventory?: Maybe<Inventory>;
-  locationState?: Maybe<LocationState>;
-  locationStates: Array<LocationState>;
-  product?: Maybe<Product>;
-  productSale?: Maybe<ProductSale>;
-  productSales: Array<ProductSale>;
-  productTransaction?: Maybe<ProductTransaction>;
-  productTransactionCountByProductId?: Maybe<Scalars['String']>;
-  productTransactions: Array<ProductTransaction>;
-  products: Array<Product>;
-  role?: Maybe<Role>;
-  roles: Array<Role>;
-  size?: Maybe<Size>;
-  sizes: Array<Size>;
-  user?: Maybe<User>;
-  users: Array<User>;
-}
+export type Query = {
+  readonly __typename?: 'Query';
+  readonly aggregateCustomer: AggregateCustomer;
+  readonly aggregateDepartment: AggregateDepartment;
+  readonly aggregateEmployee: AggregateEmployee;
+  readonly aggregateInventory: AggregateInventory;
+  readonly aggregateLocationState: AggregateLocationState;
+  readonly aggregateProduct: AggregateProduct;
+  readonly aggregateProductSale: AggregateProductSale;
+  readonly aggregateProductTransaction: AggregateProductTransaction;
+  readonly aggregateRole: AggregateRole;
+  readonly aggregateSize: AggregateSize;
+  readonly aggregateUser: AggregateUser;
+  readonly customer?: Maybe<Customer>;
+  readonly customers: ReadonlyArray<Customer>;
+  readonly department?: Maybe<Department>;
+  readonly departments: ReadonlyArray<Department>;
+  readonly employee?: Maybe<Employee>;
+  readonly employees: ReadonlyArray<Employee>;
+  readonly findFirstCustomer?: Maybe<Customer>;
+  readonly findFirstCustomerOrThrow?: Maybe<Customer>;
+  readonly findFirstDepartment?: Maybe<Department>;
+  readonly findFirstDepartmentOrThrow?: Maybe<Department>;
+  readonly findFirstEmployee?: Maybe<Employee>;
+  readonly findFirstEmployeeOrThrow?: Maybe<Employee>;
+  readonly findFirstInventory?: Maybe<Inventory>;
+  readonly findFirstInventoryOrThrow?: Maybe<Inventory>;
+  readonly findFirstLocationState?: Maybe<LocationState>;
+  readonly findFirstLocationStateOrThrow?: Maybe<LocationState>;
+  readonly findFirstProduct?: Maybe<Product>;
+  readonly findFirstProductOrThrow?: Maybe<Product>;
+  readonly findFirstProductSale?: Maybe<ProductSale>;
+  readonly findFirstProductSaleOrThrow?: Maybe<ProductSale>;
+  readonly findFirstProductTransaction?: Maybe<ProductTransaction>;
+  readonly findFirstProductTransactionOrThrow?: Maybe<ProductTransaction>;
+  readonly findFirstRole?: Maybe<Role>;
+  readonly findFirstRoleOrThrow?: Maybe<Role>;
+  readonly findFirstSize?: Maybe<Size>;
+  readonly findFirstSizeOrThrow?: Maybe<Size>;
+  readonly findFirstUser?: Maybe<User>;
+  readonly findFirstUserOrThrow?: Maybe<User>;
+  readonly getCustomer?: Maybe<Customer>;
+  readonly getDepartment?: Maybe<Department>;
+  readonly getEmployee?: Maybe<Employee>;
+  readonly getInventory?: Maybe<Inventory>;
+  readonly getLocationState?: Maybe<LocationState>;
+  readonly getProduct?: Maybe<Product>;
+  readonly getProductSale?: Maybe<ProductSale>;
+  readonly getProductTransaction?: Maybe<ProductTransaction>;
+  readonly getRole?: Maybe<Role>;
+  readonly getSize?: Maybe<Size>;
+  readonly getUser?: Maybe<User>;
+  readonly groupByCustomer: ReadonlyArray<CustomerGroupBy>;
+  readonly groupByDepartment: ReadonlyArray<DepartmentGroupBy>;
+  readonly groupByEmployee: ReadonlyArray<EmployeeGroupBy>;
+  readonly groupByInventory: ReadonlyArray<InventoryGroupBy>;
+  readonly groupByLocationState: ReadonlyArray<LocationStateGroupBy>;
+  readonly groupByProduct: ReadonlyArray<ProductGroupBy>;
+  readonly groupByProductSale: ReadonlyArray<ProductSaleGroupBy>;
+  readonly groupByProductTransaction: ReadonlyArray<ProductTransactionGroupBy>;
+  readonly groupByRole: ReadonlyArray<RoleGroupBy>;
+  readonly groupBySize: ReadonlyArray<SizeGroupBy>;
+  readonly groupByUser: ReadonlyArray<UserGroupBy>;
+  readonly inventories: ReadonlyArray<Inventory>;
+  readonly inventory?: Maybe<Inventory>;
+  readonly locationState?: Maybe<LocationState>;
+  readonly locationStates: ReadonlyArray<LocationState>;
+  readonly product?: Maybe<Product>;
+  readonly productSale?: Maybe<ProductSale>;
+  readonly productSales: ReadonlyArray<ProductSale>;
+  readonly productTransaction?: Maybe<ProductTransaction>;
+  readonly productTransactionCountByProductId?: Maybe<Scalars['String']>;
+  readonly productTransactions: ReadonlyArray<ProductTransaction>;
+  readonly products: ReadonlyArray<Product>;
+  readonly role?: Maybe<Role>;
+  readonly roles: ReadonlyArray<Role>;
+  readonly size?: Maybe<Size>;
+  readonly sizes: ReadonlyArray<Size>;
+  readonly user?: Maybe<User>;
+  readonly users: ReadonlyArray<User>;
+};
 
-export interface QueryAggregateCustomerArgs {
+export type QueryAggregateCustomerArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<CustomerOrderByWithRelationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<CustomerWhereInput>;
-}
+};
 
-export interface QueryAggregateDepartmentArgs {
+export type QueryAggregateDepartmentArgs = {
   cursor?: InputMaybe<DepartmentWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<DepartmentOrderByWithRelationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<DepartmentOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<DepartmentWhereInput>;
-}
+};
 
-export interface QueryAggregateEmployeeArgs {
+export type QueryAggregateEmployeeArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<EmployeeOrderByWithRelationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<EmployeeWhereInput>;
-}
+};
 
-export interface QueryAggregateInventoryArgs {
+export type QueryAggregateInventoryArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<InventoryOrderByWithRelationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<InventoryWhereInput>;
-}
+};
 
-export interface QueryAggregateLocationStateArgs {
+export type QueryAggregateLocationStateArgs = {
   cursor?: InputMaybe<LocationStateWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<LocationStateOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<LocationStateWhereInput>;
-}
+};
 
-export interface QueryAggregateProductArgs {
+export type QueryAggregateProductArgs = {
   cursor?: InputMaybe<ProductWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<ProductOrderByWithRelationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductWhereInput>;
-}
+};
 
-export interface QueryAggregateProductSaleArgs {
+export type QueryAggregateProductSaleArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<ProductSaleOrderByWithRelationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductSaleWhereInput>;
-}
+};
 
-export interface QueryAggregateProductTransactionArgs {
+export type QueryAggregateProductTransactionArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<ProductTransactionOrderByWithRelationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
-}
+};
 
-export interface QueryAggregateRoleArgs {
+export type QueryAggregateRoleArgs = {
   cursor?: InputMaybe<RoleWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<RoleOrderByWithRelationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<RoleOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<RoleWhereInput>;
-}
+};
 
-export interface QueryAggregateSizeArgs {
+export type QueryAggregateSizeArgs = {
   cursor?: InputMaybe<SizeWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<SizeOrderByWithRelationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<SizeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<SizeWhereInput>;
-}
+};
 
-export interface QueryAggregateUserArgs {
+export type QueryAggregateUserArgs = {
   cursor?: InputMaybe<UserWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<UserOrderByWithRelationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<UserWhereInput>;
-}
+};
 
-export interface QueryCustomerArgs {
+export type QueryCustomerArgs = {
   where: CustomerWhereUniqueInput;
-}
+};
 
-export interface QueryCustomersArgs {
+export type QueryCustomersArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
-  distinct?: InputMaybe<Array<CustomerScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<CustomerOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<CustomerScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<CustomerWhereInput>;
-}
+};
 
-export interface QueryDepartmentArgs {
+export type QueryDepartmentArgs = {
   where: DepartmentWhereUniqueInput;
-}
+};
 
-export interface QueryDepartmentsArgs {
+export type QueryDepartmentsArgs = {
   cursor?: InputMaybe<DepartmentWhereUniqueInput>;
-  distinct?: InputMaybe<Array<DepartmentScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<DepartmentOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<DepartmentScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<DepartmentOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<DepartmentWhereInput>;
-}
+};
 
-export interface QueryEmployeeArgs {
+export type QueryEmployeeArgs = {
   where: EmployeeWhereUniqueInput;
-}
+};
 
-export interface QueryEmployeesArgs {
+export type QueryEmployeesArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
-  distinct?: InputMaybe<Array<EmployeeScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<EmployeeOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<EmployeeScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<EmployeeWhereInput>;
-}
+};
 
-export interface QueryFindFirstCustomerArgs {
+export type QueryFindFirstCustomerArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
-  distinct?: InputMaybe<Array<CustomerScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<CustomerOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<CustomerScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<CustomerWhereInput>;
-}
+};
 
-export interface QueryFindFirstCustomerOrThrowArgs {
+export type QueryFindFirstCustomerOrThrowArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
-  distinct?: InputMaybe<Array<CustomerScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<CustomerOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<CustomerScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<CustomerWhereInput>;
-}
+};
 
-export interface QueryFindFirstDepartmentArgs {
+export type QueryFindFirstDepartmentArgs = {
   cursor?: InputMaybe<DepartmentWhereUniqueInput>;
-  distinct?: InputMaybe<Array<DepartmentScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<DepartmentOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<DepartmentScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<DepartmentOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<DepartmentWhereInput>;
-}
+};
 
-export interface QueryFindFirstDepartmentOrThrowArgs {
+export type QueryFindFirstDepartmentOrThrowArgs = {
   cursor?: InputMaybe<DepartmentWhereUniqueInput>;
-  distinct?: InputMaybe<Array<DepartmentScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<DepartmentOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<DepartmentScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<DepartmentOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<DepartmentWhereInput>;
-}
+};
 
-export interface QueryFindFirstEmployeeArgs {
+export type QueryFindFirstEmployeeArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
-  distinct?: InputMaybe<Array<EmployeeScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<EmployeeOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<EmployeeScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<EmployeeWhereInput>;
-}
+};
 
-export interface QueryFindFirstEmployeeOrThrowArgs {
+export type QueryFindFirstEmployeeOrThrowArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
-  distinct?: InputMaybe<Array<EmployeeScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<EmployeeOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<EmployeeScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<EmployeeWhereInput>;
-}
+};
 
-export interface QueryFindFirstInventoryArgs {
+export type QueryFindFirstInventoryArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
-  distinct?: InputMaybe<Array<InventoryScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<InventoryOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<InventoryScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<InventoryWhereInput>;
-}
+};
 
-export interface QueryFindFirstInventoryOrThrowArgs {
+export type QueryFindFirstInventoryOrThrowArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
-  distinct?: InputMaybe<Array<InventoryScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<InventoryOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<InventoryScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<InventoryWhereInput>;
-}
+};
 
-export interface QueryFindFirstLocationStateArgs {
+export type QueryFindFirstLocationStateArgs = {
   cursor?: InputMaybe<LocationStateWhereUniqueInput>;
-  distinct?: InputMaybe<Array<LocationStateScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<LocationStateScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<LocationStateOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<LocationStateWhereInput>;
-}
+};
 
-export interface QueryFindFirstLocationStateOrThrowArgs {
+export type QueryFindFirstLocationStateOrThrowArgs = {
   cursor?: InputMaybe<LocationStateWhereUniqueInput>;
-  distinct?: InputMaybe<Array<LocationStateScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<LocationStateScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<LocationStateOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<LocationStateWhereInput>;
-}
+};
 
-export interface QueryFindFirstProductArgs {
+export type QueryFindFirstProductArgs = {
   cursor?: InputMaybe<ProductWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductWhereInput>;
-}
+};
 
-export interface QueryFindFirstProductOrThrowArgs {
+export type QueryFindFirstProductOrThrowArgs = {
   cursor?: InputMaybe<ProductWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductWhereInput>;
-}
+};
 
-export interface QueryFindFirstProductSaleArgs {
+export type QueryFindFirstProductSaleArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductSaleScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductSaleOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductSaleScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductSaleWhereInput>;
-}
+};
 
-export interface QueryFindFirstProductSaleOrThrowArgs {
+export type QueryFindFirstProductSaleOrThrowArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductSaleScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductSaleOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductSaleScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductSaleWhereInput>;
-}
+};
 
-export interface QueryFindFirstProductTransactionArgs {
+export type QueryFindFirstProductTransactionArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductTransactionScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductTransactionOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductTransactionScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
-}
+};
 
-export interface QueryFindFirstProductTransactionOrThrowArgs {
+export type QueryFindFirstProductTransactionOrThrowArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductTransactionScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductTransactionOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductTransactionScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
-}
+};
 
-export interface QueryFindFirstRoleArgs {
+export type QueryFindFirstRoleArgs = {
   cursor?: InputMaybe<RoleWhereUniqueInput>;
-  distinct?: InputMaybe<Array<RoleScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<RoleOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<RoleScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<RoleOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<RoleWhereInput>;
-}
+};
 
-export interface QueryFindFirstRoleOrThrowArgs {
+export type QueryFindFirstRoleOrThrowArgs = {
   cursor?: InputMaybe<RoleWhereUniqueInput>;
-  distinct?: InputMaybe<Array<RoleScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<RoleOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<RoleScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<RoleOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<RoleWhereInput>;
-}
+};
 
-export interface QueryFindFirstSizeArgs {
+export type QueryFindFirstSizeArgs = {
   cursor?: InputMaybe<SizeWhereUniqueInput>;
-  distinct?: InputMaybe<Array<SizeScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<SizeOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<SizeScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<SizeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<SizeWhereInput>;
-}
+};
 
-export interface QueryFindFirstSizeOrThrowArgs {
+export type QueryFindFirstSizeOrThrowArgs = {
   cursor?: InputMaybe<SizeWhereUniqueInput>;
-  distinct?: InputMaybe<Array<SizeScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<SizeOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<SizeScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<SizeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<SizeWhereInput>;
-}
+};
 
-export interface QueryFindFirstUserArgs {
+export type QueryFindFirstUserArgs = {
   cursor?: InputMaybe<UserWhereUniqueInput>;
-  distinct?: InputMaybe<Array<UserScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<UserOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<UserScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<UserWhereInput>;
-}
+};
 
-export interface QueryFindFirstUserOrThrowArgs {
+export type QueryFindFirstUserOrThrowArgs = {
   cursor?: InputMaybe<UserWhereUniqueInput>;
-  distinct?: InputMaybe<Array<UserScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<UserOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<UserScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<UserWhereInput>;
-}
+};
 
-export interface QueryGetCustomerArgs {
+export type QueryGetCustomerArgs = {
   where: CustomerWhereUniqueInput;
-}
+};
 
-export interface QueryGetDepartmentArgs {
+export type QueryGetDepartmentArgs = {
   where: DepartmentWhereUniqueInput;
-}
+};
 
-export interface QueryGetEmployeeArgs {
+export type QueryGetEmployeeArgs = {
   where: EmployeeWhereUniqueInput;
-}
+};
 
-export interface QueryGetInventoryArgs {
+export type QueryGetInventoryArgs = {
   where: InventoryWhereUniqueInput;
-}
+};
 
-export interface QueryGetLocationStateArgs {
+export type QueryGetLocationStateArgs = {
   where: LocationStateWhereUniqueInput;
-}
+};
 
-export interface QueryGetProductArgs {
+export type QueryGetProductArgs = {
   where: ProductWhereUniqueInput;
-}
+};
 
-export interface QueryGetProductSaleArgs {
+export type QueryGetProductSaleArgs = {
   where: ProductSaleWhereUniqueInput;
-}
+};
 
-export interface QueryGetProductTransactionArgs {
+export type QueryGetProductTransactionArgs = {
   where: ProductTransactionWhereUniqueInput;
-}
+};
 
-export interface QueryGetRoleArgs {
+export type QueryGetRoleArgs = {
   where: RoleWhereUniqueInput;
-}
+};
 
-export interface QueryGetSizeArgs {
+export type QueryGetSizeArgs = {
   where: SizeWhereUniqueInput;
-}
+};
 
-export interface QueryGetUserArgs {
+export type QueryGetUserArgs = {
   where: UserWhereUniqueInput;
-}
+};
 
-export interface QueryGroupByCustomerArgs {
-  by: Array<CustomerScalarFieldEnum>;
+export type QueryGroupByCustomerArgs = {
+  by: ReadonlyArray<CustomerScalarFieldEnum>;
   having?: InputMaybe<CustomerScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<CustomerOrderByWithAggregationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<CustomerWhereInput>;
-}
+};
 
-export interface QueryGroupByDepartmentArgs {
-  by: Array<DepartmentScalarFieldEnum>;
+export type QueryGroupByDepartmentArgs = {
+  by: ReadonlyArray<DepartmentScalarFieldEnum>;
   having?: InputMaybe<DepartmentScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<DepartmentOrderByWithAggregationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<DepartmentOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<DepartmentWhereInput>;
-}
+};
 
-export interface QueryGroupByEmployeeArgs {
-  by: Array<EmployeeScalarFieldEnum>;
+export type QueryGroupByEmployeeArgs = {
+  by: ReadonlyArray<EmployeeScalarFieldEnum>;
   having?: InputMaybe<EmployeeScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<EmployeeOrderByWithAggregationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<EmployeeWhereInput>;
-}
+};
 
-export interface QueryGroupByInventoryArgs {
-  by: Array<InventoryScalarFieldEnum>;
+export type QueryGroupByInventoryArgs = {
+  by: ReadonlyArray<InventoryScalarFieldEnum>;
   having?: InputMaybe<InventoryScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<InventoryOrderByWithAggregationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<InventoryWhereInput>;
-}
+};
 
-export interface QueryGroupByLocationStateArgs {
-  by: Array<LocationStateScalarFieldEnum>;
+export type QueryGroupByLocationStateArgs = {
+  by: ReadonlyArray<LocationStateScalarFieldEnum>;
   having?: InputMaybe<LocationStateScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<LocationStateOrderByWithAggregationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<LocationStateOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<LocationStateWhereInput>;
-}
+};
 
-export interface QueryGroupByProductArgs {
-  by: Array<ProductScalarFieldEnum>;
+export type QueryGroupByProductArgs = {
+  by: ReadonlyArray<ProductScalarFieldEnum>;
   having?: InputMaybe<ProductScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<ProductOrderByWithAggregationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductWhereInput>;
-}
+};
 
-export interface QueryGroupByProductSaleArgs {
-  by: Array<ProductSaleScalarFieldEnum>;
+export type QueryGroupByProductSaleArgs = {
+  by: ReadonlyArray<ProductSaleScalarFieldEnum>;
   having?: InputMaybe<ProductSaleScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<ProductSaleOrderByWithAggregationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductSaleWhereInput>;
-}
+};
 
-export interface QueryGroupByProductTransactionArgs {
-  by: Array<ProductTransactionScalarFieldEnum>;
+export type QueryGroupByProductTransactionArgs = {
+  by: ReadonlyArray<ProductTransactionScalarFieldEnum>;
   having?: InputMaybe<ProductTransactionScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<ProductTransactionOrderByWithAggregationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
-}
+};
 
-export interface QueryGroupByRoleArgs {
-  by: Array<RoleScalarFieldEnum>;
+export type QueryGroupByRoleArgs = {
+  by: ReadonlyArray<RoleScalarFieldEnum>;
   having?: InputMaybe<RoleScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<RoleOrderByWithAggregationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<RoleOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<RoleWhereInput>;
-}
+};
 
-export interface QueryGroupBySizeArgs {
-  by: Array<SizeScalarFieldEnum>;
+export type QueryGroupBySizeArgs = {
+  by: ReadonlyArray<SizeScalarFieldEnum>;
   having?: InputMaybe<SizeScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<SizeOrderByWithAggregationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<SizeOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<SizeWhereInput>;
-}
+};
 
-export interface QueryGroupByUserArgs {
-  by: Array<UserScalarFieldEnum>;
+export type QueryGroupByUserArgs = {
+  by: ReadonlyArray<UserScalarFieldEnum>;
   having?: InputMaybe<UserScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<UserOrderByWithAggregationInput>>;
+  orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<UserWhereInput>;
-}
+};
 
-export interface QueryInventoriesArgs {
+export type QueryInventoriesArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
-  distinct?: InputMaybe<Array<InventoryScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<InventoryOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<InventoryScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<InventoryWhereInput>;
-}
+};
 
-export interface QueryInventoryArgs {
+export type QueryInventoryArgs = {
   where: InventoryWhereUniqueInput;
-}
+};
 
-export interface QueryLocationStateArgs {
+export type QueryLocationStateArgs = {
   where: LocationStateWhereUniqueInput;
-}
+};
 
-export interface QueryLocationStatesArgs {
+export type QueryLocationStatesArgs = {
   cursor?: InputMaybe<LocationStateWhereUniqueInput>;
-  distinct?: InputMaybe<Array<LocationStateScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<LocationStateScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<LocationStateOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<LocationStateWhereInput>;
-}
+};
 
-export interface QueryProductArgs {
+export type QueryProductArgs = {
   where: ProductWhereUniqueInput;
-}
+};
 
-export interface QueryProductSaleArgs {
+export type QueryProductSaleArgs = {
   where: ProductSaleWhereUniqueInput;
-}
+};
 
-export interface QueryProductSalesArgs {
+export type QueryProductSalesArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductSaleScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductSaleOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductSaleScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductSaleWhereInput>;
-}
+};
 
-export interface QueryProductTransactionArgs {
+export type QueryProductTransactionArgs = {
   where: ProductTransactionWhereUniqueInput;
-}
+};
 
-export interface QueryProductTransactionCountByProductIdArgs {
+export type QueryProductTransactionCountByProductIdArgs = {
   productId: Scalars['String'];
-}
+};
 
-export interface QueryProductTransactionsArgs {
+export type QueryProductTransactionsArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductTransactionScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductTransactionOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductTransactionScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
-}
+};
 
-export interface QueryProductsArgs {
+export type QueryProductsArgs = {
   cursor?: InputMaybe<ProductWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductWhereInput>;
-}
+};
 
-export interface QueryRoleArgs {
+export type QueryRoleArgs = {
   where: RoleWhereUniqueInput;
-}
+};
 
-export interface QueryRolesArgs {
+export type QueryRolesArgs = {
   cursor?: InputMaybe<RoleWhereUniqueInput>;
-  distinct?: InputMaybe<Array<RoleScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<RoleOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<RoleScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<RoleOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<RoleWhereInput>;
-}
+};
 
-export interface QuerySizeArgs {
+export type QuerySizeArgs = {
   where: SizeWhereUniqueInput;
-}
+};
 
-export interface QuerySizesArgs {
+export type QuerySizesArgs = {
   cursor?: InputMaybe<SizeWhereUniqueInput>;
-  distinct?: InputMaybe<Array<SizeScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<SizeOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<SizeScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<SizeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<SizeWhereInput>;
-}
+};
 
-export interface QueryUserArgs {
+export type QueryUserArgs = {
   where: UserWhereUniqueInput;
-}
+};
 
-export interface QueryUsersArgs {
+export type QueryUsersArgs = {
   cursor?: InputMaybe<UserWhereUniqueInput>;
-  distinct?: InputMaybe<Array<UserScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<UserOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<UserScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<UserWhereInput>;
-}
+};
 
-export interface Role {
-  __typename?: 'Role';
-  _count?: Maybe<RoleCount>;
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  description: Scalars['String'];
-  id: Scalars['String'];
-  name: Scalars['String'];
-  users: Array<User>;
-}
+export type Role = {
+  readonly __typename?: 'Role';
+  readonly _count?: Maybe<RoleCount>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly description: Scalars['String'];
+  readonly id: Scalars['String'];
+  readonly name: Scalars['String'];
+  readonly users: ReadonlyArray<User>;
+};
 
-export interface RoleUsersArgs {
+export type RoleUsersArgs = {
   cursor?: InputMaybe<UserWhereUniqueInput>;
-  distinct?: InputMaybe<Array<UserScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<UserOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<UserScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<UserWhereInput>;
-}
+};
 
-export interface RoleCount {
-  __typename?: 'RoleCount';
-  users: Scalars['Int'];
-}
+export type RoleCount = {
+  readonly __typename?: 'RoleCount';
+  readonly users: Scalars['Int'];
+};
 
-export interface RoleCountAggregate {
-  __typename?: 'RoleCountAggregate';
-  _all: Scalars['Int'];
-  dateCreated: Scalars['Int'];
-  dateUpdated: Scalars['Int'];
-  description: Scalars['Int'];
-  id: Scalars['Int'];
-  name: Scalars['Int'];
-}
+export type RoleCountAggregate = {
+  readonly __typename?: 'RoleCountAggregate';
+  readonly _all: Scalars['Int'];
+  readonly dateCreated: Scalars['Int'];
+  readonly dateUpdated: Scalars['Int'];
+  readonly description: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly name: Scalars['Int'];
+};
 
-export interface RoleCountOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  description?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type RoleCountOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly description?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface RoleCreateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  description: Scalars['String'];
-  id?: InputMaybe<Scalars['String']>;
-  name: Scalars['String'];
-  users?: InputMaybe<UserCreateNestedManyWithoutRoleInput>;
-}
+export type RoleCreateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly description: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name: Scalars['String'];
+  readonly users?: InputMaybe<UserCreateNestedManyWithoutRoleInput>;
+};
 
-export interface RoleCreateNestedOneWithoutUsersInput {
-  connect?: InputMaybe<RoleWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<RoleCreateOrConnectWithoutUsersInput>;
-  create?: InputMaybe<RoleCreateWithoutUsersInput>;
-}
+export type RoleCreateNestedOneWithoutUsersInput = {
+  readonly connect?: InputMaybe<RoleWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<RoleCreateOrConnectWithoutUsersInput>;
+  readonly create?: InputMaybe<RoleCreateWithoutUsersInput>;
+};
 
-export interface RoleCreateOrConnectWithoutUsersInput {
-  create: RoleCreateWithoutUsersInput;
-  where: RoleWhereUniqueInput;
-}
+export type RoleCreateOrConnectWithoutUsersInput = {
+  readonly create: RoleCreateWithoutUsersInput;
+  readonly where: RoleWhereUniqueInput;
+};
 
-export interface RoleCreateWithoutUsersInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  description: Scalars['String'];
-  id?: InputMaybe<Scalars['String']>;
-  name: Scalars['String'];
-}
+export type RoleCreateWithoutUsersInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly description: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name: Scalars['String'];
+};
 
-export interface RoleGroupBy {
-  __typename?: 'RoleGroupBy';
-  _count?: Maybe<RoleCountAggregate>;
-  _max?: Maybe<RoleMaxAggregate>;
-  _min?: Maybe<RoleMinAggregate>;
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  description: Scalars['String'];
-  id: Scalars['String'];
-  name: Scalars['String'];
-}
+export type RoleGroupBy = {
+  readonly __typename?: 'RoleGroupBy';
+  readonly _count?: Maybe<RoleCountAggregate>;
+  readonly _max?: Maybe<RoleMaxAggregate>;
+  readonly _min?: Maybe<RoleMinAggregate>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly description: Scalars['String'];
+  readonly id: Scalars['String'];
+  readonly name: Scalars['String'];
+};
 
-export interface RoleMaxAggregate {
-  __typename?: 'RoleMaxAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-}
+export type RoleMaxAggregate = {
+  readonly __typename?: 'RoleMaxAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly description?: Maybe<Scalars['String']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+};
 
-export interface RoleMaxOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  description?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type RoleMaxOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly description?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface RoleMinAggregate {
-  __typename?: 'RoleMinAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-}
+export type RoleMinAggregate = {
+  readonly __typename?: 'RoleMinAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly description?: Maybe<Scalars['String']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+};
 
-export interface RoleMinOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  description?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type RoleMinOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly description?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface RoleOrderByWithAggregationInput {
-  _count?: InputMaybe<RoleCountOrderByAggregateInput>;
-  _max?: InputMaybe<RoleMaxOrderByAggregateInput>;
-  _min?: InputMaybe<RoleMinOrderByAggregateInput>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  description?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type RoleOrderByWithAggregationInput = {
+  readonly _count?: InputMaybe<RoleCountOrderByAggregateInput>;
+  readonly _max?: InputMaybe<RoleMaxOrderByAggregateInput>;
+  readonly _min?: InputMaybe<RoleMinOrderByAggregateInput>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly description?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface RoleOrderByWithRelationInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  description?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-  users?: InputMaybe<UserOrderByRelationAggregateInput>;
-}
+export type RoleOrderByWithRelationInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly description?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+  readonly users?: InputMaybe<UserOrderByRelationAggregateInput>;
+};
 
-export interface RoleRelationFilter {
-  is?: InputMaybe<RoleWhereInput>;
-  isNot?: InputMaybe<RoleWhereInput>;
-}
+export type RoleRelationFilter = {
+  readonly is?: InputMaybe<RoleWhereInput>;
+  readonly isNot?: InputMaybe<RoleWhereInput>;
+};
 
 export enum RoleScalarFieldEnum {
   DateCreated = 0,
@@ -4180,269 +4232,269 @@ export enum RoleScalarFieldEnum {
   Name = 4,
 }
 
-export interface RoleScalarWhereWithAggregatesInput {
-  AND?: InputMaybe<Array<RoleScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<RoleScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<RoleScalarWhereWithAggregatesInput>>;
-  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
-  description?: InputMaybe<StringWithAggregatesFilter>;
-  id?: InputMaybe<StringWithAggregatesFilter>;
-  name?: InputMaybe<StringWithAggregatesFilter>;
-}
+export type RoleScalarWhereWithAggregatesInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<RoleScalarWhereWithAggregatesInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<RoleScalarWhereWithAggregatesInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<RoleScalarWhereWithAggregatesInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  readonly description?: InputMaybe<StringWithAggregatesFilter>;
+  readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly name?: InputMaybe<StringWithAggregatesFilter>;
+};
 
-export interface RoleUpdateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  users?: InputMaybe<UserUpdateManyWithoutRoleNestedInput>;
-}
+export type RoleUpdateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly description?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly users?: InputMaybe<UserUpdateManyWithoutRoleNestedInput>;
+};
 
-export interface RoleUpdateManyMutationInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-}
+export type RoleUpdateManyMutationInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly description?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+};
 
-export interface RoleUpdateOneRequiredWithoutUsersNestedInput {
-  connect?: InputMaybe<RoleWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<RoleCreateOrConnectWithoutUsersInput>;
-  create?: InputMaybe<RoleCreateWithoutUsersInput>;
-  update?: InputMaybe<RoleUpdateWithoutUsersInput>;
-  upsert?: InputMaybe<RoleUpsertWithoutUsersInput>;
-}
+export type RoleUpdateOneRequiredWithoutUsersNestedInput = {
+  readonly connect?: InputMaybe<RoleWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<RoleCreateOrConnectWithoutUsersInput>;
+  readonly create?: InputMaybe<RoleCreateWithoutUsersInput>;
+  readonly update?: InputMaybe<RoleUpdateWithoutUsersInput>;
+  readonly upsert?: InputMaybe<RoleUpsertWithoutUsersInput>;
+};
 
-export interface RoleUpdateWithoutUsersInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-}
+export type RoleUpdateWithoutUsersInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly description?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+};
 
-export interface RoleUpsertWithoutUsersInput {
-  create: RoleCreateWithoutUsersInput;
-  update: RoleUpdateWithoutUsersInput;
-}
+export type RoleUpsertWithoutUsersInput = {
+  readonly create: RoleCreateWithoutUsersInput;
+  readonly update: RoleUpdateWithoutUsersInput;
+};
 
-export interface RoleWhereInput {
-  AND?: InputMaybe<Array<RoleWhereInput>>;
-  NOT?: InputMaybe<Array<RoleWhereInput>>;
-  OR?: InputMaybe<Array<RoleWhereInput>>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  description?: InputMaybe<StringFilter>;
-  id?: InputMaybe<StringFilter>;
-  name?: InputMaybe<StringFilter>;
-  users?: InputMaybe<UserListRelationFilter>;
-}
+export type RoleWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<RoleWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<RoleWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<RoleWhereInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly description?: InputMaybe<StringFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly name?: InputMaybe<StringFilter>;
+  readonly users?: InputMaybe<UserListRelationFilter>;
+};
 
-export interface RoleWhereUniqueInput {
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-}
+export type RoleWhereUniqueInput = {
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+};
 
-export interface Size {
-  __typename?: 'Size';
-  _count?: Maybe<SizeCount>;
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id: Scalars['String'];
-  inventory: Array<Inventory>;
-  name: Scalars['String'];
-  productSales: Array<ProductSale>;
-  productTransactions: Array<ProductTransaction>;
-}
+export type Size = {
+  readonly __typename?: 'Size';
+  readonly _count?: Maybe<SizeCount>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id: Scalars['String'];
+  readonly inventory: ReadonlyArray<Inventory>;
+  readonly name: Scalars['String'];
+  readonly productSales: ReadonlyArray<ProductSale>;
+  readonly productTransactions: ReadonlyArray<ProductTransaction>;
+};
 
-export interface SizeInventoryArgs {
+export type SizeInventoryArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
-  distinct?: InputMaybe<Array<InventoryScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<InventoryOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<InventoryScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<InventoryWhereInput>;
-}
+};
 
-export interface SizeProductSalesArgs {
+export type SizeProductSalesArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductSaleScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductSaleOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductSaleScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductSaleWhereInput>;
-}
+};
 
-export interface SizeProductTransactionsArgs {
+export type SizeProductTransactionsArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
-  distinct?: InputMaybe<Array<ProductTransactionScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<ProductTransactionOrderByWithRelationInput>>;
+  distinct?: InputMaybe<ReadonlyArray<ProductTransactionScalarFieldEnum>>;
+  orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
-}
+};
 
-export interface SizeCount {
-  __typename?: 'SizeCount';
-  inventory: Scalars['Int'];
-  productSales: Scalars['Int'];
-  productTransactions: Scalars['Int'];
-}
+export type SizeCount = {
+  readonly __typename?: 'SizeCount';
+  readonly inventory: Scalars['Int'];
+  readonly productSales: Scalars['Int'];
+  readonly productTransactions: Scalars['Int'];
+};
 
-export interface SizeCountAggregate {
-  __typename?: 'SizeCountAggregate';
-  _all: Scalars['Int'];
-  dateCreated: Scalars['Int'];
-  dateUpdated: Scalars['Int'];
-  id: Scalars['Int'];
-  name: Scalars['Int'];
-}
+export type SizeCountAggregate = {
+  readonly __typename?: 'SizeCountAggregate';
+  readonly _all: Scalars['Int'];
+  readonly dateCreated: Scalars['Int'];
+  readonly dateUpdated: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly name: Scalars['Int'];
+};
 
-export interface SizeCountOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type SizeCountOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface SizeCreateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
-  name: Scalars['String'];
-  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
-  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
-}
+export type SizeCreateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
+  readonly name: Scalars['String'];
+  readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
+  readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
+};
 
-export interface SizeCreateNestedOneWithoutInventoryInput {
-  connect?: InputMaybe<SizeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutInventoryInput>;
-  create?: InputMaybe<SizeCreateWithoutInventoryInput>;
-}
+export type SizeCreateNestedOneWithoutInventoryInput = {
+  readonly connect?: InputMaybe<SizeWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutInventoryInput>;
+  readonly create?: InputMaybe<SizeCreateWithoutInventoryInput>;
+};
 
-export interface SizeCreateNestedOneWithoutProductSalesInput {
-  connect?: InputMaybe<SizeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductSalesInput>;
-  create?: InputMaybe<SizeCreateWithoutProductSalesInput>;
-}
+export type SizeCreateNestedOneWithoutProductSalesInput = {
+  readonly connect?: InputMaybe<SizeWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductSalesInput>;
+  readonly create?: InputMaybe<SizeCreateWithoutProductSalesInput>;
+};
 
-export interface SizeCreateNestedOneWithoutProductTransactionsInput {
-  connect?: InputMaybe<SizeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductTransactionsInput>;
-  create?: InputMaybe<SizeCreateWithoutProductTransactionsInput>;
-}
+export type SizeCreateNestedOneWithoutProductTransactionsInput = {
+  readonly connect?: InputMaybe<SizeWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductTransactionsInput>;
+  readonly create?: InputMaybe<SizeCreateWithoutProductTransactionsInput>;
+};
 
-export interface SizeCreateOrConnectWithoutInventoryInput {
-  create: SizeCreateWithoutInventoryInput;
-  where: SizeWhereUniqueInput;
-}
+export type SizeCreateOrConnectWithoutInventoryInput = {
+  readonly create: SizeCreateWithoutInventoryInput;
+  readonly where: SizeWhereUniqueInput;
+};
 
-export interface SizeCreateOrConnectWithoutProductSalesInput {
-  create: SizeCreateWithoutProductSalesInput;
-  where: SizeWhereUniqueInput;
-}
+export type SizeCreateOrConnectWithoutProductSalesInput = {
+  readonly create: SizeCreateWithoutProductSalesInput;
+  readonly where: SizeWhereUniqueInput;
+};
 
-export interface SizeCreateOrConnectWithoutProductTransactionsInput {
-  create: SizeCreateWithoutProductTransactionsInput;
-  where: SizeWhereUniqueInput;
-}
+export type SizeCreateOrConnectWithoutProductTransactionsInput = {
+  readonly create: SizeCreateWithoutProductTransactionsInput;
+  readonly where: SizeWhereUniqueInput;
+};
 
-export interface SizeCreateWithoutInventoryInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name: Scalars['String'];
-  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
-  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
-}
+export type SizeCreateWithoutInventoryInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name: Scalars['String'];
+  readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
+  readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
+};
 
-export interface SizeCreateWithoutProductSalesInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
-  name: Scalars['String'];
-  productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
-}
+export type SizeCreateWithoutProductSalesInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
+  readonly name: Scalars['String'];
+  readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
+};
 
-export interface SizeCreateWithoutProductTransactionsInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
-  name: Scalars['String'];
-  productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
-}
+export type SizeCreateWithoutProductTransactionsInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
+  readonly name: Scalars['String'];
+  readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
+};
 
-export interface SizeGroupBy {
-  __typename?: 'SizeGroupBy';
-  _count?: Maybe<SizeCountAggregate>;
-  _max?: Maybe<SizeMaxAggregate>;
-  _min?: Maybe<SizeMinAggregate>;
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id: Scalars['String'];
-  name: Scalars['String'];
-}
+export type SizeGroupBy = {
+  readonly __typename?: 'SizeGroupBy';
+  readonly _count?: Maybe<SizeCountAggregate>;
+  readonly _max?: Maybe<SizeMaxAggregate>;
+  readonly _min?: Maybe<SizeMinAggregate>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id: Scalars['String'];
+  readonly name: Scalars['String'];
+};
 
-export interface SizeMaxAggregate {
-  __typename?: 'SizeMaxAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-}
+export type SizeMaxAggregate = {
+  readonly __typename?: 'SizeMaxAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+};
 
-export interface SizeMaxOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type SizeMaxOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface SizeMinAggregate {
-  __typename?: 'SizeMinAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-}
+export type SizeMinAggregate = {
+  readonly __typename?: 'SizeMinAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+};
 
-export interface SizeMinOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type SizeMinOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface SizeOrderByWithAggregationInput {
-  _count?: InputMaybe<SizeCountOrderByAggregateInput>;
-  _max?: InputMaybe<SizeMaxOrderByAggregateInput>;
-  _min?: InputMaybe<SizeMinOrderByAggregateInput>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  name?: InputMaybe<SortOrder>;
-}
+export type SizeOrderByWithAggregationInput = {
+  readonly _count?: InputMaybe<SizeCountOrderByAggregateInput>;
+  readonly _max?: InputMaybe<SizeMaxOrderByAggregateInput>;
+  readonly _min?: InputMaybe<SizeMinOrderByAggregateInput>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly name?: InputMaybe<SortOrder>;
+};
 
-export interface SizeOrderByWithRelationInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  inventory?: InputMaybe<InventoryOrderByRelationAggregateInput>;
-  name?: InputMaybe<SortOrder>;
-  productSales?: InputMaybe<ProductSaleOrderByRelationAggregateInput>;
-  productTransactions?: InputMaybe<ProductTransactionOrderByRelationAggregateInput>;
-}
+export type SizeOrderByWithRelationInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly inventory?: InputMaybe<InventoryOrderByRelationAggregateInput>;
+  readonly name?: InputMaybe<SortOrder>;
+  readonly productSales?: InputMaybe<ProductSaleOrderByRelationAggregateInput>;
+  readonly productTransactions?: InputMaybe<ProductTransactionOrderByRelationAggregateInput>;
+};
 
-export interface SizeRelationFilter {
-  is?: InputMaybe<SizeWhereInput>;
-  isNot?: InputMaybe<SizeWhereInput>;
-}
+export type SizeRelationFilter = {
+  readonly is?: InputMaybe<SizeWhereInput>;
+  readonly isNot?: InputMaybe<SizeWhereInput>;
+};
 
 export enum SizeScalarFieldEnum {
   DateCreated = 0,
@@ -4451,330 +4503,330 @@ export enum SizeScalarFieldEnum {
   Name = 3,
 }
 
-export interface SizeScalarWhereWithAggregatesInput {
-  AND?: InputMaybe<Array<SizeScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<SizeScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<SizeScalarWhereWithAggregatesInput>>;
-  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
-  id?: InputMaybe<StringWithAggregatesFilter>;
-  name?: InputMaybe<StringWithAggregatesFilter>;
-}
+export type SizeScalarWhereWithAggregatesInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<SizeScalarWhereWithAggregatesInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<SizeScalarWhereWithAggregatesInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<SizeScalarWhereWithAggregatesInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly name?: InputMaybe<StringWithAggregatesFilter>;
+};
 
-export interface SizeUpdateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
-  name?: InputMaybe<Scalars['String']>;
-  productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
-  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
-}
+export type SizeUpdateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
+  readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
+};
 
-export interface SizeUpdateManyMutationInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-}
+export type SizeUpdateManyMutationInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+};
 
-export interface SizeUpdateOneRequiredWithoutInventoryNestedInput {
-  connect?: InputMaybe<SizeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutInventoryInput>;
-  create?: InputMaybe<SizeCreateWithoutInventoryInput>;
-  update?: InputMaybe<SizeUpdateWithoutInventoryInput>;
-  upsert?: InputMaybe<SizeUpsertWithoutInventoryInput>;
-}
+export type SizeUpdateOneRequiredWithoutInventoryNestedInput = {
+  readonly connect?: InputMaybe<SizeWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutInventoryInput>;
+  readonly create?: InputMaybe<SizeCreateWithoutInventoryInput>;
+  readonly update?: InputMaybe<SizeUpdateWithoutInventoryInput>;
+  readonly upsert?: InputMaybe<SizeUpsertWithoutInventoryInput>;
+};
 
-export interface SizeUpdateOneRequiredWithoutProductSalesNestedInput {
-  connect?: InputMaybe<SizeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductSalesInput>;
-  create?: InputMaybe<SizeCreateWithoutProductSalesInput>;
-  update?: InputMaybe<SizeUpdateWithoutProductSalesInput>;
-  upsert?: InputMaybe<SizeUpsertWithoutProductSalesInput>;
-}
+export type SizeUpdateOneRequiredWithoutProductSalesNestedInput = {
+  readonly connect?: InputMaybe<SizeWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductSalesInput>;
+  readonly create?: InputMaybe<SizeCreateWithoutProductSalesInput>;
+  readonly update?: InputMaybe<SizeUpdateWithoutProductSalesInput>;
+  readonly upsert?: InputMaybe<SizeUpsertWithoutProductSalesInput>;
+};
 
-export interface SizeUpdateOneRequiredWithoutProductTransactionsNestedInput {
-  connect?: InputMaybe<SizeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductTransactionsInput>;
-  create?: InputMaybe<SizeCreateWithoutProductTransactionsInput>;
-  update?: InputMaybe<SizeUpdateWithoutProductTransactionsInput>;
-  upsert?: InputMaybe<SizeUpsertWithoutProductTransactionsInput>;
-}
+export type SizeUpdateOneRequiredWithoutProductTransactionsNestedInput = {
+  readonly connect?: InputMaybe<SizeWhereUniqueInput>;
+  readonly connectOrCreate?: InputMaybe<SizeCreateOrConnectWithoutProductTransactionsInput>;
+  readonly create?: InputMaybe<SizeCreateWithoutProductTransactionsInput>;
+  readonly update?: InputMaybe<SizeUpdateWithoutProductTransactionsInput>;
+  readonly upsert?: InputMaybe<SizeUpsertWithoutProductTransactionsInput>;
+};
 
-export interface SizeUpdateWithoutInventoryInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
-  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
-}
+export type SizeUpdateWithoutInventoryInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
+  readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
+};
 
-export interface SizeUpdateWithoutProductSalesInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
-  name?: InputMaybe<Scalars['String']>;
-  productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
-}
+export type SizeUpdateWithoutProductSalesInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
+};
 
-export interface SizeUpdateWithoutProductTransactionsInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
-  name?: InputMaybe<Scalars['String']>;
-  productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
-}
+export type SizeUpdateWithoutProductTransactionsInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
+  readonly name?: InputMaybe<Scalars['String']>;
+  readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
+};
 
-export interface SizeUpsertWithoutInventoryInput {
-  create: SizeCreateWithoutInventoryInput;
-  update: SizeUpdateWithoutInventoryInput;
-}
+export type SizeUpsertWithoutInventoryInput = {
+  readonly create: SizeCreateWithoutInventoryInput;
+  readonly update: SizeUpdateWithoutInventoryInput;
+};
 
-export interface SizeUpsertWithoutProductSalesInput {
-  create: SizeCreateWithoutProductSalesInput;
-  update: SizeUpdateWithoutProductSalesInput;
-}
+export type SizeUpsertWithoutProductSalesInput = {
+  readonly create: SizeCreateWithoutProductSalesInput;
+  readonly update: SizeUpdateWithoutProductSalesInput;
+};
 
-export interface SizeUpsertWithoutProductTransactionsInput {
-  create: SizeCreateWithoutProductTransactionsInput;
-  update: SizeUpdateWithoutProductTransactionsInput;
-}
+export type SizeUpsertWithoutProductTransactionsInput = {
+  readonly create: SizeCreateWithoutProductTransactionsInput;
+  readonly update: SizeUpdateWithoutProductTransactionsInput;
+};
 
-export interface SizeWhereInput {
-  AND?: InputMaybe<Array<SizeWhereInput>>;
-  NOT?: InputMaybe<Array<SizeWhereInput>>;
-  OR?: InputMaybe<Array<SizeWhereInput>>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  id?: InputMaybe<StringFilter>;
-  inventory?: InputMaybe<InventoryListRelationFilter>;
-  name?: InputMaybe<StringFilter>;
-  productSales?: InputMaybe<ProductSaleListRelationFilter>;
-  productTransactions?: InputMaybe<ProductTransactionListRelationFilter>;
-}
+export type SizeWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<SizeWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<SizeWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<SizeWhereInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly inventory?: InputMaybe<InventoryListRelationFilter>;
+  readonly name?: InputMaybe<StringFilter>;
+  readonly productSales?: InputMaybe<ProductSaleListRelationFilter>;
+  readonly productTransactions?: InputMaybe<ProductTransactionListRelationFilter>;
+};
 
-export interface SizeWhereUniqueInput {
-  id?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-}
+export type SizeWhereUniqueInput = {
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']>;
+};
 
 export enum SortOrder {
   Asc = 0,
   Desc = 1,
 }
 
-export interface StringFilter {
-  contains?: InputMaybe<Scalars['String']>;
-  endsWith?: InputMaybe<Scalars['String']>;
-  equals?: InputMaybe<Scalars['String']>;
-  gt?: InputMaybe<Scalars['String']>;
-  gte?: InputMaybe<Scalars['String']>;
-  in?: InputMaybe<Array<Scalars['String']>>;
-  lt?: InputMaybe<Scalars['String']>;
-  lte?: InputMaybe<Scalars['String']>;
-  not?: InputMaybe<NestedStringFilter>;
-  notIn?: InputMaybe<Array<Scalars['String']>>;
-  startsWith?: InputMaybe<Scalars['String']>;
-}
+export type StringFilter = {
+  readonly contains?: InputMaybe<Scalars['String']>;
+  readonly endsWith?: InputMaybe<Scalars['String']>;
+  readonly equals?: InputMaybe<Scalars['String']>;
+  readonly gt?: InputMaybe<Scalars['String']>;
+  readonly gte?: InputMaybe<Scalars['String']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']>>;
+  readonly lt?: InputMaybe<Scalars['String']>;
+  readonly lte?: InputMaybe<Scalars['String']>;
+  readonly not?: InputMaybe<NestedStringFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']>;
+};
 
-export interface StringWithAggregatesFilter {
-  _count?: InputMaybe<NestedIntFilter>;
-  _max?: InputMaybe<NestedStringFilter>;
-  _min?: InputMaybe<NestedStringFilter>;
-  contains?: InputMaybe<Scalars['String']>;
-  endsWith?: InputMaybe<Scalars['String']>;
-  equals?: InputMaybe<Scalars['String']>;
-  gt?: InputMaybe<Scalars['String']>;
-  gte?: InputMaybe<Scalars['String']>;
-  in?: InputMaybe<Array<Scalars['String']>>;
-  lt?: InputMaybe<Scalars['String']>;
-  lte?: InputMaybe<Scalars['String']>;
-  not?: InputMaybe<NestedStringWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['String']>>;
-  startsWith?: InputMaybe<Scalars['String']>;
-}
+export type StringWithAggregatesFilter = {
+  readonly _count?: InputMaybe<NestedIntFilter>;
+  readonly _max?: InputMaybe<NestedStringFilter>;
+  readonly _min?: InputMaybe<NestedStringFilter>;
+  readonly contains?: InputMaybe<Scalars['String']>;
+  readonly endsWith?: InputMaybe<Scalars['String']>;
+  readonly equals?: InputMaybe<Scalars['String']>;
+  readonly gt?: InputMaybe<Scalars['String']>;
+  readonly gte?: InputMaybe<Scalars['String']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']>>;
+  readonly lt?: InputMaybe<Scalars['String']>;
+  readonly lte?: InputMaybe<Scalars['String']>;
+  readonly not?: InputMaybe<NestedStringWithAggregatesFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']>;
+};
 
-export interface User {
-  __typename?: 'User';
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  id: Scalars['String'];
-  lastName: Scalars['String'];
-  password: Scalars['String'];
-  role: Role;
-  roleId: Scalars['String'];
-  userName: Scalars['String'];
-}
+export type User = {
+  readonly __typename?: 'User';
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly id: Scalars['String'];
+  readonly lastName: Scalars['String'];
+  readonly password: Scalars['String'];
+  readonly role: Role;
+  readonly roleId: Scalars['String'];
+  readonly userName: Scalars['String'];
+};
 
-export interface UserCountAggregate {
-  __typename?: 'UserCountAggregate';
-  _all: Scalars['Int'];
-  dateCreated: Scalars['Int'];
-  dateUpdated: Scalars['Int'];
-  email: Scalars['Int'];
-  firstName: Scalars['Int'];
-  id: Scalars['Int'];
-  lastName: Scalars['Int'];
-  password: Scalars['Int'];
-  roleId: Scalars['Int'];
-  userName: Scalars['Int'];
-}
+export type UserCountAggregate = {
+  readonly __typename?: 'UserCountAggregate';
+  readonly _all: Scalars['Int'];
+  readonly dateCreated: Scalars['Int'];
+  readonly dateUpdated: Scalars['Int'];
+  readonly email: Scalars['Int'];
+  readonly firstName: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly lastName: Scalars['Int'];
+  readonly password: Scalars['Int'];
+  readonly roleId: Scalars['Int'];
+  readonly userName: Scalars['Int'];
+};
 
-export interface UserCountOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  password?: InputMaybe<SortOrder>;
-  roleId?: InputMaybe<SortOrder>;
-  userName?: InputMaybe<SortOrder>;
-}
+export type UserCountOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly password?: InputMaybe<SortOrder>;
+  readonly roleId?: InputMaybe<SortOrder>;
+  readonly userName?: InputMaybe<SortOrder>;
+};
 
-export interface UserCreateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  id?: InputMaybe<Scalars['String']>;
-  lastName: Scalars['String'];
-  password: Scalars['String'];
-  role: RoleCreateNestedOneWithoutUsersInput;
-  userName: Scalars['String'];
-}
+export type UserCreateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly lastName: Scalars['String'];
+  readonly password: Scalars['String'];
+  readonly role: RoleCreateNestedOneWithoutUsersInput;
+  readonly userName: Scalars['String'];
+};
 
-export interface UserCreateNestedManyWithoutRoleInput {
-  connect?: InputMaybe<Array<UserWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<UserCreateOrConnectWithoutRoleInput>>;
-  create?: InputMaybe<Array<UserCreateWithoutRoleInput>>;
-}
+export type UserCreateNestedManyWithoutRoleInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<UserWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<ReadonlyArray<UserCreateOrConnectWithoutRoleInput>>;
+  readonly create?: InputMaybe<ReadonlyArray<UserCreateWithoutRoleInput>>;
+};
 
-export interface UserCreateOrConnectWithoutRoleInput {
-  create: UserCreateWithoutRoleInput;
-  where: UserWhereUniqueInput;
-}
+export type UserCreateOrConnectWithoutRoleInput = {
+  readonly create: UserCreateWithoutRoleInput;
+  readonly where: UserWhereUniqueInput;
+};
 
-export interface UserCreateWithoutRoleInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  id?: InputMaybe<Scalars['String']>;
-  lastName: Scalars['String'];
-  password: Scalars['String'];
-  userName: Scalars['String'];
-}
+export type UserCreateWithoutRoleInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly lastName: Scalars['String'];
+  readonly password: Scalars['String'];
+  readonly userName: Scalars['String'];
+};
 
-export interface UserGroupBy {
-  __typename?: 'UserGroupBy';
-  _count?: Maybe<UserCountAggregate>;
-  _max?: Maybe<UserMaxAggregate>;
-  _min?: Maybe<UserMinAggregate>;
-  dateCreated: Scalars['DateTime'];
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  id: Scalars['String'];
-  lastName: Scalars['String'];
-  password: Scalars['String'];
-  roleId: Scalars['String'];
-  userName: Scalars['String'];
-}
+export type UserGroupBy = {
+  readonly __typename?: 'UserGroupBy';
+  readonly _count?: Maybe<UserCountAggregate>;
+  readonly _max?: Maybe<UserMaxAggregate>;
+  readonly _min?: Maybe<UserMinAggregate>;
+  readonly dateCreated: Scalars['DateTime'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly email: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly id: Scalars['String'];
+  readonly lastName: Scalars['String'];
+  readonly password: Scalars['String'];
+  readonly roleId: Scalars['String'];
+  readonly userName: Scalars['String'];
+};
 
-export interface UserListRelationFilter {
-  every?: InputMaybe<UserWhereInput>;
-  none?: InputMaybe<UserWhereInput>;
-  some?: InputMaybe<UserWhereInput>;
-}
+export type UserListRelationFilter = {
+  readonly every?: InputMaybe<UserWhereInput>;
+  readonly none?: InputMaybe<UserWhereInput>;
+  readonly some?: InputMaybe<UserWhereInput>;
+};
 
-export interface UserMaxAggregate {
-  __typename?: 'UserMaxAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  email?: Maybe<Scalars['String']>;
-  firstName?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  password?: Maybe<Scalars['String']>;
-  roleId?: Maybe<Scalars['String']>;
-  userName?: Maybe<Scalars['String']>;
-}
+export type UserMaxAggregate = {
+  readonly __typename?: 'UserMaxAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly email?: Maybe<Scalars['String']>;
+  readonly firstName?: Maybe<Scalars['String']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly lastName?: Maybe<Scalars['String']>;
+  readonly password?: Maybe<Scalars['String']>;
+  readonly roleId?: Maybe<Scalars['String']>;
+  readonly userName?: Maybe<Scalars['String']>;
+};
 
-export interface UserMaxOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  password?: InputMaybe<SortOrder>;
-  roleId?: InputMaybe<SortOrder>;
-  userName?: InputMaybe<SortOrder>;
-}
+export type UserMaxOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly password?: InputMaybe<SortOrder>;
+  readonly roleId?: InputMaybe<SortOrder>;
+  readonly userName?: InputMaybe<SortOrder>;
+};
 
-export interface UserMinAggregate {
-  __typename?: 'UserMinAggregate';
-  dateCreated?: Maybe<Scalars['DateTime']>;
-  dateUpdated?: Maybe<Scalars['DateTime']>;
-  email?: Maybe<Scalars['String']>;
-  firstName?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  password?: Maybe<Scalars['String']>;
-  roleId?: Maybe<Scalars['String']>;
-  userName?: Maybe<Scalars['String']>;
-}
+export type UserMinAggregate = {
+  readonly __typename?: 'UserMinAggregate';
+  readonly dateCreated?: Maybe<Scalars['DateTime']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly email?: Maybe<Scalars['String']>;
+  readonly firstName?: Maybe<Scalars['String']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly lastName?: Maybe<Scalars['String']>;
+  readonly password?: Maybe<Scalars['String']>;
+  readonly roleId?: Maybe<Scalars['String']>;
+  readonly userName?: Maybe<Scalars['String']>;
+};
 
-export interface UserMinOrderByAggregateInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  password?: InputMaybe<SortOrder>;
-  roleId?: InputMaybe<SortOrder>;
-  userName?: InputMaybe<SortOrder>;
-}
+export type UserMinOrderByAggregateInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly password?: InputMaybe<SortOrder>;
+  readonly roleId?: InputMaybe<SortOrder>;
+  readonly userName?: InputMaybe<SortOrder>;
+};
 
-export interface UserOrderByRelationAggregateInput {
-  _count?: InputMaybe<SortOrder>;
-}
+export type UserOrderByRelationAggregateInput = {
+  readonly _count?: InputMaybe<SortOrder>;
+};
 
-export interface UserOrderByWithAggregationInput {
-  _count?: InputMaybe<UserCountOrderByAggregateInput>;
-  _max?: InputMaybe<UserMaxOrderByAggregateInput>;
-  _min?: InputMaybe<UserMinOrderByAggregateInput>;
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  password?: InputMaybe<SortOrder>;
-  roleId?: InputMaybe<SortOrder>;
-  userName?: InputMaybe<SortOrder>;
-}
+export type UserOrderByWithAggregationInput = {
+  readonly _count?: InputMaybe<UserCountOrderByAggregateInput>;
+  readonly _max?: InputMaybe<UserMaxOrderByAggregateInput>;
+  readonly _min?: InputMaybe<UserMinOrderByAggregateInput>;
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly password?: InputMaybe<SortOrder>;
+  readonly roleId?: InputMaybe<SortOrder>;
+  readonly userName?: InputMaybe<SortOrder>;
+};
 
-export interface UserOrderByWithRelationInput {
-  dateCreated?: InputMaybe<SortOrder>;
-  dateUpdated?: InputMaybe<SortOrder>;
-  email?: InputMaybe<SortOrder>;
-  firstName?: InputMaybe<SortOrder>;
-  id?: InputMaybe<SortOrder>;
-  lastName?: InputMaybe<SortOrder>;
-  password?: InputMaybe<SortOrder>;
-  role?: InputMaybe<RoleOrderByWithRelationInput>;
-  roleId?: InputMaybe<SortOrder>;
-  userName?: InputMaybe<SortOrder>;
-}
+export type UserOrderByWithRelationInput = {
+  readonly dateCreated?: InputMaybe<SortOrder>;
+  readonly dateUpdated?: InputMaybe<SortOrder>;
+  readonly email?: InputMaybe<SortOrder>;
+  readonly firstName?: InputMaybe<SortOrder>;
+  readonly id?: InputMaybe<SortOrder>;
+  readonly lastName?: InputMaybe<SortOrder>;
+  readonly password?: InputMaybe<SortOrder>;
+  readonly role?: InputMaybe<RoleOrderByWithRelationInput>;
+  readonly roleId?: InputMaybe<SortOrder>;
+  readonly userName?: InputMaybe<SortOrder>;
+};
 
 export enum UserScalarFieldEnum {
   DateCreated = 0,
@@ -4788,136 +4840,136 @@ export enum UserScalarFieldEnum {
   UserName = 8,
 }
 
-export interface UserScalarWhereInput {
-  AND?: InputMaybe<Array<UserScalarWhereInput>>;
-  NOT?: InputMaybe<Array<UserScalarWhereInput>>;
-  OR?: InputMaybe<Array<UserScalarWhereInput>>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  email?: InputMaybe<StringFilter>;
-  firstName?: InputMaybe<StringFilter>;
-  id?: InputMaybe<StringFilter>;
-  lastName?: InputMaybe<StringFilter>;
-  password?: InputMaybe<StringFilter>;
-  roleId?: InputMaybe<StringFilter>;
-  userName?: InputMaybe<StringFilter>;
-}
+export type UserScalarWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<UserScalarWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<UserScalarWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<UserScalarWhereInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly email?: InputMaybe<StringFilter>;
+  readonly firstName?: InputMaybe<StringFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly lastName?: InputMaybe<StringFilter>;
+  readonly password?: InputMaybe<StringFilter>;
+  readonly roleId?: InputMaybe<StringFilter>;
+  readonly userName?: InputMaybe<StringFilter>;
+};
 
-export interface UserScalarWhereWithAggregatesInput {
-  AND?: InputMaybe<Array<UserScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<UserScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<UserScalarWhereWithAggregatesInput>>;
-  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
-  email?: InputMaybe<StringWithAggregatesFilter>;
-  firstName?: InputMaybe<StringWithAggregatesFilter>;
-  id?: InputMaybe<StringWithAggregatesFilter>;
-  lastName?: InputMaybe<StringWithAggregatesFilter>;
-  password?: InputMaybe<StringWithAggregatesFilter>;
-  roleId?: InputMaybe<StringWithAggregatesFilter>;
-  userName?: InputMaybe<StringWithAggregatesFilter>;
-}
+export type UserScalarWhereWithAggregatesInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<UserScalarWhereWithAggregatesInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<UserScalarWhereWithAggregatesInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<UserScalarWhereWithAggregatesInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  readonly email?: InputMaybe<StringWithAggregatesFilter>;
+  readonly firstName?: InputMaybe<StringWithAggregatesFilter>;
+  readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly lastName?: InputMaybe<StringWithAggregatesFilter>;
+  readonly password?: InputMaybe<StringWithAggregatesFilter>;
+  readonly roleId?: InputMaybe<StringWithAggregatesFilter>;
+  readonly userName?: InputMaybe<StringWithAggregatesFilter>;
+};
 
-export interface UserUpdateInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
-  password?: InputMaybe<Scalars['String']>;
-  role?: InputMaybe<RoleUpdateOneRequiredWithoutUsersNestedInput>;
-  userName?: InputMaybe<Scalars['String']>;
-}
+export type UserUpdateInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly firstName?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly password?: InputMaybe<Scalars['String']>;
+  readonly role?: InputMaybe<RoleUpdateOneRequiredWithoutUsersNestedInput>;
+  readonly userName?: InputMaybe<Scalars['String']>;
+};
 
-export interface UserUpdateManyMutationInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
-  password?: InputMaybe<Scalars['String']>;
-  userName?: InputMaybe<Scalars['String']>;
-}
+export type UserUpdateManyMutationInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly firstName?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly password?: InputMaybe<Scalars['String']>;
+  readonly userName?: InputMaybe<Scalars['String']>;
+};
 
-export interface UserUpdateManyWithWhereWithoutRoleInput {
-  data: UserUpdateManyMutationInput;
-  where: UserScalarWhereInput;
-}
+export type UserUpdateManyWithWhereWithoutRoleInput = {
+  readonly data: UserUpdateManyMutationInput;
+  readonly where: UserScalarWhereInput;
+};
 
-export interface UserUpdateManyWithoutRoleNestedInput {
-  connect?: InputMaybe<Array<UserWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<UserCreateOrConnectWithoutRoleInput>>;
-  create?: InputMaybe<Array<UserCreateWithoutRoleInput>>;
-  delete?: InputMaybe<Array<UserWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<UserScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<UserWhereUniqueInput>>;
-  set?: InputMaybe<Array<UserWhereUniqueInput>>;
-  update?: InputMaybe<Array<UserUpdateWithWhereUniqueWithoutRoleInput>>;
-  updateMany?: InputMaybe<Array<UserUpdateManyWithWhereWithoutRoleInput>>;
-  upsert?: InputMaybe<Array<UserUpsertWithWhereUniqueWithoutRoleInput>>;
-}
+export type UserUpdateManyWithoutRoleNestedInput = {
+  readonly connect?: InputMaybe<ReadonlyArray<UserWhereUniqueInput>>;
+  readonly connectOrCreate?: InputMaybe<ReadonlyArray<UserCreateOrConnectWithoutRoleInput>>;
+  readonly create?: InputMaybe<ReadonlyArray<UserCreateWithoutRoleInput>>;
+  readonly delete?: InputMaybe<ReadonlyArray<UserWhereUniqueInput>>;
+  readonly deleteMany?: InputMaybe<ReadonlyArray<UserScalarWhereInput>>;
+  readonly disconnect?: InputMaybe<ReadonlyArray<UserWhereUniqueInput>>;
+  readonly set?: InputMaybe<ReadonlyArray<UserWhereUniqueInput>>;
+  readonly update?: InputMaybe<ReadonlyArray<UserUpdateWithWhereUniqueWithoutRoleInput>>;
+  readonly updateMany?: InputMaybe<ReadonlyArray<UserUpdateManyWithWhereWithoutRoleInput>>;
+  readonly upsert?: InputMaybe<ReadonlyArray<UserUpsertWithWhereUniqueWithoutRoleInput>>;
+};
 
-export interface UserUpdateWithWhereUniqueWithoutRoleInput {
-  data: UserUpdateWithoutRoleInput;
-  where: UserWhereUniqueInput;
-}
+export type UserUpdateWithWhereUniqueWithoutRoleInput = {
+  readonly data: UserUpdateWithoutRoleInput;
+  readonly where: UserWhereUniqueInput;
+};
 
-export interface UserUpdateWithoutRoleInput {
-  dateCreated?: InputMaybe<Scalars['DateTime']>;
-  dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
-  password?: InputMaybe<Scalars['String']>;
-  userName?: InputMaybe<Scalars['String']>;
-}
+export type UserUpdateWithoutRoleInput = {
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly firstName?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly password?: InputMaybe<Scalars['String']>;
+  readonly userName?: InputMaybe<Scalars['String']>;
+};
 
-export interface UserUpsertWithWhereUniqueWithoutRoleInput {
-  create: UserCreateWithoutRoleInput;
-  update: UserUpdateWithoutRoleInput;
-  where: UserWhereUniqueInput;
-}
+export type UserUpsertWithWhereUniqueWithoutRoleInput = {
+  readonly create: UserCreateWithoutRoleInput;
+  readonly update: UserUpdateWithoutRoleInput;
+  readonly where: UserWhereUniqueInput;
+};
 
-export interface UserWhereInput {
-  AND?: InputMaybe<Array<UserWhereInput>>;
-  NOT?: InputMaybe<Array<UserWhereInput>>;
-  OR?: InputMaybe<Array<UserWhereInput>>;
-  dateCreated?: InputMaybe<DateTimeFilter>;
-  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
-  email?: InputMaybe<StringFilter>;
-  firstName?: InputMaybe<StringFilter>;
-  id?: InputMaybe<StringFilter>;
-  lastName?: InputMaybe<StringFilter>;
-  password?: InputMaybe<StringFilter>;
-  role?: InputMaybe<RoleRelationFilter>;
-  roleId?: InputMaybe<StringFilter>;
-  userName?: InputMaybe<StringFilter>;
-}
+export type UserWhereInput = {
+  readonly AND?: InputMaybe<ReadonlyArray<UserWhereInput>>;
+  readonly NOT?: InputMaybe<ReadonlyArray<UserWhereInput>>;
+  readonly OR?: InputMaybe<ReadonlyArray<UserWhereInput>>;
+  readonly dateCreated?: InputMaybe<DateTimeFilter>;
+  readonly dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  readonly email?: InputMaybe<StringFilter>;
+  readonly firstName?: InputMaybe<StringFilter>;
+  readonly id?: InputMaybe<StringFilter>;
+  readonly lastName?: InputMaybe<StringFilter>;
+  readonly password?: InputMaybe<StringFilter>;
+  readonly role?: InputMaybe<RoleRelationFilter>;
+  readonly roleId?: InputMaybe<StringFilter>;
+  readonly userName?: InputMaybe<StringFilter>;
+};
 
-export interface UserWhereUniqueInput {
-  email?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  userName?: InputMaybe<Scalars['String']>;
-}
+export type UserWhereUniqueInput = {
+  readonly email?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']>;
+  readonly userName?: InputMaybe<Scalars['String']>;
+};
 
 export type GetCustomersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetCustomersQuery = {
-  __typename?: 'Query';
-  customers: Array<{
-    __typename?: 'Customer';
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    streetAddress: string;
-    city: string;
-    stateId: string;
-    zipCode: string;
+  readonly __typename?: 'Query';
+  readonly customers: ReadonlyArray<{
+    readonly __typename?: 'Customer';
+    readonly id: string;
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly email: string;
+    readonly phone: string;
+    readonly streetAddress: string;
+    readonly city: string;
+    readonly stateId: string;
+    readonly zipCode: string;
   }>;
 };
 
@@ -4926,19 +4978,19 @@ export type GetCustomerByIdQueryVariables = Exact<{
 }>;
 
 export type GetCustomerByIdQuery = {
-  __typename?: 'Query';
-  customer?:
+  readonly __typename?: 'Query';
+  readonly customer?:
     | {
-        __typename?: 'Customer';
-        id: string;
-        firstName: string;
-        lastName: string;
-        email: string;
-        phone: string;
-        streetAddress: string;
-        city: string;
-        stateId: string;
-        zipCode: string;
+        readonly __typename?: 'Customer';
+        readonly id: string;
+        readonly firstName: string;
+        readonly lastName: string;
+        readonly email: string;
+        readonly phone: string;
+        readonly streetAddress: string;
+        readonly city: string;
+        readonly stateId: string;
+        readonly zipCode: string;
       }
     | undefined;
 };
@@ -4946,22 +4998,22 @@ export type GetCustomerByIdQuery = {
 export type GetEmployeesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetEmployeesQuery = {
-  __typename?: 'Query';
-  employees: Array<{
-    __typename?: 'Employee';
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    gender: string;
-    phone: string;
-    streetAddress: string;
-    city: string;
-    stateId: string;
-    zipCode: string;
-    jobTitle: string;
-    departmentId: string;
-    dateStarted: any;
+  readonly __typename?: 'Query';
+  readonly employees: ReadonlyArray<{
+    readonly __typename?: 'Employee';
+    readonly id: string;
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly email: string;
+    readonly gender: string;
+    readonly phone: string;
+    readonly streetAddress: string;
+    readonly city: string;
+    readonly stateId: string;
+    readonly zipCode: string;
+    readonly jobTitle: string;
+    readonly departmentId: string;
+    readonly dateStarted: any;
   }>;
 };
 
@@ -4970,23 +5022,23 @@ export type GetEmployeeByIdQueryVariables = Exact<{
 }>;
 
 export type GetEmployeeByIdQuery = {
-  __typename?: 'Query';
-  employee?:
+  readonly __typename?: 'Query';
+  readonly employee?:
     | {
-        __typename?: 'Employee';
-        id: string;
-        firstName: string;
-        lastName: string;
-        email: string;
-        gender: string;
-        phone: string;
-        streetAddress: string;
-        city: string;
-        stateId: string;
-        zipCode: string;
-        jobTitle: string;
-        departmentId: string;
-        dateStarted: any;
+        readonly __typename?: 'Employee';
+        readonly id: string;
+        readonly firstName: string;
+        readonly lastName: string;
+        readonly email: string;
+        readonly gender: string;
+        readonly phone: string;
+        readonly streetAddress: string;
+        readonly city: string;
+        readonly stateId: string;
+        readonly zipCode: string;
+        readonly jobTitle: string;
+        readonly departmentId: string;
+        readonly dateStarted: any;
       }
     | undefined;
 };
@@ -4996,14 +5048,19 @@ export type GetInventoryByProductIdQueryVariables = Exact<{
 }>;
 
 export type GetInventoryByProductIdQuery = {
-  __typename?: 'Query';
-  inventories: Array<{
-    __typename?: 'Inventory';
-    id: string;
-    productId: string;
-    quantity: number;
-    sizeId: string;
-    product: { __typename?: 'Product'; id: string; name: string; cost: number };
+  readonly __typename?: 'Query';
+  readonly inventories: ReadonlyArray<{
+    readonly __typename?: 'Inventory';
+    readonly id: string;
+    readonly productId: string;
+    readonly quantity: number;
+    readonly sizeId: string;
+    readonly product: {
+      readonly __typename?: 'Product';
+      readonly id: string;
+      readonly name: string;
+      readonly cost: number;
+    };
   }>;
 };
 
@@ -5012,14 +5069,19 @@ export type GetInventoryBySizeQueryVariables = Exact<{
 }>;
 
 export type GetInventoryBySizeQuery = {
-  __typename?: 'Query';
-  inventories: Array<{
-    __typename?: 'Inventory';
-    id: string;
-    productId: string;
-    quantity: number;
-    sizeId: string;
-    product: { __typename?: 'Product'; id: string; name: string; cost: number };
+  readonly __typename?: 'Query';
+  readonly inventories: ReadonlyArray<{
+    readonly __typename?: 'Inventory';
+    readonly id: string;
+    readonly productId: string;
+    readonly quantity: number;
+    readonly sizeId: string;
+    readonly product: {
+      readonly __typename?: 'Product';
+      readonly id: string;
+      readonly name: string;
+      readonly cost: number;
+    };
   }>;
 };
 
@@ -5028,13 +5090,21 @@ export type LoginMutationVariables = Exact<{
   password: Scalars['String'];
 }>;
 
-export type LoginMutation = { __typename?: 'Mutation'; login?: string | undefined };
+export type LoginMutation = {
+  readonly __typename?: 'Mutation';
+  readonly login?: string | undefined;
+};
 
 export type GetProductsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProductsQuery = {
-  __typename?: 'Query';
-  products: Array<{ __typename?: 'Product'; id: string; name: string; cost: number }>;
+  readonly __typename?: 'Query';
+  readonly products: ReadonlyArray<{
+    readonly __typename?: 'Product';
+    readonly id: string;
+    readonly name: string;
+    readonly cost: number;
+  }>;
 };
 
 export type GetProductByIdQueryVariables = Exact<{
@@ -5042,20 +5112,31 @@ export type GetProductByIdQueryVariables = Exact<{
 }>;
 
 export type GetProductByIdQuery = {
-  __typename?: 'Query';
-  product?: { __typename?: 'Product'; id: string; name: string; cost: number } | undefined;
+  readonly __typename?: 'Query';
+  readonly product?:
+    | {
+        readonly __typename?: 'Product';
+        readonly id: string;
+        readonly name: string;
+        readonly cost: number;
+      }
+    | undefined;
 };
 
 export type GetProductSalesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProductSalesQuery = {
-  __typename?: 'Query';
-  productSales: Array<{
-    __typename?: 'ProductSale';
-    id: string;
-    quantity: number;
-    product: { __typename?: 'Product'; id: string; name: string };
-    size: { __typename?: 'Size'; id: string; name: string };
+  readonly __typename?: 'Query';
+  readonly productSales: ReadonlyArray<{
+    readonly __typename?: 'ProductSale';
+    readonly id: string;
+    readonly quantity: number;
+    readonly product: {
+      readonly __typename?: 'Product';
+      readonly id: string;
+      readonly name: string;
+    };
+    readonly size: { readonly __typename?: 'Size'; readonly id: string; readonly name: string };
   }>;
 };
 
@@ -5064,28 +5145,32 @@ export type GetTopProductSalesByProductIdQueryVariables = Exact<{
 }>;
 
 export type GetTopProductSalesByProductIdQuery = {
-  __typename?: 'Query';
-  productSales: Array<{
-    __typename?: 'ProductSale';
-    id: string;
-    quantity: number;
-    product: { __typename?: 'Product'; id: string; name: string };
-    size: { __typename?: 'Size'; id: string; name: string };
+  readonly __typename?: 'Query';
+  readonly productSales: ReadonlyArray<{
+    readonly __typename?: 'ProductSale';
+    readonly id: string;
+    readonly quantity: number;
+    readonly product: {
+      readonly __typename?: 'Product';
+      readonly id: string;
+      readonly name: string;
+    };
+    readonly size: { readonly __typename?: 'Size'; readonly id: string; readonly name: string };
   }>;
 };
 
 export type GetProductTransactionsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProductTransactionsQuery = {
-  __typename?: 'Query';
-  productTransactions: Array<{
-    __typename?: 'ProductTransaction';
-    id: string;
-    productId: string;
-    sizeId: string;
-    quantity: number;
-    price: number;
-    dateCreated: any;
+  readonly __typename?: 'Query';
+  readonly productTransactions: ReadonlyArray<{
+    readonly __typename?: 'ProductTransaction';
+    readonly id: string;
+    readonly productId: string;
+    readonly sizeId: string;
+    readonly quantity: number;
+    readonly price: number;
+    readonly dateCreated: any;
   }>;
 };
 
@@ -5096,17 +5181,17 @@ export type GetProductTransactionsByProductIdQueryVariables = Exact<{
 }>;
 
 export type GetProductTransactionsByProductIdQuery = {
-  __typename?: 'Query';
-  productTransactions: Array<{
-    __typename?: 'ProductTransaction';
-    id: string;
-    productId: string;
-    sizeId: string;
-    quantity: number;
-    price: number;
-    dateCreated: any;
-    product: { __typename?: 'Product'; name: string };
-    size: { __typename?: 'Size'; name: string };
+  readonly __typename?: 'Query';
+  readonly productTransactions: ReadonlyArray<{
+    readonly __typename?: 'ProductTransaction';
+    readonly id: string;
+    readonly productId: string;
+    readonly sizeId: string;
+    readonly quantity: number;
+    readonly price: number;
+    readonly dateCreated: any;
+    readonly product: { readonly __typename?: 'Product'; readonly name: string };
+    readonly size: { readonly __typename?: 'Size'; readonly name: string };
   }>;
 };
 
@@ -5115,8 +5200,8 @@ export type GetProductTransactionsCountByProductIdQueryVariables = Exact<{
 }>;
 
 export type GetProductTransactionsCountByProductIdQuery = {
-  __typename?: 'Query';
-  productTransactionCountByProductId?: string | undefined;
+  readonly __typename?: 'Query';
+  readonly productTransactionCountByProductId?: string | undefined;
 };
 
 export type GetProductTransactionsByProductIdAndDateRangeQueryVariables = Exact<{
@@ -5128,36 +5213,40 @@ export type GetProductTransactionsByProductIdAndDateRangeQueryVariables = Exact<
 }>;
 
 export type GetProductTransactionsByProductIdAndDateRangeQuery = {
-  __typename?: 'Query';
-  productTransactions: Array<{
-    __typename?: 'ProductTransaction';
-    id: string;
-    productId: string;
-    sizeId: string;
-    quantity: number;
-    price: number;
-    dateCreated: any;
+  readonly __typename?: 'Query';
+  readonly productTransactions: ReadonlyArray<{
+    readonly __typename?: 'ProductTransaction';
+    readonly id: string;
+    readonly productId: string;
+    readonly sizeId: string;
+    readonly quantity: number;
+    readonly price: number;
+    readonly dateCreated: any;
   }>;
 };
 
 export type GetSizesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetSizesQuery = {
-  __typename?: 'Query';
-  sizes: Array<{ __typename?: 'Size'; id: string; name: string }>;
+  readonly __typename?: 'Query';
+  readonly sizes: ReadonlyArray<{
+    readonly __typename?: 'Size';
+    readonly id: string;
+    readonly name: string;
+  }>;
 };
 
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUsersQuery = {
-  __typename?: 'Query';
-  users: Array<{
-    __typename?: 'User';
-    id: string;
-    userName: string;
-    firstName: string;
-    lastName: string;
-    email: string;
+  readonly __typename?: 'Query';
+  readonly users: ReadonlyArray<{
+    readonly __typename?: 'User';
+    readonly id: string;
+    readonly userName: string;
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly email: string;
   }>;
 };
 
@@ -5166,15 +5255,15 @@ export type GetUserByIdQueryVariables = Exact<{
 }>;
 
 export type GetUserByIdQuery = {
-  __typename?: 'Query';
-  user?:
+  readonly __typename?: 'Query';
+  readonly user?:
     | {
-        __typename?: 'User';
-        id: string;
-        userName: string;
-        firstName: string;
-        lastName: string;
-        email: string;
+        readonly __typename?: 'User';
+        readonly id: string;
+        readonly userName: string;
+        readonly firstName: string;
+        readonly lastName: string;
+        readonly email: string;
       }
     | undefined;
 };
@@ -5184,89 +5273,89 @@ export type GetUserByUserNameQueryVariables = Exact<{
 }>;
 
 export type GetUserByUserNameQuery = {
-  __typename?: 'Query';
-  user?:
+  readonly __typename?: 'Query';
+  readonly user?:
     | {
-        __typename?: 'User';
-        id: string;
-        userName: string;
-        firstName: string;
-        lastName: string;
-        email: string;
+        readonly __typename?: 'User';
+        readonly id: string;
+        readonly userName: string;
+        readonly firstName: string;
+        readonly lastName: string;
+        readonly email: string;
       }
     | undefined;
 };
 
 export type CustomerPartsFragment = {
-  __typename?: 'Customer';
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  streetAddress: string;
-  city: string;
-  stateId: string;
-  zipCode: string;
+  readonly __typename?: 'Customer';
+  readonly id: string;
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly email: string;
+  readonly phone: string;
+  readonly streetAddress: string;
+  readonly city: string;
+  readonly stateId: string;
+  readonly zipCode: string;
 };
 
 export type EmployeePartsFragment = {
-  __typename?: 'Employee';
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  gender: string;
-  phone: string;
-  streetAddress: string;
-  city: string;
-  stateId: string;
-  zipCode: string;
-  jobTitle: string;
-  departmentId: string;
-  dateStarted: any;
+  readonly __typename?: 'Employee';
+  readonly id: string;
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly email: string;
+  readonly gender: string;
+  readonly phone: string;
+  readonly streetAddress: string;
+  readonly city: string;
+  readonly stateId: string;
+  readonly zipCode: string;
+  readonly jobTitle: string;
+  readonly departmentId: string;
+  readonly dateStarted: any;
 };
 
 export type InventoryPartsFragment = {
-  __typename?: 'Inventory';
-  id: string;
-  productId: string;
-  quantity: number;
-  sizeId: string;
+  readonly __typename?: 'Inventory';
+  readonly id: string;
+  readonly productId: string;
+  readonly quantity: number;
+  readonly sizeId: string;
 };
 
 export type ProductPartsFragment = {
-  __typename?: 'Product';
-  id: string;
-  name: string;
-  cost: number;
+  readonly __typename?: 'Product';
+  readonly id: string;
+  readonly name: string;
+  readonly cost: number;
 };
 
 export type ProductSalePartsFragment = {
-  __typename?: 'ProductSale';
-  id: string;
-  quantity: number;
-  product: { __typename?: 'Product'; id: string; name: string };
-  size: { __typename?: 'Size'; id: string; name: string };
+  readonly __typename?: 'ProductSale';
+  readonly id: string;
+  readonly quantity: number;
+  readonly product: { readonly __typename?: 'Product'; readonly id: string; readonly name: string };
+  readonly size: { readonly __typename?: 'Size'; readonly id: string; readonly name: string };
 };
 
 export type ProductTransactionPartsFragment = {
-  __typename?: 'ProductTransaction';
-  id: string;
-  productId: string;
-  sizeId: string;
-  quantity: number;
-  price: number;
-  dateCreated: any;
+  readonly __typename?: 'ProductTransaction';
+  readonly id: string;
+  readonly productId: string;
+  readonly sizeId: string;
+  readonly quantity: number;
+  readonly price: number;
+  readonly dateCreated: any;
 };
 
 export type UserPartsFragment = {
-  __typename?: 'User';
-  id: string;
-  userName: string;
-  firstName: string;
-  lastName: string;
-  email: string;
+  readonly __typename?: 'User';
+  readonly id: string;
+  readonly userName: string;
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly email: string;
 };
 
 export const CustomerPartsFragmentDoc = {

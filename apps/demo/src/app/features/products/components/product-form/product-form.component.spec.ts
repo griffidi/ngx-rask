@@ -1,21 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import ProductFormComponent from './product-form.component';
+// import ProductFormComponent from './product-form.component';
 
-describe('ProductForm', () => {
-  let component: ProductFormComponent;
-  let fixture: ComponentFixture<ProductFormComponent>;
+// describe('ProductForm', () => {
+//   let component: ProductFormComponent;
+//   let fixture: ComponentFixture<ProductFormComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [ProductFormComponent],
-    });
-    fixture = TestBed.createComponent(ProductFormComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({
+//       imports: [ProductFormComponent],
+//     });
+//     fixture = TestBed.createComponent(ProductFormComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });

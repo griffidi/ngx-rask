@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { ProductDetailComponent } from '../components';
-import { ProductsService } from '../shared/services';
+import { productsStore } from '../store';
 
 @Component({
   selector: 'app-product',
@@ -11,9 +11,12 @@ import { ProductsService } from '../shared/services';
   imports: [ProductDetailComponent],
 })
 export default class ProductComponent {
-  #productsService = inject(ProductsService);
+  #productsStore = inject(productsStore);
 
-  protected readonly product = this.#productsService.product;
+  protected readonly product = this.#productsStore.selectedProduct;
 
-  @Input({ required: true }) protected accessor id!: string;
+  @Input({ required: true })
+  protected set id(value: string) {
+    this.#productsStore.setSelectedProductId(value);
+  }
 }

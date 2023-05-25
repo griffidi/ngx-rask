@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { merge, tap } from 'rxjs';
+import type { Products } from '../shared/models';
 import { ProductTransactionsService, ProductsService } from '../shared/services';
 
 @Component({
@@ -46,7 +47,7 @@ export default class ProductSales implements AfterViewInit {
   protected readonly displayedColumns = ['product', 'quantity', 'size', 'price', 'dateCreated'];
   protected readonly isLoading = signal(false);
   protected readonly selectedProductId = signal<string>('');
-  protected readonly products = this.#productsService.products;
+  protected readonly products = signal<Products>([]);
   protected readonly productTransactionTotalCount = signal(0);
 
   @ViewChild(MatPaginator) protected paginator!: MatPaginator;

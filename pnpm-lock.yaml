@@ -43,6 +43,9 @@ dependencies:
   graphql:
     specifier: ^16.6.0
     version: 16.6.0
+  recursive-diff:
+    specifier: ^1.0.9
+    version: 1.0.9
   rxjs:
     specifier: ~7.8.1
     version: 7.8.1
@@ -10082,6 +10085,10 @@ packages:
     dependencies:
       picomatch: 2.3.1
     dev: true
+
+  /recursive-diff@1.0.9:
+    resolution: {integrity: sha512-5mqpskzvXDo5Vy29Vj8tH30a0+XBmY11aqWGoN/uB94UHRwndX2EuPvH+WtbqOYkrwAF718/lDo6U4CB1qSSqQ==}
+    dev: false
 
   /reflect-metadata@0.1.13:
     resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}

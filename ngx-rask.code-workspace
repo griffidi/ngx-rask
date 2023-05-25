@@ -8,6 +8,10 @@
       "path": "apps/demo"
     },
     {
+      "name": "components",
+      "path": "libs/components"
+    },
+    {
       "name": "core",
       "path": "libs/core"
     },
@@ -16,8 +20,8 @@
       "path": "libs/graphql"
     },
     {
-      "name": "components",
-      "path": "libs/components"
+      "name": "signal-store",
+      "path": "libs/signal-store"
     },
     {
       "path": ".",

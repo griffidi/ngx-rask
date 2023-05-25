@@ -1,20 +1,12 @@
-import { GetProductsDocument, type Product } from '#/app/types/graphql';
 import { CurrencyPipe, NgFor } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  signal,
-  type OnInit,
-  type WritableSignal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
 import { CreatePathPipe } from '@ngx-rask/core';
-import { Client } from '@ngx-rask/graphql';
 import { IMAGE_PATH_TOKEN } from '../../../common/assets/image-path-token';
+import { productsStore } from '../store';
 
 @Component({
   selector: 'app-product-list',
@@ -32,19 +24,15 @@ import { IMAGE_PATH_TOKEN } from '../../../common/assets/image-path-token';
     RouterLink,
   ],
 })
-export default class ProductList implements OnInit {
-  #client = inject(Client);
+export default class ProductListComponent {
+  #productsStore = inject(productsStore);
   #router = inject(Router);
 
   protected readonly imagePath = inject(IMAGE_PATH_TOKEN);
-  protected readonly products: WritableSignal<Product[]> = signal([]);
-
-  async ngOnInit() {
-    const { products } = await this.#client.queryPromise(GetProductsDocument);
-    this.products.set(products as Product[]);
-  }
+  protected readonly products = this.#productsStore.products;
 
   onCardClick(productId: string) {
+    this.#productsStore.setSelectedProductId(productId);
     this.#router.navigate(['products', productId]);
   }
 }
