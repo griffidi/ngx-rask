@@ -7,7 +7,7 @@ export class ProductsService {
   #client = inject(Client);
   #isLoadingProduct = signal(false);
   #isLoadingProducts = signal(false);
-  #product = signal<Product | null>(null);
+  #product = signal<Product>({} as Product);
   #products = signal<Product[]>([]);
 
   /**
@@ -45,7 +45,7 @@ export class ProductsService {
     this.#isLoadingProducts.set(true);
 
     this.#client
-      .query(GetProductsDocument)
+      .queryPromise(GetProductsDocument)
       .then(({ products }) => this.#products.set(products as Product[]))
       .catch(error => {
         // TODO: add toast and error handling
@@ -63,7 +63,7 @@ export class ProductsService {
     this.#isLoadingProduct.set(true);
 
     this.#client
-      .query(GetProductByIdDocument, { id })
+      .queryPromise(GetProductByIdDocument, { id })
       .then(({ product }) => this.#product.set(product as Product))
       .catch(error => {
         // TODO: add toast and error handling

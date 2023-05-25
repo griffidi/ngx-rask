@@ -4,39 +4,61 @@
   "tasks": [
     {
       "label": "build core",
-      "detail": "ng build @ngx-rask/core --watch",
       "type": "npm",
-      "script": "watch:core",
+      "script": "build:core",
       "isBackground": true,
       "group": "build",
       "problemMatcher": {
-        "owner": "npm",
+        "owner": "typescript",
+        "pattern": "$tsc",
         "background": {
           "activeOnStart": true,
-          "beginsPattern": "^File change detected.*",
-          "endsPattern": "^Compilation complete.*"
-        },
-        "pattern": {
-          "regexp": ""
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "bundle generation complete"
+          }
         }
       }
     },
     {
-      "label": "build web",
-      "detail": "ng build @ngx-rask/graphql --watch",
+      "label": "build graphql",
       "type": "npm",
-      "script": "watch:web",
+      "script": "build:graphql",
       "isBackground": true,
       "group": "build",
       "problemMatcher": {
-        "owner": "npm",
+        "owner": "typescript",
+        "pattern": "$tsc",
         "background": {
           "activeOnStart": true,
-          "beginsPattern": "^File change detected.*",
-          "endsPattern": "^Compilation complete.*"
-        },
-        "pattern": {
-          "regexp": ""
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "bundle generation complete"
+          }
+        }
+      }
+    },
+    {
+      "label": "build components",
+      "type": "npm",
+      "script": "build:components",
+      "isBackground": true,
+      "group": "build",
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "bundle generation complete"
+          }
         }
       }
     },
@@ -46,7 +68,8 @@
       "command": "echo build finished...",
       "isBackground": true,
       "dependsOrder": "sequence",
-      "dependsOn": ["build core", "build graphql"],
+      "dependsOn": ["build core", "build graphql", "build components"],
+      "group": "build",
       "problemMatcher": {
         "owner": "npm",
         "background": {
@@ -60,9 +83,11 @@
       }
     },
     {
+      "label": "start",
       "type": "npm",
-      "script": "start",
+      "script": "start:esbuild",
       "isBackground": true,
+      "group": "build",
       "problemMatcher": {
         "owner": "typescript",
         "pattern": "$tsc",

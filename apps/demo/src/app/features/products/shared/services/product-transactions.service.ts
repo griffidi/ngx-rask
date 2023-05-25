@@ -42,7 +42,7 @@ export class ProductTransactionsService {
   }
 
   #loadProductTransactionsByProduct(pageIndex: number, pageSize: number, productId: string) {
-    return this.#client.query(GetProductTransactionsByProductIdDocument, {
+    return this.#client.queryPromise(GetProductTransactionsByProductIdDocument, {
       take: pageSize,
       skip: pageIndex * pageSize,
       productId,
@@ -59,7 +59,7 @@ export class ProductTransactionsService {
   }
 
   #getProductTransactionsByProductCount(productId: string) {
-    return this.#client.query(GetProductTransactionsCountByProductIdDocument, { productId });
+    return this.#client.queryPromise(GetProductTransactionsCountByProductIdDocument, { productId });
     // .then(({ productTransactionCountByProductId: count }) =>
     //   this.#productTransactions.mutate(item => (item.totalCount = parseInt(count ?? '0')))
     // )

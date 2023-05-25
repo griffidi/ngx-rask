@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import type { DocumentNode, OperationVariables, TypedDocumentNode } from '@apollo/client/core';
 import { Apollo } from 'apollo-angular';
+import type { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 /**
@@ -43,9 +44,24 @@ export class Client {
    * @param {DocumentNode | TypedDocumentNode<T, V>} query Query document.
    * @param {V} variables Query variables.
    *
+   * @returns {Observable<T>} The unwrapped query result.
+   */
+  query<T, V = OperationVariables>(
+    query: DocumentNode | TypedDocumentNode<T, V>,
+    variables?: V
+  ): Observable<T> {
+    return this.#apollo.query({ query, variables }).pipe(map(({ data }) => data));
+  }
+
+  /**
+   * Query GraphQL API.
+   *
+   * @param {DocumentNode | TypedDocumentNode<T, V>} query Query document.
+   * @param {V} variables Query variables.
+   *
    * @returns {Promise<T>} The unwrapped query result.
    */
-  async query<T, V = OperationVariables>(
+  async queryPromise<T, V = OperationVariables>(
     query: DocumentNode | TypedDocumentNode<T, V>,
     variables?: V
   ): Promise<T> {

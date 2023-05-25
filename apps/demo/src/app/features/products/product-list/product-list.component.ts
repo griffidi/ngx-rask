@@ -40,7 +40,7 @@ export default class ProductList implements OnInit {
   protected readonly products: WritableSignal<Product[]> = signal([]);
 
   async ngOnInit() {
-    const { products } = await this.#client.query(GetProductsDocument);
+    const { products } = await this.#client.queryPromise(GetProductsDocument);
     this.products.set(products as Product[]);
   }
 

@@ -1,1 +1,2 @@
-export * from './command-palette/command-palette.component';
+export * from './command-palette';
+export * from './svg';

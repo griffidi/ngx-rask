@@ -1,10 +1,1 @@
-<mat-tab-group>
-  <mat-tab label="Detail">
-    <ng-template matTabContent>
-      <app-product-form [productId]="id" />
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="Transactions">
-    <ng-template matTabContent>Transactions</ng-template>
-  </mat-tab>
-</mat-tab-group>
+<app-product-detail [product]="product()" />

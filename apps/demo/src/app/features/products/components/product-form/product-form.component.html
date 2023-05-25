@@ -1,7 +1,9 @@
-<form
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()">
-  <div class="details">
+<ng-container *ngIf="product() as product">
+  <header>
+    <span class="title">{{ product.name }}</span>
+  </header>
+</ng-container>
+<!-- <div class="details">
     <mat-form-field>
       <input
         matInput
@@ -19,9 +21,9 @@
         formControlName="cost"
         required />
     </mat-form-field>
-  </div>
+  </div> -->
 
-  <div class="options">
+<!-- <div class="options">
     <div class="color-container">
       <span
         *ngFor="let color of colors()"
@@ -32,18 +34,18 @@
         (mouseover)="mouseoverColor(color)"
         (mouseout)="mouseoutColor()"
         (click)="selectColor(color)"></span>
-    </div>
+    </div> -->
 
-    <mat-button-toggle-group>
+<!-- <mat-button-toggle-group>
       <mat-button-toggle
         *ngFor="let size of sizes()"
         [value]="size">
         {{ size.name }}
       </mat-button-toggle>
     </mat-button-toggle-group>
-  </div>
+  </div> -->
 
-  <div
+<!-- <rk-svg [path]="svgPath()" /> -->
+<!-- <div
     class="image color-{{ selectedColor() }} hovered-color-{{ hoveredColor() }}"
-    [innerHTML]="svg"></div>
-</form>
+    [innerHTML]="svg"></div> -->

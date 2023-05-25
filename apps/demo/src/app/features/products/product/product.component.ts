@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MatTabsModule } from '@angular/material/tabs';
-import ProductFormComponent from '../components/product-form/product-form.component';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import { ProductDetailComponent } from '../components';
+import { ProductsService } from '../shared/services';
 
 @Component({
   selector: 'app-product',
@@ -8,8 +8,12 @@ import ProductFormComponent from '../components/product-form/product-form.compon
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatTabsModule, ProductFormComponent],
+  imports: [ProductDetailComponent],
 })
 export default class ProductComponent {
+  #productsService = inject(ProductsService);
+
+  protected readonly product = this.#productsService.product;
+
   @Input({ required: true }) protected accessor id!: string;
 }

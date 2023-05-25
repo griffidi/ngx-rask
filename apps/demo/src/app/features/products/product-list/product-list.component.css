@@ -5,33 +5,32 @@
 }
 
 .mat-mdc-card {
+  --_border-color: transparent;
+
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   gap: 20px;
   background: var(--app-color-surface-2);
   border-radius: var(--app-shape-medium);
-  padding-inline: 10px;
+  padding-inline: 12px;
+  padding-block: 6px;
+  border: 2px solid var(--_border-color);
   transition: transform 200ms ease-in-out;
 
   &:hover {
+    --_border-color: var(--app-color-primary);
+
     transform: scale(1.02);
   }
 }
 
-.mat-mdc-card-actions {
-  display: flex;
-  justify-content: space-between;
-  padding-block: 10px;
-}
-
 .title {
+  font-size: 1.1em;
   font-weight: 500;
 }
-
-.cost {
-  font-size: 1.3em;
-  font-weight: 500;
-}
+/*
 
 img {
   border-start-start-radius: var(--app-shape-large);
@@ -39,4 +38,4 @@ img {
   aspect-ratio: 1 / 1;
   clip-path: fill;
   filter: grayscale(0.8);
-}
+} */

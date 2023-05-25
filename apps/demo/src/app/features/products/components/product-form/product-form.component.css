@@ -1,35 +1,19 @@
 :host {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   block-size: 100%;
   inline-size: 100%;
-  container-type: inline-size;
 }
 
-@container (width < 750px) {
-  :host form {
-    grid-template-columns: 1fr;
-    row-gap: 2em;
-    block-size: 100%;
-  }
-
-  :host .options {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+header {
+  display: flex;
+  align-items: center;
+  inline-size: 600px;
+  background: var(--app-color-surface-2);
 }
 
-form {
-  display: grid;
-  grid-template-columns: 1fr 200px 1fr;
-  column-gap: 2em;
-  inline-size: min(900px, 100%);
-  block-size: minmax(700px, 100%);
-}
-
-.image {
+/* .image {
   --_image-border-color: transparent;
   --_color: var(--app-color-clothing-black);
 
@@ -90,9 +74,9 @@ form {
   &.color-yellow {
     --_color: var(--app-color-clothing-yellow);
   }
-}
+} */
 
-.details {
+/* .details {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -164,4 +148,4 @@ form {
       background: var(--app-color-clothing-yellow);
     }
   }
-}
+} */

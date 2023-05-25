@@ -26,7 +26,7 @@ export class SizesService {
     this.#isLoadingSizes.set(true);
 
     this.#client
-      .query(GetSizesDocument)
+      .queryPromise(GetSizesDocument)
       .then(({ sizes }) => this.#sizes.set(sizes as Size[]))
       .catch(error => {
         // TODO: add toast and error handling

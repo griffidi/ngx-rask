@@ -38,7 +38,7 @@ export class AuthService {
     }
 
     const { userName = '' } = JSON.parse(tokenRaw) as CachedToken;
-    const { user } = await this.#client.query(GetUserByUserNameDocument, { userName });
+    const { user } = await this.#client.queryPromise(GetUserByUserNameDocument, { userName });
 
     this.#user.set(user as User);
     this.#status.set(user ? 'authenticated' : 'unauthenticated');

@@ -2,27 +2,6 @@ button.mdc-button {
   border-radius: var(--app-shape-medium);
 }
 
-mat-form-field {
-  .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
-    min-height: 48px;
-    padding-block: 12px;
-  }
-
-  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background: transparent !important;
-  }
-
-  /* .mat-mdc-floating-label.mdc-floating-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } */
-}
-
-.mdc-text-field {
-  padding-inline: 8px !important;
-}
-
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   transition: background-color 600000s 0s, color 600000s 0s !important;

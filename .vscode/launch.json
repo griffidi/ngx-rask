@@ -37,17 +37,18 @@
       "userDataDir": "${workspaceFolder}/.out/edge",
       "skipFiles": ["<node_internals>/**"],
       "smartStep": true,
+      "preLaunchTask": "start",
       "presentation": {
         "hidden": false,
         "group": "demo",
-        "order": 2
+        "order": 1
       }
     }
   ],
   "compounds": [
     {
       "name": "Launch demo",
-      "configurations": ["Debug api", "ng serve: demo", "Debug demo (edge)"],
+      "configurations": ["Debug api", "Debug demo (edge)"],
       "stopAll": true
     }
   ]
