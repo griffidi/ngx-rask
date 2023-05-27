@@ -6,8 +6,7 @@
     "@angular/common": "^16.0.0",
     "@angular/core": "^16.0.0",
     "@angular/material": "^16.0.0",
-    "@ngx-rask/core": "*",
-    "@rx-angular/template": "*"
+    "@ngx-rask/core": "*"
   },
   "dependencies": {
     "tslib": "^2.3.0"
