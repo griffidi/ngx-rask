@@ -19,7 +19,7 @@
       "name": "Debug ng serve",
       "type": "node-terminal",
       "request": "launch",
-      "command": "pnpm start",
+      "command": "pnpm start:esbuild",
       // "preLaunchTask": "build libs",
       "presentation": {
         "hidden": false,

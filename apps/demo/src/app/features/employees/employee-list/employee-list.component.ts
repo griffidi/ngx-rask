@@ -8,7 +8,33 @@ import { Client } from '@ngx-rask/graphql';
   selector: 'app-employee-list',
   standalone: true,
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css'],
+  styles: [
+    `
+      :host {
+        display: block;
+        padding-inline: 20px;
+        padding-block: 20px;
+        container-type: inline-size;
+      }
+
+      @container (width < 600px) {
+        :host .filter {
+          inline-size: 100%;
+        }
+      }
+
+      mat-table {
+        border: 1px solid var(--app-color-surface-2);
+        border-radius: var(--app-shape-medium);
+        overflow: hidden;
+        background: transparent;
+      }
+
+      .filter {
+        inline-size: 50%;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatInputModule, MatTableModule],
 })
