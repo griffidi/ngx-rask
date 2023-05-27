@@ -7,7 +7,14 @@ import { take, tap } from 'rxjs';
   selector: 'rk-svg',
   standalone: true,
   templateUrl: './svg.component.html',
-  styleUrls: ['./svg.component.css'],
+  styles: [
+    `
+      :host {
+        display: grid;
+        place-content: center;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [FileService],
 })

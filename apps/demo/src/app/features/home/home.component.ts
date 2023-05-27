@@ -3,9 +3,30 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'app-home',
   standalone: true,
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  template: `
+    <span class="page-title">Home Page</span>
+  `,
+  styles: [
+    `
+      :host {
+        display: grid;
+        place-content: center;
+        block-size: 100%;
+      }
+
+      .page-title {
+        font-size: 4rem;
+        line-height: 4;
+        background-image: linear-gradient(
+          to right,
+          var(--app-color-hot-pink),
+          var(--app-color-purple)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
 })
 export default class Home {}

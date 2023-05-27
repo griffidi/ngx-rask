@@ -21,7 +21,25 @@ import { productTransactionsStore } from '../../store';
   selector: 'app-product-transactions',
   standalone: true,
   templateUrl: './product-transactions.component.html',
-  styleUrls: ['./product-transactions.component.css'],
+  styles: [
+    `
+      :host {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      mat-table,
+      mat-paginator {
+        background: transparent;
+      }
+
+      .mdc-data-table__cell,
+      .mdc-data-table__header-cell {
+        border-bottom: none;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CurrencyPipe, DatePipe, MatTableModule, MatPaginatorModule, MatSortModule],
 })

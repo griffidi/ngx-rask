@@ -10,7 +10,79 @@ type selectedColorType = `selected-color-${Colors}`;
   selector: 'app-product-images',
   standalone: true,
   templateUrl: './product-images.component.html',
-  styleUrls: ['./product-images.component.css'],
+  styles: [
+    `
+      :host {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      :host ::ng-deep rk-svg {
+        --_svg-color: var(--app-color-clothing-black);
+
+        inline-size: 100%;
+
+        & svg {
+          block-size: 250px;
+          color: var(--_svg-color);
+        }
+
+        &.selected-color-black {
+          --_svg-color: var(--app-color-clothing-black);
+        }
+
+        &.selected-color-blue {
+          --_svg-color: var(--app-color-clothing-blue);
+        }
+
+        &.selected-color-green {
+          --_svg-color: var(--app-color-clothing-green);
+        }
+
+        &.selected-color-pink {
+          --_svg-color: var(--app-color-clothing-pink);
+        }
+
+        &.selected-color-red {
+          --_svg-color: var(--app-color-clothing-red);
+        }
+
+        &.selected-color-white {
+          --_svg-color: var(--app-color-clothing-white);
+        }
+
+        /*
+          because ::ng-deep is needed to pierce rk-svg, the
+          hovered selectors must be listed after the selected
+          selectors in order to override theme.
+        */
+        &.hovered-color-black {
+          --_svg-color: var(--app-color-clothing-black);
+        }
+
+        &.hovered-color-blue {
+          --_svg-color: var(--app-color-clothing-blue);
+        }
+
+        &.hovered-color-green {
+          --_svg-color: var(--app-color-clothing-green);
+        }
+
+        &.hovered-color-pink {
+          --_svg-color: var(--app-color-clothing-pink);
+        }
+
+        &.hovered-color-red {
+          --_svg-color: var(--app-color-clothing-red);
+        }
+
+        &.hovered-color-white {
+          --_svg-color: var(--app-color-clothing-white);
+        }
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass, RkColorOptions, RkSvg],
 })

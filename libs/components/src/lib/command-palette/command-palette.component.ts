@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'rk-command-palette',
   standalone: true,
   templateUrl: './command-palette.component.html',
-  styleUrls: ['./command-palette.component.css'],
+  styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [OverlayModule],
 })

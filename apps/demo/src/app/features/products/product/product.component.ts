@@ -12,7 +12,28 @@ import { productsStore } from '../store';
   selector: 'app-product',
   standalone: true,
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css'],
+  styles: [
+    `
+      :host {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .mat-accordion {
+        inline-size: 600px;
+      }
+
+      .mat-expansion-panel {
+        background: var(--app-color-surface-2);
+      }
+
+      ::ng-deep .mat-expansion-panel .mat-content {
+        color: var(--app-color-accent);
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatExpansionModule,
