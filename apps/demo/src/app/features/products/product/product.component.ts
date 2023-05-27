@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
-import { ProductDetailComponent } from '../components';
+import { ProductDetailComponent, ProductImagesComponent } from '../components';
 import { productsStore } from '../store';
 
 @Component({
@@ -8,7 +8,7 @@ import { productsStore } from '../store';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ProductDetailComponent],
+  imports: [ProductDetailComponent, ProductImagesComponent],
 })
 export default class ProductComponent {
   #productsStore = inject(productsStore);

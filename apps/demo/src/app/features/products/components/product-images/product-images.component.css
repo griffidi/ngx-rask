@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep svg {
+  block-size: 300px;
+  color: var(--app-color-clothing-black);
+}

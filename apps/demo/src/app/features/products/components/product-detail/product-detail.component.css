@@ -29,11 +29,16 @@ header {
     margin-inline-end: 10px;
   }
 
-  & mat-icon {
-    color: var(--app-color-yellow);
-  }
+  & .mat-icon {
+    --_icon-fill: 0;
+    --_icon-color: #ffffff;
 
-  & .star-full {
-    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0;
+    font-variation-settings: "FILL" var(--_icon-fill);
+    color: var(--_icon-color);
+
+    &.star-full {
+      --_icon-fill: 1;
+      --_icon-color: var(--app-color-yellow);
+    }
   }
 }

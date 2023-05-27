@@ -1,6 +1,8 @@
 :host {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
 
   > * {
     inline-size: 600px;
