@@ -20,6 +20,12 @@ export default [
   //   title: 'Product Sales',
   // },
   {
+    path: ':id/edit',
+    loadComponent: () => import('./containers/product-edit/product-edit.component'),
+    title: 'Product Edit',
+    providers: [ProductsService, productsStore],
+  },
+  {
     path: ':id',
     loadComponent: () => import('./product/product.component'),
     title: 'Product',

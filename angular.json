@@ -40,6 +40,7 @@
             "assets": ["apps/demo/src/favicon.svg", "apps/demo/src/assets"],
             "styles": [
               "@angular/material/prebuilt-themes/purple-green.css",
+              "node_modules/ngx-toastr/toastr.css",
               "apps/demo/src/styles.css",
               "apps/demo/src/theme.scss"
             ],

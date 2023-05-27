@@ -15,9 +15,11 @@ $theme: mat.define-dark-theme(
       warn: $theme-warn,
     ),
     typography: mat.define-typography-config(),
+    density: -1,
   )
 );
 
 @include mat.all-component-themes($theme);
 
 @include mat.form-field-density(-2);
+// @include mat.button-density(-1);

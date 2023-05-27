@@ -1,8 +1,18 @@
 <ng-container *ngIf="product() as product">
-  <mat-accordion multi>
+  <mat-accordion
+    multi
+    hideToggle>
     <mat-expansion-panel expanded>
       <mat-expansion-panel-header>Detail</mat-expansion-panel-header>
       <app-product-detail [product]="product" />
+      <mat-action-row>
+        <a
+          mat-stroked-button
+          color="primary"
+          [routerLink]="['/products', product.id, 'edit']">
+          Edit
+        </a>
+      </mat-action-row>
     </mat-expansion-panel>
     <mat-expansion-panel expanded>
       <mat-expansion-panel-header>Images</mat-expansion-panel-header>

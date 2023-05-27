@@ -1,0 +1,20 @@
+<ng-container *ngIf="product() as product">
+  <div class="container">
+    <header>
+      <a
+        mat-flat-button
+        [routerLink]="['/products', product.id]">
+        Cancel
+      </a>
+    </header>
+
+    <form>
+      <mat-form-field>
+        <input
+          matInput
+          name="name"
+          [value]="product.name" />
+      </mat-form-field>
+    </form>
+  </div>
+</ng-container>

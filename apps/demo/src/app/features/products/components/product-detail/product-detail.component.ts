@@ -27,7 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
 
       .cost {
         font-weight: 500;
-        color: var(--app-color-accent);
+        /* color: var(--app-color-accent); */
       }
 
       .rating-container {

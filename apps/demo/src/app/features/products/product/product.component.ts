@@ -1,6 +1,9 @@
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 import {
   ProductDetailComponent,
   ProductImagesComponent,
@@ -29,18 +32,30 @@ import { productsStore } from '../store';
         background: var(--app-color-surface-2);
       }
 
-      ::ng-deep .mat-expansion-panel .mat-content {
+      .mat-expansion-panel-header {
         color: var(--app-color-accent);
+      }
+
+      .mat-action-row {
+        padding-inline: 20px;
+        border-block-start: none;
+
+        & .mat-icon {
+          font-size: 20px;
+        }
       }
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    MatButtonModule,
     MatExpansionModule,
+    MatIconModule,
     NgIf,
     ProductDetailComponent,
     ProductImagesComponent,
     ProductTransactionsComponent,
+    RouterLink,
   ],
 })
 export default class ProductComponent {
@@ -52,4 +67,6 @@ export default class ProductComponent {
   protected set id(value: string) {
     this.#productsStore.setSelectedProductId(value);
   }
+
+  protected onEdit() {}
 }

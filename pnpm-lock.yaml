@@ -43,6 +43,9 @@ dependencies:
   graphql:
     specifier: ^16.6.0
     version: 16.6.0
+  ngx-toastr:
+    specifier: ^17.0.2
+    version: 17.0.2(@angular/common@16.1.0-next.2)(@angular/core@16.1.0-next.2)(@angular/platform-browser@16.1.0-next.2)
   recursive-diff:
     specifier: ^1.0.9
     version: 1.0.9
@@ -9636,6 +9639,19 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /ngx-toastr@17.0.2(@angular/common@16.1.0-next.2)(@angular/core@16.1.0-next.2)(@angular/platform-browser@16.1.0-next.2):
+    resolution: {integrity: sha512-KehiPx6bkbiUyJbabf0ZA04+ASumS8r/y4wPsUOMI9OrBvBcfq27UQmWuQKoVR8E+9y4Pq7eZkSg2kvxNvpxTA==}
+    peerDependencies:
+      '@angular/common': '>=16.0.0-0'
+      '@angular/core': '>=16.0.0-0'
+      '@angular/platform-browser': '>=16.0.0-0'
+    dependencies:
+      '@angular/common': 16.1.0-next.2(@angular/core@16.1.0-next.2)(rxjs@7.8.1)
+      '@angular/core': 16.1.0-next.2(rxjs@7.8.1)(zone.js@0.13.0)
+      '@angular/platform-browser': 16.1.0-next.2(@angular/animations@16.1.0-next.2)(@angular/common@16.1.0-next.2)(@angular/core@16.1.0-next.2)
+      tslib: 2.5.2
+    dev: false
 
   /nice-napi@1.0.2:
     resolution: {integrity: sha512-px/KnJAJZf5RuBGcfD+Sp2pAKq0ytz8j+1NehvgIGFkvtvFrDM3T8E4x/JJODXK9WZow8RRGrbA9QQ3hs+pDhA==}

@@ -1,6 +1,10 @@
 {
   "folders": [
     {
+      "path": ".",
+      "name": ".root"
+    },
+    {
       "path": "api"
     },
     {
@@ -22,10 +26,6 @@
     {
       "name": "signal-store",
       "path": "libs/signal-store"
-    },
-    {
-      "path": ".",
-      "name": ".root"
     }
   ],
   "settings": {
