@@ -1,17 +1,19 @@
-import type { Products } from './product';
+import type { ProductTransactions } from './product-transaction';
 
 export type ProductTransactionsState = {
   loading: boolean;
-  selectedPage: number;
+  pageIndex: number;
   pageSize: number;
-  products: Products;
+  productId: string;
+  productTransactions: ProductTransactions;
   totalCount: number;
 };
 
 export const initialProductTransactionsState: ProductTransactionsState = {
   loading: false,
-  selectedPage: 0,
+  pageIndex: 0,
   pageSize: 10,
-  products: [],
+  productId: '',
+  productTransactions: [],
   totalCount: 0,
 };

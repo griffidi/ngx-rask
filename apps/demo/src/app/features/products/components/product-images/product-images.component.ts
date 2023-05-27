@@ -16,8 +16,8 @@ export class ProductImagesComponent {
   protected svgPath = '';
 
   @Input({ required: true })
-  set productName(value: string | undefined) {
-    const name = value?.toLocaleLowerCase();
+  set productName(value: string) {
+    const name = value.toLocaleLowerCase();
     let path = '';
 
     if (name) {

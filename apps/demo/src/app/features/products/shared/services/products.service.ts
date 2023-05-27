@@ -13,7 +13,7 @@ export class ProductsService {
    *
    * @returns {Promise<Products>} The products.
    */
-  loadProducts(): Promise<Products> {
+  getProducts(): Promise<Products> {
     return new Promise((resolve, reject) => {
       this.#client
         .query(GetProductsDocument)
@@ -35,7 +35,7 @@ export class ProductsService {
    * @param {string} id The product id.
    * @returns {Promise<Product>} The product.
    */
-  loadProductById(id: string): Promise<Product> {
+  getProductById(id: string): Promise<Product> {
     return new Promise((resolve, reject) => {
       this.#client
         .query(GetProductByIdDocument, { id })

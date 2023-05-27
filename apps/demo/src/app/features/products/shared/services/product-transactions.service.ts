@@ -1,70 +1,68 @@
-import { type Pagination } from '#/app/common/*';
 import {
   GetProductTransactionsByProductIdDocument,
   GetProductTransactionsCountByProductIdDocument,
-  type ProductTransaction,
 } from '#/app/types/graphql';
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Client } from '@ngx-rask/graphql';
+import { catchError, map, tap } from 'rxjs';
+import type { ProductTransactions } from '../models';
 
 @Injectable()
 export class ProductTransactionsService {
-  #client = inject(Client);
-  #productTransactions = signal<Pagination<ProductTransaction>>({
-    data: [],
-    totalCount: 0,
-  });
+  client = inject(Client);
 
   /**
-   * Readonly product transactions.
-   */
-  get productTransactions() {
-    return this.#productTransactions.asReadonly();
-  }
-
-  /**
-   * Load product transactions.
+   * Get product transactions.
    *
    * @param {number} pageIndex Page index of results.
    * @param {number} pageSize Page size of results.
    * @param {string} productId Product id to get transactions for.
    */
-  loadProductTransactionsByProduct(pageIndex: number, pageSize: number, productId: string) {
-    Promise.all([
-      this.#loadProductTransactionsByProduct(pageIndex, pageSize, productId),
-      this.#getProductTransactionsByProductCount(productId),
-    ]).then(([{ productTransactions: data }, { productTransactionCountByProductId: count }]) => {
-      this.#productTransactions.mutate(item => {
-        item.data = data as ProductTransaction[];
-        item.totalCount = parseInt(count ?? '0');
-      });
+  getProductTransactionsByProductId(
+    pageIndex: number,
+    pageSize: number,
+    productId: string
+  ): Promise<ProductTransactions> {
+    return new Promise((resolve, reject) => {
+      this.client
+        .query(GetProductTransactionsByProductIdDocument, {
+          take: pageSize,
+          skip: pageIndex * pageSize,
+          productId,
+        })
+        .pipe(
+          map(({ productTransactions }) => productTransactions as ProductTransactions),
+          tap(productTransactions => resolve(productTransactions)),
+          catchError(error => {
+            reject(error);
+            return [];
+          })
+        )
+        .subscribe();
     });
   }
 
-  #loadProductTransactionsByProduct(pageIndex: number, pageSize: number, productId: string) {
-    return this.#client.queryPromise(GetProductTransactionsByProductIdDocument, {
-      take: pageSize,
-      skip: pageIndex * pageSize,
-      productId,
+  /**
+   * Get product transactions count.
+   *
+   * @param {string} productId Product id to get transactions for.
+   * @returns {Promise<number>} The number of transactions for the product.
+   */
+  getProductTransactionsByProductCount(productId: string): Promise<number> {
+    return new Promise((resolve, reject) => {
+      this.client
+        .query(GetProductTransactionsCountByProductIdDocument, { productId })
+        .pipe(
+          map(({ productTransactionCountByProductId }) =>
+            parseInt(productTransactionCountByProductId ?? '0')
+          ),
+          tap(productTransactionsCount => resolve(productTransactionsCount)),
+          catchError(error => {
+            reject(error);
+            return [];
+          })
+        )
+        .subscribe();
     });
-    // .then(({ productTransactions }) =>
-    //   this.#productTransactions.mutate(
-    //     item => (item.data = productTransactions as ProductTransaction[])
-    //   )
-    // )
-    // .catch(error => {
-    //   // TODO: add toast and error handling
-    //   console.error(error);
-    // });
-  }
-
-  #getProductTransactionsByProductCount(productId: string) {
-    return this.#client.queryPromise(GetProductTransactionsCountByProductIdDocument, { productId });
-    // .then(({ productTransactionCountByProductId: count }) =>
-    //   this.#productTransactions.mutate(item => (item.totalCount = parseInt(count ?? '0')))
-    // )
-    // .catch(error => {
-    //   console.error(error);
-    // });
   }
 }

@@ -1,5 +1,10 @@
+import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
-import { ProductDetailComponent, ProductImagesComponent } from '../components';
+import {
+  ProductDetailComponent,
+  ProductImagesComponent,
+  ProductTransactionsComponent,
+} from '../components';
 import { productsStore } from '../store';
 
 @Component({
@@ -8,7 +13,7 @@ import { productsStore } from '../store';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ProductDetailComponent, ProductImagesComponent],
+  imports: [NgIf, ProductDetailComponent, ProductImagesComponent, ProductTransactionsComponent],
 })
 export default class ProductComponent {
   #productsStore = inject(productsStore);

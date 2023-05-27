@@ -26,7 +26,7 @@ export const productsStore = signalStore(
     async loadProducts() {
       const service = inject(ProductsService);
       update({ loading: true });
-      const products = await service.loadProducts();
+      const products = await service.getProducts();
       update({ loading: false, products });
     },
   })),

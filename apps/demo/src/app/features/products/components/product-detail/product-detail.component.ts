@@ -12,5 +12,5 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [CurrencyPipe, MatIconModule, NgClass, NgFor],
 })
 export class ProductDetailComponent {
-  @Input({ required: true }) product: Product | undefined;
+  @Input({ required: true }) product!: Product;
 }

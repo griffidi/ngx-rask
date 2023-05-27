@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+
+  .title {
+    font-size: 1.1em;
+    color: var(--app-color-accent);
+  }
+}
+
+mat-table,
+mat-paginator {
+  background: transparent;
+}
+
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+  border-bottom: none;
+}

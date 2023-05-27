@@ -1,0 +1,56 @@
+<header>
+  <span class="title">Product Transactions</span>
+</header>
+
+<mat-table
+  [dataSource]="dataSource"
+  matSort>
+  <ng-container matColumnDef="quantity">
+    <mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header>
+      Quantity
+    </mat-header-cell>
+    <mat-cell *matCellDef="let item">{{ item.quantity }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="size">
+    <mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header>
+      Size
+    </mat-header-cell>
+    <mat-cell *matCellDef="let item">{{ item.size.name }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header>
+      Price
+    </mat-header-cell>
+    <mat-cell *matCellDef="let item">{{ item.price | currency }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dateCreated">
+    <mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header>
+      Date
+    </mat-header-cell>
+    <mat-cell *matCellDef="let item">{{ item.dateCreated | date : 'MM/dd/yyyy' }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  <!-- <mat-row *matNoDataRow>
+    <mat-cell colspan="5">No Data</mat-cell>
+  </mat-row> -->
+</mat-table>
+
+<mat-paginator
+  aria-label="Select page of products"
+  [length]="totalCount()"
+  [pageSize]="pageSize()"
+  [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
