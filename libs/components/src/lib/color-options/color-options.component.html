@@ -1,0 +1,12 @@
+<ul>
+  <li
+    *ngFor="let color of colors()"
+    [rkUnpatch]="['mousemove']"
+    id="color{{ color }}"
+    class="color-option"
+    [ngClass]="color.toLocaleLowerCase()"
+    [attr.selected]="selectedColor() === color"
+    (mouseover)="mouseoverColor(color)"
+    (mouseout)="mouseoutColor()"
+    (click)="selectColor(color)"></li>
+</ul>

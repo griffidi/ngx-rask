@@ -20,11 +20,12 @@ import type { Context } from './client/context.js';
 import { prisma } from './client/index.js';
 import { CORS_ORIGINS, GRAPHQL_PORT, IS_DEV_MODE } from './constants.js';
 import { LoginResolver } from './resolvers/login.js';
+import { ProductTransactionResolver } from './resolvers/product-transaction.js';
 
 await prisma.$connect();
 
 const schema = await buildSchema({
-  resolvers: [...resolvers, LoginResolver],
+  resolvers: [...resolvers, LoginResolver, ProductTransactionResolver],
   emitSchemaFile: './prisma/schema.graphql',
   validate: false,
 });
@@ -35,7 +36,10 @@ const server = new ApolloServer<Context>({
   cache: new InMemoryLRUCache(),
   schema,
   introspection: IS_DEV_MODE,
-  plugins: [ApolloServerPluginDrainHttpServer({ httpServer }), ApolloServerPluginUsageReportingDisabled()],
+  plugins: [
+    ApolloServerPluginDrainHttpServer({ httpServer }),
+    ApolloServerPluginUsageReportingDisabled(),
+  ],
   formatError(formattedError, error) {
     console.error((error as any).extensions?.http?.headers); // { status: 400, headers: HeaderMap(0) [Map] {} }
     console.error(error);

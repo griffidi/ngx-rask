@@ -35,7 +35,7 @@
             "index": "apps/demo/src/index.html",
             "main": "apps/demo/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "apps/demo/tsconfig.json",
+            "tsConfig": "apps/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/demo/src/favicon.svg", "apps/demo/src/assets"],
             "styles": [
@@ -131,16 +131,16 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/core/tsconfig.prod.json"
+              "tsConfig": "libs/core/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/core/tsconfig.json"
+              "tsConfig": "libs/core/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-devkit/build-angular:jest",
           "options": {
             "tsConfig": "libs/core/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
@@ -167,16 +167,16 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/graphql/tsconfig.prod.json"
+              "tsConfig": "libs/graphql/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/graphql/tsconfig.json"
+              "tsConfig": "libs/graphql/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-devkit/build-angular:jest",
           "options": {
             "tsConfig": "libs/graphql/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
@@ -218,16 +218,16 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/components/tsconfig.prod.json"
+              "tsConfig": "libs/components/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "libs/components/tsconfig.json"
+              "tsConfig": "libs/components/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-devkit/build-angular:jest",
           "options": {
             "tsConfig": "libs/components/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
@@ -237,6 +237,42 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": ["libs/components/**/*.ts", "libs/components/**/*.html"]
+          }
+        }
+      }
+    },
+    "@ngx-rask/signal-store": {
+      "projectType": "library",
+      "root": "libs/signal-store",
+      "sourceRoot": "libs/signal-store/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "libs/signal-store/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/signal-store/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/signal-store/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:jest",
+          "options": {
+            "tsConfig": "libs/signal-store/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["libs/signal-store/**/*.ts", "libs/signal-store/**/*.html"]
           }
         }
       }

@@ -1,1 +1,3 @@
-export * from './command-palette/command-palette.component';
+export * from './color-options';
+export * from './command-palette';
+export * from './svg';

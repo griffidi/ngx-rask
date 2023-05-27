@@ -60,10 +60,16 @@ nav {
     block-size: 48px;
     padding-inline: 18px;
     gap: 30px;
-    color: #ffffff;
+    color: var(--app-color-text-dark-1);
 
+    &:focus,
     &:hover {
+      outline: none;
       background: var(--app-color-background-hover);
+    }
+
+    &.active {
+      color: var(--app-color-accent);
     }
   }
 }

@@ -12,7 +12,10 @@ export function authGuard(type: 'protected' | 'unprotected') {
     return toObservable(authService.isAuthenticated).pipe(
       filter(() => !authService.isAuthenticating()),
       map(isAuthenticated => {
-        if ((type === 'unprotected' && !isAuthenticated) || (type === 'protected' && isAuthenticated)) {
+        if (
+          (type === 'unprotected' && !isAuthenticated) ||
+          (type === 'protected' && isAuthenticated)
+        ) {
           return true;
         }
 

@@ -2,16 +2,6 @@ button.mdc-button {
   border-radius: var(--app-shape-medium);
 }
 
-.mat-mdc-form-field {
-  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background: transparent !important;
-  }
-}
-
-.mdc-text-field {
-  padding-inline: 8px !important;
-}
-
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   transition: background-color 600000s 0s, color 600000s 0s !important;
@@ -25,9 +15,9 @@ mat-table mat-row {
   &:hover {
     & mat-cell {
       /* border-color: var(--app-color-primary); */
-      /* background: var(--app-color-background-hover); */
+      background: var(--app-color-background-hover);
       /* background: color-mix(in srgb, var(--app-color-accent), transparent 50%); */
-      background: var(--app-color-accent);
+      /* background: var(--app-color-accent); */
     }
   }
 }

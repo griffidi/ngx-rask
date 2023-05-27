@@ -1,0 +1,37 @@
+query GetProductTransactions {
+  productTransactions {
+    ...ProductTransactionParts
+  }
+}
+
+query GetProductTransactionsByProductId($take: Int!, $skip: Int!, $productId: String!) {
+  productTransactions(take: $take, skip: $skip, where: { productId: { equals: $productId } }) {
+    ...ProductTransactionParts
+    product {
+      name
+    }
+    size {
+      name
+    }
+  }
+}
+
+query GetProductTransactionsCountByProductId($productId: String!) {
+  productTransactionCountByProductId(productId: $productId)
+}
+
+query GetProductTransactionsByProductIdAndDateRange(
+  $take: Int!
+  $skip: Int!
+  $productId: String!
+  $fromDate: DateTime!
+  $toDate: DateTime!
+) {
+  productTransactions(
+    take: $take
+    skip: $skip
+    where: { productId: { equals: $productId }, dateCreated: { gte: $fromDate, lte: $toDate } }
+  ) {
+    ...ProductTransactionParts
+  }
+}

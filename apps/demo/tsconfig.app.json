@@ -4,6 +4,11 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
     "types": ["jest"]
+    // "paths": {
+    //   "@ngx-rask/core": ["dist/@ngx-rask/core/lib/index"],
+    //   "@ngx-rask/graphql": ["dist/@ngx-rask/graphql/lib/index"],
+    //   "@ngx-rask/components": ["dist/@ngx-rask/components/lib/index"]
+    // }
   },
   "files": ["src/main.ts"],
   "include": ["src/**/*.d.ts"]

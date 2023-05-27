@@ -16,7 +16,7 @@
       }
     },
     {
-      "name": "ng serve: demo",
+      "name": "Debug ng serve",
       "type": "node-terminal",
       "request": "launch",
       "command": "pnpm start",
@@ -37,6 +37,9 @@
       "userDataDir": "${workspaceFolder}/.out/edge",
       "skipFiles": ["<node_internals>/**"],
       "smartStep": true,
+      // "preLaunchTask": "start",
+      // "cleanUp": "wholeBrowser",
+      // "cascadeTerminateToConfigurations": ["start"],
       "presentation": {
         "hidden": false,
         "group": "demo",
@@ -47,7 +50,7 @@
   "compounds": [
     {
       "name": "Launch demo",
-      "configurations": ["Debug api", "ng serve: demo", "Debug demo (edge)"],
+      "configurations": ["Debug api", "Debug ng serve", "Debug demo (edge)"],
       "stopAll": true
     }
   ]

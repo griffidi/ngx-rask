@@ -1,0 +1,8 @@
+fragment ProductTransactionParts on ProductTransaction {
+  id
+  productId
+  sizeId
+  quantity
+  price
+  dateCreated
+}

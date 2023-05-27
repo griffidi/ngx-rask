@@ -20,7 +20,7 @@ export default class EmployeeList implements OnInit {
   protected readonly displayedColumns = ['firstName', 'lastName', 'email', 'phone', 'gender'];
 
   async ngOnInit() {
-    const { employees } = await this.#client.query(GetEmployeesDocument);
+    const { employees } = await this.#client.queryPromise(GetEmployeesDocument);
     this.employees.set(employees as Employee[]);
   }
 

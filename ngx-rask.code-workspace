@@ -1,15 +1,15 @@
 {
   "folders": [
     {
-      "path": ".",
-      "name": ".root"
-    },
-    {
       "path": "api"
     },
     {
       "name": "demo",
       "path": "apps/demo"
+    },
+    {
+      "name": "components",
+      "path": "libs/components"
     },
     {
       "name": "core",
@@ -20,8 +20,12 @@
       "path": "libs/graphql"
     },
     {
-      "name": "components",
-      "path": "libs/components"
+      "name": "signal-store",
+      "path": "libs/signal-store"
+    },
+    {
+      "path": ".",
+      "name": ".root"
     }
   ],
   "settings": {
@@ -46,7 +50,7 @@
     },
     "npm.autoDetect": "off",
     // "typescript.tsc.autoDetect": "off",
-    // "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
     "typescript.tsdk": ".root\\node_modules\\typescript\\lib",
     "typescript.preferences.quoteStyle": "single",
     "[typescript]": {
@@ -118,6 +122,7 @@
     "npm.packageManager": "pnpm",
 
     "files.exclude": {
+      ".angular": true,
       ".out": true,
       "api": true,
       "apps": true,

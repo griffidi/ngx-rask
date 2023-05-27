@@ -22,8 +22,8 @@ const sharedBrowserGlobals = {
 
 const sharedRules = {
   ...eslint['recommended'],
-  ...ts.rules['stylistic-type-checked'],
-  ...ts.rules['strict-type-checked'],
+  ...ts.rules['recommended'],
+  ...ts.rules['recommended-requiring-type-checking'],
   ...jsdoc['recommended'],
   ...prettier.rules,
   'ts/ban-types': 'warn',
@@ -141,14 +141,14 @@ export default [
     ...nodeConfig,
   },
   {
-    files: ['apps/*/src/**/*.ts'],
+    files: ['*.ts'],
     languageOptions: {
       sourceType: 'module',
       ecmaVersion: 2022,
       parser,
       parserOptions: {
         project: true,
-        tsconfigRootDir: 'apps/*',
+        tsconfigRootDir: import.meta.url,
       },
       globals: {
         ...sharedBrowserGlobals,
@@ -156,31 +156,31 @@ export default [
     },
     ...appConfig,
   },
+  // {
+  //   files: ['libs/*/src/**/*.ts'],
+  //   languageOptions: {
+  //     sourceType: 'module',
+  //     ecmaVersion: 2022,
+  //     parser,
+  //     parserOptions: {
+  //       project: true,
+  //       tsconfigRootDir: 'libs/*',
+  //     },
+  //     globals: {
+  //       ...sharedBrowserGlobals,
+  //     },
+  //   },
+  //   ...libConfig,
+  // },
   {
-    files: ['libs/*/src/**/*.ts'],
-    languageOptions: {
-      sourceType: 'module',
-      ecmaVersion: 2022,
-      parser,
-      parserOptions: {
-        project: true,
-        tsconfigRootDir: 'libs/*',
-      },
-      globals: {
-        ...sharedBrowserGlobals,
-      },
-    },
-    ...libConfig,
-  },
-  {
-    files: ['apps/*/src/**/*.html', 'libs/*/src/**/*.html'],
+    files: ['*.html'],
     languageOptions: {
       parser: ngparser,
       ecmaVersion: 2022,
       sourceType: 'module',
       parserOptions: {
         project: true,
-        tsconfigRootDir: '(apps|libs)/*',
+        tsconfigRootDir: import.meta.url,
       },
       globals: {
         ...sharedBrowserGlobals,

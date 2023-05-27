@@ -30,3 +30,15 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.mdc-fab {
+  --_color: var(--app-color-text-dark-1);
+
+  background: transparent;
+  border: 1px solid var(--_color);
+  color: var(--_color);
+
+  &:hover {
+    --_color: var(--app-color-accent);
+  }
+}

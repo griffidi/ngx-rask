@@ -27,7 +27,7 @@ export class LoginService {
     this.#status.set('loading');
 
     const { userName, password } = user;
-    const { login: token } = await this.#client.query(LoginDocument, { userName, password });
+    const { login: token } = await this.#client.mutate(LoginDocument, { userName, password });
 
     if (token) {
       const cachedToken: CachedToken = { token, userName };

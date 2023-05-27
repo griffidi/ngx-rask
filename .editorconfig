@@ -12,7 +12,7 @@ quote_type = single
 
 [*.{css,html,js,md,ts,yml}]
 indent_size = 2
-max_line_length = 120
+max_line_length = 100
 tab_width = 2
 
 [*.{html,js,md,ts}]

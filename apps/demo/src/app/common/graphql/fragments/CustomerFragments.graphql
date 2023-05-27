@@ -6,6 +6,6 @@ fragment CustomerParts on Customer {
   phone
   streetAddress
   city
-  state
+  stateId
   zipCode
 }

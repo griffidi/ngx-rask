@@ -23,6 +23,6 @@ footer {
 
 button[type="submit"] {
   inline-size: 100%;
-  text-transform: uppercase;
+  color: var(--app-color-text-dark-1);
   background: var(--app-color-linear-gradient-primary-accent);
 }

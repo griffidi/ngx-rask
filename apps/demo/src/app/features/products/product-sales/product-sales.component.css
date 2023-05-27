@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  padding-inline: 20px;
+  padding-block: 20px;
+  container-type: inline-size;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+mat-table,
+mat-paginator {
+  background: var(--app-color-surface-2);
+  /* background: transparent; */
+}
+
+mat-table {
+  border-start-start-radius: var(--app-shape-small);
+  border-start-end-radius: var(--app-shape-small);
+  overflow: hidden;
+  border: 1px solid var(--app-color-border);
+}
+
+mat-paginator {
+  border-end-start-radius: var(--app-shape-small);
+  border-end-end-radius: var(--app-shape-small);
+}

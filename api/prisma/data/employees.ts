@@ -7,13 +7,13 @@ import {
   randLastName,
   randPastDate,
   randPhoneNumber,
-  randStateAbbr,
   randStreetAddress,
   randZipCode,
 } from '@ngneat/falso';
 import { nanoid } from 'nanoid';
 import { departments } from './departments.js';
 import { randChanceFn } from './generators/chance-fn.js';
+import { randLocationStateId } from './generators/rand-location-state-fn.js';
 
 const departmentLength = departments.length;
 
@@ -32,7 +32,7 @@ export const employees = Array.from({ length: 100 }, () => {
     phone: randPhoneNumber(),
     streetAddress: randStreetAddress(),
     city: randCity(),
-    state: randStateAbbr(),
+    stateId: randLocationStateId(),
     zipCode: randZipCode(),
     jobTitle: randJobTitle(),
     departmentId: randDepartmentIdCustom(),

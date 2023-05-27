@@ -10,11 +10,12 @@
   TODO: Research why custom properties do not work in
   vendor specific scrollbar pseudo-elements.
 */
-[scrollable] {
+[scrollable],
+.mdc-menu-surface {
   overflow: hidden auto;
 
   &::-webkit-scrollbar {
-    inline-size: 20px;
+    inline-size: 18px;
     background: transparent;
   }
 
@@ -26,7 +27,7 @@
   &::-webkit-scrollbar-thumb {
     border: 4px solid transparent;
     border-radius: 14px;
-    background: var(--app-color-surface-2);
+    background: var(--app-color-surface-3);
     background-clip: content-box;
   }
 }

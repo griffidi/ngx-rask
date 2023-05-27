@@ -17,18 +17,29 @@ generator typegraphql {
   useSimpleInputs        = true
 }
 
+model LocationState {
+  id          String     @id @default(nanoid(10))
+  name        String     @unique
+  shortName   String     @unique
+  dateCreated DateTime   @default(now())
+  dateUpdated DateTime?  @updatedAt
+  customers   Customer[]
+  employees   Employee[]
+}
+
 model Customer {
-  id            String    @id @default(nanoid(10))
+  id            String         @id @default(nanoid(10))
   firstName     String
   lastName      String
-  email         String    @unique
+  email         String         @unique
   phone         String
   streetAddress String
   city          String
-  state         String
+  stateId       String
   zipCode       String
-  dateCreated   DateTime  @default(now())
-  dateUpdated   DateTime? @updatedAt
+  dateCreated   DateTime       @default(now())
+  dateUpdated   DateTime?      @updatedAt
+  locationState LocationState? @relation(fields: [stateId], references: [id])
 }
 
 model Department {
@@ -40,22 +51,25 @@ model Department {
 }
 
 model Size {
-  id          String        @id @default(nanoid(10))
-  name        String        @unique
-  dateCreated DateTime      @default(now())
-  dateUpdated DateTime?     @updatedAt
-  inventory   Inventory[]
-  productSale ProductSale[]
+  id                  String               @id @default(nanoid(10))
+  name                String               @unique
+  dateCreated         DateTime             @default(now())
+  dateUpdated         DateTime?            @updatedAt
+  inventory           Inventory[]
+  productSales        ProductSale[]
+  productTransactions ProductTransaction[]
 }
 
 model Product {
-  id          String        @id @default(nanoid(10))
-  name        String        @unique
-  cost        Float
-  dateCreated DateTime      @default(now())
-  dateUpdated DateTime?     @updatedAt
-  inventory   Inventory[]
-  productSale ProductSale[]
+  id                  String               @id @default(nanoid(10))
+  name                String               @unique
+  cost                Float
+  rating              Float
+  dateCreated         DateTime             @default(now())
+  dateUpdated         DateTime?            @updatedAt
+  inventory           Inventory[]
+  productSales        ProductSale[]
+  productTransactions ProductTransaction[]
 }
 
 model Inventory {
@@ -67,6 +81,17 @@ model Inventory {
   dateUpdated DateTime? @updatedAt
   product     Product   @relation(fields: [productId], references: [id])
   size        Size      @relation(fields: [sizeId], references: [id])
+}
+
+model ProductTransaction {
+  id          String   @id @default(nanoid(10))
+  productId   String
+  quantity    Int
+  sizeId      String
+  price       Float
+  dateCreated DateTime @default(now())
+  product     Product  @relation(fields: [productId], references: [id])
+  size        Size     @relation(fields: [sizeId], references: [id])
 }
 
 model ProductSale {
@@ -81,21 +106,22 @@ model ProductSale {
 }
 
 model Employee {
-  id            String     @id @default(nanoid(10))
+  id            String        @id @default(nanoid(10))
   firstName     String
   lastName      String
-  email         String     @unique
+  email         String        @unique
   gender        String
   phone         String
   streetAddress String
   city          String
-  state         String
+  stateId       String
   zipCode       String
   jobTitle      String
   departmentId  String
-  dateStarted   DateTime   @default(now())
-  dateUpdated   DateTime?  @updatedAt
-  department    Department @relation(fields: [departmentId], references: [id])
+  dateStarted   DateTime      @default(now())
+  dateUpdated   DateTime?     @updatedAt
+  department    Department    @relation(fields: [departmentId], references: [id])
+  locationState LocationState @relation(fields: [stateId], references: [id])
 }
 
 model User {

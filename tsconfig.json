@@ -26,16 +26,18 @@
     "sourceMap": true,
     "strict": true,
     "strictFunctionTypes": true,
+    "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "target": "ES2022",
     "paths": {
-      "#/app/common/*": ["apps/demo/src/app/common/*/index.ts"],
+      "#/app/common/*": ["apps/demo/src/app/common/index.ts"],
       "#/app/features/*": ["apps/demo/src/app/features/*"],
       "#/app/types/graphql": ["apps/demo/src/types/graphql.ts"],
       "#/app/ui/*": ["apps/demo/src/app/ui/*/index.ts"],
+      "@ngx-rask/components": ["libs/components/src/index.ts"],
       "@ngx-rask/core": ["libs/core/src/index.ts"],
       "@ngx-rask/graphql": ["libs/graphql/src/index.ts"],
-      "@ngx-rask/components": ["libs/components/src/index.ts"]
+      "@ngx-rask/signal-store": ["libs/signal-store/src/index.ts"]
     },
     "types": ["jest"],
     "useDefineForClassFields": false,
