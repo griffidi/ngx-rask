@@ -45,6 +45,6 @@ rk-svg {
 }
 
 ::ng-deep svg {
-  block-size: 300px;
+  block-size: 250px;
   color: var(--app-color-clothing-pink);
 }

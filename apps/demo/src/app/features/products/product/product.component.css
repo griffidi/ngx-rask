@@ -3,13 +3,13 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+}
 
-  > * {
-    inline-size: 600px;
-    background: var(--app-color-surface-3);
-    /* border: 1px solid var(--app-color-border-color); */
-    padding-inline: 18px;
-    padding-block: 18px;
-    border-radius: var(--app-shape-small);
-  }
+.mat-accordion {
+  inline-size: 600px;
+  /* background: var(--app-color-surface-3); */
+}
+
+::ng-deep .mat-expansion-panel .mat-content {
+  color: var(--app-color-accent);
 }

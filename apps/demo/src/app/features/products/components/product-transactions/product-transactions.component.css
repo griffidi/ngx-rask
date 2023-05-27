@@ -4,13 +4,6 @@
   gap: 10px;
 }
 
-header {
-  .title {
-    font-size: 1.1em;
-    color: var(--app-color-accent);
-  }
-}
-
 mat-table,
 mat-paginator {
   background: transparent;

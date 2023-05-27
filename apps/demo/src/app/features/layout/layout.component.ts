@@ -1,6 +1,6 @@
 import { AuthService } from '#/app/common/auth';
 import { slideInAnimation } from '#/app/common/router';
-import { LayoutFooter, LayoutHeader } from '#/app/ui/layout';
+import { LayoutHeader } from '#/app/ui/layout';
 import { DOCUMENT, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -25,7 +25,7 @@ import { fromEvent, tap } from 'rxjs';
   styleUrls: ['./layout.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    LayoutFooter,
+    // LayoutFooter,
     LayoutHeader,
     MatButtonModule,
     MatIconModule,

@@ -1,5 +1,16 @@
 <ng-container *ngIf="product() as product">
-  <app-product-detail [product]="product" />
-  <app-product-images [productName]="product.name" />
-  <app-product-transactions [productId]="product.id" />
+  <mat-accordion multi>
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>Detail</mat-expansion-panel-header>
+      <app-product-detail [product]="product" />
+    </mat-expansion-panel>
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>Images</mat-expansion-panel-header>
+      <app-product-images [productName]="product.name" />
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>Transactions</mat-expansion-panel-header>
+      <app-product-transactions [productId]="product.id" />
+    </mat-expansion-panel>
+  </mat-accordion>
 </ng-container>
