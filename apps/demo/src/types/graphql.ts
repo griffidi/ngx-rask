@@ -2393,6 +2393,7 @@ export type Product = {
   readonly name: Scalars['String'];
   readonly productSales: ReadonlyArray<ProductSale>;
   readonly productTransactions: ReadonlyArray<ProductTransaction>;
+  readonly rating: Scalars['Float'];
 };
 
 export type ProductInventoryArgs = {
@@ -2425,10 +2426,12 @@ export type ProductProductTransactionsArgs = {
 export type ProductAvgAggregate = {
   readonly __typename?: 'ProductAvgAggregate';
   readonly cost?: Maybe<Scalars['Float']>;
+  readonly rating?: Maybe<Scalars['Float']>;
 };
 
 export type ProductAvgOrderByAggregateInput = {
   readonly cost?: InputMaybe<SortOrder>;
+  readonly rating?: InputMaybe<SortOrder>;
 };
 
 export type ProductCount = {
@@ -2446,6 +2449,7 @@ export type ProductCountAggregate = {
   readonly dateUpdated: Scalars['Int'];
   readonly id: Scalars['Int'];
   readonly name: Scalars['Int'];
+  readonly rating: Scalars['Int'];
 };
 
 export type ProductCountOrderByAggregateInput = {
@@ -2454,6 +2458,7 @@ export type ProductCountOrderByAggregateInput = {
   readonly dateUpdated?: InputMaybe<SortOrder>;
   readonly id?: InputMaybe<SortOrder>;
   readonly name?: InputMaybe<SortOrder>;
+  readonly rating?: InputMaybe<SortOrder>;
 };
 
 export type ProductCreateInput = {
@@ -2465,6 +2470,7 @@ export type ProductCreateInput = {
   readonly name: Scalars['String'];
   readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
+  readonly rating: Scalars['Float'];
 };
 
 export type ProductCreateNestedOneWithoutInventoryInput = {
@@ -2508,6 +2514,7 @@ export type ProductCreateWithoutInventoryInput = {
   readonly name: Scalars['String'];
   readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
+  readonly rating: Scalars['Float'];
 };
 
 export type ProductCreateWithoutProductSalesInput = {
@@ -2518,6 +2525,7 @@ export type ProductCreateWithoutProductSalesInput = {
   readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
   readonly name: Scalars['String'];
   readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
+  readonly rating: Scalars['Float'];
 };
 
 export type ProductCreateWithoutProductTransactionsInput = {
@@ -2528,6 +2536,7 @@ export type ProductCreateWithoutProductTransactionsInput = {
   readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
   readonly name: Scalars['String'];
   readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
+  readonly rating: Scalars['Float'];
 };
 
 export type ProductGroupBy = {
@@ -2542,6 +2551,7 @@ export type ProductGroupBy = {
   readonly dateUpdated?: Maybe<Scalars['DateTime']>;
   readonly id: Scalars['String'];
   readonly name: Scalars['String'];
+  readonly rating: Scalars['Float'];
 };
 
 export type ProductMaxAggregate = {
@@ -2551,6 +2561,7 @@ export type ProductMaxAggregate = {
   readonly dateUpdated?: Maybe<Scalars['DateTime']>;
   readonly id?: Maybe<Scalars['String']>;
   readonly name?: Maybe<Scalars['String']>;
+  readonly rating?: Maybe<Scalars['Float']>;
 };
 
 export type ProductMaxOrderByAggregateInput = {
@@ -2559,6 +2570,7 @@ export type ProductMaxOrderByAggregateInput = {
   readonly dateUpdated?: InputMaybe<SortOrder>;
   readonly id?: InputMaybe<SortOrder>;
   readonly name?: InputMaybe<SortOrder>;
+  readonly rating?: InputMaybe<SortOrder>;
 };
 
 export type ProductMinAggregate = {
@@ -2568,6 +2580,7 @@ export type ProductMinAggregate = {
   readonly dateUpdated?: Maybe<Scalars['DateTime']>;
   readonly id?: Maybe<Scalars['String']>;
   readonly name?: Maybe<Scalars['String']>;
+  readonly rating?: Maybe<Scalars['Float']>;
 };
 
 export type ProductMinOrderByAggregateInput = {
@@ -2576,6 +2589,7 @@ export type ProductMinOrderByAggregateInput = {
   readonly dateUpdated?: InputMaybe<SortOrder>;
   readonly id?: InputMaybe<SortOrder>;
   readonly name?: InputMaybe<SortOrder>;
+  readonly rating?: InputMaybe<SortOrder>;
 };
 
 export type ProductOrderByWithAggregationInput = {
@@ -2589,6 +2603,7 @@ export type ProductOrderByWithAggregationInput = {
   readonly dateUpdated?: InputMaybe<SortOrder>;
   readonly id?: InputMaybe<SortOrder>;
   readonly name?: InputMaybe<SortOrder>;
+  readonly rating?: InputMaybe<SortOrder>;
 };
 
 export type ProductOrderByWithRelationInput = {
@@ -2600,6 +2615,7 @@ export type ProductOrderByWithRelationInput = {
   readonly name?: InputMaybe<SortOrder>;
   readonly productSales?: InputMaybe<ProductSaleOrderByRelationAggregateInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionOrderByRelationAggregateInput>;
+  readonly rating?: InputMaybe<SortOrder>;
 };
 
 export type ProductRelationFilter = {
@@ -2945,6 +2961,7 @@ export enum ProductScalarFieldEnum {
   DateUpdated = 2,
   Id = 3,
   Name = 4,
+  Rating = 5,
 }
 
 export type ProductScalarWhereWithAggregatesInput = {
@@ -2956,15 +2973,18 @@ export type ProductScalarWhereWithAggregatesInput = {
   readonly dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
   readonly id?: InputMaybe<StringWithAggregatesFilter>;
   readonly name?: InputMaybe<StringWithAggregatesFilter>;
+  readonly rating?: InputMaybe<FloatWithAggregatesFilter>;
 };
 
 export type ProductSumAggregate = {
   readonly __typename?: 'ProductSumAggregate';
   readonly cost?: Maybe<Scalars['Float']>;
+  readonly rating?: Maybe<Scalars['Float']>;
 };
 
 export type ProductSumOrderByAggregateInput = {
   readonly cost?: InputMaybe<SortOrder>;
+  readonly rating?: InputMaybe<SortOrder>;
 };
 
 export type ProductTransaction = {
@@ -3326,6 +3346,7 @@ export type ProductUpdateInput = {
   readonly name?: InputMaybe<Scalars['String']>;
   readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
+  readonly rating?: InputMaybe<Scalars['Float']>;
 };
 
 export type ProductUpdateManyMutationInput = {
@@ -3334,6 +3355,7 @@ export type ProductUpdateManyMutationInput = {
   readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
   readonly id?: InputMaybe<Scalars['String']>;
   readonly name?: InputMaybe<Scalars['String']>;
+  readonly rating?: InputMaybe<Scalars['Float']>;
 };
 
 export type ProductUpdateOneRequiredWithoutInventoryNestedInput = {
@@ -3368,6 +3390,7 @@ export type ProductUpdateWithoutInventoryInput = {
   readonly name?: InputMaybe<Scalars['String']>;
   readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
+  readonly rating?: InputMaybe<Scalars['Float']>;
 };
 
 export type ProductUpdateWithoutProductSalesInput = {
@@ -3378,6 +3401,7 @@ export type ProductUpdateWithoutProductSalesInput = {
   readonly inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
   readonly name?: InputMaybe<Scalars['String']>;
   readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
+  readonly rating?: InputMaybe<Scalars['Float']>;
 };
 
 export type ProductUpdateWithoutProductTransactionsInput = {
@@ -3388,6 +3412,7 @@ export type ProductUpdateWithoutProductTransactionsInput = {
   readonly inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
   readonly name?: InputMaybe<Scalars['String']>;
   readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
+  readonly rating?: InputMaybe<Scalars['Float']>;
 };
 
 export type ProductUpsertWithoutInventoryInput = {
@@ -3417,6 +3442,7 @@ export type ProductWhereInput = {
   readonly name?: InputMaybe<StringFilter>;
   readonly productSales?: InputMaybe<ProductSaleListRelationFilter>;
   readonly productTransactions?: InputMaybe<ProductTransactionListRelationFilter>;
+  readonly rating?: InputMaybe<FloatFilter>;
 };
 
 export type ProductWhereUniqueInput = {
@@ -5060,6 +5086,7 @@ export type GetInventoryByProductIdQuery = {
       readonly id: string;
       readonly name: string;
       readonly cost: number;
+      readonly rating: number;
     };
   }>;
 };
@@ -5081,6 +5108,7 @@ export type GetInventoryBySizeQuery = {
       readonly id: string;
       readonly name: string;
       readonly cost: number;
+      readonly rating: number;
     };
   }>;
 };
@@ -5104,6 +5132,7 @@ export type GetProductsQuery = {
     readonly id: string;
     readonly name: string;
     readonly cost: number;
+    readonly rating: number;
   }>;
 };
 
@@ -5119,6 +5148,7 @@ export type GetProductByIdQuery = {
         readonly id: string;
         readonly name: string;
         readonly cost: number;
+        readonly rating: number;
       }
     | undefined;
 };
@@ -5329,6 +5359,7 @@ export type ProductPartsFragment = {
   readonly id: string;
   readonly name: string;
   readonly cost: number;
+  readonly rating: number;
 };
 
 export type ProductSalePartsFragment = {
@@ -5442,6 +5473,7 @@ export const ProductPartsFragmentDoc = {
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
         ],
       },
     },
@@ -5852,6 +5884,7 @@ export const GetInventoryByProductIdDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
         ],
       },
     },
@@ -5949,6 +5982,7 @@ export const GetInventoryBySizeDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
         ],
       },
     },
@@ -6036,6 +6070,7 @@ export const GetProductsDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
         ],
       },
     },
@@ -6100,6 +6135,7 @@ export const GetProductByIdDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'cost' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
         ],
       },
     },

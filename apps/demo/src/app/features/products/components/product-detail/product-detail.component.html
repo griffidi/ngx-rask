@@ -1,1 +1,13 @@
-{{ product?.name }}
+<header>
+  <span class="title">{{ product?.name }}</span>
+  <span class="cost">{{ product?.cost | currency }}</span>
+</header>
+
+<div class="rating-container">
+  <div class="rating">{{ product?.rating }}</div>
+  <mat-icon
+    *ngFor="let i of [0, 1, 2, 4, 5]"
+    [ngClass]="{ 'star-full': i < (product?.rating ?? 0) }">
+    star_rate
+  </mat-icon>
+</div>

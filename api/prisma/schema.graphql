@@ -1977,14 +1977,17 @@ type Product {
   name: String!
   productSales(cursor: ProductSaleWhereUniqueInput, distinct: [ProductSaleScalarFieldEnum!], orderBy: [ProductSaleOrderByWithRelationInput!], skip: Int, take: Int, where: ProductSaleWhereInput): [ProductSale!]!
   productTransactions(cursor: ProductTransactionWhereUniqueInput, distinct: [ProductTransactionScalarFieldEnum!], orderBy: [ProductTransactionOrderByWithRelationInput!], skip: Int, take: Int, where: ProductTransactionWhereInput): [ProductTransaction!]!
+  rating: Float!
 }
 
 type ProductAvgAggregate {
   cost: Float
+  rating: Float
 }
 
 input ProductAvgOrderByAggregateInput {
   cost: SortOrder
+  rating: SortOrder
 }
 
 type ProductCount {
@@ -2000,6 +2003,7 @@ type ProductCountAggregate {
   dateUpdated: Int!
   id: Int!
   name: Int!
+  rating: Int!
 }
 
 input ProductCountOrderByAggregateInput {
@@ -2008,6 +2012,7 @@ input ProductCountOrderByAggregateInput {
   dateUpdated: SortOrder
   id: SortOrder
   name: SortOrder
+  rating: SortOrder
 }
 
 input ProductCreateInput {
@@ -2019,6 +2024,7 @@ input ProductCreateInput {
   name: String!
   productSales: ProductSaleCreateNestedManyWithoutProductInput
   productTransactions: ProductTransactionCreateNestedManyWithoutProductInput
+  rating: Float!
 }
 
 input ProductCreateNestedOneWithoutInventoryInput {
@@ -2062,6 +2068,7 @@ input ProductCreateWithoutInventoryInput {
   name: String!
   productSales: ProductSaleCreateNestedManyWithoutProductInput
   productTransactions: ProductTransactionCreateNestedManyWithoutProductInput
+  rating: Float!
 }
 
 input ProductCreateWithoutProductSalesInput {
@@ -2072,6 +2079,7 @@ input ProductCreateWithoutProductSalesInput {
   inventory: InventoryCreateNestedManyWithoutProductInput
   name: String!
   productTransactions: ProductTransactionCreateNestedManyWithoutProductInput
+  rating: Float!
 }
 
 input ProductCreateWithoutProductTransactionsInput {
@@ -2082,6 +2090,7 @@ input ProductCreateWithoutProductTransactionsInput {
   inventory: InventoryCreateNestedManyWithoutProductInput
   name: String!
   productSales: ProductSaleCreateNestedManyWithoutProductInput
+  rating: Float!
 }
 
 type ProductGroupBy {
@@ -2095,6 +2104,7 @@ type ProductGroupBy {
   dateUpdated: DateTime
   id: String!
   name: String!
+  rating: Float!
 }
 
 type ProductMaxAggregate {
@@ -2103,6 +2113,7 @@ type ProductMaxAggregate {
   dateUpdated: DateTime
   id: String
   name: String
+  rating: Float
 }
 
 input ProductMaxOrderByAggregateInput {
@@ -2111,6 +2122,7 @@ input ProductMaxOrderByAggregateInput {
   dateUpdated: SortOrder
   id: SortOrder
   name: SortOrder
+  rating: SortOrder
 }
 
 type ProductMinAggregate {
@@ -2119,6 +2131,7 @@ type ProductMinAggregate {
   dateUpdated: DateTime
   id: String
   name: String
+  rating: Float
 }
 
 input ProductMinOrderByAggregateInput {
@@ -2127,6 +2140,7 @@ input ProductMinOrderByAggregateInput {
   dateUpdated: SortOrder
   id: SortOrder
   name: SortOrder
+  rating: SortOrder
 }
 
 input ProductOrderByWithAggregationInput {
@@ -2140,6 +2154,7 @@ input ProductOrderByWithAggregationInput {
   dateUpdated: SortOrder
   id: SortOrder
   name: SortOrder
+  rating: SortOrder
 }
 
 input ProductOrderByWithRelationInput {
@@ -2151,6 +2166,7 @@ input ProductOrderByWithRelationInput {
   name: SortOrder
   productSales: ProductSaleOrderByRelationAggregateInput
   productTransactions: ProductTransactionOrderByRelationAggregateInput
+  rating: SortOrder
 }
 
 input ProductRelationFilter {
@@ -2483,6 +2499,7 @@ enum ProductScalarFieldEnum {
   dateUpdated
   id
   name
+  rating
 }
 
 input ProductScalarWhereWithAggregatesInput {
@@ -2494,14 +2511,17 @@ input ProductScalarWhereWithAggregatesInput {
   dateUpdated: DateTimeNullableWithAggregatesFilter
   id: StringWithAggregatesFilter
   name: StringWithAggregatesFilter
+  rating: FloatWithAggregatesFilter
 }
 
 type ProductSumAggregate {
   cost: Float
+  rating: Float
 }
 
 input ProductSumOrderByAggregateInput {
   cost: SortOrder
+  rating: SortOrder
 }
 
 type ProductTransaction {
@@ -2836,6 +2856,7 @@ input ProductUpdateInput {
   name: String
   productSales: ProductSaleUpdateManyWithoutProductNestedInput
   productTransactions: ProductTransactionUpdateManyWithoutProductNestedInput
+  rating: Float
 }
 
 input ProductUpdateManyMutationInput {
@@ -2844,6 +2865,7 @@ input ProductUpdateManyMutationInput {
   dateUpdated: DateTime
   id: String
   name: String
+  rating: Float
 }
 
 input ProductUpdateOneRequiredWithoutInventoryNestedInput {
@@ -2878,6 +2900,7 @@ input ProductUpdateWithoutInventoryInput {
   name: String
   productSales: ProductSaleUpdateManyWithoutProductNestedInput
   productTransactions: ProductTransactionUpdateManyWithoutProductNestedInput
+  rating: Float
 }
 
 input ProductUpdateWithoutProductSalesInput {
@@ -2888,6 +2911,7 @@ input ProductUpdateWithoutProductSalesInput {
   inventory: InventoryUpdateManyWithoutProductNestedInput
   name: String
   productTransactions: ProductTransactionUpdateManyWithoutProductNestedInput
+  rating: Float
 }
 
 input ProductUpdateWithoutProductTransactionsInput {
@@ -2898,6 +2922,7 @@ input ProductUpdateWithoutProductTransactionsInput {
   inventory: InventoryUpdateManyWithoutProductNestedInput
   name: String
   productSales: ProductSaleUpdateManyWithoutProductNestedInput
+  rating: Float
 }
 
 input ProductUpsertWithoutInventoryInput {
@@ -2927,6 +2952,7 @@ input ProductWhereInput {
   name: StringFilter
   productSales: ProductSaleListRelationFilter
   productTransactions: ProductTransactionListRelationFilter
+  rating: FloatFilter
 }
 
 input ProductWhereUniqueInput {

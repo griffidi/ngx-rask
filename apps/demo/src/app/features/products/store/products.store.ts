@@ -13,7 +13,6 @@ import { initialProductsState, type ProductsState } from '../shared/models';
 import { ProductsService } from '../shared/services';
 
 export const productsStore = signalStore(
-  { providedIn: 'root' },
   withState<ProductsState>(initialProductsState),
   withComputed(({ products, selectedProductId }) => ({
     selectedProduct: computed(() =>

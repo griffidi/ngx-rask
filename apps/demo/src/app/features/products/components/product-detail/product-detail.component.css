@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.cost {
+  font-weight: 500;
+  color: var(--app-color-accent);
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+
+  & .rating {
+    /* font-size: 0.9em; */
+    font-weight: 600;
+    margin-inline-end: 10px;
+  }
+
+  & mat-icon {
+    color: var(--app-color-yellow);
+  }
+
+  & .star-full {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0;
+  }
+}

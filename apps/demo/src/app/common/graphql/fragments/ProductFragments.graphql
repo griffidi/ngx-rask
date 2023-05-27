@@ -2,4 +2,5 @@ fragment ProductParts on Product {
   id
   name
   cost
+  rating
 }
