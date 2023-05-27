@@ -1,0 +1,60 @@
+:host {
+  display: flex;
+  gap: 10px;
+  padding-block: 20px;
+}
+
+:host[vertical] {
+  flex-direction: column;
+  align-items: center;
+}
+
+.color-option {
+  --_color-option-size: 24px;
+
+  cursor: pointer;
+  display: inline-block;
+  inline-size: var(--_color-option-size);
+  block-size: var(--_color-option-size);
+  border-radius: 50%;
+
+  &.black {
+    background: var(--app-color-clothing-black);
+  }
+
+  &.blue {
+    background: var(--app-color-clothing-blue);
+  }
+
+  &.cyan {
+    background: var(--app-color-clothing-cyan);
+  }
+
+  &.green {
+    background: var(--app-color-clothing-green);
+  }
+
+  &.pink {
+    background: var(--app-color-clothing-pink);
+  }
+
+  &.purple {
+    background: var(--app-color-clothing-purple);
+  }
+
+  &.red {
+    background: var(--app-color-clothing-red);
+  }
+
+  &.teal {
+    background: var(--app-color-clothing-teal);
+  }
+
+  &.white {
+    background: var(--app-color-clothing-white);
+  }
+
+  &.yellow {
+    background: var(--app-color-clothing-yellow);
+  }
+}

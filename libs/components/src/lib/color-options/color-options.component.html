@@ -1,0 +1,9 @@
+<span
+  *ngFor="let color of colors()"
+  id="color{{ color }}"
+  class="color-option"
+  [ngClass]="color.toLocaleLowerCase()"
+  [attr.selected]="selectedColor() === color"
+  (mouseover)="mouseoverColor(color)"
+  (mouseout)="mouseoutColor()"
+  (click)="selectColor(color)"></span>

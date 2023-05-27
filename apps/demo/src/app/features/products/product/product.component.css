@@ -7,6 +7,7 @@
   > * {
     inline-size: 600px;
     background: var(--app-color-surface-3);
+    /* border: 1px solid var(--app-color-border-color); */
     padding-inline: 18px;
     padding-block: 18px;
     border-radius: var(--app-shape-small);

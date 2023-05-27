@@ -3,7 +3,41 @@
   justify-content: center;
 }
 
+rk-svg {
+  --_svg-color: var(--app-color-clothing-black);
+
+  inline-size: 100%;
+
+  & svg {
+    color: var(--_svg-color);
+  }
+
+  &.hovered-color-black {
+    --_svg-color: var(--app-color-clothing-black);
+  }
+
+  &.hovered-color-blue {
+    --_svg-color: var(--app-color-clothing-blue);
+  }
+
+  &.hovered-color-green {
+    --_svg-color: var(--app-color-clothing-green);
+  }
+
+  &.hovered-color-pink {
+    --_svg-color: var(--app-color-clothing-pink);
+  }
+
+  &.hovered-color-red {
+    --_svg-color: var(--app-color-clothing-red);
+  }
+
+  &.hovered-color-white {
+    --_svg-color: var(--app-color-clothing-white);
+  }
+}
+
 ::ng-deep svg {
   block-size: 300px;
-  color: var(--app-color-clothing-black);
+  color: var(--app-color-clothing-pink);
 }
