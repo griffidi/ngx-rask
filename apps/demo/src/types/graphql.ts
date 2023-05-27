@@ -4,20 +4,26 @@ export type InputMaybe<T> = T | undefined;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = {
+  [_ in K]?: never;
+};
+export type Incremental<T> =
+  | T
+  | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
+  ID: { input: string | number; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
   /** The javascript `Date` as string. Type represents date and time as the ISO Date string. */
-  DateTime: any;
+  DateTime: { input: any; output: any };
 };
 
 export type AffectedRowsOutput = {
   readonly __typename?: 'AffectedRowsOutput';
-  readonly count: Scalars['Int'];
+  readonly count: Scalars['Int']['output'];
 };
 
 export type AggregateCustomer = {
@@ -107,34 +113,34 @@ export type AggregateUser = {
 
 export type Customer = {
   readonly __typename?: 'Customer';
-  readonly city: Scalars['String'];
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly id: Scalars['String'];
-  readonly lastName: Scalars['String'];
+  readonly city: Scalars['String']['output'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly email: Scalars['String']['output'];
+  readonly firstName: Scalars['String']['output'];
+  readonly id: Scalars['String']['output'];
+  readonly lastName: Scalars['String']['output'];
   readonly locationState?: Maybe<LocationState>;
-  readonly phone: Scalars['String'];
-  readonly stateId: Scalars['String'];
-  readonly streetAddress: Scalars['String'];
-  readonly zipCode: Scalars['String'];
+  readonly phone: Scalars['String']['output'];
+  readonly stateId: Scalars['String']['output'];
+  readonly streetAddress: Scalars['String']['output'];
+  readonly zipCode: Scalars['String']['output'];
 };
 
 export type CustomerCountAggregate = {
   readonly __typename?: 'CustomerCountAggregate';
-  readonly _all: Scalars['Int'];
-  readonly city: Scalars['Int'];
-  readonly dateCreated: Scalars['Int'];
-  readonly dateUpdated: Scalars['Int'];
-  readonly email: Scalars['Int'];
-  readonly firstName: Scalars['Int'];
-  readonly id: Scalars['Int'];
-  readonly lastName: Scalars['Int'];
-  readonly phone: Scalars['Int'];
-  readonly stateId: Scalars['Int'];
-  readonly streetAddress: Scalars['Int'];
-  readonly zipCode: Scalars['Int'];
+  readonly _all: Scalars['Int']['output'];
+  readonly city: Scalars['Int']['output'];
+  readonly dateCreated: Scalars['Int']['output'];
+  readonly dateUpdated: Scalars['Int']['output'];
+  readonly email: Scalars['Int']['output'];
+  readonly firstName: Scalars['Int']['output'];
+  readonly id: Scalars['Int']['output'];
+  readonly lastName: Scalars['Int']['output'];
+  readonly phone: Scalars['Int']['output'];
+  readonly stateId: Scalars['Int']['output'];
+  readonly streetAddress: Scalars['Int']['output'];
+  readonly zipCode: Scalars['Int']['output'];
 };
 
 export type CustomerCountOrderByAggregateInput = {
@@ -152,17 +158,17 @@ export type CustomerCountOrderByAggregateInput = {
 };
 
 export type CustomerCreateInput = {
-  readonly city: Scalars['String'];
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly lastName: Scalars['String'];
+  readonly city: Scalars['String']['input'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email: Scalars['String']['input'];
+  readonly firstName: Scalars['String']['input'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName: Scalars['String']['input'];
   readonly locationState?: InputMaybe<LocationStateCreateNestedOneWithoutCustomersInput>;
-  readonly phone: Scalars['String'];
-  readonly streetAddress: Scalars['String'];
-  readonly zipCode: Scalars['String'];
+  readonly phone: Scalars['String']['input'];
+  readonly streetAddress: Scalars['String']['input'];
+  readonly zipCode: Scalars['String']['input'];
 };
 
 export type CustomerCreateNestedManyWithoutLocationStateInput = {
@@ -179,16 +185,16 @@ export type CustomerCreateOrConnectWithoutLocationStateInput = {
 };
 
 export type CustomerCreateWithoutLocationStateInput = {
-  readonly city: Scalars['String'];
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly lastName: Scalars['String'];
-  readonly phone: Scalars['String'];
-  readonly streetAddress: Scalars['String'];
-  readonly zipCode: Scalars['String'];
+  readonly city: Scalars['String']['input'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email: Scalars['String']['input'];
+  readonly firstName: Scalars['String']['input'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName: Scalars['String']['input'];
+  readonly phone: Scalars['String']['input'];
+  readonly streetAddress: Scalars['String']['input'];
+  readonly zipCode: Scalars['String']['input'];
 };
 
 export type CustomerGroupBy = {
@@ -196,17 +202,17 @@ export type CustomerGroupBy = {
   readonly _count?: Maybe<CustomerCountAggregate>;
   readonly _max?: Maybe<CustomerMaxAggregate>;
   readonly _min?: Maybe<CustomerMinAggregate>;
-  readonly city: Scalars['String'];
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly id: Scalars['String'];
-  readonly lastName: Scalars['String'];
-  readonly phone: Scalars['String'];
-  readonly stateId: Scalars['String'];
-  readonly streetAddress: Scalars['String'];
-  readonly zipCode: Scalars['String'];
+  readonly city: Scalars['String']['output'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly email: Scalars['String']['output'];
+  readonly firstName: Scalars['String']['output'];
+  readonly id: Scalars['String']['output'];
+  readonly lastName: Scalars['String']['output'];
+  readonly phone: Scalars['String']['output'];
+  readonly stateId: Scalars['String']['output'];
+  readonly streetAddress: Scalars['String']['output'];
+  readonly zipCode: Scalars['String']['output'];
 };
 
 export type CustomerListRelationFilter = {
@@ -217,17 +223,17 @@ export type CustomerListRelationFilter = {
 
 export type CustomerMaxAggregate = {
   readonly __typename?: 'CustomerMaxAggregate';
-  readonly city?: Maybe<Scalars['String']>;
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly email?: Maybe<Scalars['String']>;
-  readonly firstName?: Maybe<Scalars['String']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly lastName?: Maybe<Scalars['String']>;
-  readonly phone?: Maybe<Scalars['String']>;
-  readonly stateId?: Maybe<Scalars['String']>;
-  readonly streetAddress?: Maybe<Scalars['String']>;
-  readonly zipCode?: Maybe<Scalars['String']>;
+  readonly city?: Maybe<Scalars['String']['output']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly email?: Maybe<Scalars['String']['output']>;
+  readonly firstName?: Maybe<Scalars['String']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly lastName?: Maybe<Scalars['String']['output']>;
+  readonly phone?: Maybe<Scalars['String']['output']>;
+  readonly stateId?: Maybe<Scalars['String']['output']>;
+  readonly streetAddress?: Maybe<Scalars['String']['output']>;
+  readonly zipCode?: Maybe<Scalars['String']['output']>;
 };
 
 export type CustomerMaxOrderByAggregateInput = {
@@ -246,17 +252,17 @@ export type CustomerMaxOrderByAggregateInput = {
 
 export type CustomerMinAggregate = {
   readonly __typename?: 'CustomerMinAggregate';
-  readonly city?: Maybe<Scalars['String']>;
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly email?: Maybe<Scalars['String']>;
-  readonly firstName?: Maybe<Scalars['String']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly lastName?: Maybe<Scalars['String']>;
-  readonly phone?: Maybe<Scalars['String']>;
-  readonly stateId?: Maybe<Scalars['String']>;
-  readonly streetAddress?: Maybe<Scalars['String']>;
-  readonly zipCode?: Maybe<Scalars['String']>;
+  readonly city?: Maybe<Scalars['String']['output']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly email?: Maybe<Scalars['String']['output']>;
+  readonly firstName?: Maybe<Scalars['String']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly lastName?: Maybe<Scalars['String']['output']>;
+  readonly phone?: Maybe<Scalars['String']['output']>;
+  readonly stateId?: Maybe<Scalars['String']['output']>;
+  readonly streetAddress?: Maybe<Scalars['String']['output']>;
+  readonly zipCode?: Maybe<Scalars['String']['output']>;
 };
 
 export type CustomerMinOrderByAggregateInput = {
@@ -358,30 +364,30 @@ export type CustomerScalarWhereWithAggregatesInput = {
 };
 
 export type CustomerUpdateInput = {
-  readonly city?: InputMaybe<Scalars['String']>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly firstName?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly city?: InputMaybe<Scalars['String']['input']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly firstName?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName?: InputMaybe<Scalars['String']['input']>;
   readonly locationState?: InputMaybe<LocationStateUpdateOneWithoutCustomersNestedInput>;
-  readonly phone?: InputMaybe<Scalars['String']>;
-  readonly streetAddress?: InputMaybe<Scalars['String']>;
-  readonly zipCode?: InputMaybe<Scalars['String']>;
+  readonly phone?: InputMaybe<Scalars['String']['input']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']['input']>;
+  readonly zipCode?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type CustomerUpdateManyMutationInput = {
-  readonly city?: InputMaybe<Scalars['String']>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly firstName?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly lastName?: InputMaybe<Scalars['String']>;
-  readonly phone?: InputMaybe<Scalars['String']>;
-  readonly streetAddress?: InputMaybe<Scalars['String']>;
-  readonly zipCode?: InputMaybe<Scalars['String']>;
+  readonly city?: InputMaybe<Scalars['String']['input']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly firstName?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName?: InputMaybe<Scalars['String']['input']>;
+  readonly phone?: InputMaybe<Scalars['String']['input']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']['input']>;
+  readonly zipCode?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type CustomerUpdateManyWithWhereWithoutLocationStateInput = {
@@ -416,16 +422,16 @@ export type CustomerUpdateWithWhereUniqueWithoutLocationStateInput = {
 };
 
 export type CustomerUpdateWithoutLocationStateInput = {
-  readonly city?: InputMaybe<Scalars['String']>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly firstName?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly lastName?: InputMaybe<Scalars['String']>;
-  readonly phone?: InputMaybe<Scalars['String']>;
-  readonly streetAddress?: InputMaybe<Scalars['String']>;
-  readonly zipCode?: InputMaybe<Scalars['String']>;
+  readonly city?: InputMaybe<Scalars['String']['input']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly firstName?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName?: InputMaybe<Scalars['String']['input']>;
+  readonly phone?: InputMaybe<Scalars['String']['input']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']['input']>;
+  readonly zipCode?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type CustomerUpsertWithWhereUniqueWithoutLocationStateInput = {
@@ -453,91 +459,91 @@ export type CustomerWhereInput = {
 };
 
 export type CustomerWhereUniqueInput = {
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DateTimeFilter = {
-  readonly equals?: InputMaybe<Scalars['DateTime']>;
-  readonly gt?: InputMaybe<Scalars['DateTime']>;
-  readonly gte?: InputMaybe<Scalars['DateTime']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
-  readonly lt?: InputMaybe<Scalars['DateTime']>;
-  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly equals?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']['input']>;
   readonly not?: InputMaybe<NestedDateTimeFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
 };
 
 export type DateTimeNullableFilter = {
-  readonly equals?: InputMaybe<Scalars['DateTime']>;
-  readonly gt?: InputMaybe<Scalars['DateTime']>;
-  readonly gte?: InputMaybe<Scalars['DateTime']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
-  readonly lt?: InputMaybe<Scalars['DateTime']>;
-  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly equals?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']['input']>;
   readonly not?: InputMaybe<NestedDateTimeNullableFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
 };
 
 export type DateTimeNullableWithAggregatesFilter = {
   readonly _count?: InputMaybe<NestedIntNullableFilter>;
   readonly _max?: InputMaybe<NestedDateTimeNullableFilter>;
   readonly _min?: InputMaybe<NestedDateTimeNullableFilter>;
-  readonly equals?: InputMaybe<Scalars['DateTime']>;
-  readonly gt?: InputMaybe<Scalars['DateTime']>;
-  readonly gte?: InputMaybe<Scalars['DateTime']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
-  readonly lt?: InputMaybe<Scalars['DateTime']>;
-  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly equals?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']['input']>;
   readonly not?: InputMaybe<NestedDateTimeNullableWithAggregatesFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
 };
 
 export type DateTimeWithAggregatesFilter = {
   readonly _count?: InputMaybe<NestedIntFilter>;
   readonly _max?: InputMaybe<NestedDateTimeFilter>;
   readonly _min?: InputMaybe<NestedDateTimeFilter>;
-  readonly equals?: InputMaybe<Scalars['DateTime']>;
-  readonly gt?: InputMaybe<Scalars['DateTime']>;
-  readonly gte?: InputMaybe<Scalars['DateTime']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
-  readonly lt?: InputMaybe<Scalars['DateTime']>;
-  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly equals?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']['input']>;
   readonly not?: InputMaybe<NestedDateTimeWithAggregatesFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
 };
 
 export type Department = {
   readonly __typename?: 'Department';
   readonly _count?: Maybe<DepartmentCount>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
   readonly employees: ReadonlyArray<Employee>;
-  readonly id: Scalars['String'];
-  readonly name: Scalars['String'];
+  readonly id: Scalars['String']['output'];
+  readonly name: Scalars['String']['output'];
 };
 
 export type DepartmentEmployeesArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<EmployeeScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<EmployeeWhereInput>;
 };
 
 export type DepartmentCount = {
   readonly __typename?: 'DepartmentCount';
-  readonly employees: Scalars['Int'];
+  readonly employees: Scalars['Int']['output'];
 };
 
 export type DepartmentCountAggregate = {
   readonly __typename?: 'DepartmentCountAggregate';
-  readonly _all: Scalars['Int'];
-  readonly dateCreated: Scalars['Int'];
-  readonly dateUpdated: Scalars['Int'];
-  readonly id: Scalars['Int'];
-  readonly name: Scalars['Int'];
+  readonly _all: Scalars['Int']['output'];
+  readonly dateCreated: Scalars['Int']['output'];
+  readonly dateUpdated: Scalars['Int']['output'];
+  readonly id: Scalars['Int']['output'];
+  readonly name: Scalars['Int']['output'];
 };
 
 export type DepartmentCountOrderByAggregateInput = {
@@ -548,11 +554,11 @@ export type DepartmentCountOrderByAggregateInput = {
 };
 
 export type DepartmentCreateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
   readonly employees?: InputMaybe<EmployeeCreateNestedManyWithoutDepartmentInput>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name: Scalars['String']['input'];
 };
 
 export type DepartmentCreateNestedOneWithoutEmployeesInput = {
@@ -567,10 +573,10 @@ export type DepartmentCreateOrConnectWithoutEmployeesInput = {
 };
 
 export type DepartmentCreateWithoutEmployeesInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name: Scalars['String'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name: Scalars['String']['input'];
 };
 
 export type DepartmentGroupBy = {
@@ -578,18 +584,18 @@ export type DepartmentGroupBy = {
   readonly _count?: Maybe<DepartmentCountAggregate>;
   readonly _max?: Maybe<DepartmentMaxAggregate>;
   readonly _min?: Maybe<DepartmentMinAggregate>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id: Scalars['String'];
-  readonly name: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id: Scalars['String']['output'];
+  readonly name: Scalars['String']['output'];
 };
 
 export type DepartmentMaxAggregate = {
   readonly __typename?: 'DepartmentMaxAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly name?: Maybe<Scalars['String']['output']>;
 };
 
 export type DepartmentMaxOrderByAggregateInput = {
@@ -601,10 +607,10 @@ export type DepartmentMaxOrderByAggregateInput = {
 
 export type DepartmentMinAggregate = {
   readonly __typename?: 'DepartmentMinAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly name?: Maybe<Scalars['String']['output']>;
 };
 
 export type DepartmentMinOrderByAggregateInput = {
@@ -655,18 +661,18 @@ export type DepartmentScalarWhereWithAggregatesInput = {
 };
 
 export type DepartmentUpdateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
   readonly employees?: InputMaybe<EmployeeUpdateManyWithoutDepartmentNestedInput>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DepartmentUpdateManyMutationInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DepartmentUpdateOneRequiredWithoutEmployeesNestedInput = {
@@ -678,10 +684,10 @@ export type DepartmentUpdateOneRequiredWithoutEmployeesNestedInput = {
 };
 
 export type DepartmentUpdateWithoutEmployeesInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DepartmentUpsertWithoutEmployeesInput = {
@@ -701,47 +707,47 @@ export type DepartmentWhereInput = {
 };
 
 export type DepartmentWhereUniqueInput = {
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Employee = {
   readonly __typename?: 'Employee';
-  readonly city: Scalars['String'];
-  readonly dateStarted: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly city: Scalars['String']['output'];
+  readonly dateStarted: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
   readonly department: Department;
-  readonly departmentId: Scalars['String'];
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly gender: Scalars['String'];
-  readonly id: Scalars['String'];
-  readonly jobTitle: Scalars['String'];
-  readonly lastName: Scalars['String'];
+  readonly departmentId: Scalars['String']['output'];
+  readonly email: Scalars['String']['output'];
+  readonly firstName: Scalars['String']['output'];
+  readonly gender: Scalars['String']['output'];
+  readonly id: Scalars['String']['output'];
+  readonly jobTitle: Scalars['String']['output'];
+  readonly lastName: Scalars['String']['output'];
   readonly locationState: LocationState;
-  readonly phone: Scalars['String'];
-  readonly stateId: Scalars['String'];
-  readonly streetAddress: Scalars['String'];
-  readonly zipCode: Scalars['String'];
+  readonly phone: Scalars['String']['output'];
+  readonly stateId: Scalars['String']['output'];
+  readonly streetAddress: Scalars['String']['output'];
+  readonly zipCode: Scalars['String']['output'];
 };
 
 export type EmployeeCountAggregate = {
   readonly __typename?: 'EmployeeCountAggregate';
-  readonly _all: Scalars['Int'];
-  readonly city: Scalars['Int'];
-  readonly dateStarted: Scalars['Int'];
-  readonly dateUpdated: Scalars['Int'];
-  readonly departmentId: Scalars['Int'];
-  readonly email: Scalars['Int'];
-  readonly firstName: Scalars['Int'];
-  readonly gender: Scalars['Int'];
-  readonly id: Scalars['Int'];
-  readonly jobTitle: Scalars['Int'];
-  readonly lastName: Scalars['Int'];
-  readonly phone: Scalars['Int'];
-  readonly stateId: Scalars['Int'];
-  readonly streetAddress: Scalars['Int'];
-  readonly zipCode: Scalars['Int'];
+  readonly _all: Scalars['Int']['output'];
+  readonly city: Scalars['Int']['output'];
+  readonly dateStarted: Scalars['Int']['output'];
+  readonly dateUpdated: Scalars['Int']['output'];
+  readonly departmentId: Scalars['Int']['output'];
+  readonly email: Scalars['Int']['output'];
+  readonly firstName: Scalars['Int']['output'];
+  readonly gender: Scalars['Int']['output'];
+  readonly id: Scalars['Int']['output'];
+  readonly jobTitle: Scalars['Int']['output'];
+  readonly lastName: Scalars['Int']['output'];
+  readonly phone: Scalars['Int']['output'];
+  readonly stateId: Scalars['Int']['output'];
+  readonly streetAddress: Scalars['Int']['output'];
+  readonly zipCode: Scalars['Int']['output'];
 };
 
 export type EmployeeCountOrderByAggregateInput = {
@@ -762,20 +768,20 @@ export type EmployeeCountOrderByAggregateInput = {
 };
 
 export type EmployeeCreateInput = {
-  readonly city: Scalars['String'];
-  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly city: Scalars['String']['input'];
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
   readonly department: DepartmentCreateNestedOneWithoutEmployeesInput;
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly gender: Scalars['String'];
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly jobTitle: Scalars['String'];
-  readonly lastName: Scalars['String'];
+  readonly email: Scalars['String']['input'];
+  readonly firstName: Scalars['String']['input'];
+  readonly gender: Scalars['String']['input'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly jobTitle: Scalars['String']['input'];
+  readonly lastName: Scalars['String']['input'];
   readonly locationState: LocationStateCreateNestedOneWithoutEmployeesInput;
-  readonly phone: Scalars['String'];
-  readonly streetAddress: Scalars['String'];
-  readonly zipCode: Scalars['String'];
+  readonly phone: Scalars['String']['input'];
+  readonly streetAddress: Scalars['String']['input'];
+  readonly zipCode: Scalars['String']['input'];
 };
 
 export type EmployeeCreateNestedManyWithoutDepartmentInput = {
@@ -805,35 +811,35 @@ export type EmployeeCreateOrConnectWithoutLocationStateInput = {
 };
 
 export type EmployeeCreateWithoutDepartmentInput = {
-  readonly city: Scalars['String'];
-  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly gender: Scalars['String'];
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly jobTitle: Scalars['String'];
-  readonly lastName: Scalars['String'];
+  readonly city: Scalars['String']['input'];
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email: Scalars['String']['input'];
+  readonly firstName: Scalars['String']['input'];
+  readonly gender: Scalars['String']['input'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly jobTitle: Scalars['String']['input'];
+  readonly lastName: Scalars['String']['input'];
   readonly locationState: LocationStateCreateNestedOneWithoutEmployeesInput;
-  readonly phone: Scalars['String'];
-  readonly streetAddress: Scalars['String'];
-  readonly zipCode: Scalars['String'];
+  readonly phone: Scalars['String']['input'];
+  readonly streetAddress: Scalars['String']['input'];
+  readonly zipCode: Scalars['String']['input'];
 };
 
 export type EmployeeCreateWithoutLocationStateInput = {
-  readonly city: Scalars['String'];
-  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly city: Scalars['String']['input'];
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
   readonly department: DepartmentCreateNestedOneWithoutEmployeesInput;
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly gender: Scalars['String'];
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly jobTitle: Scalars['String'];
-  readonly lastName: Scalars['String'];
-  readonly phone: Scalars['String'];
-  readonly streetAddress: Scalars['String'];
-  readonly zipCode: Scalars['String'];
+  readonly email: Scalars['String']['input'];
+  readonly firstName: Scalars['String']['input'];
+  readonly gender: Scalars['String']['input'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly jobTitle: Scalars['String']['input'];
+  readonly lastName: Scalars['String']['input'];
+  readonly phone: Scalars['String']['input'];
+  readonly streetAddress: Scalars['String']['input'];
+  readonly zipCode: Scalars['String']['input'];
 };
 
 export type EmployeeGroupBy = {
@@ -841,20 +847,20 @@ export type EmployeeGroupBy = {
   readonly _count?: Maybe<EmployeeCountAggregate>;
   readonly _max?: Maybe<EmployeeMaxAggregate>;
   readonly _min?: Maybe<EmployeeMinAggregate>;
-  readonly city: Scalars['String'];
-  readonly dateStarted: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly departmentId: Scalars['String'];
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly gender: Scalars['String'];
-  readonly id: Scalars['String'];
-  readonly jobTitle: Scalars['String'];
-  readonly lastName: Scalars['String'];
-  readonly phone: Scalars['String'];
-  readonly stateId: Scalars['String'];
-  readonly streetAddress: Scalars['String'];
-  readonly zipCode: Scalars['String'];
+  readonly city: Scalars['String']['output'];
+  readonly dateStarted: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly departmentId: Scalars['String']['output'];
+  readonly email: Scalars['String']['output'];
+  readonly firstName: Scalars['String']['output'];
+  readonly gender: Scalars['String']['output'];
+  readonly id: Scalars['String']['output'];
+  readonly jobTitle: Scalars['String']['output'];
+  readonly lastName: Scalars['String']['output'];
+  readonly phone: Scalars['String']['output'];
+  readonly stateId: Scalars['String']['output'];
+  readonly streetAddress: Scalars['String']['output'];
+  readonly zipCode: Scalars['String']['output'];
 };
 
 export type EmployeeListRelationFilter = {
@@ -865,20 +871,20 @@ export type EmployeeListRelationFilter = {
 
 export type EmployeeMaxAggregate = {
   readonly __typename?: 'EmployeeMaxAggregate';
-  readonly city?: Maybe<Scalars['String']>;
-  readonly dateStarted?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly departmentId?: Maybe<Scalars['String']>;
-  readonly email?: Maybe<Scalars['String']>;
-  readonly firstName?: Maybe<Scalars['String']>;
-  readonly gender?: Maybe<Scalars['String']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly jobTitle?: Maybe<Scalars['String']>;
-  readonly lastName?: Maybe<Scalars['String']>;
-  readonly phone?: Maybe<Scalars['String']>;
-  readonly stateId?: Maybe<Scalars['String']>;
-  readonly streetAddress?: Maybe<Scalars['String']>;
-  readonly zipCode?: Maybe<Scalars['String']>;
+  readonly city?: Maybe<Scalars['String']['output']>;
+  readonly dateStarted?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly departmentId?: Maybe<Scalars['String']['output']>;
+  readonly email?: Maybe<Scalars['String']['output']>;
+  readonly firstName?: Maybe<Scalars['String']['output']>;
+  readonly gender?: Maybe<Scalars['String']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly jobTitle?: Maybe<Scalars['String']['output']>;
+  readonly lastName?: Maybe<Scalars['String']['output']>;
+  readonly phone?: Maybe<Scalars['String']['output']>;
+  readonly stateId?: Maybe<Scalars['String']['output']>;
+  readonly streetAddress?: Maybe<Scalars['String']['output']>;
+  readonly zipCode?: Maybe<Scalars['String']['output']>;
 };
 
 export type EmployeeMaxOrderByAggregateInput = {
@@ -900,20 +906,20 @@ export type EmployeeMaxOrderByAggregateInput = {
 
 export type EmployeeMinAggregate = {
   readonly __typename?: 'EmployeeMinAggregate';
-  readonly city?: Maybe<Scalars['String']>;
-  readonly dateStarted?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly departmentId?: Maybe<Scalars['String']>;
-  readonly email?: Maybe<Scalars['String']>;
-  readonly firstName?: Maybe<Scalars['String']>;
-  readonly gender?: Maybe<Scalars['String']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly jobTitle?: Maybe<Scalars['String']>;
-  readonly lastName?: Maybe<Scalars['String']>;
-  readonly phone?: Maybe<Scalars['String']>;
-  readonly stateId?: Maybe<Scalars['String']>;
-  readonly streetAddress?: Maybe<Scalars['String']>;
-  readonly zipCode?: Maybe<Scalars['String']>;
+  readonly city?: Maybe<Scalars['String']['output']>;
+  readonly dateStarted?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly departmentId?: Maybe<Scalars['String']['output']>;
+  readonly email?: Maybe<Scalars['String']['output']>;
+  readonly firstName?: Maybe<Scalars['String']['output']>;
+  readonly gender?: Maybe<Scalars['String']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly jobTitle?: Maybe<Scalars['String']['output']>;
+  readonly lastName?: Maybe<Scalars['String']['output']>;
+  readonly phone?: Maybe<Scalars['String']['output']>;
+  readonly stateId?: Maybe<Scalars['String']['output']>;
+  readonly streetAddress?: Maybe<Scalars['String']['output']>;
+  readonly zipCode?: Maybe<Scalars['String']['output']>;
 };
 
 export type EmployeeMinOrderByAggregateInput = {
@@ -1034,35 +1040,35 @@ export type EmployeeScalarWhereWithAggregatesInput = {
 };
 
 export type EmployeeUpdateInput = {
-  readonly city?: InputMaybe<Scalars['String']>;
-  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly city?: InputMaybe<Scalars['String']['input']>;
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
   readonly department?: InputMaybe<DepartmentUpdateOneRequiredWithoutEmployeesNestedInput>;
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly firstName?: InputMaybe<Scalars['String']>;
-  readonly gender?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly jobTitle?: InputMaybe<Scalars['String']>;
-  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly firstName?: InputMaybe<Scalars['String']['input']>;
+  readonly gender?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly jobTitle?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName?: InputMaybe<Scalars['String']['input']>;
   readonly locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeesNestedInput>;
-  readonly phone?: InputMaybe<Scalars['String']>;
-  readonly streetAddress?: InputMaybe<Scalars['String']>;
-  readonly zipCode?: InputMaybe<Scalars['String']>;
+  readonly phone?: InputMaybe<Scalars['String']['input']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']['input']>;
+  readonly zipCode?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type EmployeeUpdateManyMutationInput = {
-  readonly city?: InputMaybe<Scalars['String']>;
-  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly firstName?: InputMaybe<Scalars['String']>;
-  readonly gender?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly jobTitle?: InputMaybe<Scalars['String']>;
-  readonly lastName?: InputMaybe<Scalars['String']>;
-  readonly phone?: InputMaybe<Scalars['String']>;
-  readonly streetAddress?: InputMaybe<Scalars['String']>;
-  readonly zipCode?: InputMaybe<Scalars['String']>;
+  readonly city?: InputMaybe<Scalars['String']['input']>;
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly firstName?: InputMaybe<Scalars['String']['input']>;
+  readonly gender?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly jobTitle?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName?: InputMaybe<Scalars['String']['input']>;
+  readonly phone?: InputMaybe<Scalars['String']['input']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']['input']>;
+  readonly zipCode?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type EmployeeUpdateManyWithWhereWithoutDepartmentInput = {
@@ -1124,35 +1130,35 @@ export type EmployeeUpdateWithWhereUniqueWithoutLocationStateInput = {
 };
 
 export type EmployeeUpdateWithoutDepartmentInput = {
-  readonly city?: InputMaybe<Scalars['String']>;
-  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly firstName?: InputMaybe<Scalars['String']>;
-  readonly gender?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly jobTitle?: InputMaybe<Scalars['String']>;
-  readonly lastName?: InputMaybe<Scalars['String']>;
+  readonly city?: InputMaybe<Scalars['String']['input']>;
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly firstName?: InputMaybe<Scalars['String']['input']>;
+  readonly gender?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly jobTitle?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName?: InputMaybe<Scalars['String']['input']>;
   readonly locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeesNestedInput>;
-  readonly phone?: InputMaybe<Scalars['String']>;
-  readonly streetAddress?: InputMaybe<Scalars['String']>;
-  readonly zipCode?: InputMaybe<Scalars['String']>;
+  readonly phone?: InputMaybe<Scalars['String']['input']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']['input']>;
+  readonly zipCode?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type EmployeeUpdateWithoutLocationStateInput = {
-  readonly city?: InputMaybe<Scalars['String']>;
-  readonly dateStarted?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly city?: InputMaybe<Scalars['String']['input']>;
+  readonly dateStarted?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
   readonly department?: InputMaybe<DepartmentUpdateOneRequiredWithoutEmployeesNestedInput>;
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly firstName?: InputMaybe<Scalars['String']>;
-  readonly gender?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly jobTitle?: InputMaybe<Scalars['String']>;
-  readonly lastName?: InputMaybe<Scalars['String']>;
-  readonly phone?: InputMaybe<Scalars['String']>;
-  readonly streetAddress?: InputMaybe<Scalars['String']>;
-  readonly zipCode?: InputMaybe<Scalars['String']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly firstName?: InputMaybe<Scalars['String']['input']>;
+  readonly gender?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly jobTitle?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName?: InputMaybe<Scalars['String']['input']>;
+  readonly phone?: InputMaybe<Scalars['String']['input']>;
+  readonly streetAddress?: InputMaybe<Scalars['String']['input']>;
+  readonly zipCode?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type EmployeeUpsertWithWhereUniqueWithoutDepartmentInput = {
@@ -1190,19 +1196,19 @@ export type EmployeeWhereInput = {
 };
 
 export type EmployeeWhereUniqueInput = {
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type FloatFilter = {
-  readonly equals?: InputMaybe<Scalars['Float']>;
-  readonly gt?: InputMaybe<Scalars['Float']>;
-  readonly gte?: InputMaybe<Scalars['Float']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
-  readonly lt?: InputMaybe<Scalars['Float']>;
-  readonly lte?: InputMaybe<Scalars['Float']>;
+  readonly equals?: InputMaybe<Scalars['Float']['input']>;
+  readonly gt?: InputMaybe<Scalars['Float']['input']>;
+  readonly gte?: InputMaybe<Scalars['Float']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']['input']>>;
+  readonly lt?: InputMaybe<Scalars['Float']['input']>;
+  readonly lte?: InputMaybe<Scalars['Float']['input']>;
   readonly not?: InputMaybe<NestedFloatFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']['input']>>;
 };
 
 export type FloatWithAggregatesFilter = {
@@ -1211,25 +1217,25 @@ export type FloatWithAggregatesFilter = {
   readonly _max?: InputMaybe<NestedFloatFilter>;
   readonly _min?: InputMaybe<NestedFloatFilter>;
   readonly _sum?: InputMaybe<NestedFloatFilter>;
-  readonly equals?: InputMaybe<Scalars['Float']>;
-  readonly gt?: InputMaybe<Scalars['Float']>;
-  readonly gte?: InputMaybe<Scalars['Float']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
-  readonly lt?: InputMaybe<Scalars['Float']>;
-  readonly lte?: InputMaybe<Scalars['Float']>;
+  readonly equals?: InputMaybe<Scalars['Float']['input']>;
+  readonly gt?: InputMaybe<Scalars['Float']['input']>;
+  readonly gte?: InputMaybe<Scalars['Float']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']['input']>>;
+  readonly lt?: InputMaybe<Scalars['Float']['input']>;
+  readonly lte?: InputMaybe<Scalars['Float']['input']>;
   readonly not?: InputMaybe<NestedFloatWithAggregatesFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']['input']>>;
 };
 
 export type IntFilter = {
-  readonly equals?: InputMaybe<Scalars['Int']>;
-  readonly gt?: InputMaybe<Scalars['Int']>;
-  readonly gte?: InputMaybe<Scalars['Int']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
-  readonly lt?: InputMaybe<Scalars['Int']>;
-  readonly lte?: InputMaybe<Scalars['Int']>;
+  readonly equals?: InputMaybe<Scalars['Int']['input']>;
+  readonly gt?: InputMaybe<Scalars['Int']['input']>;
+  readonly gte?: InputMaybe<Scalars['Int']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']['input']>>;
+  readonly lt?: InputMaybe<Scalars['Int']['input']>;
+  readonly lte?: InputMaybe<Scalars['Int']['input']>;
   readonly not?: InputMaybe<NestedIntFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']['input']>>;
 };
 
 export type IntWithAggregatesFilter = {
@@ -1238,31 +1244,31 @@ export type IntWithAggregatesFilter = {
   readonly _max?: InputMaybe<NestedIntFilter>;
   readonly _min?: InputMaybe<NestedIntFilter>;
   readonly _sum?: InputMaybe<NestedIntFilter>;
-  readonly equals?: InputMaybe<Scalars['Int']>;
-  readonly gt?: InputMaybe<Scalars['Int']>;
-  readonly gte?: InputMaybe<Scalars['Int']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
-  readonly lt?: InputMaybe<Scalars['Int']>;
-  readonly lte?: InputMaybe<Scalars['Int']>;
+  readonly equals?: InputMaybe<Scalars['Int']['input']>;
+  readonly gt?: InputMaybe<Scalars['Int']['input']>;
+  readonly gte?: InputMaybe<Scalars['Int']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']['input']>>;
+  readonly lt?: InputMaybe<Scalars['Int']['input']>;
+  readonly lte?: InputMaybe<Scalars['Int']['input']>;
   readonly not?: InputMaybe<NestedIntWithAggregatesFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']['input']>>;
 };
 
 export type Inventory = {
   readonly __typename?: 'Inventory';
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id: Scalars['String']['output'];
   readonly product: Product;
-  readonly productId: Scalars['String'];
-  readonly quantity: Scalars['Int'];
+  readonly productId: Scalars['String']['output'];
+  readonly quantity: Scalars['Int']['output'];
   readonly size: Size;
-  readonly sizeId: Scalars['String'];
+  readonly sizeId: Scalars['String']['output'];
 };
 
 export type InventoryAvgAggregate = {
   readonly __typename?: 'InventoryAvgAggregate';
-  readonly quantity?: Maybe<Scalars['Float']>;
+  readonly quantity?: Maybe<Scalars['Float']['output']>;
 };
 
 export type InventoryAvgOrderByAggregateInput = {
@@ -1271,13 +1277,13 @@ export type InventoryAvgOrderByAggregateInput = {
 
 export type InventoryCountAggregate = {
   readonly __typename?: 'InventoryCountAggregate';
-  readonly _all: Scalars['Int'];
-  readonly dateCreated: Scalars['Int'];
-  readonly dateUpdated: Scalars['Int'];
-  readonly id: Scalars['Int'];
-  readonly productId: Scalars['Int'];
-  readonly quantity: Scalars['Int'];
-  readonly sizeId: Scalars['Int'];
+  readonly _all: Scalars['Int']['output'];
+  readonly dateCreated: Scalars['Int']['output'];
+  readonly dateUpdated: Scalars['Int']['output'];
+  readonly id: Scalars['Int']['output'];
+  readonly productId: Scalars['Int']['output'];
+  readonly quantity: Scalars['Int']['output'];
+  readonly sizeId: Scalars['Int']['output'];
 };
 
 export type InventoryCountOrderByAggregateInput = {
@@ -1290,11 +1296,11 @@ export type InventoryCountOrderByAggregateInput = {
 };
 
 export type InventoryCreateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly product: ProductCreateNestedOneWithoutInventoryInput;
-  readonly quantity: Scalars['Int'];
+  readonly quantity: Scalars['Int']['input'];
   readonly size: SizeCreateNestedOneWithoutInventoryInput;
 };
 
@@ -1321,19 +1327,19 @@ export type InventoryCreateOrConnectWithoutSizeInput = {
 };
 
 export type InventoryCreateWithoutProductInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly quantity: Scalars['Int'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly quantity: Scalars['Int']['input'];
   readonly size: SizeCreateNestedOneWithoutInventoryInput;
 };
 
 export type InventoryCreateWithoutSizeInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly product: ProductCreateNestedOneWithoutInventoryInput;
-  readonly quantity: Scalars['Int'];
+  readonly quantity: Scalars['Int']['input'];
 };
 
 export type InventoryGroupBy = {
@@ -1343,12 +1349,12 @@ export type InventoryGroupBy = {
   readonly _max?: Maybe<InventoryMaxAggregate>;
   readonly _min?: Maybe<InventoryMinAggregate>;
   readonly _sum?: Maybe<InventorySumAggregate>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id: Scalars['String'];
-  readonly productId: Scalars['String'];
-  readonly quantity: Scalars['Int'];
-  readonly sizeId: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id: Scalars['String']['output'];
+  readonly productId: Scalars['String']['output'];
+  readonly quantity: Scalars['Int']['output'];
+  readonly sizeId: Scalars['String']['output'];
 };
 
 export type InventoryListRelationFilter = {
@@ -1359,12 +1365,12 @@ export type InventoryListRelationFilter = {
 
 export type InventoryMaxAggregate = {
   readonly __typename?: 'InventoryMaxAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly productId?: Maybe<Scalars['String']>;
-  readonly quantity?: Maybe<Scalars['Int']>;
-  readonly sizeId?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly productId?: Maybe<Scalars['String']['output']>;
+  readonly quantity?: Maybe<Scalars['Int']['output']>;
+  readonly sizeId?: Maybe<Scalars['String']['output']>;
 };
 
 export type InventoryMaxOrderByAggregateInput = {
@@ -1378,12 +1384,12 @@ export type InventoryMaxOrderByAggregateInput = {
 
 export type InventoryMinAggregate = {
   readonly __typename?: 'InventoryMinAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly productId?: Maybe<Scalars['String']>;
-  readonly quantity?: Maybe<Scalars['Int']>;
-  readonly sizeId?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly productId?: Maybe<Scalars['String']['output']>;
+  readonly quantity?: Maybe<Scalars['Int']['output']>;
+  readonly sizeId?: Maybe<Scalars['String']['output']>;
 };
 
 export type InventoryMinOrderByAggregateInput = {
@@ -1459,7 +1465,7 @@ export type InventoryScalarWhereWithAggregatesInput = {
 
 export type InventorySumAggregate = {
   readonly __typename?: 'InventorySumAggregate';
-  readonly quantity?: Maybe<Scalars['Int']>;
+  readonly quantity?: Maybe<Scalars['Int']['output']>;
 };
 
 export type InventorySumOrderByAggregateInput = {
@@ -1467,19 +1473,19 @@ export type InventorySumOrderByAggregateInput = {
 };
 
 export type InventoryUpdateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutInventoryNestedInput>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
   readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutInventoryNestedInput>;
 };
 
 export type InventoryUpdateManyMutationInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type InventoryUpdateManyWithWhereWithoutProductInput = {
@@ -1529,19 +1535,19 @@ export type InventoryUpdateWithWhereUniqueWithoutSizeInput = {
 };
 
 export type InventoryUpdateWithoutProductInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
   readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutInventoryNestedInput>;
 };
 
 export type InventoryUpdateWithoutSizeInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutInventoryNestedInput>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type InventoryUpsertWithWhereUniqueWithoutProductInput = {
@@ -1571,27 +1577,27 @@ export type InventoryWhereInput = {
 };
 
 export type InventoryWhereUniqueInput = {
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type LocationState = {
   readonly __typename?: 'LocationState';
   readonly _count?: Maybe<LocationStateCount>;
   readonly customers: ReadonlyArray<Customer>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
   readonly employees: ReadonlyArray<Employee>;
-  readonly id: Scalars['String'];
-  readonly name: Scalars['String'];
-  readonly shortName: Scalars['String'];
+  readonly id: Scalars['String']['output'];
+  readonly name: Scalars['String']['output'];
+  readonly shortName: Scalars['String']['output'];
 };
 
 export type LocationStateCustomersArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<CustomerScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<CustomerWhereInput>;
 };
 
@@ -1599,25 +1605,25 @@ export type LocationStateEmployeesArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<EmployeeScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<EmployeeWhereInput>;
 };
 
 export type LocationStateCount = {
   readonly __typename?: 'LocationStateCount';
-  readonly customers: Scalars['Int'];
-  readonly employees: Scalars['Int'];
+  readonly customers: Scalars['Int']['output'];
+  readonly employees: Scalars['Int']['output'];
 };
 
 export type LocationStateCountAggregate = {
   readonly __typename?: 'LocationStateCountAggregate';
-  readonly _all: Scalars['Int'];
-  readonly dateCreated: Scalars['Int'];
-  readonly dateUpdated: Scalars['Int'];
-  readonly id: Scalars['Int'];
-  readonly name: Scalars['Int'];
-  readonly shortName: Scalars['Int'];
+  readonly _all: Scalars['Int']['output'];
+  readonly dateCreated: Scalars['Int']['output'];
+  readonly dateUpdated: Scalars['Int']['output'];
+  readonly id: Scalars['Int']['output'];
+  readonly name: Scalars['Int']['output'];
+  readonly shortName: Scalars['Int']['output'];
 };
 
 export type LocationStateCountOrderByAggregateInput = {
@@ -1630,12 +1636,12 @@ export type LocationStateCountOrderByAggregateInput = {
 
 export type LocationStateCreateInput = {
   readonly customers?: InputMaybe<CustomerCreateNestedManyWithoutLocationStateInput>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
   readonly employees?: InputMaybe<EmployeeCreateNestedManyWithoutLocationStateInput>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name: Scalars['String'];
-  readonly shortName: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name: Scalars['String']['input'];
+  readonly shortName: Scalars['String']['input'];
 };
 
 export type LocationStateCreateNestedOneWithoutCustomersInput = {
@@ -1661,21 +1667,21 @@ export type LocationStateCreateOrConnectWithoutEmployeesInput = {
 };
 
 export type LocationStateCreateWithoutCustomersInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
   readonly employees?: InputMaybe<EmployeeCreateNestedManyWithoutLocationStateInput>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name: Scalars['String'];
-  readonly shortName: Scalars['String'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name: Scalars['String']['input'];
+  readonly shortName: Scalars['String']['input'];
 };
 
 export type LocationStateCreateWithoutEmployeesInput = {
   readonly customers?: InputMaybe<CustomerCreateNestedManyWithoutLocationStateInput>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name: Scalars['String'];
-  readonly shortName: Scalars['String'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name: Scalars['String']['input'];
+  readonly shortName: Scalars['String']['input'];
 };
 
 export type LocationStateGroupBy = {
@@ -1683,20 +1689,20 @@ export type LocationStateGroupBy = {
   readonly _count?: Maybe<LocationStateCountAggregate>;
   readonly _max?: Maybe<LocationStateMaxAggregate>;
   readonly _min?: Maybe<LocationStateMinAggregate>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id: Scalars['String'];
-  readonly name: Scalars['String'];
-  readonly shortName: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id: Scalars['String']['output'];
+  readonly name: Scalars['String']['output'];
+  readonly shortName: Scalars['String']['output'];
 };
 
 export type LocationStateMaxAggregate = {
   readonly __typename?: 'LocationStateMaxAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
-  readonly shortName?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly name?: Maybe<Scalars['String']['output']>;
+  readonly shortName?: Maybe<Scalars['String']['output']>;
 };
 
 export type LocationStateMaxOrderByAggregateInput = {
@@ -1709,11 +1715,11 @@ export type LocationStateMaxOrderByAggregateInput = {
 
 export type LocationStateMinAggregate = {
   readonly __typename?: 'LocationStateMinAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
-  readonly shortName?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly name?: Maybe<Scalars['String']['output']>;
+  readonly shortName?: Maybe<Scalars['String']['output']>;
 };
 
 export type LocationStateMinOrderByAggregateInput = {
@@ -1771,20 +1777,20 @@ export type LocationStateScalarWhereWithAggregatesInput = {
 
 export type LocationStateUpdateInput = {
   readonly customers?: InputMaybe<CustomerUpdateManyWithoutLocationStateNestedInput>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
   readonly employees?: InputMaybe<EmployeeUpdateManyWithoutLocationStateNestedInput>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
-  readonly shortName?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
+  readonly shortName?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type LocationStateUpdateManyMutationInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
-  readonly shortName?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
+  readonly shortName?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type LocationStateUpdateOneRequiredWithoutEmployeesNestedInput = {
@@ -1799,28 +1805,28 @@ export type LocationStateUpdateOneWithoutCustomersNestedInput = {
   readonly connect?: InputMaybe<LocationStateWhereUniqueInput>;
   readonly connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutCustomersInput>;
   readonly create?: InputMaybe<LocationStateCreateWithoutCustomersInput>;
-  readonly delete?: InputMaybe<Scalars['Boolean']>;
-  readonly disconnect?: InputMaybe<Scalars['Boolean']>;
+  readonly delete?: InputMaybe<Scalars['Boolean']['input']>;
+  readonly disconnect?: InputMaybe<Scalars['Boolean']['input']>;
   readonly update?: InputMaybe<LocationStateUpdateWithoutCustomersInput>;
   readonly upsert?: InputMaybe<LocationStateUpsertWithoutCustomersInput>;
 };
 
 export type LocationStateUpdateWithoutCustomersInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
   readonly employees?: InputMaybe<EmployeeUpdateManyWithoutLocationStateNestedInput>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
-  readonly shortName?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
+  readonly shortName?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type LocationStateUpdateWithoutEmployeesInput = {
   readonly customers?: InputMaybe<CustomerUpdateManyWithoutLocationStateNestedInput>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
-  readonly shortName?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
+  readonly shortName?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type LocationStateUpsertWithoutCustomersInput = {
@@ -1847,9 +1853,9 @@ export type LocationStateWhereInput = {
 };
 
 export type LocationStateWhereUniqueInput = {
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
-  readonly shortName?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
+  readonly shortName?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Mutation = {
@@ -1887,7 +1893,7 @@ export type Mutation = {
   readonly deleteOneRole?: Maybe<Role>;
   readonly deleteOneSize?: Maybe<Size>;
   readonly deleteOneUser?: Maybe<User>;
-  readonly login?: Maybe<Scalars['String']>;
+  readonly login?: Maybe<Scalars['String']['output']>;
   readonly updateManyCustomer: AffectedRowsOutput;
   readonly updateManyDepartment: AffectedRowsOutput;
   readonly updateManyEmployee: AffectedRowsOutput;
@@ -2056,8 +2062,8 @@ export type MutationDeleteOneUserArgs = {
 };
 
 export type MutationLoginArgs = {
-  password: Scalars['String'];
-  userName: Scalars['String'];
+  password: Scalars['String']['input'];
+  userName: Scalars['String']['input'];
 };
 
 export type MutationUpdateManyCustomerArgs = {
@@ -2237,64 +2243,64 @@ export type MutationUpsertOneUserArgs = {
 };
 
 export type NestedDateTimeFilter = {
-  readonly equals?: InputMaybe<Scalars['DateTime']>;
-  readonly gt?: InputMaybe<Scalars['DateTime']>;
-  readonly gte?: InputMaybe<Scalars['DateTime']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
-  readonly lt?: InputMaybe<Scalars['DateTime']>;
-  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly equals?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']['input']>;
   readonly not?: InputMaybe<NestedDateTimeFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
 };
 
 export type NestedDateTimeNullableFilter = {
-  readonly equals?: InputMaybe<Scalars['DateTime']>;
-  readonly gt?: InputMaybe<Scalars['DateTime']>;
-  readonly gte?: InputMaybe<Scalars['DateTime']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
-  readonly lt?: InputMaybe<Scalars['DateTime']>;
-  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly equals?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']['input']>;
   readonly not?: InputMaybe<NestedDateTimeNullableFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
 };
 
 export type NestedDateTimeNullableWithAggregatesFilter = {
   readonly _count?: InputMaybe<NestedIntNullableFilter>;
   readonly _max?: InputMaybe<NestedDateTimeNullableFilter>;
   readonly _min?: InputMaybe<NestedDateTimeNullableFilter>;
-  readonly equals?: InputMaybe<Scalars['DateTime']>;
-  readonly gt?: InputMaybe<Scalars['DateTime']>;
-  readonly gte?: InputMaybe<Scalars['DateTime']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
-  readonly lt?: InputMaybe<Scalars['DateTime']>;
-  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly equals?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']['input']>;
   readonly not?: InputMaybe<NestedDateTimeNullableWithAggregatesFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
 };
 
 export type NestedDateTimeWithAggregatesFilter = {
   readonly _count?: InputMaybe<NestedIntFilter>;
   readonly _max?: InputMaybe<NestedDateTimeFilter>;
   readonly _min?: InputMaybe<NestedDateTimeFilter>;
-  readonly equals?: InputMaybe<Scalars['DateTime']>;
-  readonly gt?: InputMaybe<Scalars['DateTime']>;
-  readonly gte?: InputMaybe<Scalars['DateTime']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
-  readonly lt?: InputMaybe<Scalars['DateTime']>;
-  readonly lte?: InputMaybe<Scalars['DateTime']>;
+  readonly equals?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly gte?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
+  readonly lt?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly lte?: InputMaybe<Scalars['DateTime']['input']>;
   readonly not?: InputMaybe<NestedDateTimeWithAggregatesFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['DateTime']['input']>>;
 };
 
 export type NestedFloatFilter = {
-  readonly equals?: InputMaybe<Scalars['Float']>;
-  readonly gt?: InputMaybe<Scalars['Float']>;
-  readonly gte?: InputMaybe<Scalars['Float']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
-  readonly lt?: InputMaybe<Scalars['Float']>;
-  readonly lte?: InputMaybe<Scalars['Float']>;
+  readonly equals?: InputMaybe<Scalars['Float']['input']>;
+  readonly gt?: InputMaybe<Scalars['Float']['input']>;
+  readonly gte?: InputMaybe<Scalars['Float']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']['input']>>;
+  readonly lt?: InputMaybe<Scalars['Float']['input']>;
+  readonly lte?: InputMaybe<Scalars['Float']['input']>;
   readonly not?: InputMaybe<NestedFloatFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']['input']>>;
 };
 
 export type NestedFloatWithAggregatesFilter = {
@@ -2303,36 +2309,36 @@ export type NestedFloatWithAggregatesFilter = {
   readonly _max?: InputMaybe<NestedFloatFilter>;
   readonly _min?: InputMaybe<NestedFloatFilter>;
   readonly _sum?: InputMaybe<NestedFloatFilter>;
-  readonly equals?: InputMaybe<Scalars['Float']>;
-  readonly gt?: InputMaybe<Scalars['Float']>;
-  readonly gte?: InputMaybe<Scalars['Float']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
-  readonly lt?: InputMaybe<Scalars['Float']>;
-  readonly lte?: InputMaybe<Scalars['Float']>;
+  readonly equals?: InputMaybe<Scalars['Float']['input']>;
+  readonly gt?: InputMaybe<Scalars['Float']['input']>;
+  readonly gte?: InputMaybe<Scalars['Float']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Float']['input']>>;
+  readonly lt?: InputMaybe<Scalars['Float']['input']>;
+  readonly lte?: InputMaybe<Scalars['Float']['input']>;
   readonly not?: InputMaybe<NestedFloatWithAggregatesFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Float']['input']>>;
 };
 
 export type NestedIntFilter = {
-  readonly equals?: InputMaybe<Scalars['Int']>;
-  readonly gt?: InputMaybe<Scalars['Int']>;
-  readonly gte?: InputMaybe<Scalars['Int']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
-  readonly lt?: InputMaybe<Scalars['Int']>;
-  readonly lte?: InputMaybe<Scalars['Int']>;
+  readonly equals?: InputMaybe<Scalars['Int']['input']>;
+  readonly gt?: InputMaybe<Scalars['Int']['input']>;
+  readonly gte?: InputMaybe<Scalars['Int']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']['input']>>;
+  readonly lt?: InputMaybe<Scalars['Int']['input']>;
+  readonly lte?: InputMaybe<Scalars['Int']['input']>;
   readonly not?: InputMaybe<NestedIntFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']['input']>>;
 };
 
 export type NestedIntNullableFilter = {
-  readonly equals?: InputMaybe<Scalars['Int']>;
-  readonly gt?: InputMaybe<Scalars['Int']>;
-  readonly gte?: InputMaybe<Scalars['Int']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
-  readonly lt?: InputMaybe<Scalars['Int']>;
-  readonly lte?: InputMaybe<Scalars['Int']>;
+  readonly equals?: InputMaybe<Scalars['Int']['input']>;
+  readonly gt?: InputMaybe<Scalars['Int']['input']>;
+  readonly gte?: InputMaybe<Scalars['Int']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']['input']>>;
+  readonly lt?: InputMaybe<Scalars['Int']['input']>;
+  readonly lte?: InputMaybe<Scalars['Int']['input']>;
   readonly not?: InputMaybe<NestedIntNullableFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']['input']>>;
 };
 
 export type NestedIntWithAggregatesFilter = {
@@ -2341,67 +2347,67 @@ export type NestedIntWithAggregatesFilter = {
   readonly _max?: InputMaybe<NestedIntFilter>;
   readonly _min?: InputMaybe<NestedIntFilter>;
   readonly _sum?: InputMaybe<NestedIntFilter>;
-  readonly equals?: InputMaybe<Scalars['Int']>;
-  readonly gt?: InputMaybe<Scalars['Int']>;
-  readonly gte?: InputMaybe<Scalars['Int']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
-  readonly lt?: InputMaybe<Scalars['Int']>;
-  readonly lte?: InputMaybe<Scalars['Int']>;
+  readonly equals?: InputMaybe<Scalars['Int']['input']>;
+  readonly gt?: InputMaybe<Scalars['Int']['input']>;
+  readonly gte?: InputMaybe<Scalars['Int']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['Int']['input']>>;
+  readonly lt?: InputMaybe<Scalars['Int']['input']>;
+  readonly lte?: InputMaybe<Scalars['Int']['input']>;
   readonly not?: InputMaybe<NestedIntWithAggregatesFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']>>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['Int']['input']>>;
 };
 
 export type NestedStringFilter = {
-  readonly contains?: InputMaybe<Scalars['String']>;
-  readonly endsWith?: InputMaybe<Scalars['String']>;
-  readonly equals?: InputMaybe<Scalars['String']>;
-  readonly gt?: InputMaybe<Scalars['String']>;
-  readonly gte?: InputMaybe<Scalars['String']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']>>;
-  readonly lt?: InputMaybe<Scalars['String']>;
-  readonly lte?: InputMaybe<Scalars['String']>;
+  readonly contains?: InputMaybe<Scalars['String']['input']>;
+  readonly endsWith?: InputMaybe<Scalars['String']['input']>;
+  readonly equals?: InputMaybe<Scalars['String']['input']>;
+  readonly gt?: InputMaybe<Scalars['String']['input']>;
+  readonly gte?: InputMaybe<Scalars['String']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly lt?: InputMaybe<Scalars['String']['input']>;
+  readonly lte?: InputMaybe<Scalars['String']['input']>;
   readonly not?: InputMaybe<NestedStringFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']>>;
-  readonly startsWith?: InputMaybe<Scalars['String']>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type NestedStringWithAggregatesFilter = {
   readonly _count?: InputMaybe<NestedIntFilter>;
   readonly _max?: InputMaybe<NestedStringFilter>;
   readonly _min?: InputMaybe<NestedStringFilter>;
-  readonly contains?: InputMaybe<Scalars['String']>;
-  readonly endsWith?: InputMaybe<Scalars['String']>;
-  readonly equals?: InputMaybe<Scalars['String']>;
-  readonly gt?: InputMaybe<Scalars['String']>;
-  readonly gte?: InputMaybe<Scalars['String']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']>>;
-  readonly lt?: InputMaybe<Scalars['String']>;
-  readonly lte?: InputMaybe<Scalars['String']>;
+  readonly contains?: InputMaybe<Scalars['String']['input']>;
+  readonly endsWith?: InputMaybe<Scalars['String']['input']>;
+  readonly equals?: InputMaybe<Scalars['String']['input']>;
+  readonly gt?: InputMaybe<Scalars['String']['input']>;
+  readonly gte?: InputMaybe<Scalars['String']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly lt?: InputMaybe<Scalars['String']['input']>;
+  readonly lte?: InputMaybe<Scalars['String']['input']>;
   readonly not?: InputMaybe<NestedStringWithAggregatesFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']>>;
-  readonly startsWith?: InputMaybe<Scalars['String']>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Product = {
   readonly __typename?: 'Product';
   readonly _count?: Maybe<ProductCount>;
-  readonly cost: Scalars['Float'];
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id: Scalars['String'];
+  readonly cost: Scalars['Float']['output'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id: Scalars['String']['output'];
   readonly inventory: ReadonlyArray<Inventory>;
-  readonly name: Scalars['String'];
+  readonly name: Scalars['String']['output'];
   readonly productSales: ReadonlyArray<ProductSale>;
   readonly productTransactions: ReadonlyArray<ProductTransaction>;
-  readonly rating: Scalars['Float'];
+  readonly rating: Scalars['Float']['output'];
 };
 
 export type ProductInventoryArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<InventoryScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<InventoryWhereInput>;
 };
 
@@ -2409,8 +2415,8 @@ export type ProductProductSalesArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductSaleScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductSaleWhereInput>;
 };
 
@@ -2418,15 +2424,15 @@ export type ProductProductTransactionsArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductTransactionScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
 };
 
 export type ProductAvgAggregate = {
   readonly __typename?: 'ProductAvgAggregate';
-  readonly cost?: Maybe<Scalars['Float']>;
-  readonly rating?: Maybe<Scalars['Float']>;
+  readonly cost?: Maybe<Scalars['Float']['output']>;
+  readonly rating?: Maybe<Scalars['Float']['output']>;
 };
 
 export type ProductAvgOrderByAggregateInput = {
@@ -2436,20 +2442,20 @@ export type ProductAvgOrderByAggregateInput = {
 
 export type ProductCount = {
   readonly __typename?: 'ProductCount';
-  readonly inventory: Scalars['Int'];
-  readonly productSales: Scalars['Int'];
-  readonly productTransactions: Scalars['Int'];
+  readonly inventory: Scalars['Int']['output'];
+  readonly productSales: Scalars['Int']['output'];
+  readonly productTransactions: Scalars['Int']['output'];
 };
 
 export type ProductCountAggregate = {
   readonly __typename?: 'ProductCountAggregate';
-  readonly _all: Scalars['Int'];
-  readonly cost: Scalars['Int'];
-  readonly dateCreated: Scalars['Int'];
-  readonly dateUpdated: Scalars['Int'];
-  readonly id: Scalars['Int'];
-  readonly name: Scalars['Int'];
-  readonly rating: Scalars['Int'];
+  readonly _all: Scalars['Int']['output'];
+  readonly cost: Scalars['Int']['output'];
+  readonly dateCreated: Scalars['Int']['output'];
+  readonly dateUpdated: Scalars['Int']['output'];
+  readonly id: Scalars['Int']['output'];
+  readonly name: Scalars['Int']['output'];
+  readonly rating: Scalars['Int']['output'];
 };
 
 export type ProductCountOrderByAggregateInput = {
@@ -2462,15 +2468,15 @@ export type ProductCountOrderByAggregateInput = {
 };
 
 export type ProductCreateInput = {
-  readonly cost: Scalars['Float'];
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly cost: Scalars['Float']['input'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
-  readonly name: Scalars['String'];
+  readonly name: Scalars['String']['input'];
   readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
-  readonly rating: Scalars['Float'];
+  readonly rating: Scalars['Float']['input'];
 };
 
 export type ProductCreateNestedOneWithoutInventoryInput = {
@@ -2507,36 +2513,36 @@ export type ProductCreateOrConnectWithoutProductTransactionsInput = {
 };
 
 export type ProductCreateWithoutInventoryInput = {
-  readonly cost: Scalars['Float'];
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name: Scalars['String'];
+  readonly cost: Scalars['Float']['input'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name: Scalars['String']['input'];
   readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
-  readonly rating: Scalars['Float'];
+  readonly rating: Scalars['Float']['input'];
 };
 
 export type ProductCreateWithoutProductSalesInput = {
-  readonly cost: Scalars['Float'];
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly cost: Scalars['Float']['input'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
-  readonly name: Scalars['String'];
+  readonly name: Scalars['String']['input'];
   readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutProductInput>;
-  readonly rating: Scalars['Float'];
+  readonly rating: Scalars['Float']['input'];
 };
 
 export type ProductCreateWithoutProductTransactionsInput = {
-  readonly cost: Scalars['Float'];
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly cost: Scalars['Float']['input'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutProductInput>;
-  readonly name: Scalars['String'];
+  readonly name: Scalars['String']['input'];
   readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutProductInput>;
-  readonly rating: Scalars['Float'];
+  readonly rating: Scalars['Float']['input'];
 };
 
 export type ProductGroupBy = {
@@ -2546,22 +2552,22 @@ export type ProductGroupBy = {
   readonly _max?: Maybe<ProductMaxAggregate>;
   readonly _min?: Maybe<ProductMinAggregate>;
   readonly _sum?: Maybe<ProductSumAggregate>;
-  readonly cost: Scalars['Float'];
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id: Scalars['String'];
-  readonly name: Scalars['String'];
-  readonly rating: Scalars['Float'];
+  readonly cost: Scalars['Float']['output'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id: Scalars['String']['output'];
+  readonly name: Scalars['String']['output'];
+  readonly rating: Scalars['Float']['output'];
 };
 
 export type ProductMaxAggregate = {
   readonly __typename?: 'ProductMaxAggregate';
-  readonly cost?: Maybe<Scalars['Float']>;
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
-  readonly rating?: Maybe<Scalars['Float']>;
+  readonly cost?: Maybe<Scalars['Float']['output']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly name?: Maybe<Scalars['String']['output']>;
+  readonly rating?: Maybe<Scalars['Float']['output']>;
 };
 
 export type ProductMaxOrderByAggregateInput = {
@@ -2575,12 +2581,12 @@ export type ProductMaxOrderByAggregateInput = {
 
 export type ProductMinAggregate = {
   readonly __typename?: 'ProductMinAggregate';
-  readonly cost?: Maybe<Scalars['Float']>;
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
-  readonly rating?: Maybe<Scalars['Float']>;
+  readonly cost?: Maybe<Scalars['Float']['output']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly name?: Maybe<Scalars['String']['output']>;
+  readonly rating?: Maybe<Scalars['Float']['output']>;
 };
 
 export type ProductMinOrderByAggregateInput = {
@@ -2625,19 +2631,19 @@ export type ProductRelationFilter = {
 
 export type ProductSale = {
   readonly __typename?: 'ProductSale';
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id: Scalars['String']['output'];
   readonly product: Product;
-  readonly productId: Scalars['String'];
-  readonly quantity: Scalars['Int'];
+  readonly productId: Scalars['String']['output'];
+  readonly quantity: Scalars['Int']['output'];
   readonly size: Size;
-  readonly sizeId: Scalars['String'];
+  readonly sizeId: Scalars['String']['output'];
 };
 
 export type ProductSaleAvgAggregate = {
   readonly __typename?: 'ProductSaleAvgAggregate';
-  readonly quantity?: Maybe<Scalars['Float']>;
+  readonly quantity?: Maybe<Scalars['Float']['output']>;
 };
 
 export type ProductSaleAvgOrderByAggregateInput = {
@@ -2646,13 +2652,13 @@ export type ProductSaleAvgOrderByAggregateInput = {
 
 export type ProductSaleCountAggregate = {
   readonly __typename?: 'ProductSaleCountAggregate';
-  readonly _all: Scalars['Int'];
-  readonly dateCreated: Scalars['Int'];
-  readonly dateUpdated: Scalars['Int'];
-  readonly id: Scalars['Int'];
-  readonly productId: Scalars['Int'];
-  readonly quantity: Scalars['Int'];
-  readonly sizeId: Scalars['Int'];
+  readonly _all: Scalars['Int']['output'];
+  readonly dateCreated: Scalars['Int']['output'];
+  readonly dateUpdated: Scalars['Int']['output'];
+  readonly id: Scalars['Int']['output'];
+  readonly productId: Scalars['Int']['output'];
+  readonly quantity: Scalars['Int']['output'];
+  readonly sizeId: Scalars['Int']['output'];
 };
 
 export type ProductSaleCountOrderByAggregateInput = {
@@ -2665,11 +2671,11 @@ export type ProductSaleCountOrderByAggregateInput = {
 };
 
 export type ProductSaleCreateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly product: ProductCreateNestedOneWithoutProductSalesInput;
-  readonly quantity: Scalars['Int'];
+  readonly quantity: Scalars['Int']['input'];
   readonly size: SizeCreateNestedOneWithoutProductSalesInput;
 };
 
@@ -2698,19 +2704,19 @@ export type ProductSaleCreateOrConnectWithoutSizeInput = {
 };
 
 export type ProductSaleCreateWithoutProductInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly quantity: Scalars['Int'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly quantity: Scalars['Int']['input'];
   readonly size: SizeCreateNestedOneWithoutProductSalesInput;
 };
 
 export type ProductSaleCreateWithoutSizeInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly product: ProductCreateNestedOneWithoutProductSalesInput;
-  readonly quantity: Scalars['Int'];
+  readonly quantity: Scalars['Int']['input'];
 };
 
 export type ProductSaleGroupBy = {
@@ -2720,12 +2726,12 @@ export type ProductSaleGroupBy = {
   readonly _max?: Maybe<ProductSaleMaxAggregate>;
   readonly _min?: Maybe<ProductSaleMinAggregate>;
   readonly _sum?: Maybe<ProductSaleSumAggregate>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id: Scalars['String'];
-  readonly productId: Scalars['String'];
-  readonly quantity: Scalars['Int'];
-  readonly sizeId: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id: Scalars['String']['output'];
+  readonly productId: Scalars['String']['output'];
+  readonly quantity: Scalars['Int']['output'];
+  readonly sizeId: Scalars['String']['output'];
 };
 
 export type ProductSaleListRelationFilter = {
@@ -2736,12 +2742,12 @@ export type ProductSaleListRelationFilter = {
 
 export type ProductSaleMaxAggregate = {
   readonly __typename?: 'ProductSaleMaxAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly productId?: Maybe<Scalars['String']>;
-  readonly quantity?: Maybe<Scalars['Int']>;
-  readonly sizeId?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly productId?: Maybe<Scalars['String']['output']>;
+  readonly quantity?: Maybe<Scalars['Int']['output']>;
+  readonly sizeId?: Maybe<Scalars['String']['output']>;
 };
 
 export type ProductSaleMaxOrderByAggregateInput = {
@@ -2755,12 +2761,12 @@ export type ProductSaleMaxOrderByAggregateInput = {
 
 export type ProductSaleMinAggregate = {
   readonly __typename?: 'ProductSaleMinAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly productId?: Maybe<Scalars['String']>;
-  readonly quantity?: Maybe<Scalars['Int']>;
-  readonly sizeId?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly productId?: Maybe<Scalars['String']['output']>;
+  readonly quantity?: Maybe<Scalars['Int']['output']>;
+  readonly sizeId?: Maybe<Scalars['String']['output']>;
 };
 
 export type ProductSaleMinOrderByAggregateInput = {
@@ -2836,7 +2842,7 @@ export type ProductSaleScalarWhereWithAggregatesInput = {
 
 export type ProductSaleSumAggregate = {
   readonly __typename?: 'ProductSaleSumAggregate';
-  readonly quantity?: Maybe<Scalars['Int']>;
+  readonly quantity?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ProductSaleSumOrderByAggregateInput = {
@@ -2844,19 +2850,19 @@ export type ProductSaleSumOrderByAggregateInput = {
 };
 
 export type ProductSaleUpdateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutProductSalesNestedInput>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
   readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutProductSalesNestedInput>;
 };
 
 export type ProductSaleUpdateManyMutationInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type ProductSaleUpdateManyWithWhereWithoutProductInput = {
@@ -2910,19 +2916,19 @@ export type ProductSaleUpdateWithWhereUniqueWithoutSizeInput = {
 };
 
 export type ProductSaleUpdateWithoutProductInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
   readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutProductSalesNestedInput>;
 };
 
 export type ProductSaleUpdateWithoutSizeInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutProductSalesNestedInput>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type ProductSaleUpsertWithWhereUniqueWithoutProductInput = {
@@ -2952,7 +2958,7 @@ export type ProductSaleWhereInput = {
 };
 
 export type ProductSaleWhereUniqueInput = {
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
 };
 
 export enum ProductScalarFieldEnum {
@@ -2978,8 +2984,8 @@ export type ProductScalarWhereWithAggregatesInput = {
 
 export type ProductSumAggregate = {
   readonly __typename?: 'ProductSumAggregate';
-  readonly cost?: Maybe<Scalars['Float']>;
-  readonly rating?: Maybe<Scalars['Float']>;
+  readonly cost?: Maybe<Scalars['Float']['output']>;
+  readonly rating?: Maybe<Scalars['Float']['output']>;
 };
 
 export type ProductSumOrderByAggregateInput = {
@@ -2989,20 +2995,20 @@ export type ProductSumOrderByAggregateInput = {
 
 export type ProductTransaction = {
   readonly __typename?: 'ProductTransaction';
-  readonly dateCreated: Scalars['DateTime'];
-  readonly id: Scalars['String'];
-  readonly price: Scalars['Float'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly id: Scalars['String']['output'];
+  readonly price: Scalars['Float']['output'];
   readonly product: Product;
-  readonly productId: Scalars['String'];
-  readonly quantity: Scalars['Int'];
+  readonly productId: Scalars['String']['output'];
+  readonly quantity: Scalars['Int']['output'];
   readonly size: Size;
-  readonly sizeId: Scalars['String'];
+  readonly sizeId: Scalars['String']['output'];
 };
 
 export type ProductTransactionAvgAggregate = {
   readonly __typename?: 'ProductTransactionAvgAggregate';
-  readonly price?: Maybe<Scalars['Float']>;
-  readonly quantity?: Maybe<Scalars['Float']>;
+  readonly price?: Maybe<Scalars['Float']['output']>;
+  readonly quantity?: Maybe<Scalars['Float']['output']>;
 };
 
 export type ProductTransactionAvgOrderByAggregateInput = {
@@ -3012,13 +3018,13 @@ export type ProductTransactionAvgOrderByAggregateInput = {
 
 export type ProductTransactionCountAggregate = {
   readonly __typename?: 'ProductTransactionCountAggregate';
-  readonly _all: Scalars['Int'];
-  readonly dateCreated: Scalars['Int'];
-  readonly id: Scalars['Int'];
-  readonly price: Scalars['Int'];
-  readonly productId: Scalars['Int'];
-  readonly quantity: Scalars['Int'];
-  readonly sizeId: Scalars['Int'];
+  readonly _all: Scalars['Int']['output'];
+  readonly dateCreated: Scalars['Int']['output'];
+  readonly id: Scalars['Int']['output'];
+  readonly price: Scalars['Int']['output'];
+  readonly productId: Scalars['Int']['output'];
+  readonly quantity: Scalars['Int']['output'];
+  readonly sizeId: Scalars['Int']['output'];
 };
 
 export type ProductTransactionCountOrderByAggregateInput = {
@@ -3031,11 +3037,11 @@ export type ProductTransactionCountOrderByAggregateInput = {
 };
 
 export type ProductTransactionCreateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly price: Scalars['Float'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly price: Scalars['Float']['input'];
   readonly product: ProductCreateNestedOneWithoutProductTransactionsInput;
-  readonly quantity: Scalars['Int'];
+  readonly quantity: Scalars['Int']['input'];
   readonly size: SizeCreateNestedOneWithoutProductTransactionsInput;
 };
 
@@ -3066,19 +3072,19 @@ export type ProductTransactionCreateOrConnectWithoutSizeInput = {
 };
 
 export type ProductTransactionCreateWithoutProductInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly price: Scalars['Float'];
-  readonly quantity: Scalars['Int'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly price: Scalars['Float']['input'];
+  readonly quantity: Scalars['Int']['input'];
   readonly size: SizeCreateNestedOneWithoutProductTransactionsInput;
 };
 
 export type ProductTransactionCreateWithoutSizeInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly price: Scalars['Float'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly price: Scalars['Float']['input'];
   readonly product: ProductCreateNestedOneWithoutProductTransactionsInput;
-  readonly quantity: Scalars['Int'];
+  readonly quantity: Scalars['Int']['input'];
 };
 
 export type ProductTransactionGroupBy = {
@@ -3088,12 +3094,12 @@ export type ProductTransactionGroupBy = {
   readonly _max?: Maybe<ProductTransactionMaxAggregate>;
   readonly _min?: Maybe<ProductTransactionMinAggregate>;
   readonly _sum?: Maybe<ProductTransactionSumAggregate>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly id: Scalars['String'];
-  readonly price: Scalars['Float'];
-  readonly productId: Scalars['String'];
-  readonly quantity: Scalars['Int'];
-  readonly sizeId: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly id: Scalars['String']['output'];
+  readonly price: Scalars['Float']['output'];
+  readonly productId: Scalars['String']['output'];
+  readonly quantity: Scalars['Int']['output'];
+  readonly sizeId: Scalars['String']['output'];
 };
 
 export type ProductTransactionListRelationFilter = {
@@ -3104,12 +3110,12 @@ export type ProductTransactionListRelationFilter = {
 
 export type ProductTransactionMaxAggregate = {
   readonly __typename?: 'ProductTransactionMaxAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly price?: Maybe<Scalars['Float']>;
-  readonly productId?: Maybe<Scalars['String']>;
-  readonly quantity?: Maybe<Scalars['Int']>;
-  readonly sizeId?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly price?: Maybe<Scalars['Float']['output']>;
+  readonly productId?: Maybe<Scalars['String']['output']>;
+  readonly quantity?: Maybe<Scalars['Int']['output']>;
+  readonly sizeId?: Maybe<Scalars['String']['output']>;
 };
 
 export type ProductTransactionMaxOrderByAggregateInput = {
@@ -3123,12 +3129,12 @@ export type ProductTransactionMaxOrderByAggregateInput = {
 
 export type ProductTransactionMinAggregate = {
   readonly __typename?: 'ProductTransactionMinAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly price?: Maybe<Scalars['Float']>;
-  readonly productId?: Maybe<Scalars['String']>;
-  readonly quantity?: Maybe<Scalars['Int']>;
-  readonly sizeId?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly price?: Maybe<Scalars['Float']['output']>;
+  readonly productId?: Maybe<Scalars['String']['output']>;
+  readonly quantity?: Maybe<Scalars['Int']['output']>;
+  readonly sizeId?: Maybe<Scalars['String']['output']>;
 };
 
 export type ProductTransactionMinOrderByAggregateInput = {
@@ -3204,8 +3210,8 @@ export type ProductTransactionScalarWhereWithAggregatesInput = {
 
 export type ProductTransactionSumAggregate = {
   readonly __typename?: 'ProductTransactionSumAggregate';
-  readonly price?: Maybe<Scalars['Float']>;
-  readonly quantity?: Maybe<Scalars['Int']>;
+  readonly price?: Maybe<Scalars['Float']['output']>;
+  readonly quantity?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ProductTransactionSumOrderByAggregateInput = {
@@ -3214,19 +3220,19 @@ export type ProductTransactionSumOrderByAggregateInput = {
 };
 
 export type ProductTransactionUpdateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly price?: InputMaybe<Scalars['Float']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly price?: InputMaybe<Scalars['Float']['input']>;
   readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutProductTransactionsNestedInput>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
   readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutProductTransactionsNestedInput>;
 };
 
 export type ProductTransactionUpdateManyMutationInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly price?: InputMaybe<Scalars['Float']>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly price?: InputMaybe<Scalars['Float']['input']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type ProductTransactionUpdateManyWithWhereWithoutProductInput = {
@@ -3292,19 +3298,19 @@ export type ProductTransactionUpdateWithWhereUniqueWithoutSizeInput = {
 };
 
 export type ProductTransactionUpdateWithoutProductInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly price?: InputMaybe<Scalars['Float']>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly price?: InputMaybe<Scalars['Float']['input']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
   readonly size?: InputMaybe<SizeUpdateOneRequiredWithoutProductTransactionsNestedInput>;
 };
 
 export type ProductTransactionUpdateWithoutSizeInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly price?: InputMaybe<Scalars['Float']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly price?: InputMaybe<Scalars['Float']['input']>;
   readonly product?: InputMaybe<ProductUpdateOneRequiredWithoutProductTransactionsNestedInput>;
-  readonly quantity?: InputMaybe<Scalars['Int']>;
+  readonly quantity?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type ProductTransactionUpsertWithWhereUniqueWithoutProductInput = {
@@ -3334,28 +3340,28 @@ export type ProductTransactionWhereInput = {
 };
 
 export type ProductTransactionWhereUniqueInput = {
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ProductUpdateInput = {
-  readonly cost?: InputMaybe<Scalars['Float']>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly cost?: InputMaybe<Scalars['Float']['input']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
   readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
-  readonly rating?: InputMaybe<Scalars['Float']>;
+  readonly rating?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ProductUpdateManyMutationInput = {
-  readonly cost?: InputMaybe<Scalars['Float']>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
-  readonly rating?: InputMaybe<Scalars['Float']>;
+  readonly cost?: InputMaybe<Scalars['Float']['input']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
+  readonly rating?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ProductUpdateOneRequiredWithoutInventoryNestedInput = {
@@ -3383,36 +3389,36 @@ export type ProductUpdateOneRequiredWithoutProductTransactionsNestedInput = {
 };
 
 export type ProductUpdateWithoutInventoryInput = {
-  readonly cost?: InputMaybe<Scalars['Float']>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly cost?: InputMaybe<Scalars['Float']['input']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
   readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
-  readonly rating?: InputMaybe<Scalars['Float']>;
+  readonly rating?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ProductUpdateWithoutProductSalesInput = {
-  readonly cost?: InputMaybe<Scalars['Float']>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly cost?: InputMaybe<Scalars['Float']['input']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
   readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutProductNestedInput>;
-  readonly rating?: InputMaybe<Scalars['Float']>;
+  readonly rating?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ProductUpdateWithoutProductTransactionsInput = {
-  readonly cost?: InputMaybe<Scalars['Float']>;
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly cost?: InputMaybe<Scalars['Float']['input']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryUpdateManyWithoutProductNestedInput>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
   readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutProductNestedInput>;
-  readonly rating?: InputMaybe<Scalars['Float']>;
+  readonly rating?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ProductUpsertWithoutInventoryInput = {
@@ -3446,8 +3452,8 @@ export type ProductWhereInput = {
 };
 
 export type ProductWhereUniqueInput = {
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Query = {
@@ -3521,7 +3527,7 @@ export type Query = {
   readonly productSale?: Maybe<ProductSale>;
   readonly productSales: ReadonlyArray<ProductSale>;
   readonly productTransaction?: Maybe<ProductTransaction>;
-  readonly productTransactionCountByProductId?: Maybe<Scalars['String']>;
+  readonly productTransactionCountByProductId?: Maybe<Scalars['String']['output']>;
   readonly productTransactions: ReadonlyArray<ProductTransaction>;
   readonly products: ReadonlyArray<Product>;
   readonly role?: Maybe<Role>;
@@ -3535,88 +3541,88 @@ export type Query = {
 export type QueryAggregateCustomerArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
   orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<CustomerWhereInput>;
 };
 
 export type QueryAggregateDepartmentArgs = {
   cursor?: InputMaybe<DepartmentWhereUniqueInput>;
   orderBy?: InputMaybe<ReadonlyArray<DepartmentOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<DepartmentWhereInput>;
 };
 
 export type QueryAggregateEmployeeArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
   orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<EmployeeWhereInput>;
 };
 
 export type QueryAggregateInventoryArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
   orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<InventoryWhereInput>;
 };
 
 export type QueryAggregateLocationStateArgs = {
   cursor?: InputMaybe<LocationStateWhereUniqueInput>;
   orderBy?: InputMaybe<ReadonlyArray<LocationStateOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<LocationStateWhereInput>;
 };
 
 export type QueryAggregateProductArgs = {
   cursor?: InputMaybe<ProductWhereUniqueInput>;
   orderBy?: InputMaybe<ReadonlyArray<ProductOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductWhereInput>;
 };
 
 export type QueryAggregateProductSaleArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
   orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductSaleWhereInput>;
 };
 
 export type QueryAggregateProductTransactionArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
   orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
 };
 
 export type QueryAggregateRoleArgs = {
   cursor?: InputMaybe<RoleWhereUniqueInput>;
   orderBy?: InputMaybe<ReadonlyArray<RoleOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<RoleWhereInput>;
 };
 
 export type QueryAggregateSizeArgs = {
   cursor?: InputMaybe<SizeWhereUniqueInput>;
   orderBy?: InputMaybe<ReadonlyArray<SizeOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<SizeWhereInput>;
 };
 
 export type QueryAggregateUserArgs = {
   cursor?: InputMaybe<UserWhereUniqueInput>;
   orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<UserWhereInput>;
 };
 
@@ -3628,8 +3634,8 @@ export type QueryCustomersArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<CustomerScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<CustomerWhereInput>;
 };
 
@@ -3641,8 +3647,8 @@ export type QueryDepartmentsArgs = {
   cursor?: InputMaybe<DepartmentWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<DepartmentScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<DepartmentOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<DepartmentWhereInput>;
 };
 
@@ -3654,8 +3660,8 @@ export type QueryEmployeesArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<EmployeeScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<EmployeeWhereInput>;
 };
 
@@ -3663,8 +3669,8 @@ export type QueryFindFirstCustomerArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<CustomerScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<CustomerWhereInput>;
 };
 
@@ -3672,8 +3678,8 @@ export type QueryFindFirstCustomerOrThrowArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<CustomerScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<CustomerWhereInput>;
 };
 
@@ -3681,8 +3687,8 @@ export type QueryFindFirstDepartmentArgs = {
   cursor?: InputMaybe<DepartmentWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<DepartmentScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<DepartmentOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<DepartmentWhereInput>;
 };
 
@@ -3690,8 +3696,8 @@ export type QueryFindFirstDepartmentOrThrowArgs = {
   cursor?: InputMaybe<DepartmentWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<DepartmentScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<DepartmentOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<DepartmentWhereInput>;
 };
 
@@ -3699,8 +3705,8 @@ export type QueryFindFirstEmployeeArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<EmployeeScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<EmployeeWhereInput>;
 };
 
@@ -3708,8 +3714,8 @@ export type QueryFindFirstEmployeeOrThrowArgs = {
   cursor?: InputMaybe<EmployeeWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<EmployeeScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<EmployeeWhereInput>;
 };
 
@@ -3717,8 +3723,8 @@ export type QueryFindFirstInventoryArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<InventoryScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<InventoryWhereInput>;
 };
 
@@ -3726,8 +3732,8 @@ export type QueryFindFirstInventoryOrThrowArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<InventoryScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<InventoryWhereInput>;
 };
 
@@ -3735,8 +3741,8 @@ export type QueryFindFirstLocationStateArgs = {
   cursor?: InputMaybe<LocationStateWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<LocationStateScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<LocationStateOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<LocationStateWhereInput>;
 };
 
@@ -3744,8 +3750,8 @@ export type QueryFindFirstLocationStateOrThrowArgs = {
   cursor?: InputMaybe<LocationStateWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<LocationStateScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<LocationStateOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<LocationStateWhereInput>;
 };
 
@@ -3753,8 +3759,8 @@ export type QueryFindFirstProductArgs = {
   cursor?: InputMaybe<ProductWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductWhereInput>;
 };
 
@@ -3762,8 +3768,8 @@ export type QueryFindFirstProductOrThrowArgs = {
   cursor?: InputMaybe<ProductWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductWhereInput>;
 };
 
@@ -3771,8 +3777,8 @@ export type QueryFindFirstProductSaleArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductSaleScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductSaleWhereInput>;
 };
 
@@ -3780,8 +3786,8 @@ export type QueryFindFirstProductSaleOrThrowArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductSaleScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductSaleWhereInput>;
 };
 
@@ -3789,8 +3795,8 @@ export type QueryFindFirstProductTransactionArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductTransactionScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
 };
 
@@ -3798,8 +3804,8 @@ export type QueryFindFirstProductTransactionOrThrowArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductTransactionScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
 };
 
@@ -3807,8 +3813,8 @@ export type QueryFindFirstRoleArgs = {
   cursor?: InputMaybe<RoleWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<RoleScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<RoleOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<RoleWhereInput>;
 };
 
@@ -3816,8 +3822,8 @@ export type QueryFindFirstRoleOrThrowArgs = {
   cursor?: InputMaybe<RoleWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<RoleScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<RoleOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<RoleWhereInput>;
 };
 
@@ -3825,8 +3831,8 @@ export type QueryFindFirstSizeArgs = {
   cursor?: InputMaybe<SizeWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<SizeScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<SizeOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<SizeWhereInput>;
 };
 
@@ -3834,8 +3840,8 @@ export type QueryFindFirstSizeOrThrowArgs = {
   cursor?: InputMaybe<SizeWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<SizeScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<SizeOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<SizeWhereInput>;
 };
 
@@ -3843,8 +3849,8 @@ export type QueryFindFirstUserArgs = {
   cursor?: InputMaybe<UserWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<UserScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<UserWhereInput>;
 };
 
@@ -3852,8 +3858,8 @@ export type QueryFindFirstUserOrThrowArgs = {
   cursor?: InputMaybe<UserWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<UserScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<UserWhereInput>;
 };
 
@@ -3905,8 +3911,8 @@ export type QueryGroupByCustomerArgs = {
   by: ReadonlyArray<CustomerScalarFieldEnum>;
   having?: InputMaybe<CustomerScalarWhereWithAggregatesInput>;
   orderBy?: InputMaybe<ReadonlyArray<CustomerOrderByWithAggregationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<CustomerWhereInput>;
 };
 
@@ -3914,8 +3920,8 @@ export type QueryGroupByDepartmentArgs = {
   by: ReadonlyArray<DepartmentScalarFieldEnum>;
   having?: InputMaybe<DepartmentScalarWhereWithAggregatesInput>;
   orderBy?: InputMaybe<ReadonlyArray<DepartmentOrderByWithAggregationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<DepartmentWhereInput>;
 };
 
@@ -3923,8 +3929,8 @@ export type QueryGroupByEmployeeArgs = {
   by: ReadonlyArray<EmployeeScalarFieldEnum>;
   having?: InputMaybe<EmployeeScalarWhereWithAggregatesInput>;
   orderBy?: InputMaybe<ReadonlyArray<EmployeeOrderByWithAggregationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<EmployeeWhereInput>;
 };
 
@@ -3932,8 +3938,8 @@ export type QueryGroupByInventoryArgs = {
   by: ReadonlyArray<InventoryScalarFieldEnum>;
   having?: InputMaybe<InventoryScalarWhereWithAggregatesInput>;
   orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithAggregationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<InventoryWhereInput>;
 };
 
@@ -3941,8 +3947,8 @@ export type QueryGroupByLocationStateArgs = {
   by: ReadonlyArray<LocationStateScalarFieldEnum>;
   having?: InputMaybe<LocationStateScalarWhereWithAggregatesInput>;
   orderBy?: InputMaybe<ReadonlyArray<LocationStateOrderByWithAggregationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<LocationStateWhereInput>;
 };
 
@@ -3950,8 +3956,8 @@ export type QueryGroupByProductArgs = {
   by: ReadonlyArray<ProductScalarFieldEnum>;
   having?: InputMaybe<ProductScalarWhereWithAggregatesInput>;
   orderBy?: InputMaybe<ReadonlyArray<ProductOrderByWithAggregationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductWhereInput>;
 };
 
@@ -3959,8 +3965,8 @@ export type QueryGroupByProductSaleArgs = {
   by: ReadonlyArray<ProductSaleScalarFieldEnum>;
   having?: InputMaybe<ProductSaleScalarWhereWithAggregatesInput>;
   orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithAggregationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductSaleWhereInput>;
 };
 
@@ -3968,8 +3974,8 @@ export type QueryGroupByProductTransactionArgs = {
   by: ReadonlyArray<ProductTransactionScalarFieldEnum>;
   having?: InputMaybe<ProductTransactionScalarWhereWithAggregatesInput>;
   orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithAggregationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
 };
 
@@ -3977,8 +3983,8 @@ export type QueryGroupByRoleArgs = {
   by: ReadonlyArray<RoleScalarFieldEnum>;
   having?: InputMaybe<RoleScalarWhereWithAggregatesInput>;
   orderBy?: InputMaybe<ReadonlyArray<RoleOrderByWithAggregationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<RoleWhereInput>;
 };
 
@@ -3986,8 +3992,8 @@ export type QueryGroupBySizeArgs = {
   by: ReadonlyArray<SizeScalarFieldEnum>;
   having?: InputMaybe<SizeScalarWhereWithAggregatesInput>;
   orderBy?: InputMaybe<ReadonlyArray<SizeOrderByWithAggregationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<SizeWhereInput>;
 };
 
@@ -3995,8 +4001,8 @@ export type QueryGroupByUserArgs = {
   by: ReadonlyArray<UserScalarFieldEnum>;
   having?: InputMaybe<UserScalarWhereWithAggregatesInput>;
   orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithAggregationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<UserWhereInput>;
 };
 
@@ -4004,8 +4010,8 @@ export type QueryInventoriesArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<InventoryScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<InventoryWhereInput>;
 };
 
@@ -4021,8 +4027,8 @@ export type QueryLocationStatesArgs = {
   cursor?: InputMaybe<LocationStateWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<LocationStateScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<LocationStateOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<LocationStateWhereInput>;
 };
 
@@ -4038,8 +4044,8 @@ export type QueryProductSalesArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductSaleScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductSaleWhereInput>;
 };
 
@@ -4048,15 +4054,15 @@ export type QueryProductTransactionArgs = {
 };
 
 export type QueryProductTransactionCountByProductIdArgs = {
-  productId: Scalars['String'];
+  productId: Scalars['String']['input'];
 };
 
 export type QueryProductTransactionsArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductTransactionScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
 };
 
@@ -4064,8 +4070,8 @@ export type QueryProductsArgs = {
   cursor?: InputMaybe<ProductWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductWhereInput>;
 };
 
@@ -4077,8 +4083,8 @@ export type QueryRolesArgs = {
   cursor?: InputMaybe<RoleWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<RoleScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<RoleOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<RoleWhereInput>;
 };
 
@@ -4090,8 +4096,8 @@ export type QuerySizesArgs = {
   cursor?: InputMaybe<SizeWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<SizeScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<SizeOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<SizeWhereInput>;
 };
 
@@ -4103,19 +4109,19 @@ export type QueryUsersArgs = {
   cursor?: InputMaybe<UserWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<UserScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<UserWhereInput>;
 };
 
 export type Role = {
   readonly __typename?: 'Role';
   readonly _count?: Maybe<RoleCount>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly description: Scalars['String'];
-  readonly id: Scalars['String'];
-  readonly name: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly description: Scalars['String']['output'];
+  readonly id: Scalars['String']['output'];
+  readonly name: Scalars['String']['output'];
   readonly users: ReadonlyArray<User>;
 };
 
@@ -4123,24 +4129,24 @@ export type RoleUsersArgs = {
   cursor?: InputMaybe<UserWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<UserScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<UserOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<UserWhereInput>;
 };
 
 export type RoleCount = {
   readonly __typename?: 'RoleCount';
-  readonly users: Scalars['Int'];
+  readonly users: Scalars['Int']['output'];
 };
 
 export type RoleCountAggregate = {
   readonly __typename?: 'RoleCountAggregate';
-  readonly _all: Scalars['Int'];
-  readonly dateCreated: Scalars['Int'];
-  readonly dateUpdated: Scalars['Int'];
-  readonly description: Scalars['Int'];
-  readonly id: Scalars['Int'];
-  readonly name: Scalars['Int'];
+  readonly _all: Scalars['Int']['output'];
+  readonly dateCreated: Scalars['Int']['output'];
+  readonly dateUpdated: Scalars['Int']['output'];
+  readonly description: Scalars['Int']['output'];
+  readonly id: Scalars['Int']['output'];
+  readonly name: Scalars['Int']['output'];
 };
 
 export type RoleCountOrderByAggregateInput = {
@@ -4152,11 +4158,11 @@ export type RoleCountOrderByAggregateInput = {
 };
 
 export type RoleCreateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly description: Scalars['String'];
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name: Scalars['String'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly description: Scalars['String']['input'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name: Scalars['String']['input'];
   readonly users?: InputMaybe<UserCreateNestedManyWithoutRoleInput>;
 };
 
@@ -4172,11 +4178,11 @@ export type RoleCreateOrConnectWithoutUsersInput = {
 };
 
 export type RoleCreateWithoutUsersInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly description: Scalars['String'];
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name: Scalars['String'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly description: Scalars['String']['input'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name: Scalars['String']['input'];
 };
 
 export type RoleGroupBy = {
@@ -4184,20 +4190,20 @@ export type RoleGroupBy = {
   readonly _count?: Maybe<RoleCountAggregate>;
   readonly _max?: Maybe<RoleMaxAggregate>;
   readonly _min?: Maybe<RoleMinAggregate>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly description: Scalars['String'];
-  readonly id: Scalars['String'];
-  readonly name: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly description: Scalars['String']['output'];
+  readonly id: Scalars['String']['output'];
+  readonly name: Scalars['String']['output'];
 };
 
 export type RoleMaxAggregate = {
   readonly __typename?: 'RoleMaxAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly description?: Maybe<Scalars['String']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly description?: Maybe<Scalars['String']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly name?: Maybe<Scalars['String']['output']>;
 };
 
 export type RoleMaxOrderByAggregateInput = {
@@ -4210,11 +4216,11 @@ export type RoleMaxOrderByAggregateInput = {
 
 export type RoleMinAggregate = {
   readonly __typename?: 'RoleMinAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly description?: Maybe<Scalars['String']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly description?: Maybe<Scalars['String']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly name?: Maybe<Scalars['String']['output']>;
 };
 
 export type RoleMinOrderByAggregateInput = {
@@ -4270,20 +4276,20 @@ export type RoleScalarWhereWithAggregatesInput = {
 };
 
 export type RoleUpdateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly description?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly description?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
   readonly users?: InputMaybe<UserUpdateManyWithoutRoleNestedInput>;
 };
 
 export type RoleUpdateManyMutationInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly description?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly description?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type RoleUpdateOneRequiredWithoutUsersNestedInput = {
@@ -4295,11 +4301,11 @@ export type RoleUpdateOneRequiredWithoutUsersNestedInput = {
 };
 
 export type RoleUpdateWithoutUsersInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly description?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly description?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type RoleUpsertWithoutUsersInput = {
@@ -4320,18 +4326,18 @@ export type RoleWhereInput = {
 };
 
 export type RoleWhereUniqueInput = {
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Size = {
   readonly __typename?: 'Size';
   readonly _count?: Maybe<SizeCount>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id: Scalars['String']['output'];
   readonly inventory: ReadonlyArray<Inventory>;
-  readonly name: Scalars['String'];
+  readonly name: Scalars['String']['output'];
   readonly productSales: ReadonlyArray<ProductSale>;
   readonly productTransactions: ReadonlyArray<ProductTransaction>;
 };
@@ -4340,8 +4346,8 @@ export type SizeInventoryArgs = {
   cursor?: InputMaybe<InventoryWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<InventoryScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<InventoryOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<InventoryWhereInput>;
 };
 
@@ -4349,8 +4355,8 @@ export type SizeProductSalesArgs = {
   cursor?: InputMaybe<ProductSaleWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductSaleScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductSaleOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductSaleWhereInput>;
 };
 
@@ -4358,25 +4364,25 @@ export type SizeProductTransactionsArgs = {
   cursor?: InputMaybe<ProductTransactionWhereUniqueInput>;
   distinct?: InputMaybe<ReadonlyArray<ProductTransactionScalarFieldEnum>>;
   orderBy?: InputMaybe<ReadonlyArray<ProductTransactionOrderByWithRelationInput>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  take?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ProductTransactionWhereInput>;
 };
 
 export type SizeCount = {
   readonly __typename?: 'SizeCount';
-  readonly inventory: Scalars['Int'];
-  readonly productSales: Scalars['Int'];
-  readonly productTransactions: Scalars['Int'];
+  readonly inventory: Scalars['Int']['output'];
+  readonly productSales: Scalars['Int']['output'];
+  readonly productTransactions: Scalars['Int']['output'];
 };
 
 export type SizeCountAggregate = {
   readonly __typename?: 'SizeCountAggregate';
-  readonly _all: Scalars['Int'];
-  readonly dateCreated: Scalars['Int'];
-  readonly dateUpdated: Scalars['Int'];
-  readonly id: Scalars['Int'];
-  readonly name: Scalars['Int'];
+  readonly _all: Scalars['Int']['output'];
+  readonly dateCreated: Scalars['Int']['output'];
+  readonly dateUpdated: Scalars['Int']['output'];
+  readonly id: Scalars['Int']['output'];
+  readonly name: Scalars['Int']['output'];
 };
 
 export type SizeCountOrderByAggregateInput = {
@@ -4387,11 +4393,11 @@ export type SizeCountOrderByAggregateInput = {
 };
 
 export type SizeCreateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
-  readonly name: Scalars['String'];
+  readonly name: Scalars['String']['input'];
   readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
 };
@@ -4430,29 +4436,29 @@ export type SizeCreateOrConnectWithoutProductTransactionsInput = {
 };
 
 export type SizeCreateWithoutInventoryInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name: Scalars['String'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name: Scalars['String']['input'];
   readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
 };
 
 export type SizeCreateWithoutProductSalesInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
-  readonly name: Scalars['String'];
+  readonly name: Scalars['String']['input'];
   readonly productTransactions?: InputMaybe<ProductTransactionCreateNestedManyWithoutSizeInput>;
 };
 
 export type SizeCreateWithoutProductTransactionsInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryCreateNestedManyWithoutSizeInput>;
-  readonly name: Scalars['String'];
+  readonly name: Scalars['String']['input'];
   readonly productSales?: InputMaybe<ProductSaleCreateNestedManyWithoutSizeInput>;
 };
 
@@ -4461,18 +4467,18 @@ export type SizeGroupBy = {
   readonly _count?: Maybe<SizeCountAggregate>;
   readonly _max?: Maybe<SizeMaxAggregate>;
   readonly _min?: Maybe<SizeMinAggregate>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id: Scalars['String'];
-  readonly name: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id: Scalars['String']['output'];
+  readonly name: Scalars['String']['output'];
 };
 
 export type SizeMaxAggregate = {
   readonly __typename?: 'SizeMaxAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly name?: Maybe<Scalars['String']['output']>;
 };
 
 export type SizeMaxOrderByAggregateInput = {
@@ -4484,10 +4490,10 @@ export type SizeMaxOrderByAggregateInput = {
 
 export type SizeMinAggregate = {
   readonly __typename?: 'SizeMinAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly name?: Maybe<Scalars['String']['output']>;
 };
 
 export type SizeMinOrderByAggregateInput = {
@@ -4540,20 +4546,20 @@ export type SizeScalarWhereWithAggregatesInput = {
 };
 
 export type SizeUpdateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
   readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
 };
 
 export type SizeUpdateManyMutationInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SizeUpdateOneRequiredWithoutInventoryNestedInput = {
@@ -4581,29 +4587,29 @@ export type SizeUpdateOneRequiredWithoutProductTransactionsNestedInput = {
 };
 
 export type SizeUpdateWithoutInventoryInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
   readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
   readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
 };
 
 export type SizeUpdateWithoutProductSalesInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
   readonly productTransactions?: InputMaybe<ProductTransactionUpdateManyWithoutSizeNestedInput>;
 };
 
 export type SizeUpdateWithoutProductTransactionsInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly id?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
   readonly inventory?: InputMaybe<InventoryUpdateManyWithoutSizeNestedInput>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
   readonly productSales?: InputMaybe<ProductSaleUpdateManyWithoutSizeNestedInput>;
 };
 
@@ -4636,8 +4642,8 @@ export type SizeWhereInput = {
 };
 
 export type SizeWhereUniqueInput = {
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly name?: InputMaybe<Scalars['String']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export enum SortOrder {
@@ -4646,62 +4652,62 @@ export enum SortOrder {
 }
 
 export type StringFilter = {
-  readonly contains?: InputMaybe<Scalars['String']>;
-  readonly endsWith?: InputMaybe<Scalars['String']>;
-  readonly equals?: InputMaybe<Scalars['String']>;
-  readonly gt?: InputMaybe<Scalars['String']>;
-  readonly gte?: InputMaybe<Scalars['String']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']>>;
-  readonly lt?: InputMaybe<Scalars['String']>;
-  readonly lte?: InputMaybe<Scalars['String']>;
+  readonly contains?: InputMaybe<Scalars['String']['input']>;
+  readonly endsWith?: InputMaybe<Scalars['String']['input']>;
+  readonly equals?: InputMaybe<Scalars['String']['input']>;
+  readonly gt?: InputMaybe<Scalars['String']['input']>;
+  readonly gte?: InputMaybe<Scalars['String']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly lt?: InputMaybe<Scalars['String']['input']>;
+  readonly lte?: InputMaybe<Scalars['String']['input']>;
   readonly not?: InputMaybe<NestedStringFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']>>;
-  readonly startsWith?: InputMaybe<Scalars['String']>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type StringWithAggregatesFilter = {
   readonly _count?: InputMaybe<NestedIntFilter>;
   readonly _max?: InputMaybe<NestedStringFilter>;
   readonly _min?: InputMaybe<NestedStringFilter>;
-  readonly contains?: InputMaybe<Scalars['String']>;
-  readonly endsWith?: InputMaybe<Scalars['String']>;
-  readonly equals?: InputMaybe<Scalars['String']>;
-  readonly gt?: InputMaybe<Scalars['String']>;
-  readonly gte?: InputMaybe<Scalars['String']>;
-  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']>>;
-  readonly lt?: InputMaybe<Scalars['String']>;
-  readonly lte?: InputMaybe<Scalars['String']>;
+  readonly contains?: InputMaybe<Scalars['String']['input']>;
+  readonly endsWith?: InputMaybe<Scalars['String']['input']>;
+  readonly equals?: InputMaybe<Scalars['String']['input']>;
+  readonly gt?: InputMaybe<Scalars['String']['input']>;
+  readonly gte?: InputMaybe<Scalars['String']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly lt?: InputMaybe<Scalars['String']['input']>;
+  readonly lte?: InputMaybe<Scalars['String']['input']>;
   readonly not?: InputMaybe<NestedStringWithAggregatesFilter>;
-  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']>>;
-  readonly startsWith?: InputMaybe<Scalars['String']>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type User = {
   readonly __typename?: 'User';
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly id: Scalars['String'];
-  readonly lastName: Scalars['String'];
-  readonly password: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly email: Scalars['String']['output'];
+  readonly firstName: Scalars['String']['output'];
+  readonly id: Scalars['String']['output'];
+  readonly lastName: Scalars['String']['output'];
+  readonly password: Scalars['String']['output'];
   readonly role: Role;
-  readonly roleId: Scalars['String'];
-  readonly userName: Scalars['String'];
+  readonly roleId: Scalars['String']['output'];
+  readonly userName: Scalars['String']['output'];
 };
 
 export type UserCountAggregate = {
   readonly __typename?: 'UserCountAggregate';
-  readonly _all: Scalars['Int'];
-  readonly dateCreated: Scalars['Int'];
-  readonly dateUpdated: Scalars['Int'];
-  readonly email: Scalars['Int'];
-  readonly firstName: Scalars['Int'];
-  readonly id: Scalars['Int'];
-  readonly lastName: Scalars['Int'];
-  readonly password: Scalars['Int'];
-  readonly roleId: Scalars['Int'];
-  readonly userName: Scalars['Int'];
+  readonly _all: Scalars['Int']['output'];
+  readonly dateCreated: Scalars['Int']['output'];
+  readonly dateUpdated: Scalars['Int']['output'];
+  readonly email: Scalars['Int']['output'];
+  readonly firstName: Scalars['Int']['output'];
+  readonly id: Scalars['Int']['output'];
+  readonly lastName: Scalars['Int']['output'];
+  readonly password: Scalars['Int']['output'];
+  readonly roleId: Scalars['Int']['output'];
+  readonly userName: Scalars['Int']['output'];
 };
 
 export type UserCountOrderByAggregateInput = {
@@ -4717,15 +4723,15 @@ export type UserCountOrderByAggregateInput = {
 };
 
 export type UserCreateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly lastName: Scalars['String'];
-  readonly password: Scalars['String'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email: Scalars['String']['input'];
+  readonly firstName: Scalars['String']['input'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName: Scalars['String']['input'];
+  readonly password: Scalars['String']['input'];
   readonly role: RoleCreateNestedOneWithoutUsersInput;
-  readonly userName: Scalars['String'];
+  readonly userName: Scalars['String']['input'];
 };
 
 export type UserCreateNestedManyWithoutRoleInput = {
@@ -4740,14 +4746,14 @@ export type UserCreateOrConnectWithoutRoleInput = {
 };
 
 export type UserCreateWithoutRoleInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly lastName: Scalars['String'];
-  readonly password: Scalars['String'];
-  readonly userName: Scalars['String'];
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email: Scalars['String']['input'];
+  readonly firstName: Scalars['String']['input'];
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName: Scalars['String']['input'];
+  readonly password: Scalars['String']['input'];
+  readonly userName: Scalars['String']['input'];
 };
 
 export type UserGroupBy = {
@@ -4755,15 +4761,15 @@ export type UserGroupBy = {
   readonly _count?: Maybe<UserCountAggregate>;
   readonly _max?: Maybe<UserMaxAggregate>;
   readonly _min?: Maybe<UserMinAggregate>;
-  readonly dateCreated: Scalars['DateTime'];
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly email: Scalars['String'];
-  readonly firstName: Scalars['String'];
-  readonly id: Scalars['String'];
-  readonly lastName: Scalars['String'];
-  readonly password: Scalars['String'];
-  readonly roleId: Scalars['String'];
-  readonly userName: Scalars['String'];
+  readonly dateCreated: Scalars['DateTime']['output'];
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly email: Scalars['String']['output'];
+  readonly firstName: Scalars['String']['output'];
+  readonly id: Scalars['String']['output'];
+  readonly lastName: Scalars['String']['output'];
+  readonly password: Scalars['String']['output'];
+  readonly roleId: Scalars['String']['output'];
+  readonly userName: Scalars['String']['output'];
 };
 
 export type UserListRelationFilter = {
@@ -4774,15 +4780,15 @@ export type UserListRelationFilter = {
 
 export type UserMaxAggregate = {
   readonly __typename?: 'UserMaxAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly email?: Maybe<Scalars['String']>;
-  readonly firstName?: Maybe<Scalars['String']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly lastName?: Maybe<Scalars['String']>;
-  readonly password?: Maybe<Scalars['String']>;
-  readonly roleId?: Maybe<Scalars['String']>;
-  readonly userName?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly email?: Maybe<Scalars['String']['output']>;
+  readonly firstName?: Maybe<Scalars['String']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly lastName?: Maybe<Scalars['String']['output']>;
+  readonly password?: Maybe<Scalars['String']['output']>;
+  readonly roleId?: Maybe<Scalars['String']['output']>;
+  readonly userName?: Maybe<Scalars['String']['output']>;
 };
 
 export type UserMaxOrderByAggregateInput = {
@@ -4799,15 +4805,15 @@ export type UserMaxOrderByAggregateInput = {
 
 export type UserMinAggregate = {
   readonly __typename?: 'UserMinAggregate';
-  readonly dateCreated?: Maybe<Scalars['DateTime']>;
-  readonly dateUpdated?: Maybe<Scalars['DateTime']>;
-  readonly email?: Maybe<Scalars['String']>;
-  readonly firstName?: Maybe<Scalars['String']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly lastName?: Maybe<Scalars['String']>;
-  readonly password?: Maybe<Scalars['String']>;
-  readonly roleId?: Maybe<Scalars['String']>;
-  readonly userName?: Maybe<Scalars['String']>;
+  readonly dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  readonly dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  readonly email?: Maybe<Scalars['String']['output']>;
+  readonly firstName?: Maybe<Scalars['String']['output']>;
+  readonly id?: Maybe<Scalars['String']['output']>;
+  readonly lastName?: Maybe<Scalars['String']['output']>;
+  readonly password?: Maybe<Scalars['String']['output']>;
+  readonly roleId?: Maybe<Scalars['String']['output']>;
+  readonly userName?: Maybe<Scalars['String']['output']>;
 };
 
 export type UserMinOrderByAggregateInput = {
@@ -4897,26 +4903,26 @@ export type UserScalarWhereWithAggregatesInput = {
 };
 
 export type UserUpdateInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly firstName?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly lastName?: InputMaybe<Scalars['String']>;
-  readonly password?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly firstName?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName?: InputMaybe<Scalars['String']['input']>;
+  readonly password?: InputMaybe<Scalars['String']['input']>;
   readonly role?: InputMaybe<RoleUpdateOneRequiredWithoutUsersNestedInput>;
-  readonly userName?: InputMaybe<Scalars['String']>;
+  readonly userName?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type UserUpdateManyMutationInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly firstName?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly lastName?: InputMaybe<Scalars['String']>;
-  readonly password?: InputMaybe<Scalars['String']>;
-  readonly userName?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly firstName?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName?: InputMaybe<Scalars['String']['input']>;
+  readonly password?: InputMaybe<Scalars['String']['input']>;
+  readonly userName?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type UserUpdateManyWithWhereWithoutRoleInput = {
@@ -4943,14 +4949,14 @@ export type UserUpdateWithWhereUniqueWithoutRoleInput = {
 };
 
 export type UserUpdateWithoutRoleInput = {
-  readonly dateCreated?: InputMaybe<Scalars['DateTime']>;
-  readonly dateUpdated?: InputMaybe<Scalars['DateTime']>;
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly firstName?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly lastName?: InputMaybe<Scalars['String']>;
-  readonly password?: InputMaybe<Scalars['String']>;
-  readonly userName?: InputMaybe<Scalars['String']>;
+  readonly dateCreated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly dateUpdated?: InputMaybe<Scalars['DateTime']['input']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly firstName?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly lastName?: InputMaybe<Scalars['String']['input']>;
+  readonly password?: InputMaybe<Scalars['String']['input']>;
+  readonly userName?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type UserUpsertWithWhereUniqueWithoutRoleInput = {
@@ -4976,9 +4982,9 @@ export type UserWhereInput = {
 };
 
 export type UserWhereUniqueInput = {
-  readonly email?: InputMaybe<Scalars['String']>;
-  readonly id?: InputMaybe<Scalars['String']>;
-  readonly userName?: InputMaybe<Scalars['String']>;
+  readonly email?: InputMaybe<Scalars['String']['input']>;
+  readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly userName?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type GetCustomersQueryVariables = Exact<{ [key: string]: never }>;
@@ -5000,7 +5006,7 @@ export type GetCustomersQuery = {
 };
 
 export type GetCustomerByIdQueryVariables = Exact<{
-  id: Scalars['String'];
+  id: Scalars['String']['input'];
 }>;
 
 export type GetCustomerByIdQuery = {
@@ -5044,7 +5050,7 @@ export type GetEmployeesQuery = {
 };
 
 export type GetEmployeeByIdQueryVariables = Exact<{
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 export type GetEmployeeByIdQuery = {
@@ -5070,7 +5076,7 @@ export type GetEmployeeByIdQuery = {
 };
 
 export type GetInventoryByProductIdQueryVariables = Exact<{
-  id: Scalars['String'];
+  id: Scalars['String']['input'];
 }>;
 
 export type GetInventoryByProductIdQuery = {
@@ -5092,7 +5098,7 @@ export type GetInventoryByProductIdQuery = {
 };
 
 export type GetInventoryBySizeQueryVariables = Exact<{
-  sizeId: Scalars['String'];
+  sizeId: Scalars['String']['input'];
 }>;
 
 export type GetInventoryBySizeQuery = {
@@ -5114,8 +5120,8 @@ export type GetInventoryBySizeQuery = {
 };
 
 export type LoginMutationVariables = Exact<{
-  userName: Scalars['String'];
-  password: Scalars['String'];
+  userName: Scalars['String']['input'];
+  password: Scalars['String']['input'];
 }>;
 
 export type LoginMutation = {
@@ -5137,7 +5143,7 @@ export type GetProductsQuery = {
 };
 
 export type GetProductByIdQueryVariables = Exact<{
-  id: Scalars['String'];
+  id: Scalars['String']['input'];
 }>;
 
 export type GetProductByIdQuery = {
@@ -5171,7 +5177,7 @@ export type GetProductSalesQuery = {
 };
 
 export type GetTopProductSalesByProductIdQueryVariables = Exact<{
-  productId: Scalars['String'];
+  productId: Scalars['String']['input'];
 }>;
 
 export type GetTopProductSalesByProductIdQuery = {
@@ -5205,9 +5211,9 @@ export type GetProductTransactionsQuery = {
 };
 
 export type GetProductTransactionsByProductIdQueryVariables = Exact<{
-  take: Scalars['Int'];
-  skip: Scalars['Int'];
-  productId: Scalars['String'];
+  take: Scalars['Int']['input'];
+  skip: Scalars['Int']['input'];
+  productId: Scalars['String']['input'];
 }>;
 
 export type GetProductTransactionsByProductIdQuery = {
@@ -5226,7 +5232,7 @@ export type GetProductTransactionsByProductIdQuery = {
 };
 
 export type GetProductTransactionsCountByProductIdQueryVariables = Exact<{
-  productId: Scalars['String'];
+  productId: Scalars['String']['input'];
 }>;
 
 export type GetProductTransactionsCountByProductIdQuery = {
@@ -5235,11 +5241,11 @@ export type GetProductTransactionsCountByProductIdQuery = {
 };
 
 export type GetProductTransactionsByProductIdAndDateRangeQueryVariables = Exact<{
-  take: Scalars['Int'];
-  skip: Scalars['Int'];
-  productId: Scalars['String'];
-  fromDate: Scalars['DateTime'];
-  toDate: Scalars['DateTime'];
+  take: Scalars['Int']['input'];
+  skip: Scalars['Int']['input'];
+  productId: Scalars['String']['input'];
+  fromDate: Scalars['DateTime']['input'];
+  toDate: Scalars['DateTime']['input'];
 }>;
 
 export type GetProductTransactionsByProductIdAndDateRangeQuery = {
@@ -5281,7 +5287,7 @@ export type GetUsersQuery = {
 };
 
 export type GetUserByIdQueryVariables = Exact<{
-  id: Scalars['String'];
+  id: Scalars['String']['input'];
 }>;
 
 export type GetUserByIdQuery = {
@@ -5299,7 +5305,7 @@ export type GetUserByIdQuery = {
 };
 
 export type GetUserByUserNameQueryVariables = Exact<{
-  userName: Scalars['String'];
+  userName: Scalars['String']['input'];
 }>;
 
 export type GetUserByUserNameQuery = {

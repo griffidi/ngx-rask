@@ -12,8 +12,8 @@ import { Colors } from './colors';
   imports: [NgClass, NgFor, RkUnpatch],
 })
 export class RkColorOptions {
-  protected readonly colors = signal(Object.keys(Colors));
-  protected readonly selectedColor = signal(Colors.Black);
+  protected readonly colors = signal(Object.values(Colors));
+  protected readonly selectedColor = signal(Colors.black);
   protected readonly hoveredColor = signal<Colors | null>(null);
 
   @Output() selectedColorChange = new EventEmitter<Colors>();

@@ -24,9 +24,8 @@ header {
   align-items: center;
 
   & .rating {
-    /* font-size: 0.9em; */
     font-weight: 600;
-    margin-inline-end: 10px;
+    margin-inline-start: 10px;
   }
 
   & .mat-icon {

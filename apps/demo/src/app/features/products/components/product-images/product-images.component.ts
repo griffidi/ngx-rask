@@ -18,7 +18,7 @@ export class ProductImagesComponent {
   readonly #imagePath = inject(IMAGE_PATH_TOKEN);
 
   protected readonly hoveredColor = signal<hoveredColorType | ''>('');
-  protected readonly selectedColor = signal<selectedColorType>(`selected-color-${Colors.Black}`);
+  protected readonly selectedColor = signal<selectedColorType>(`selected-color-${Colors.black}`);
   protected svgPath = '';
 
   @Input({ required: true })
