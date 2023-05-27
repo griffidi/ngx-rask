@@ -17,7 +17,7 @@ type selectedColorType = `selected-color-${Colors}`;
 export class ProductImagesComponent {
   readonly #imagePath = inject(IMAGE_PATH_TOKEN);
 
-  protected readonly hoveredColor = signal<hoveredColorType | null>(null);
+  protected readonly hoveredColor = signal<hoveredColorType | ''>('');
   protected readonly selectedColor = signal<selectedColorType>(`selected-color-${Colors.Black}`);
   protected svgPath = '';
 
@@ -34,7 +34,7 @@ export class ProductImagesComponent {
   }
 
   protected onHoverColorChange(color: Colors | null) {
-    this.hoveredColor.set(color ? `hovered-color-${color}` : null);
+    this.hoveredColor.set(color ? `hovered-color-${color}` : '');
   }
 
   protected onSelectColorChange(color: Colors) {

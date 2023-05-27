@@ -1,5 +1,6 @@
 import { NgClass, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output, signal } from '@angular/core';
+import { RkUnpatch } from 'libs/core/src/lib/unpatch';
 import { Colors } from './colors';
 
 @Component({
@@ -8,7 +9,7 @@ import { Colors } from './colors';
   templateUrl: './color-options.component.html',
   styleUrls: ['./color-options.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgClass, NgFor],
+  imports: [NgClass, NgFor, RkUnpatch],
 })
 export class RkColorOptions {
   protected readonly colors = signal(Object.keys(Colors));

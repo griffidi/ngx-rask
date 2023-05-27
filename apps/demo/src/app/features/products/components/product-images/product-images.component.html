@@ -4,5 +4,4 @@
   (selectedColorChange)="onSelectColorChange($event)" />
 <rk-svg
   [path]="svgPath"
-  [ngClass]="hoveredColor()"
-  [ngClass]="selectedColor()" />
+  [ngClass]="[hoveredColor(), selectedColor()]" />
