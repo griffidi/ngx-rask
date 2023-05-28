@@ -6,7 +6,6 @@ export default [
   {
     path: '',
     loadComponent: () => import('./product-list/product-list.component'),
-    title: 'Products',
     providers: [
       ProductsService,
       ProductTransactionsService,
@@ -14,21 +13,16 @@ export default [
       productTransactionsStore,
     ],
   },
-  // {
-  //   path: 'sales',
-  //   loadComponent: () => import('./product-sales/product-sales.component'),
-  //   title: 'Product Sales',
-  // },
   {
     path: ':id/edit',
-    loadComponent: () => import('./containers/product-edit/product-edit.component'),
     title: 'Product Edit',
+    loadComponent: () => import('./containers/product-edit/product-edit.component'),
     providers: [ProductsService, productsStore],
   },
   {
     path: ':id',
-    loadComponent: () => import('./product/product.component'),
     title: 'Product',
+    loadComponent: () => import('./product/product.component'),
     providers: [
       ProductsService,
       ProductTransactionsService,

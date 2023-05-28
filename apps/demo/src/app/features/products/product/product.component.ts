@@ -59,7 +59,7 @@ import { productsStore } from '../store';
   ],
 })
 export default class ProductComponent {
-  #productsStore = inject(productsStore);
+  readonly #productsStore = inject(productsStore);
 
   protected readonly product = this.#productsStore.selectedProduct;
 
@@ -67,6 +67,4 @@ export default class ProductComponent {
   protected set id(value: string) {
     this.#productsStore.setSelectedProductId(value);
   }
-
-  protected onEdit() {}
 }
