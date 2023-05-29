@@ -18,17 +18,15 @@ export default [
     path: ':id/edit',
     title: 'Product Edit',
     loadComponent: () => import('./containers/product-edit/product-edit.component'),
-    providers: [ProductsService, productsStore],
+    providers: [
+      ProductsService,
+      ProductTransactionsService,
+      productsStore,
+      productTransactionsStore,
+    ],
   },
   {
     path: ':id',
-    // resolve:  {
-    //   data: ({params}) => {
-    //     const store = inject(productsStore);
-    //     store.setSelectedProductId(params['id']);
-    //     return store.selectedProduct()?.name ?? '';
-    //   }
-    // },
     title: ({ params }) => {
       const store = inject(productsStore);
       store.setSelectedProductId(params['id']);

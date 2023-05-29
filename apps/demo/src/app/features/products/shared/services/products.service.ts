@@ -4,7 +4,9 @@ import { Client } from '@ngx-rask/graphql';
 import { catchError, map, tap } from 'rxjs';
 import { type Products } from '../models';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ProductsService {
   #client = inject(Client);
 

@@ -86,7 +86,7 @@ import { fromEvent, tap } from 'rxjs';
           gap: 30px;
           color: var(--app-color-text-dark-1);
 
-          &:focus,
+          /* &:focus, */
           &:hover {
             outline: none;
             background: var(--app-color-background-hover);

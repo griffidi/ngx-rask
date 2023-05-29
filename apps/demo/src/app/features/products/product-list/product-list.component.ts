@@ -33,6 +33,7 @@ import { productsStore } from '../store';
         padding-inline: 12px;
         padding-block: 6px;
         border: 2px solid var(--_border-color);
+        cursor: pointer;
         transition: transform 200ms ease-in-out;
 
         &:hover {

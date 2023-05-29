@@ -4,6 +4,7 @@ import { initialProductTransactionsState, type ProductTransactionsState } from '
 import { ProductTransactionsService } from '../shared/services';
 
 export const productTransactionsStore = signalStore(
+  { providedIn: 'root' },
   withState<ProductTransactionsState>(initialProductTransactionsState),
   withUpdaters(({ update }) => ({
     setPagination: (pageIndex: number, pageSize: number) => update({ pageIndex, pageSize }),

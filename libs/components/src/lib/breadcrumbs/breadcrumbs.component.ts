@@ -10,7 +10,14 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterStateSnapshot,
+  type ResolveFn,
+} from '@angular/router';
 import { filter, tap } from 'rxjs';
 import { RkSvgDivider } from '../svg-divider';
 
@@ -45,11 +52,10 @@ interface BreadcrumbPath {
     `
       ul {
         display: inline-flex;
-        gap: 10px;
+        gap: 7px;
         list-style: none;
         padding-inline: 8px;
         padding-block: 0;
-        /* background: var(--app-color-surface-3); */
         border-radius: var(--app-shape-small);
       }
 
@@ -58,22 +64,24 @@ interface BreadcrumbPath {
         align-items: center;
         gap: 6px;
         cursor: pointer;
-
-        &:hover {
-          rk-svg-divider {
-            --rk-svg-divider-path-color: var(--app-color-accent);
-          }
-
-          svg,
-          a {
-            color: var(--app-color-accent);
-          }
-        }
       }
 
       a {
-        padding-block: 8px;
+        --_link-color: var(--app-nav-link-color);
+        --_link-border-color: transparent;
+
+        padding-inline: 6px;
+        padding-block: 4px;
         text-decoration: none;
+        border: 1px solid var(--_link-border-color);
+        border-radius: var(--app-shape-small);
+        color: var(--_link-color);
+        transition: color 200ms ease-in-out, border-color 200ms ease-in-out;
+
+        &:hover {
+          --_link-color: var(--app-color-accent);
+          --_link-border-color: var(--app-color-accent);
+        }
       }
 
       rk-svg-divider {
@@ -99,7 +107,7 @@ export class RkBreadcrumbs {
       .pipe(
         takeUntilDestroyed(destroyRef),
         filter(event => event instanceof NavigationEnd),
-        tap(() => this.routes.set(this.#createBreadcrumbs(route.root)))
+        tap(async () => this.routes.set(await this.#createBreadcrumbs(route.root)))
       )
       .subscribe();
   }
@@ -107,11 +115,11 @@ export class RkBreadcrumbs {
   /**
    * Create breadcrumb tree from the current route.
    */
-  #createBreadcrumbs(route: ActivatedRoute): BreadcrumbPath[] {
+  async #createBreadcrumbs(route: ActivatedRoute): Promise<BreadcrumbPath[]> {
     // default path and title.
     const { path: defaultpath, title: defaultTitle } = routes.find(({ path }) => path === '')!;
 
-    const tree = this.#buildRouteTree(route);
+    const tree = await this.#buildRouteTree(route);
 
     // if the tree already contains the default path and title, return the tree.
     if (tree.some(({ title }) => title === defaultTitle)) {
@@ -125,23 +133,14 @@ export class RkBreadcrumbs {
   /**
    * Recursively build the route tree.
    */
-  #buildRouteTree(
+  async #buildRouteTree(
     route: ActivatedRoute,
     paths: string[] = [],
     routes: BreadcrumbPath[] = []
-  ): BreadcrumbPath[] {
+  ): Promise<BreadcrumbPath[]> {
     for (const child of route.children) {
       const { url } = child.snapshot;
-      const { title: titleStrOrFn } = child.routeConfig ?? {};
-      let title: string | undefined;
-
-      if (typeof titleStrOrFn === 'function') {
-        runInInjectionContext(this.#injector, () => {
-          title = (titleStrOrFn as Function)(child.snapshot);
-        });
-      } else {
-        title = titleStrOrFn;
-      }
+      const title = await this.#getRouteTitle(child);
 
       // if the route has a title and is not already in the tree, add it.
       if (title && !routes.some(r => r.title === title)) {
@@ -153,5 +152,21 @@ export class RkBreadcrumbs {
     }
 
     return routes;
+  }
+
+  #getRouteTitle(route: ActivatedRoute): Promise<string | undefined> {
+    return new Promise(resolve => {
+      const title = route.routeConfig?.title as undefined | string | ResolveFn<string>;
+
+      // if router title is ResolveFn, run inside injection context.
+      if (typeof title === 'function') {
+        runInInjectionContext(this.#injector, () =>
+          resolve(title(route.snapshot, {} as RouterStateSnapshot) as string)
+        );
+        return;
+      }
+
+      resolve(title);
+    });
   }
 }
