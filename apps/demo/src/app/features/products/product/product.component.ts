@@ -14,7 +14,34 @@ import { productsStore } from '../store';
 @Component({
   selector: 'app-product',
   standalone: true,
-  templateUrl: './product.component.html',
+  template: `
+    <ng-container *ngIf="product() as product">
+      <mat-accordion
+        multi
+        hideToggle>
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>Detail</mat-expansion-panel-header>
+          <app-product-detail [product]="product" />
+          <mat-action-row>
+            <a
+              mat-stroked-button
+              color="primary"
+              [routerLink]="['/products', product.id, 'edit']">
+              Edit
+            </a>
+          </mat-action-row>
+        </mat-expansion-panel>
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>Images</mat-expansion-panel-header>
+          <app-product-images [productName]="product.name" />
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>Transactions</mat-expansion-panel-header>
+          <app-product-transactions [productId]="product.id" />
+        </mat-expansion-panel>
+      </mat-accordion>
+    </ng-container>
+  `,
   styles: [
     `
       :host {
@@ -28,12 +55,30 @@ import { productsStore } from '../store';
         inline-size: 600px;
       }
 
-      .mat-expansion-panel {
+      .mat-accordion .mat-expansion-panel {
+        --_expansion-shape: var(--app-shape-small);
+
         background: var(--app-color-surface-2);
+
+        &.mat-expanded,
+        &:first-of-type,
+        &.mat-expanded + .mat-expansion-panel {
+          border-start-start-radius: var(--_expansion-shape);
+          border-start-end-radius: var(--_expansion-shape);
+        }
+
+        &.mat-expanded,
+        &:has(+ .mat-expanded),
+        &:last-of-type {
+          border-end-start-radius: var(--_expansion-shape);
+          border-end-end-radius: var(--_expansion-shape);
+        }
       }
 
       .mat-expansion-panel-header {
         color: var(--app-color-accent);
+        font-size: 1.1em;
+        letter-spacing: 0.05em;
       }
 
       .mat-action-row {

@@ -2,8 +2,10 @@
   --app-color-primary: #7e57c2;
   --app-color-accent: #69f0ae;
   --app-color-secondary: #3e4140;
-  --app-color-background: #0b0c0e;
-  --app-color-background-hover: #303031;
+  /* --app-color-background: #0b0c0e; */
+  --app-color-background: hsl(229, 15%, 12%);
+  --app-color-background-hover: hsl(229, 15%, 26%);
+  /* --app-color-background-hover: #303031; */
   --app-color-border-color: rgba(235, 235, 235, 0.12);
 }
 
@@ -54,11 +56,11 @@
 
 /* surface */
 :root {
-  --app-color-surface-1: #111113;
-  --app-color-surface-2: color-mix(in srgb, var(--app-color-surface-1) 94%, #ffffff);
-  --app-color-surface-3: color-mix(in srgb, var(--app-color-surface-1) 88%, #ffffff);
-  --app-color-surface-4: color-mix(in srgb, var(--app-color-surface-1) 82%, #ffffff);
-  --app-color-surface-5: color-mix(in srgb, var(--app-color-surface-1) 76%, #ffffff);
+  --app-color-surface-1: color-mix(in srgb, var(--app-color-background) 97%, #ffffff);
+  --app-color-surface-2: color-mix(in srgb, var(--app-color-background) 94%, #ffffff);
+  --app-color-surface-3: color-mix(in srgb, var(--app-color-background) 88%, #ffffff);
+  --app-color-surface-4: color-mix(in srgb, var(--app-color-background) 82%, #ffffff);
+  --app-color-surface-5: color-mix(in srgb, var(--app-color-background) 76%, #ffffff);
 }
 
 /* layout */
