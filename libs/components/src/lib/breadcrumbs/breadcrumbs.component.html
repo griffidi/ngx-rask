@@ -1,6 +1,0 @@
-<ul>
-  <li *ngFor="let route of routes(); let last = last">
-    <a [routerLink]="route.url">{{ route.title }}</a>
-    <span *ngIf="!last">/</span>
-  </li>
-</ul>

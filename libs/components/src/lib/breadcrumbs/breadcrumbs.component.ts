@@ -1,6 +1,14 @@
 import routes from '#/app/features/layout/routes';
 import { NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  Injector,
+  inject,
+  runInInjectionContext,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter, tap } from 'rxjs';
@@ -41,7 +49,7 @@ interface BreadcrumbPath {
         list-style: none;
         padding-inline: 8px;
         padding-block: 0;
-        background: var(--app-color-surface-3);
+        /* background: var(--app-color-surface-3); */
         border-radius: var(--app-shape-small);
       }
 
@@ -49,6 +57,7 @@ interface BreadcrumbPath {
         display: flex;
         align-items: center;
         gap: 6px;
+        cursor: pointer;
 
         &:hover {
           rk-svg-divider {
@@ -77,6 +86,8 @@ interface BreadcrumbPath {
   imports: [NgFor, NgIf, RkSvgDivider, RouterLink],
 })
 export class RkBreadcrumbs {
+  #injector = inject(Injector);
+
   protected routes = signal<BreadcrumbPath[]>([]);
 
   constructor() {
@@ -120,7 +131,17 @@ export class RkBreadcrumbs {
     routes: BreadcrumbPath[] = []
   ): BreadcrumbPath[] {
     for (const child of route.children) {
-      const { title, url } = child.snapshot;
+      const { url } = child.snapshot;
+      const { title: titleStrOrFn } = child.routeConfig ?? {};
+      let title: string | undefined;
+
+      if (typeof titleStrOrFn === 'function') {
+        runInInjectionContext(this.#injector, () => {
+          title = (titleStrOrFn as Function)(child.snapshot);
+        });
+      } else {
+        title = titleStrOrFn;
+      }
 
       // if the route has a title and is not already in the tree, add it.
       if (title && !routes.some(r => r.title === title)) {
