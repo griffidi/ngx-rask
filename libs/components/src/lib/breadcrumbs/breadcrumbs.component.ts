@@ -120,6 +120,15 @@ export class RkBreadcrumbs {
 
     const tree = await this.#buildRouteTree(route);
 
+    /**
+     * if the tree only contains the default path, return an empty tree.
+     * if the current route is the default path, you don't need to show
+     * it in the breadcrumbs.
+     */
+    if (tree.length === 1 && tree[0].title === defaultTitle) {
+      return [];
+    }
+
     // if the tree already contains the default path and title, return the tree.
     if (tree.some(({ title }) => title === defaultTitle)) {
       return tree;

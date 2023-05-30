@@ -116,6 +116,7 @@ import { fromEvent, tap } from 'rxjs';
 export default class Layout implements AfterViewInit {
   readonly #destroyRef = inject(DestroyRef);
   readonly #document = inject(DOCUMENT);
+  // readonly #ngZone = inject(NgZone);
 
   protected readonly authService = inject(AuthService);
   protected readonly isAuthenticated = computed(() => this.authService.isAuthenticated());
@@ -129,6 +130,7 @@ export default class Layout implements AfterViewInit {
   ngAfterViewInit() {
     if (this._drawer) {
       this._drawer._content.nativeElement.focus();
+
       // close drawer when nav-link is clicked
       const links = this.#document.querySelectorAll('nav .nav-link');
       fromEvent(links, 'click')
@@ -137,6 +139,16 @@ export default class Layout implements AfterViewInit {
           tap(() => this._drawer?.close())
         )
         .subscribe();
+
+      // this.#ngZone.runOutsideAngular(() => {
+      //   fromEvent<KeyboardEvent>(this.#document, 'keydown')
+      //     .pipe(
+      //       takeUntilDestroyed(this.#destroyRef),
+      //       filter(({ key }) => key === 'Escape'),
+      //       tap(() => this._drawer?.close())
+      //     )
+      //     .subscribe();
+      // });
     }
   }
 

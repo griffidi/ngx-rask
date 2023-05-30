@@ -24,12 +24,11 @@ type selectedColorType = `selected-color-${Colors}`;
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 20px;
       }
 
       :host ::ng-deep rk-svg {
         --_svg-color: var(--app-color-clothing-black);
-
-        inline-size: 100%;
 
         & svg {
           block-size: 250px;

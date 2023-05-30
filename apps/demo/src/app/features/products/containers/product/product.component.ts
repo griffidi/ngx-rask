@@ -92,7 +92,7 @@ import { productsStore } from '../../store';
 
       .mat-expansion-panel-header {
         font-size: 1.1em;
-        letter-spacing: 0.05em;
+        /* letter-spacing: 0.05em; */
 
         & > ::ng-deep .mat-content {
           margin-inline-end: 0;
