@@ -52,17 +52,16 @@ interface BreadcrumbPath {
     `
       ul {
         display: inline-flex;
-        gap: 7px;
+        gap: 2px;
         list-style: none;
         padding-inline: 8px;
         padding-block: 0;
-        border-radius: var(--app-shape-small);
       }
 
       li {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 2px;
         cursor: pointer;
       }
 

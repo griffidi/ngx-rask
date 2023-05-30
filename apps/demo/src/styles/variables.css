@@ -72,6 +72,7 @@
 
 /* shape */
 :root {
+  --app-shape-extra-small: 4px;
   --app-shape-small: 8px;
   --app-shape-medium: 16px;
   --app-shape-large: 24px;
