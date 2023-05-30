@@ -15,7 +15,7 @@
   overflow: hidden auto;
 
   &::-webkit-scrollbar {
-    inline-size: 18px;
+    inline-size: 16px;
     background: transparent;
   }
 

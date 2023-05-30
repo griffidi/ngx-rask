@@ -6,7 +6,19 @@ import { Colors } from './colors';
 @Component({
   selector: 'rk-color-options',
   standalone: true,
-  templateUrl: './color-options.component.html',
+  template: `
+    <ul>
+      <li
+        *ngFor="let color of colors()"
+        [rkUnpatch]="['mousemove']"
+        id="color{{ color }}"
+        class="color-option {{ color | lowercase }}"
+        [attr.selected]="selectedColor() === color"
+        (mouseover)="mouseoverColor(color)"
+        (mouseout)="mouseoutColor()"
+        (click)="selectColor(color)"></li>
+    </ul>
+  `,
   styles: [
     `
       :host[vertical] {
@@ -25,7 +37,7 @@ import { Colors } from './colors';
       }
 
       .color-option {
-        --_color-option-size: 20px;
+        --_color-option-size: 14px;
         --_color-option-transform-scale: 1;
         --_color-option-border-color: transparent;
 

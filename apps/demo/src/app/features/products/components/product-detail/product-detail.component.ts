@@ -32,16 +32,7 @@ import { MatIconModule } from '@angular/material/icon';
       header {
         display: flex;
         justify-content: space-between;
-        font-size: 1.2em;
       }
-
-      /* .title {
-        font-weight: 600;
-      }
-
-      .cost {
-        font-weight: 500;
-      } */
 
       .rating-container {
         display: flex;

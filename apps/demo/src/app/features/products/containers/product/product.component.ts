@@ -91,7 +91,6 @@ import { productsStore } from '../../store';
       }
 
       .mat-expansion-panel-header {
-        /* color: var(--app-color-accent); */
         font-size: 1.1em;
         letter-spacing: 0.05em;
 
