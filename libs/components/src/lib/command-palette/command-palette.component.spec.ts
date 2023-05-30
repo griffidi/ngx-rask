@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommandPalette } from './command-palette.component';
+import { RkCommandPalette } from './command-palette.component';
 
 describe('CommandPalette', () => {
-  let component: CommandPalette;
-  let fixture: ComponentFixture<CommandPalette>;
+  let component: RkCommandPalette;
+  let fixture: ComponentFixture<RkCommandPalette>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CommandPalette],
+      imports: [RkCommandPalette],
     });
-    fixture = TestBed.createComponent(CommandPalette);
+    fixture = TestBed.createComponent(RkCommandPalette);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

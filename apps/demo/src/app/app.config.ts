@@ -9,10 +9,18 @@ import {
   withComponentInputBinding,
   withPreloading,
 } from '@angular/router';
+import { provideCommandPalette } from '@ngx-rask/components';
 import { provideCoreOptions } from '@ngx-rask/core';
 import { provideGraphQL } from '@ngx-rask/graphql';
 import { provideToastr } from 'ngx-toastr';
 import { environment } from '../environments/environment';
+import routes from './features/layout/routes';
+
+const items = routes.map(route => ({
+  title: route.title,
+  path: route.path,
+  icon: route.data?.icon,
+}));
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -42,5 +50,6 @@ export const appConfig: ApplicationConfig = {
     provideCoreOptions(),
     provideGraphQL({ uri: environment.graphqlUri }),
     provideAssets({ path: environment.assetsPath }),
+    provideCommandPalette({ items }),
   ],
 };

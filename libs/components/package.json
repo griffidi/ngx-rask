@@ -11,5 +11,10 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
+  "exports": {
+    "./command-palette.css": {
+      "style": "./command-palette/command-palette.css"
+    }
+  },
   "sideEffects": false
 }

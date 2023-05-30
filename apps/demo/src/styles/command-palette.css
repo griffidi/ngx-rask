@@ -1,0 +1,12 @@
+/* .cdk-overlay-container {
+  display: grid;
+  place-content: center;
+} */
+
+.rk-command-palette-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* .rk-command-palette-panel {
+
+} */

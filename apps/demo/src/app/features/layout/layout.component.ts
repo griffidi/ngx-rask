@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { CommandPaletteService } from '@ngx-rask/components';
 import { fromEvent, tap } from 'rxjs';
 
 @Component({
@@ -117,6 +118,7 @@ export default class Layout implements AfterViewInit {
   readonly #destroyRef = inject(DestroyRef);
   readonly #document = inject(DOCUMENT);
   // readonly #ngZone = inject(NgZone);
+  readonly #commandPaletteService = inject(CommandPaletteService);
 
   protected readonly authService = inject(AuthService);
   protected readonly isAuthenticated = computed(() => this.authService.isAuthenticated());
@@ -128,6 +130,8 @@ export default class Layout implements AfterViewInit {
   @ViewChild(MatDrawer) private readonly _drawer: MatDrawer | undefined;
 
   ngAfterViewInit() {
+    this.#commandPaletteService.register();
+
     if (this._drawer) {
       this._drawer._content.nativeElement.focus();
 
@@ -139,16 +143,6 @@ export default class Layout implements AfterViewInit {
           tap(() => this._drawer?.close())
         )
         .subscribe();
-
-      // this.#ngZone.runOutsideAngular(() => {
-      //   fromEvent<KeyboardEvent>(this.#document, 'keydown')
-      //     .pipe(
-      //       takeUntilDestroyed(this.#destroyRef),
-      //       filter(({ key }) => key === 'Escape'),
-      //       tap(() => this._drawer?.close())
-      //     )
-      //     .subscribe();
-      // });
     }
   }
 
