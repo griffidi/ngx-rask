@@ -16,7 +16,7 @@
     "angular 16",
     "signals"
   ],
-  "packageManager": "pnpm@8.4.0",
+  "packageManager": "pnpm@8.6.0",
   "engines": {
     "node": ">=18.11",
     "pnpm": ">=8.4.0"

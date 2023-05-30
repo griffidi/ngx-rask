@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/griffidi/ngx-rask.git"
   },
-  "packageManager": "pnpm@8.4.0",
+  "packageManager": "pnpm@8.6.0",
   "engines": {
     "node": ">=18.11",
     "pnpm": ">=8.4.0"
@@ -77,9 +77,6 @@
     "ts-node": "^10.9.1",
     "typegraphql-prisma": "0.25.1",
     "typescript": "5.1.1-rc"
-  },
-  "peerDependencies": {
-    "typescript": "5.*"
   },
   "prisma": {
     "seed": "node dist/seed.js"

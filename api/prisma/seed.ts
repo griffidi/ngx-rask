@@ -29,46 +29,58 @@ const load = async () => {
   await prisma.$connect();
 
   console.log('Loading locationState data...');
-  for (let i = 0, len = locationStates.length; i < len; i++) {
-    await prisma.locationState.create({
-      data: locationStates[i],
-    });
-  }
+  await prisma.$transaction(
+    locationStates.map(locationState =>
+      prisma.locationState.create({
+        data: locationState,
+      })
+    )
+  );
 
   console.log('Loading department data...');
-  for (let i = 0, len = departments.length; i < len; i++) {
-    await prisma.department.create({
-      data: departments[i],
-    });
-  }
+  await prisma.$transaction(
+    departments.map(department =>
+      prisma.department.create({
+        data: department,
+      })
+    )
+  );
 
   console.log('Loading customer data...');
-  for (let i = 0, len = customers.length; i < len; i++) {
-    await prisma.customer.create({
-      data: customers[i],
-    });
-  }
+  await prisma.$transaction(
+    customers.map(customer =>
+      prisma.customer.create({
+        data: customer,
+      })
+    )
+  );
 
   console.log('Loading sizes data...');
-  for (let i = 0, len = sizes.length; i < len; i++) {
-    await prisma.size.create({
-      data: sizes[i],
-    });
-  }
+  await prisma.$transaction(
+    sizes.map(size =>
+      prisma.size.create({
+        data: size,
+      })
+    )
+  );
 
   console.log('Loading product data...');
-  for (let i = 0, len = products.length; i < len; i++) {
-    await prisma.product.create({
-      data: products[i],
-    });
-  }
+  await prisma.$transaction(
+    products.map(product =>
+      prisma.product.create({
+        data: product,
+      })
+    )
+  );
 
   console.log('Loading inventory data...');
-  for (let i = 0, len = inventories.length; i < len; i++) {
-    await prisma.inventory.create({
-      data: inventories[i],
-    });
-  }
+  await prisma.$transaction(
+    inventories.map(inventory =>
+      prisma.inventory.create({
+        data: inventory,
+      })
+    )
+  );
 
   console.log('Sorting productTransaction data...');
   const productTransationsSorted = productTransations.sort(
@@ -76,39 +88,49 @@ const load = async () => {
   );
 
   console.log('Loading productTransaction data...');
-  for (let i = 0, len = productTransationsSorted.length; i < len; i++) {
-    await prisma.productTransaction.create({
-      data: productTransationsSorted[i],
-    });
-  }
+  await prisma.$transaction(
+    productTransationsSorted.map(productTransaction =>
+      prisma.productTransaction.create({
+        data: productTransaction,
+      })
+    )
+  );
 
   console.log('Loading productSale data...');
-  for (let i = 0, len = productSales.length; i < len; i++) {
-    await prisma.productSale.create({
-      data: productSales[i],
-    });
-  }
+  await prisma.$transaction(
+    productSales.map(productSale =>
+      prisma.productSale.create({
+        data: productSale,
+      })
+    )
+  );
 
   console.log('Loading employee data...');
-  for (let i = 0, len = employees.length; i < len; i++) {
-    await prisma.employee.create({
-      data: employees[i],
-    });
-  }
+  await prisma.$transaction(
+    employees.map(employee =>
+      prisma.employee.create({
+        data: employee,
+      })
+    )
+  );
 
   console.log('Loading role data...');
-  for (let i = 0, len = roles.length; i < len; i++) {
-    await prisma.role.create({
-      data: roles[i],
-    });
-  }
+  await prisma.$transaction(
+    roles.map(role =>
+      prisma.role.create({
+        data: role,
+      })
+    )
+  );
 
   console.log('Loading user data...');
-  for (let i = 0, len = users.length; i < len; i++) {
-    await prisma.user.create({
-      data: users[i],
-    });
-  }
+  await prisma.$transaction(
+    users.map(user =>
+      prisma.user.create({
+        data: user,
+      })
+    )
+  );
 
   const endTime = performance.now();
   console.log(`Data loaded in ${(endTime - startTime) * 1000} seconds.`);
