@@ -1,7 +1,7 @@
 {
   "name": "@ngx-rask/root",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "license": "MIT",
   "author": {
     "name": "Dustin Griffith",
