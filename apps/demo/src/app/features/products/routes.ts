@@ -6,7 +6,7 @@ import { productTransactionsStore, productsStore } from './store';
 export default [
   {
     path: '',
-    loadComponent: () => import('./product-list/product-list.component'),
+    loadComponent: () => import('./containers/product-list/product-list.component'),
     providers: [
       ProductsService,
       ProductTransactionsService,
@@ -32,7 +32,7 @@ export default [
       store.setSelectedProductId(params['id']);
       return store.selectedProduct()?.name ?? '';
     },
-    loadComponent: () => import('./product/product.component'),
+    loadComponent: () => import('./containers/product/product.component'),
     providers: [
       ProductsService,
       ProductTransactionsService,

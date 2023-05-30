@@ -5,8 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
 import { CreatePathPipe } from '@ngx-rask/core';
-import { IMAGE_PATH_TOKEN } from '../../../common/assets/image-path-token';
-import { productsStore } from '../store';
+import { IMAGE_PATH_TOKEN } from '../../../../common/assets/image-path-token';
+import { productsStore } from '../../store';
 
 @Component({
   selector: 'app-product-list',

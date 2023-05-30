@@ -9,7 +9,15 @@ type selectedColorType = `selected-color-${Colors}`;
 @Component({
   selector: 'app-product-images',
   standalone: true,
-  templateUrl: './product-images.component.html',
+  template: `
+    <rk-color-options
+      vertical
+      (hoveredColorChange)="onHoverColorChange($event)"
+      (selectedColorChange)="onSelectColorChange($event)" />
+    <rk-svg
+      [path]="svgPath"
+      [ngClass]="[hoveredColor(), selectedColor()]" />
+  `,
   styles: [
     `
       :host {

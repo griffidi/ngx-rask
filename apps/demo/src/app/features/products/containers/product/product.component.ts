@@ -8,8 +8,8 @@ import {
   ProductDetailComponent,
   ProductImagesComponent,
   ProductTransactionsComponent,
-} from '../components';
-import { productsStore } from '../store';
+} from '../../components';
+import { productsStore } from '../../store';
 
 @Component({
   selector: 'app-product',
@@ -20,7 +20,12 @@ import { productsStore } from '../store';
         multi
         hideToggle>
         <mat-expansion-panel expanded>
-          <mat-expansion-panel-header>Detail</mat-expansion-panel-header>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Detail</mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>page_info</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
           <app-product-detail [product]="product" />
           <mat-action-row>
             <a
@@ -32,11 +37,21 @@ import { productsStore } from '../store';
           </mat-action-row>
         </mat-expansion-panel>
         <mat-expansion-panel expanded>
-          <mat-expansion-panel-header>Images</mat-expansion-panel-header>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Images</mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>image</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
           <app-product-images [productName]="product.name" />
         </mat-expansion-panel>
         <mat-expansion-panel>
-          <mat-expansion-panel-header>Transactions</mat-expansion-panel-header>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Transactions</mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>receipt_long</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
           <app-product-transactions [productId]="product.id" />
         </mat-expansion-panel>
       </mat-accordion>
@@ -76,9 +91,19 @@ import { productsStore } from '../store';
       }
 
       .mat-expansion-panel-header {
-        color: var(--app-color-accent);
+        /* color: var(--app-color-accent); */
         font-size: 1.1em;
         letter-spacing: 0.05em;
+
+        & > ::ng-deep .mat-content {
+          margin-inline-end: 0;
+        }
+      }
+
+      .mat-expansion-panel-header-description {
+        justify-content: flex-end;
+        align-items: center;
+        margin-inline-end: 0;
       }
 
       .mat-action-row {

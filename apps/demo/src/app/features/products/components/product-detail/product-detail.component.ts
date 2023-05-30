@@ -6,7 +6,21 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  templateUrl: './product-detail.component.html',
+  template: `
+    <header>
+      <span class="title">{{ product.name }}</span>
+      <span class="cost">{{ product.cost | currency }}</span>
+    </header>
+
+    <div class="rating-container">
+      <mat-icon
+        *ngFor="let i of [0, 1, 2, 4, 5]"
+        [ngClass]="{ 'star-full': i < product.rating }">
+        star_rate
+      </mat-icon>
+      <div class="rating">({{ product.rating }})</div>
+    </div>
+  `,
   styles: [
     `
       :host {
@@ -21,14 +35,13 @@ import { MatIconModule } from '@angular/material/icon';
         font-size: 1.2em;
       }
 
-      .title {
+      /* .title {
         font-weight: 600;
       }
 
       .cost {
         font-weight: 500;
-        /* color: var(--app-color-accent); */
-      }
+      } */
 
       .rating-container {
         display: flex;
