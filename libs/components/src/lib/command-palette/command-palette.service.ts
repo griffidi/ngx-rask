@@ -1,48 +1,72 @@
-import { GlobalPositionStrategy, Overlay } from '@angular/cdk/overlay';
+import {
+  BlockScrollStrategy,
+  GlobalPositionStrategy,
+  Overlay,
+  OverlayConfig,
+  ViewportRuler,
+} from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
-import { DestroyRef, Injectable, NgZone, inject } from '@angular/core';
+import { DestroyRef, Injectable, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { setTimeout } from '@rx-angular/cdk/zone-less/browser';
 import { filter, fromEvent, map, take, tap } from 'rxjs';
 import { RkCommandPalette } from './command-palette';
 
+const COMMAND_PALETTE_OVERLAY_CONFIG: OverlayConfig = {
+  hasBackdrop: true,
+  backdropClass: 'rk-command-palette-backdrop',
+  panelClass: 'rk-command-palette-panel',
+  disposeOnNavigation: true,
+  minHeight: '100px',
+  maxHeight: '450px',
+  width: '600px',
+  positionStrategy: new GlobalPositionStrategy().centerHorizontally().centerVertically(),
+};
+
 @Injectable()
 export class CommandPaletteService {
+  #isRegistered = false;
+
+  readonly #viewportRuler = inject(ViewportRuler);
   readonly #destroyRef = inject(DestroyRef);
-  readonly #ngZone = inject(NgZone);
   readonly #overlay = inject(Overlay);
   readonly #document = inject(DOCUMENT);
 
-  register() {
-    this.#ngZone.runOutsideAngular(() => {
-      fromEvent<KeyboardEvent>(this.#document, 'keydown')
-        .pipe(
-          takeUntilDestroyed(this.#destroyRef),
-          filter(({ key, ctrlKey }) => ctrlKey && ['k', '/'].includes(key)),
-          map(event => {
-            this.show();
-            return event;
-          })
-        )
-        .subscribe();
-    });
+  /**
+   * Initialize command palette service by subscribing to events
+   * that will trigger the command palette to display.
+   */
+  initialize() {
+    if (this.#isRegistered) {
+      return;
+    }
+
+    this.#isRegistered = true;
+
+    fromEvent<KeyboardEvent>(this.#document, 'keydown')
+      .pipe(
+        takeUntilDestroyed(this.#destroyRef),
+        filter(({ key, ctrlKey }) => ctrlKey && ['k', '/'].includes(key)),
+        map(event => {
+          this.show();
+          return event;
+        })
+      )
+      .subscribe();
   }
 
+  /**
+   * Shows the command palette.
+   */
   show() {
-    // this.#build();
-    this.#ngZone.run(() => this.#build());
+    this.#createCommandPalette();
   }
 
-  #build() {
+  #createCommandPalette() {
     const overlayRef = this.#overlay.create({
-      hasBackdrop: true,
-      backdropClass: 'rk-command-palette-backdrop',
-      panelClass: 'rk-command-palette-panel',
-      disposeOnNavigation: true,
-      width: '600px',
-      minHeight: '100px',
-      maxHeight: '450px',
-      positionStrategy: new GlobalPositionStrategy().centerHorizontally().centerVertically(),
+      ...COMMAND_PALETTE_OVERLAY_CONFIG,
+      scrollStrategy: new BlockScrollStrategy(this.#viewportRuler, this.#document),
     });
     const portal = new ComponentPortal(RkCommandPalette);
     const componentRef = overlayRef.attach(portal);
@@ -61,5 +85,11 @@ export class CommandPaletteService {
         tap(() => overlayRef.detach())
       )
       .subscribe();
+
+    setTimeout(() => {
+      const overlayEl = overlayRef.overlayElement;
+      overlayEl.setAttribute('opened', '');
+      // overlayEl.querySelector('rk-command-palette')?.setAttribute('opened', '');
+    });
   }
 }

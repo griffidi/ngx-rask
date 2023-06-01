@@ -46,11 +46,7 @@ const sharedRules = {
 const sharedNgRules = {
   ...ngplugin.rules.recommended,
   ...ngtemplate.rules['process-inline-templates'],
-  ...rxNg.rules['recommended'],
   ...rxNg.rules['zoneless'],
-  'ngplugin/no-empty-lifecycle-method': 'error',
-  'rxNg/no-explicit-change-detection-apis': 'error',
-  'rxNg/prefer-no-layout-sensitive-apis': 'error',
 };
 
 const sharedAppRules = {

@@ -1,12 +1,27 @@
 /* .cdk-overlay-container {
-  display: grid;
-  place-content: center;
 } */
 
 .rk-command-palette-backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* .rk-command-palette-panel {
+.rk-command-palette-panel {
+  --_command-palette-panel-opacity: 0;
 
-} */
+  content-visibility: hidden;
+  opacity: var(--_command-palette-panel-opacity);
+
+  &[opened] {
+    --_command-palette-panel-opacity: 1;
+
+    transition: opacity 500ms ease-in-out;
+    content-visibility: visible;
+  }
+
+  &[closing] {
+    --_command-palette-panel-opacity: 0;
+
+    transition: opacity 500ms ease-in-out;
+    content-visibility: hidden;
+  }
+}

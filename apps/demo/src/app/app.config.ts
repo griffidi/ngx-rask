@@ -11,7 +11,7 @@ import {
   withPreloading,
 } from '@angular/router';
 import { provideCommandPalette } from '@ngx-rask/components';
-import { provideCoreOptions } from '@ngx-rask/core';
+import { provideCoreOptions, provideXhrFactory } from '@ngx-rask/core';
 import { provideGraphQL } from '@ngx-rask/graphql';
 import { provideToastr } from 'ngx-toastr';
 import { environment } from '../environments/environment';
@@ -41,6 +41,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClient(withInterceptors([authInterceptor()])),
     provideAnimations(),
+    provideXhrFactory(),
     provideToastr(),
     provideCoreOptions(),
     provideGraphQL({ uri: environment.graphqlUri }),

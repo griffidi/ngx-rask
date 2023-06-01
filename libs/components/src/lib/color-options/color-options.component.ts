@@ -1,6 +1,6 @@
 import { LowerCasePipe, NgClass, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output, signal } from '@angular/core';
-import { RkUnpatch } from 'libs/core/src/lib/unpatch';
+import { RkUnpatch } from 'libs/core/src/lib/zone/unpatch';
 import { Colors } from './colors';
 
 @Component({

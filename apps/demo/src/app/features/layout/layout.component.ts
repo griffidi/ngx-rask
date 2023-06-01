@@ -117,7 +117,6 @@ import { fromEvent, tap } from 'rxjs';
 export default class Layout implements AfterViewInit {
   readonly #destroyRef = inject(DestroyRef);
   readonly #document = inject(DOCUMENT);
-  // readonly #ngZone = inject(NgZone);
   readonly #commandPaletteService = inject(CommandPaletteService);
 
   protected readonly authService = inject(AuthService);
@@ -130,7 +129,7 @@ export default class Layout implements AfterViewInit {
   @ViewChild(MatDrawer) private readonly _drawer: MatDrawer | undefined;
 
   ngAfterViewInit() {
-    this.#commandPaletteService.register();
+    this.#commandPaletteService.initialize();
 
     if (this._drawer) {
       this._drawer._content.nativeElement.focus();

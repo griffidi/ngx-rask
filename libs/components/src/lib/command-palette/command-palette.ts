@@ -166,8 +166,17 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
         padding-inline: 4px;
       }
 
+      /* :host([opened]) {
+        section {
+          flex: 1;
+        }
+      } */
+
       section {
         flex: 1;
+        /* flex: 0;
+        block-size: 0;
+        transition: flex 600ms ease-in-out; */
       }
 
       .mdc-list-group__subheader {
