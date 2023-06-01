@@ -12,10 +12,6 @@
       "path": "apps/demo"
     },
     {
-      "name": "components",
-      "path": "libs/components"
-    },
-    {
       "name": "core",
       "path": "libs/core"
     },
@@ -26,6 +22,10 @@
     {
       "name": "signal-store",
       "path": "libs/signal-store"
+    },
+    {
+      "name": "components",
+      "path": "libs/components"
     }
   ],
   "settings": {
