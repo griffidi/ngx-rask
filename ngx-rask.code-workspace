@@ -112,6 +112,7 @@
       "source.fixAll.markdownlint": true
     },
 
+    "eslint.enable": true,
     "eslint.workingDirectories": [{ "mode": "auto" }],
     "eslint.codeActionsOnSave.mode": "problems",
     "eslint.experimental.useFlatConfig": true,
