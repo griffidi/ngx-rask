@@ -4,7 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { DestroyRef, Injectable, NgZone, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter, fromEvent, map, take, tap } from 'rxjs';
-import { RkCommandPalette } from './command-palette.component';
+import { RkCommandPalette } from './command-palette';
 
 @Injectable()
 export class CommandPaletteService {
@@ -41,6 +41,7 @@ export class CommandPaletteService {
       disposeOnNavigation: true,
       width: '600px',
       minHeight: '100px',
+      maxHeight: '450px',
       positionStrategy: new GlobalPositionStrategy().centerHorizontally().centerVertically(),
     });
     const portal = new ComponentPortal(RkCommandPalette);

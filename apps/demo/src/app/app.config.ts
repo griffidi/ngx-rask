@@ -1,5 +1,6 @@
 import { provideAssets } from '#/app/common/assets';
 import { authInterceptor } from '#/app/common/auth';
+import { searchOptions } from '#/app/common/command-palette';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideZoneChangeDetection, type ApplicationConfig } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -15,12 +16,6 @@ import { provideGraphQL } from '@ngx-rask/graphql';
 import { provideToastr } from 'ngx-toastr';
 import { environment } from '../environments/environment';
 import routes from './features/layout/routes';
-
-const items = routes.map(route => ({
-  title: route.title,
-  path: route.path,
-  icon: route.data?.icon,
-}));
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -50,6 +45,9 @@ export const appConfig: ApplicationConfig = {
     provideCoreOptions(),
     provideGraphQL({ uri: environment.graphqlUri }),
     provideAssets({ path: environment.assetsPath }),
-    provideCommandPalette({ items }),
+    provideCommandPalette({
+      routes: routes.filter(({ path }) => path !== 'login'),
+      searchOptions,
+    }),
   ],
 };

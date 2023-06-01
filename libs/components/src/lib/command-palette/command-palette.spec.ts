@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RkCommandPalette } from './command-palette.component';
+import { RkCommandPalette } from './command-palette';
 
 describe('CommandPalette', () => {
   let component: RkCommandPalette;
