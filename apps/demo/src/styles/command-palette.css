@@ -1,5 +1,6 @@
-/* .cdk-overlay-container {
-} */
+html.cdk-global-scrollblock {
+  overflow: hidden;
+}
 
 .rk-command-palette-backdrop {
   background-color: rgba(0, 0, 0, 0.5);
