@@ -7,22 +7,23 @@ html.cdk-global-scrollblock {
 }
 
 .rk-command-palette-panel {
-  --_command-palette-panel-opacity: 0;
+  --_panel-opacity: 0;
+  --_panel-transition-duration: 0.2s;
 
   content-visibility: hidden;
-  opacity: var(--_command-palette-panel-opacity);
+  opacity: var(--_panel-opacity);
 
   &[opened] {
-    --_command-palette-panel-opacity: 1;
+    --_panel-opacity: 1;
 
-    transition: opacity 500ms ease-in-out;
+    transition: opacity var(--_panel-transition-duration) ease-in-out;
     content-visibility: visible;
   }
 
   &[closing] {
-    --_command-palette-panel-opacity: 0;
+    --_panel-opacity: 0;
 
-    transition: opacity 500ms ease-in-out;
+    transition: opacity var(--_panel-transition-duration) ease-in-out;
     content-visibility: hidden;
   }
 }

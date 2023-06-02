@@ -109,6 +109,8 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
   styles: [
     `
       :host {
+        --_section-block-size: 0;
+
         display: flex;
         flex-direction: column;
         inline-size: 100%;
@@ -167,17 +169,23 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
         padding-inline: 4px;
       }
 
-      /* :host([opened]) {
+      :host([opened]) {
         section {
-          flex: 1;
+          /*
+            this is set to a max-height of the panel so
+            that we don't need to calculate the actual height manually
+          */
+          --_section-block-size: 450px;
+
+          content-visibility: visible;
         }
-      } */
+      }
 
       section {
-        flex: 1;
-        /* flex: 0;
-        block-size: 0;
-        transition: flex 600ms ease-in-out; */
+        content-visibility: hidden;
+        block-size: var(--_section-block-size);
+        transition: 500ms block-size 150ms ease-in-out;
+        will-change: block-size;
       }
 
       .mdc-list-group__subheader {
