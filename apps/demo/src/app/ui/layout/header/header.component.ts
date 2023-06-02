@@ -22,7 +22,9 @@ import { RkBreadcrumbs } from '@ngx-rask/components';
 
       <rk-breadcrumbs></rk-breadcrumbs>
 
-      <div class="command-palette-hint">
+      <div
+        class="command-palette-hint"
+        (click)="onSearchClick()">
         <mat-icon>search</mat-icon>
         Search
         <span class="special-character">Ctrl</span>
@@ -78,6 +80,7 @@ import { RkBreadcrumbs } from '@ngx-rask/components';
         padding-block: 8px;
         border: 1px solid var(--app-color-border-color);
         border-radius: var(--app-shape-small);
+        cursor: pointer;
 
         .mat-icon {
           font-size: 20px;
@@ -129,4 +132,9 @@ export default class LayoutHeader {
   @Input({ required: true }) isAuthenticated = false;
   @Input({ required: true }) userInitials = '';
   @Output() logout = new EventEmitter();
+  @Output() searchClicked = new EventEmitter<void>();
+
+  protected onSearchClick() {
+    this.searchClicked.emit();
+  }
 }

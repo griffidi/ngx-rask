@@ -5046,6 +5046,7 @@ export type GetEmployeesQuery = {
     readonly jobTitle: string;
     readonly departmentId: string;
     readonly dateStarted: any;
+    readonly department: { readonly __typename?: 'Department'; readonly name: string };
   }>;
 };
 
@@ -5696,6 +5697,14 @@ export const GetEmployeesDocument = {
               kind: 'SelectionSet',
               selections: [
                 { kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'department' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'name' } }],
+                  },
+                },
               ],
             },
           },

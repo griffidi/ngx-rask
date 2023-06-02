@@ -25,11 +25,7 @@ import { ProductTransactionResolver } from './resolvers/product-transaction.js';
 await prisma.$connect();
 
 const schema = await buildSchema({
-  resolvers: [
-    ...resolvers,
-    LoginResolver,
-    ProductTransactionResolver,
-  ],
+  resolvers: [...resolvers, LoginResolver, ProductTransactionResolver],
   emitSchemaFile: './prisma/schema.graphql',
   validate: false,
 });
@@ -56,18 +52,15 @@ await server.start();
 
 app.use(
   cors({
-    allowMethods: [
-      'POST',
-      'OPTIONS',
-    ],
+    allowMethods: ['POST', 'OPTIONS'],
     origin: CORS_ORIGINS,
   })
 );
 app.use(bodyParser());
 app.use(
   koaMiddleware<Context>(server, {
+    // @ts-ignore
     context: async ({ ctx }) => {
-      // @ts-ignore
       // const token = ctx.headers.authorization;
 
       return { prisma };

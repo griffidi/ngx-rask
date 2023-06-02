@@ -10,7 +10,7 @@ import { DOCUMENT } from '@angular/common';
 import { DestroyRef, Injectable, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { setTimeout } from '@rx-angular/cdk/zone-less/browser';
-import { filter, fromEvent, map, take, tap } from 'rxjs';
+import { Subscription, filter, fromEvent, map, merge, take, tap } from 'rxjs';
 import { RkCommandPalette } from './command-palette';
 
 const COMMAND_PALETTE_OVERLAY_CONFIG: OverlayConfig = {
@@ -26,7 +26,8 @@ const COMMAND_PALETTE_OVERLAY_CONFIG: OverlayConfig = {
 
 @Injectable()
 export class CommandPaletteService {
-  #isRegistered = false;
+  #isSubscribed = false;
+  #keydownSubscription: Subscription | undefined;
 
   readonly #viewportRuler = inject(ViewportRuler);
   readonly #destroyRef = inject(DestroyRef);
@@ -34,17 +35,16 @@ export class CommandPaletteService {
   readonly #document = inject(DOCUMENT);
 
   /**
-   * Initialize command palette service by subscribing to events
-   * that will trigger the command palette to display.
+   * Subscribe to command palette events.
    */
-  initialize() {
-    if (this.#isRegistered) {
+  subscribe() {
+    if (this.#isSubscribed) {
       return;
     }
 
-    this.#isRegistered = true;
+    this.#isSubscribed = true;
 
-    fromEvent<KeyboardEvent>(this.#document, 'keydown')
+    this.#keydownSubscription = fromEvent<KeyboardEvent>(this.#document, 'keydown')
       .pipe(
         takeUntilDestroyed(this.#destroyRef),
         filter(({ key, ctrlKey }) => ctrlKey && ['k', '/'].includes(key)),
@@ -54,6 +54,14 @@ export class CommandPaletteService {
         })
       )
       .subscribe();
+  }
+
+  /**
+   * Unsubscribe from command palette events.
+   */
+  unsubscribe() {
+    this.#keydownSubscription?.unsubscribe();
+    this.#isSubscribed = false;
   }
 
   /**
@@ -71,25 +79,23 @@ export class CommandPaletteService {
     const portal = new ComponentPortal(RkCommandPalette);
     const componentRef = overlayRef.attach(portal);
 
-    componentRef.instance.close
+    // subscribe to events to should close the command palette
+    merge(componentRef.instance.close, overlayRef.backdropClick())
       .pipe(
         take(1),
         tap(() => overlayRef.detach())
       )
       .subscribe();
 
-    overlayRef
-      .backdropClick()
-      .pipe(
-        take(1),
-        tap(() => overlayRef.detach())
-      )
-      .subscribe();
-
+    /**
+     * Add opened attribute to overlay and command palette. This allows
+     * applying animations and custom styling to  the elements.
+     */
     setTimeout(() => {
-      const overlayEl = overlayRef.overlayElement;
-      overlayEl.setAttribute('opened', '');
-      // overlayEl.querySelector('rk-command-palette')?.setAttribute('opened', '');
+      const { overlayElement } = overlayRef;
+      overlayElement.setAttribute('opened', '');
+      const commandPaletteElement = overlayElement.querySelector('rk-command-palette');
+      commandPaletteElement?.setAttribute('opened', '');
     });
   }
 }

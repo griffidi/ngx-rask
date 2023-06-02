@@ -1,6 +1,9 @@
 query GetEmployees {
   employees {
     ...EmployeeParts
+    department {
+      name
+    }
   }
 }
 

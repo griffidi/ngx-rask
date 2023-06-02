@@ -1,11 +1,12 @@
 <app-header
   [isAuthenticated]="isAuthenticated()"
   [userInitials]="userInitials()"
-  (logout)="logout()">
+  (logout)="logout()"
+  (searchClicked)="onSearchClicked()">
   <button
     *ngIf="isAuthenticated()"
     mat-icon-button
-    (click)="toggleDrawer()">
+    (click)="drawerOpen.set(true)">
     <mat-icon>menu</mat-icon>
   </button>
 </app-header>
@@ -13,34 +14,29 @@
 <mat-drawer-container>
   <mat-drawer
     *ngIf="isAuthenticated()"
-    mode="over">
+    mode="over"
+    [(opened)]="isDrawerOpen">
     <div class="drawer__title">
       <h3>Site Links</h3>
       <button
         mat-icon-button
         aria-label="Close Drawer"
         tabindex="-1"
-        (click)="toggleDrawer()">
+        (click)="drawerOpen.set(false)">
         <mat-icon>menu_open</mat-icon>
       </button>
     </div>
 
     <nav>
       <a
+        *rxFor="let route of routes()"
         class="nav-link"
-        routerLink="/employees"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">
-        <mat-icon>badge</mat-icon>
-        <span>Employees</span>
-      </a>
-      <a
-        class="nav-link"
-        routerLink="/products"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">
-        <mat-icon>widgets</mat-icon>
-        <span>Products</span>
+        [routerLink]="route.path"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="drawerOpen.set(false)">
+        <mat-icon>{{ route.data['icon'] }}</mat-icon>
+        <span>{{ route.title }}</span>
       </a>
     </nav>
   </mat-drawer>

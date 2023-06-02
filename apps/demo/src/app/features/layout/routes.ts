@@ -31,3 +31,9 @@ export default [
     loadChildren: () => import('../products/routes'),
   },
 ] satisfies Routes;
+
+/**
+ * Route paths that are not to be included in navigation components.
+ * i.e. Drawer, CommandPalette.
+ */
+export const nonNavRoutePaths = ['login'];

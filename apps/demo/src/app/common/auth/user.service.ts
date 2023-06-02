@@ -1,7 +1,6 @@
-import { Injectable, inject } from '@angular/core';
-import { Client } from '@ngx-rask/graphql';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UserService {
-  readonly #client = inject(Client);
+  // readonly #client = inject(Client);
 }
