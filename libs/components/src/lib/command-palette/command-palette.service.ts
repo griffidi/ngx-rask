@@ -1,3 +1,4 @@
+import cssVariables from '#/app/styles/variables';
 import {
   BlockScrollStrategy,
   GlobalPositionStrategy,
@@ -21,7 +22,9 @@ const COMMAND_PALETTE_OVERLAY_CONFIG: OverlayConfig = {
   minHeight: '100px',
   maxHeight: '450px',
   width: '600px',
-  positionStrategy: new GlobalPositionStrategy().centerHorizontally().centerVertically(),
+  positionStrategy: new GlobalPositionStrategy()
+    .centerHorizontally()
+    .top(`${cssVariables.layout.header.blockSizeNumber + 50}px`),
 };
 
 @Injectable()

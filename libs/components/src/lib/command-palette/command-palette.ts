@@ -111,6 +111,7 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
       :host {
         display: flex;
         flex-direction: column;
+        flex-shrink: 1;
         inline-size: 100%;
         background: var(--app-color-surface-1);
         border-radius: var(--app-shape-medium);
@@ -174,10 +175,10 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
       } */
 
       section {
-        flex: 1;
-        /* flex: 0;
+        /* flex: 1; */
+        flex: 0;
         block-size: 0;
-        transition: flex 600ms ease-in-out; */
+        transition: flex 600ms ease-in-out;
       }
 
       .mdc-list-group__subheader {
