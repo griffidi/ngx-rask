@@ -14,7 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
-import { CssVariablePipe, RkUnpatch } from '@ngx-rask/core';
+import { CssVariablePipe } from '@ngx-rask/core';
+import { UnpatchDirective } from '@rx-angular/template/unpatch';
 import {
   COMMAND_PALETTE_OPTIONS,
   type CommandPaletteItem,
@@ -56,7 +57,7 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
           (click)="onNavigate(item)"
           (mouseenter)="onPageListItemMouseenter(item)"
           (mouseleave)="onPageListItemMouseleave()"
-          [rkUnpatch]="['mouseenter', 'mouseleave']">
+          [unpatch]="['mouseenter', 'mouseleave']">
           <mat-icon
             *ngIf="item.icon"
             matListItemIcon>
@@ -76,7 +77,7 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
             class="search-option-item"
             (mouseenter)="onPageListItemMouseenter(item)"
             (mouseleave)="onPageListItemMouseleave()"
-            [rkUnpatch]="['mouseenter', 'mouseleave']">
+            [unpatch]="['mouseenter', 'mouseleave']">
             <mat-icon
               *ngIf="item.icon"
               matListItemIcon
@@ -285,7 +286,7 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
     NgStyle,
     OverlayModule,
     RouterLink,
-    RkUnpatch,
+    UnpatchDirective,
   ],
 })
 export class RkCommandPalette {

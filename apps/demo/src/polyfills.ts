@@ -10,9 +10,9 @@
  *
  * Zone-flags configuration over import
  */
-import '@ngx-rask/core/zone/flags/zone-flags';
+import 'libs/core/src/zone-flags';
 
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-// import 'zone.js/dist/zone'; // Included with Angular CLI.
+import 'zone.js/dist/zone'; // Included with Angular CLI.

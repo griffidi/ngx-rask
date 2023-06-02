@@ -1,6 +1,6 @@
 import { LowerCasePipe, NgClass, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output, signal } from '@angular/core';
-import { RkUnpatch } from 'libs/core/src/lib/zone/unpatch';
+import { UnpatchDirective } from '@rx-angular/template/unpatch';
 import { Colors } from './colors';
 
 @Component({
@@ -10,7 +10,7 @@ import { Colors } from './colors';
     <ul>
       <li
         *ngFor="let color of colors()"
-        [rkUnpatch]="['mousemove']"
+        [unpatch]="['mousemove']"
         id="color{{ color }}"
         class="color-option {{ color | lowercase }}"
         [attr.selected]="selectedColor() === color"
@@ -99,7 +99,7 @@ import { Colors } from './colors';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LowerCasePipe, NgClass, NgFor, RkUnpatch],
+  imports: [LowerCasePipe, NgClass, NgFor, UnpatchDirective],
 })
 export class RkColorOptions {
   protected readonly colors = signal(Object.values(Colors));
