@@ -113,6 +113,7 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
 
         display: flex;
         flex-direction: column;
+        flex-shrink: 1;
         inline-size: 100%;
         background: var(--app-color-surface-1);
         border-radius: var(--app-shape-medium);
