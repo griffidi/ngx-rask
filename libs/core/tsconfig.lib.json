@@ -8,6 +8,5 @@
     "inlineSources": true,
     "types": []
   },
-  "files": ["src/zone-flags/**/*.ts"],
   "exclude": ["**/*.spec.ts"]
 }

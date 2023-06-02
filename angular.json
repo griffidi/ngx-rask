@@ -47,7 +47,8 @@
             "stylePreprocessorOptions": {
               "includePaths": ["apps/demo/src/styles"]
             },
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["recursive-diff"]
           },
           "configurations": {
             "production": {
