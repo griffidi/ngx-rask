@@ -62,6 +62,11 @@ import { tap } from 'rxjs';
         display: flex;
         flex-direction: column;
         gap: 20px;
+        background: var(--app-color-surface-2);
+        border-radius: var(--app-shape-small);
+        inline-size: 600px;
+        padding-inline: 20px;
+        padding-block: 20px;
       }
 
       .row {
