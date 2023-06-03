@@ -14,49 +14,20 @@ import { productsStore } from '../../store';
 @Component({
   selector: 'app-product',
   standalone: true,
-  template: `
-    <ng-container *ngIf="product() as product">
-      <mat-accordion
-        multi
-        hideToggle>
-        <mat-expansion-panel expanded>
-          <mat-expansion-panel-header>
-            <mat-panel-title>Detail</mat-panel-title>
-            <mat-panel-description>
-              <mat-icon>page_info</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <app-product-detail [product]="product" />
-          <mat-action-row>
-            <a
-              mat-stroked-button
-              color="primary"
-              [routerLink]="['/products', product.id, 'edit']">
-              Edit
-            </a>
-          </mat-action-row>
-        </mat-expansion-panel>
-        <mat-expansion-panel expanded>
-          <mat-expansion-panel-header>
-            <mat-panel-title>Images</mat-panel-title>
-            <mat-panel-description>
-              <mat-icon>image</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <app-product-images [productName]="product.name" />
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>Transactions</mat-panel-title>
-            <mat-panel-description>
-              <mat-icon>receipt_long</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <app-product-transactions [productId]="product.id" />
-        </mat-expansion-panel>
-      </mat-accordion>
-    </ng-container>
-  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    MatButtonModule,
+    MatExpansionModule,
+    MatIconModule,
+    NgIf,
+    ProductDetailComponent,
+    ProductImagesComponent,
+    ProductTransactionsComponent,
+    RouterLink,
+  ],
+  host: {
+    scrollable: '',
+  },
   styles: [
     `
       :host {
@@ -64,6 +35,8 @@ import { productsStore } from '../../store';
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        block-size: 100%;
+        padding-block: 20px;
       }
 
       .mat-accordion {
@@ -115,17 +88,49 @@ import { productsStore } from '../../store';
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatButtonModule,
-    MatExpansionModule,
-    MatIconModule,
-    NgIf,
-    ProductDetailComponent,
-    ProductImagesComponent,
-    ProductTransactionsComponent,
-    RouterLink,
-  ],
+  template: `
+    <ng-container *ngIf="product() as product">
+      <mat-accordion
+        multi
+        hideToggle>
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Detail</mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>page_info</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-product-detail [product]="product" />
+          <mat-action-row>
+            <a
+              mat-stroked-button
+              color="primary"
+              [routerLink]="['/products', product.id, 'edit']">
+              Edit
+            </a>
+          </mat-action-row>
+        </mat-expansion-panel>
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Images</mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>image</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-product-images [productName]="product.name" />
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Transactions</mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>receipt_long</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-product-transactions [productId]="product.id" />
+        </mat-expansion-panel>
+      </mat-accordion>
+    </ng-container>
+  `,
 })
 export default class ProductComponent {
   readonly #productsStore = inject(productsStore);

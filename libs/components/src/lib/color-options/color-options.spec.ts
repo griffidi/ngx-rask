@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RkColorOptions } from './color-options.component';
+import { RkColorOptions } from './color-options';
 
 describe('ColorOptionsComponent', () => {
   let component: RkColorOptions;

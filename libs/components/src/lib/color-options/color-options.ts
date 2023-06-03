@@ -103,7 +103,7 @@ import { Colors } from './colors';
 })
 export class RkColorOptions {
   protected readonly colors = signal(Object.values(Colors));
-  protected readonly selectedColor = signal(Colors.black);
+  protected readonly selectedColor = signal(Colors.pink);
   protected readonly hoveredColor = signal<Colors | null>(null);
 
   @Output() selectedColorChange = new EventEmitter<Colors>();
