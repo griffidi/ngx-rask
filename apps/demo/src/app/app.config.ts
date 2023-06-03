@@ -19,6 +19,7 @@ import routes from './features/layout/routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    // { provide: NgZone, useClass: ɵNoopNgZone },
     provideZoneChangeDetection({
       eventCoalescing: true,
       runCoalescing: true,

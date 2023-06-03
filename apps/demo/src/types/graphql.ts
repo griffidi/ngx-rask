@@ -5027,9 +5027,45 @@ export type GetCustomerByIdQuery = {
     | undefined;
 };
 
+export type GetDepartmentsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetDepartmentsQuery = {
+  readonly __typename?: 'Query';
+  readonly departments: ReadonlyArray<{
+    readonly __typename?: 'Department';
+    readonly id: string;
+    readonly name: string;
+  }>;
+};
+
 export type GetEmployeesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetEmployeesQuery = {
+  readonly __typename?: 'Query';
+  readonly employees: ReadonlyArray<{
+    readonly __typename?: 'Employee';
+    readonly id: string;
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly email: string;
+    readonly gender: string;
+    readonly phone: string;
+    readonly streetAddress: string;
+    readonly city: string;
+    readonly stateId: string;
+    readonly zipCode: string;
+    readonly jobTitle: string;
+    readonly departmentId: string;
+    readonly dateStarted: any;
+    readonly department: { readonly __typename?: 'Department'; readonly name: string };
+  }>;
+};
+
+export type GetEmployeesByDepartmentIdQueryVariables = Exact<{
+  departmentId: Scalars['String']['input'];
+}>;
+
+export type GetEmployeesByDepartmentIdQuery = {
   readonly __typename?: 'Query';
   readonly employees: ReadonlyArray<{
     readonly __typename?: 'Employee';
@@ -5680,6 +5716,32 @@ export const GetCustomerByIdDocument = {
     },
   ],
 } as unknown as DocumentNode<GetCustomerByIdQuery, GetCustomerByIdQueryVariables>;
+export const GetDepartmentsDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetDepartments' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'departments' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetDepartmentsQuery, GetDepartmentsQueryVariables>;
 export const GetEmployeesDocument = {
   kind: 'Document',
   definitions: [
@@ -5736,6 +5798,103 @@ export const GetEmployeesDocument = {
     },
   ],
 } as unknown as DocumentNode<GetEmployeesQuery, GetEmployeesQueryVariables>;
+export const GetEmployeesByDepartmentIdDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetEmployeesByDepartmentId' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'departmentId' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'employees' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'where' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'departmentId' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'equals' },
+                            value: {
+                              kind: 'Variable',
+                              name: { kind: 'Name', value: 'departmentId' },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'department' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'name' } }],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'EmployeeParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Employee' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'gender' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'city' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'dateStarted' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetEmployeesByDepartmentIdQuery,
+  GetEmployeesByDepartmentIdQueryVariables
+>;
 export const GetEmployeeByIdDocument = {
   kind: 'Document',
   definitions: [

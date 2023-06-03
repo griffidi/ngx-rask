@@ -2,15 +2,14 @@
   --app-color-primary: #7e57c2;
   --app-color-accent: #69f0ae;
   --app-color-secondary: #3e4140;
-  /* --app-color-background: #0b0c0e; */
   --app-color-background: hsl(229, 15%, 12%);
-  --app-color-background-hover: hsl(229, 15%, 26%);
-  /* --app-color-background-hover: #303031; */
-  --app-color-border-color: rgba(255, 255, 255, 0.12);
+  --app-color-background-hover: hsl(229, 15%, 18%);
+  --app-color-border: rgba(255, 255, 255, 0.12);
 }
 
 :root {
   --app-color-blue: #5a14ff;
+  --app-color-blue-light: #549ced;
   --app-color-green: rgb(66, 184, 131);
   --app-color-hot-pink: #ff007b;
   --app-color-magenta: #e666cc;

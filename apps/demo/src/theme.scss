@@ -23,6 +23,8 @@ $theme: mat.define-dark-theme(
 
 @include mat.form-field-density(-2);
 @include mat.button-density(-1);
+@include mat.select-density(-2);
+@include mat.input-density(-2);
 
 .rk-command-palette-panel {
   @include mat.input-density(-1);

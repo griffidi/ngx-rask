@@ -1,67 +1,76 @@
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
-import {
-  FixedSizeVirtualScrollStrategy,
-  RxVirtualFor,
-  RxVirtualScrollViewportComponent,
-} from '@rx-angular/template/experimental/virtual-scrolling';
-// import { RxFor } from '@rx-angular/template/for';
+import { RkSelect } from '@ngx-rask/components';
+import { FixedSizeVirtualScrollStrategy } from '@rx-angular/template/experimental/virtual-scrolling';
+import { DepartmentSelectOptionsDirective } from 'apps/demo/src/app/components';
 import { EmployeesStore } from '../../store/employees.store';
-
 @Component({
   selector: 'app-employee-list',
   standalone: true,
-  template: `
-    <mat-list>
-      <rx-virtual-scroll-viewport
-        class="virtual-viewport"
-        [itemSize]="50">
-        <mat-list-item *rxVirtualFor="let item of employees(); trackBy: 'id'">
-          <span matListItemTitle>{{ item.firstName }} {{ item.lastName }}</span>
-          <span matListItemLine>{{ item.jobTitle }}</span>
-          <span matListItemMeta>{{ item.department.name }}</span>
-        </mat-list-item>
-      </rx-virtual-scroll-viewport>
-    </mat-list>
-  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    FixedSizeVirtualScrollStrategy,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    NgClass,
+    ScrollingModule,
+    RkSelect,
+    DepartmentSelectOptionsDirective,
+  ],
   styles: [
     `
       :host {
         display: grid;
-        place-content: center;
+        grid-template-columns: 400px 1fr;
       }
 
-      .mat-mdc-list {
-        block-size: 100%;
-        inline-size: 100%;
-      }
-
-      .mat-mdc-list,
-      :host ::ng-deep .rx-virtual-scroll__viewport {
+      .filter-container {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        inline-size: 100%;
-        block-size: calc(100dvh - var(--app-site-header-block-size));
-        flex: 1;
+        align-items: center;
+        padding-block: 1rem;
+        margin-block-start: 8px;
       }
 
-      .mat-mdc-list-item {
-        --_list-item-color: transparent;
-        --_lite-item-transform-scale: 1;
+      .virtual-viewport {
+        inline-size: 100%;
+        block-size: calc(100dvh - var(--app-site-header-block-size));
+      }
 
-        inline-size: 600px;
+      mat-list-item.mat-mdc-list-item {
+        --_list-item-background-color: var(--app-color-surface-1);
+
+        inline-size: 700px;
         block-size: 63px;
+        margin-inline: auto;
+        margin-block-start: 1rem;
         border-radius: var(--app-shape-small);
-        background: var(--app-color-surface-1);
-        border: 1px solid var(--_list-item-color);
-        transform: scale(var(--_lite-item-transform-scale));
-        transition: transform 100ms ease-in-out;
+        background: var(--_list-item-background-color);
 
         &:hover {
-          --_list-item-color: var(--app-color-accent);
-          --_lite-item-transform-scale: 1.02;
+          --_list-item-background-color: var(--app-color-background-hover);
+        }
+
+        .mat-icon {
+          --_avatar-icon-size: 36px;
+
+          font-size: var(--_avatar-icon-size);
+          inline-size: var(--_avatar-icon-size);
+          block-size: var(--_avatar-icon-size);
+          font-variation-settings: 'FILL' 1;
+
+          &.male {
+            color: var(--app-color-blue-light);
+          }
+
+          &.female {
+            color: var(--app-color-magenta);
+          }
         }
       }
 
@@ -70,19 +79,38 @@ import { EmployeesStore } from '../../store/employees.store';
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    FixedSizeVirtualScrollStrategy,
-    MatInputModule,
-    MatListModule,
-    // RxFor,
-    RxVirtualFor,
-    RxVirtualScrollViewportComponent,
-  ],
+  template: `
+    <div class="filter-container">
+      <rk-select
+        appDepartmentSelectOptions
+        (valueChange)="onDepartmentChanged($event)" />
+    </div>
+
+    <mat-list>
+      <cdk-virtual-scroll-viewport
+        class="virtual-viewport"
+        scrollable
+        [itemSize]="50">
+        <mat-list-item *cdkVirtualFor="let item of employees()">
+          <span matListItemTitle>{{ item.firstName }} {{ item.lastName }}</span>
+          <span matListItemLine>{{ item.jobTitle }}</span>
+          <span matListItemMeta>{{ item.department.name }}</span>
+          <mat-icon
+            matListItemAvatar
+            class="{{ item.gender === 'Male' ? 'male' : 'female' }}">
+            account_circle
+          </mat-icon>
+        </mat-list-item>
+      </cdk-virtual-scroll-viewport>
+    </mat-list>
+  `,
 })
 export default class EmployeeList {
   #employeesStore = inject(EmployeesStore);
-  // #router = inject(Router);
 
   protected readonly employees = this.#employeesStore.employees;
+
+  protected onDepartmentChanged(value: string | null) {
+    console.log(value);
+  }
 }

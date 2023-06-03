@@ -7,6 +7,15 @@ query GetEmployees {
   }
 }
 
+query GetEmployeesByDepartmentId($departmentId: String!) {
+  employees(where: { departmentId: { equals: $departmentId } }) {
+    ...EmployeeParts
+    department {
+      name
+    }
+  }
+}
+
 query GetEmployeeById($id: String) {
   employee(where: { id: $id }) {
     ...EmployeeParts

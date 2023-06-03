@@ -27,85 +27,21 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
 @Component({
   selector: 'rk-command-palette',
   standalone: true,
-  template: `
-    <header>
-      <mat-form-field>
-        <mat-icon matPrefix>search</mat-icon>
-        <input
-          matInput
-          name="searchValue"
-          [placeholder]="searchValuePlaceholder()"
-          [(ngModel)]="searchValue" />
-        <mat-hint align="start">
-          Tip: Type
-          <span class="special-character">@</span>
-          to search for employees
-        </mat-hint>
-        <mat-hint align="end">
-          Type
-          <span class="special-character">#</span>
-          to search for products
-        </mat-hint>
-      </mat-form-field>
-    </header>
-    <mat-divider />
-    <section scrollable>
-      <mat-nav-list>
-        <div mat-subheader>Pages</div>
-        <mat-list-item
-          *ngFor="let item of navItems()"
-          (click)="onNavigate(item)"
-          (mouseenter)="onPageListItemMouseenter(item)"
-          (mouseleave)="onPageListItemMouseleave()"
-          [unpatch]="['mouseenter', 'mouseleave']">
-          <mat-icon
-            *ngIf="item.icon"
-            matListItemIcon>
-            {{ item.icon }}
-          </mat-icon>
-          <a
-            class="nav-link"
-            [routerLink]="item.path">
-            {{ item.title }}
-          </a>
-        </mat-list-item>
-        <ng-container *ngFor="let option of searchOptions(); index as i">
-          <mat-divider />
-          <div mat-subheader>{{ option.header }}</div>
-          <mat-list-item
-            *ngFor="let item of option.items"
-            class="search-option-item"
-            (mouseenter)="onPageListItemMouseenter(item)"
-            (mouseleave)="onPageListItemMouseleave()"
-            [unpatch]="['mouseenter', 'mouseleave']">
-            <mat-icon
-              *ngIf="item.icon"
-              matListItemIcon
-              class="search-option-icon-{{ i }}"
-              [ngStyle]="{ color: item.cssColorCustomProperty | cssVariable }">
-              {{ item.icon }}
-            </mat-icon>
-            {{ item.title }}
-            <div class="jump-to">
-              <span class="special-character">Tab</span>
-              to search
-            </div>
-          </mat-list-item>
-        </ng-container>
-      </mat-nav-list>
-    </section>
-    <mat-divider />
-    <footer>
-      <label>
-        <mat-icon>keyboard_arrow_up</mat-icon>
-        <span>Previous</span>
-      </label>
-      <label>
-        <mat-icon>keyboard_arrow_down</mat-icon>
-        <span>Next</span>
-      </label>
-    </footer>
-  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CssVariablePipe,
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    NgFor,
+    NgIf,
+    NgStyle,
+    OverlayModule,
+    RouterLink,
+    UnpatchDirective,
+  ],
   styles: [
     `
       :host {
@@ -117,7 +53,7 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
         inline-size: 100%;
         background: var(--app-color-surface-1);
         border-radius: var(--app-shape-medium);
-        border: 1px solid var(--app-color-border-color);
+        border: 1px solid var(--app-color-border);
         overflow: hidden;
       }
 
@@ -282,21 +218,85 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CssVariablePipe,
-    FormsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    NgFor,
-    NgIf,
-    NgStyle,
-    OverlayModule,
-    RouterLink,
-    UnpatchDirective,
-  ],
+  template: `
+    <header>
+      <mat-form-field>
+        <mat-icon matPrefix>search</mat-icon>
+        <input
+          matInput
+          name="searchValue"
+          [placeholder]="searchValuePlaceholder()"
+          [(ngModel)]="searchValue" />
+        <mat-hint align="start">
+          Tip: Type
+          <span class="special-character">@</span>
+          to search for employees
+        </mat-hint>
+        <mat-hint align="end">
+          Type
+          <span class="special-character">#</span>
+          to search for products
+        </mat-hint>
+      </mat-form-field>
+    </header>
+    <mat-divider />
+    <section scrollable>
+      <mat-nav-list>
+        <div mat-subheader>Pages</div>
+        <mat-list-item
+          *ngFor="let item of navItems()"
+          (click)="onNavigate(item)"
+          (mouseenter)="onPageListItemMouseenter(item)"
+          (mouseleave)="onPageListItemMouseleave()"
+          [unpatch]="['mouseenter', 'mouseleave']">
+          <mat-icon
+            *ngIf="item.icon"
+            matListItemIcon>
+            {{ item.icon }}
+          </mat-icon>
+          <a
+            class="nav-link"
+            [routerLink]="item.path">
+            {{ item.title }}
+          </a>
+        </mat-list-item>
+        <ng-container *ngFor="let option of searchOptions(); index as i">
+          <mat-divider />
+          <div mat-subheader>{{ option.header }}</div>
+          <mat-list-item
+            *ngFor="let item of option.items"
+            class="search-option-item"
+            (mouseenter)="onPageListItemMouseenter(item)"
+            (mouseleave)="onPageListItemMouseleave()"
+            [unpatch]="['mouseenter', 'mouseleave']">
+            <mat-icon
+              *ngIf="item.icon"
+              matListItemIcon
+              class="search-option-icon-{{ i }}"
+              [ngStyle]="{ color: item.cssColorCustomProperty | cssVariable }">
+              {{ item.icon }}
+            </mat-icon>
+            {{ item.title }}
+            <div class="jump-to">
+              <span class="special-character">Tab</span>
+              to search
+            </div>
+          </mat-list-item>
+        </ng-container>
+      </mat-nav-list>
+    </section>
+    <mat-divider />
+    <footer>
+      <label>
+        <mat-icon>keyboard_arrow_up</mat-icon>
+        <span>Previous</span>
+      </label>
+      <label>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+        <span>Next</span>
+      </label>
+    </footer>
+  `,
 })
 export class RkCommandPalette {
   readonly #options = inject(COMMAND_PALETTE_OPTIONS);
@@ -343,7 +343,6 @@ export class RkCommandPalette {
   }
 
   protected onPageListItemMouseenter(event: CommandPaletteItem) {
-    console.dir(this.#options.searchOptions);
     this.hoveredPageListItem.set(event);
     this.searchValuePlaceholder.set(event.title);
   }

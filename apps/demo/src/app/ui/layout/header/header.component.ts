@@ -72,15 +72,21 @@ import { RkBreadcrumbs } from '@ngx-rask/components';
       }
 
       .command-palette-hint {
+        --_command-palette-hint-border-color: var(--app-color-border);
+
         display: flex;
         align-items: center;
         gap: 10px;
         color: var(--app-color-text-dark-3);
         padding-inline: 8px;
         padding-block: 8px;
-        border: 1px solid var(--app-color-border-color);
+        border: 1px solid var(--_command-palette-hint-border-color);
         border-radius: var(--app-shape-small);
         cursor: pointer;
+
+        &:hover {
+          --_command-palette-hint-border-color: var(--app-color-accent);
+        }
 
         .mat-icon {
           font-size: 20px;
@@ -89,7 +95,7 @@ import { RkBreadcrumbs } from '@ngx-rask/components';
         }
 
         .special-character {
-          border: 1px solid var(--app-color-border-color);
+          border: 1px solid var(--app-color-border);
           border-radius: var(--app-shape-extra-small);
           font-size: 0.8em;
           padding-inline: 4px;

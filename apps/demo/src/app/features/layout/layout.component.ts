@@ -56,11 +56,15 @@ import routes, { nonNavRoutePaths } from './routes';
 
       .mat-drawer-content {
         position: relative;
+        overflow: hidden;
 
-        & section {
+        section {
           block-size: 100%;
-          padding-inline: var(--_toggle-button-offset);
-          padding-block: var(--_toggle-button-offset);
+
+          & + router-outlet + * {
+            padding-inline: var(--_toggle-button-offset);
+            padding-block: var(--_toggle-button-offset);
+          }
         }
       }
 

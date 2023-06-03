@@ -2,7 +2,6 @@ import {
   randCity,
   randEmail,
   randFirstName,
-  randGender,
   randJobTitle,
   randLastName,
   randPastDate,
@@ -13,6 +12,7 @@ import {
 import { nanoid } from 'nanoid';
 import { departments } from './departments.js';
 import { randChanceFn } from './generators/chance-fn.js';
+import { randIf } from './generators/rand-if.js';
 import { randLocationStateId } from './generators/rand-location-state-fn.js';
 
 const departmentLength = departments.length;
@@ -28,7 +28,7 @@ export const employees = Array.from({ length: 100 }, () => {
     firstName: randFirstName(),
     lastName: randLastName(),
     email: randEmail(),
-    gender: randGender(),
+    gender: randIf({ chanceTrue: 0.5 }, 'Male', 'Female'),
     phone: randPhoneNumber(),
     streetAddress: randStreetAddress(),
     city: randCity(),
