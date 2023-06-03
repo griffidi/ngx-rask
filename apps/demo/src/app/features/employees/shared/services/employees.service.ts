@@ -1,12 +1,33 @@
-import { GetEmployeeByIdDocument, GetEmployeesDocument, type Employee } from '#/app/types/graphql';
+import {
+  GetEmployeeByIdDocument,
+  GetEmployeesByDepartmentIdDocument,
+  GetEmployeesDocument,
+  type Employee,
+} from '#/app/types/graphql';
 import { Injectable, inject } from '@angular/core';
 import { Client } from '@ngx-rask/graphql';
 import { catchError, map, tap } from 'rxjs';
-import type { Employees } from '../models';
+import type { EmployeeFilter, Employees } from '../models';
 
 @Injectable()
 export class EmployeesService {
   #client = inject(Client);
+
+  /**
+   * Load all employees using filter.
+   *
+   * @param {EmployeeFilter} filter Filter object.
+   * @returns {Promise<Employee>} The employees.
+   */
+  getEmployeesByQuery(filter?: EmployeeFilter) {
+    const { departmentId } = filter ?? {};
+
+    if (departmentId) {
+      return this.getEmployeesByDepartmentId(departmentId);
+    }
+
+    return this.getEmployees();
+  }
 
   /**
    * Load all employees.
@@ -17,6 +38,28 @@ export class EmployeesService {
     return new Promise((resolve, reject) => {
       this.#client
         .query(GetEmployeesDocument)
+        .pipe(
+          map(({ employees }) => employees as Employees),
+          tap(employees => resolve(employees)),
+          catchError(error => {
+            reject(error);
+            return [];
+          })
+        )
+        .subscribe();
+    });
+  }
+
+  /**
+   * Load all employees by department id.
+   *
+   * @param {string} departmentId The department id.
+   * @returns {Promise<Employee>} The employees.
+   */
+  getEmployeesByDepartmentId(departmentId: string): Promise<Employees> {
+    return new Promise((resolve, reject) => {
+      this.#client
+        .query(GetEmployeesByDepartmentIdDocument, { departmentId })
         .pipe(
           map(({ employees }) => employees as Employees),
           tap(employees => resolve(employees)),

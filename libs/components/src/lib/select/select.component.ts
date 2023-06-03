@@ -57,6 +57,7 @@ export class RkSelect implements ControlValueAccessor {
 
   @Input()
   set value(value: string | null) {
+    // BUG: user selection triggers this setter twice.
     this._value.set(value);
     this.valueChange.emit(value);
     this.onChange(value);

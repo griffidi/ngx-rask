@@ -22,3 +22,15 @@ mat-table mat-row {
     }
   }
 }
+
+/* mat-option background */
+.mdc-menu-surface {
+  .mat-mdc-option.mdc-list-item {
+    &:focus,
+    &:hover:not(.mdc-list-item--disabled),
+    &.mat-mdc-option-active,
+    &.mdc-list-item--selected:not(.mat-mdc-option-multiple):not(.mdc-list-item--disabled) {
+      background: var(--app-color-background-hover);
+    }
+  }
+}

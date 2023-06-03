@@ -5087,7 +5087,7 @@ export type GetEmployeesByDepartmentIdQuery = {
 };
 
 export type GetEmployeeByIdQueryVariables = Exact<{
-  id?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars['String']['input'];
 }>;
 
 export type GetEmployeeByIdQuery = {
@@ -5906,7 +5906,10 @@ export const GetEmployeeByIdDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {

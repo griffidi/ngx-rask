@@ -83,7 +83,7 @@ import { EmployeesStore } from '../../store/employees.store';
     <div class="filter-container">
       <rk-select
         appDepartmentSelectOptions
-        (valueChange)="onDepartmentChanged($event)" />
+        [(value)]="departmentId" />
     </div>
 
     <mat-list>
@@ -106,11 +106,16 @@ import { EmployeesStore } from '../../store/employees.store';
   `,
 })
 export default class EmployeeList {
+  #departmentId: string | null = null;
   #employeesStore = inject(EmployeesStore);
 
-  protected readonly employees = this.#employeesStore.employees;
-
-  protected onDepartmentChanged(value: string | null) {
-    console.log(value);
+  protected set departmentId(value: string | null) {
+    this.#departmentId = value;
+    this.#employeesStore.setFilter({ departmentId: value });
   }
+  protected get departmentId(): string | null {
+    return this.#departmentId;
+  }
+
+  protected readonly employees = this.#employeesStore.filteredEmployees;
 }

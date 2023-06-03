@@ -9,19 +9,32 @@ import {
   withUpdaters,
   type SignalStoreUpdate,
 } from '@ngx-rask/signal-store';
-import { initialEmployeesState, type EmployeesState } from '../shared/models';
+import { initialEmployeesState, type EmployeeFilter, type EmployeesState } from '../shared/models';
 import { EmployeesService } from '../shared/services';
 
 export const EmployeesStore = signalStore(
   { providedIn: 'root' },
   withState<EmployeesState>(initialEmployeesState),
-  withComputed(({ employees, selectedEmployeeId }) => ({
+  withComputed(({ employees, selectedEmployeeId, query }) => ({
     selectedEmployee: computed(() =>
       employees().find(({ id }: Employee) => id === selectedEmployeeId())
     ),
+    filteredEmployees: computed(() => {
+      const { departmentId: did } = query();
+
+      if (!did) {
+        return employees();
+      }
+
+      return employees().filter(({ departmentId }) => departmentId === did);
+    }),
+  })),
+  withComputed(({ query }) => ({
+    filter: computed(() => query()),
   })),
   withUpdaters(({ update }: SignalStoreUpdate<EmployeesState>) => ({
     setSelectedEmployeeId: (selectedEmployeeId: string) => update({ selectedEmployeeId }),
+    setFilter: (query: EmployeeFilter) => update({ query }),
   })),
   withEffects(({ update }: SignalStoreUpdate<EmployeesState>) => ({
     async loadEmployees() {
