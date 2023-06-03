@@ -4,7 +4,11 @@ import { Client } from '@ngx-rask/graphql';
 import { catchError, map, tap } from 'rxjs';
 import type { EmployeeFilter, Employees } from '../models';
 
-@Injectable()
+/**
+ * BUG: for some reason /employee route requires this even though
+ * it's listed as a provider for the route.
+ */
+@Injectable({ providedIn: 'root' })
 export class EmployeesService {
   #client = inject(Client);
 

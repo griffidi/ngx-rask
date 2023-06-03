@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule, MatListOption } from '@angular/material/list';
+import { RouterLink } from '@angular/router';
 import { RkSelect, RkSelectionList, type RkListOption } from '@ngx-rask/components';
 import { FixedSizeVirtualScrollStrategy } from '@rx-angular/template/experimental/virtual-scrolling';
 import { RxFor } from '@rx-angular/template/for';
@@ -22,6 +23,7 @@ import { EmployeesStore } from '../../store/employees.store';
     ScrollingModule,
     RkSelect,
     RkSelectionList,
+    RouterLink,
     RxFor,
     DepartmentListOptionsDirective,
   ],
@@ -112,12 +114,14 @@ import { EmployeesStore } from '../../store/employees.store';
         [(selectedOptions)]="selectedDepartments" />
     </div>
 
-    <mat-list>
+    <mat-nav-list>
       <cdk-virtual-scroll-viewport
         class="virtual-viewport"
         scrollable
         [itemSize]="50">
-        <mat-list-item *cdkVirtualFor="let item of employees()">
+        <mat-list-item
+          *cdkVirtualFor="let item of employees()"
+          [routerLink]="['/employees', item.id]">
           <span matListItemTitle>{{ item.firstName }} {{ item.lastName }}</span>
           <span matListItemLine>{{ item.jobTitle }}</span>
           <span matListItemMeta>{{ item.department.name }}</span>
@@ -128,7 +132,7 @@ import { EmployeesStore } from '../../store/employees.store';
           </mat-icon>
         </mat-list-item>
       </cdk-virtual-scroll-viewport>
-    </mat-list>
+    </mat-nav-list>
   `,
 })
 export default class EmployeeList {
