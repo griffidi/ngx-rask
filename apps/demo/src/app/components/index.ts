@@ -1,1 +1,1 @@
-export * from './select-directives';
+export * from './option-directives';

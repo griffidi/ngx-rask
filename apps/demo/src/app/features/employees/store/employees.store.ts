@@ -20,13 +20,13 @@ export const EmployeesStore = signalStore(
       employees().find(({ id }: Employee) => id === selectedEmployeeId())
     ),
     filteredEmployees: computed(() => {
-      const { departmentId: did } = query();
+      const { departmentIds } = query();
 
-      if (!did) {
-        return employees();
+      if (departmentIds.length) {
+        return employees().filter(({ departmentId }) => departmentIds.includes(departmentId));
       }
 
-      return employees().filter(({ departmentId }) => departmentId === did);
+      return employees();
     }),
   })),
   withComputed(({ query }) => ({

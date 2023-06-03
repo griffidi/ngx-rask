@@ -3,10 +3,11 @@ import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
-import { RkSelect } from '@ngx-rask/components';
+import { MatListModule, MatListOption } from '@angular/material/list';
+import { RkSelect, RkSelectionList, type RkListOption } from '@ngx-rask/components';
 import { FixedSizeVirtualScrollStrategy } from '@rx-angular/template/experimental/virtual-scrolling';
-import { DepartmentSelectOptionsDirective } from 'apps/demo/src/app/components';
+import { RxFor } from '@rx-angular/template/for';
+import { DepartmentListOptionsDirective } from 'apps/demo/src/app/components';
 import { EmployeesStore } from '../../store/employees.store';
 @Component({
   selector: 'app-employee-list',
@@ -20,7 +21,9 @@ import { EmployeesStore } from '../../store/employees.store';
     NgClass,
     ScrollingModule,
     RkSelect,
-    DepartmentSelectOptionsDirective,
+    RkSelectionList,
+    RxFor,
+    DepartmentListOptionsDirective,
   ],
   styles: [
     `
@@ -42,10 +45,32 @@ import { EmployeesStore } from '../../store/employees.store';
         block-size: calc(100dvh - var(--app-site-header-block-size));
       }
 
+      /* :host
+        ::ng-deep
+        .mat-mdc-list-option
+        .mdc-checkbox
+        .mdc-checkbox__native-control:enabled:checked
+        ~ .mdc-checkbox__background,
+      :host
+        ::ng-deep
+        .mat-mdc-list-option
+        .mdc-checkbox
+        .mdc-checkbox__native-control:enabled:indeterminate
+        ~ .mdc-checkbox__background,
+      :host
+        ::ng-deep
+        .mat-mdc-list-option
+        .mdc-checkbox
+        .mdc-checkbox__native-control[data-indeterminate='true']:enabled
+        ~ .mdc-checkbox__background {
+        --mdc-checkbox-selected-icon-color: red;
+        --mdc-checkbox-hover-state-layer-icon-color: red;
+      } */
+
       mat-list-item.mat-mdc-list-item {
         --_list-item-background-color: var(--app-color-surface-1);
 
-        inline-size: 700px;
+        inline-size: 600px;
         block-size: 63px;
         margin-inline: auto;
         margin-block-start: 1rem;
@@ -81,9 +106,10 @@ import { EmployeesStore } from '../../store/employees.store';
   ],
   template: `
     <div class="filter-container">
-      <rk-select
-        appDepartmentSelectOptions
-        [(value)]="departmentId" />
+      <rk-selection-list
+        appDepartmentListOptions
+        [multiple]="true"
+        [(selectedOptions)]="selectedDepartments" />
     </div>
 
     <mat-list>
@@ -106,15 +132,15 @@ import { EmployeesStore } from '../../store/employees.store';
   `,
 })
 export default class EmployeeList {
-  #departmentId: string | null = null;
+  #selectedDepartments: MatListOption[] = [];
   #employeesStore = inject(EmployeesStore);
 
-  protected set departmentId(value: string | null) {
-    this.#departmentId = value;
-    this.#employeesStore.setFilter({ departmentId: value });
+  protected set selectedDepartments(value: RkListOption<string>[]) {
+    this.#selectedDepartments = value;
+    this.#employeesStore.setFilter({ departmentIds: value.map(({ value }) => value) });
   }
-  protected get departmentId(): string | null {
-    return this.#departmentId;
+  protected get selectedDepartments(): RkListOption<string>[] {
+    return this.#selectedDepartments;
   }
 
   protected readonly employees = this.#employeesStore.filteredEmployees;

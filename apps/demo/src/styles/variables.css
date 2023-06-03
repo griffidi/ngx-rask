@@ -87,3 +87,18 @@
 :root {
   --mdc-theme-surface: var(--app-color-surface-1);
 }
+
+.mat-mdc-list-item {
+  --mdc-list-list-item-hover-state-layer-color: transparent;
+  --mdc-list-list-item-selected-container-color: transparent;
+  --mdc-list-list-item-focus-container-color: transparent;
+
+  &.mdc-list-item--with-one-line,
+  .mat-mdc-focus-indicator {
+    border-radius: var(--app-shape-small);
+  }
+
+  &:hover {
+    background: var(--app-color-background-hover);
+  }
+}

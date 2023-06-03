@@ -1,9 +1,4 @@
-import {
-  GetEmployeeByIdDocument,
-  GetEmployeesByDepartmentIdDocument,
-  GetEmployeesDocument,
-  type Employee,
-} from '#/app/types/graphql';
+import { GetEmployeeByIdDocument, GetEmployeesDocument, type Employee } from '#/app/types/graphql';
 import { Injectable, inject } from '@angular/core';
 import { Client } from '@ngx-rask/graphql';
 import { catchError, map, tap } from 'rxjs';
@@ -19,12 +14,12 @@ export class EmployeesService {
    * @param {EmployeeFilter} filter Filter object.
    * @returns {Promise<Employee>} The employees.
    */
-  getEmployeesByQuery(filter?: EmployeeFilter) {
-    const { departmentId } = filter ?? {};
+  getEmployeesByQuery(_filter?: EmployeeFilter) {
+    // const { departmentIds } = filter ?? {};
 
-    if (departmentId) {
-      return this.getEmployeesByDepartmentId(departmentId);
-    }
+    // if (departmentIds?.length) {
+    //   return this.getEmployeesByDepartmentId(departmentId);
+    // }
 
     return this.getEmployees();
   }
@@ -50,27 +45,27 @@ export class EmployeesService {
     });
   }
 
-  /**
-   * Load all employees by department id.
-   *
-   * @param {string} departmentId The department id.
-   * @returns {Promise<Employee>} The employees.
-   */
-  getEmployeesByDepartmentId(departmentId: string): Promise<Employees> {
-    return new Promise((resolve, reject) => {
-      this.#client
-        .query(GetEmployeesByDepartmentIdDocument, { departmentId })
-        .pipe(
-          map(({ employees }) => employees as Employees),
-          tap(employees => resolve(employees)),
-          catchError(error => {
-            reject(error);
-            return [];
-          })
-        )
-        .subscribe();
-    });
-  }
+  // /**
+  //  * Load all employees by department id.
+  //  *
+  //  * @param {string} departmentId The department id.
+  //  * @returns {Promise<Employee>} The employees.
+  //  */
+  // getEmployeesByDepartmentId(departmentIds: string[]): Promise<Employees> {
+  //   return new Promise((resolve, reject) => {
+  //     this.#client
+  //       .query(GetEmployeesByDepartmentIdDocument, { departmentId })
+  //       .pipe(
+  //         map(({ employees }) => employees as Employees),
+  //         tap(employees => resolve(employees)),
+  //         catchError(error => {
+  //           reject(error);
+  //           return [];
+  //         })
+  //       )
+  //       .subscribe();
+  //   });
+  // }
 
   /**
    * Load employee by id.

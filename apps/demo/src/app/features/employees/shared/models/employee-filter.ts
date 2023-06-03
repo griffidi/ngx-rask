@@ -1,3 +1,3 @@
 export interface EmployeeFilter {
-  departmentId: string | null;
+  departmentIds: string[];
 }

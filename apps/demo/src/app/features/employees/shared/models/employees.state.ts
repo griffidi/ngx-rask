@@ -12,7 +12,7 @@ export const initialEmployeesState: EmployeesState = {
   loading: false,
   employees: [],
   query: {
-    departmentId: null,
+    departmentIds: [],
   },
   selectedEmployeeId: '',
 };

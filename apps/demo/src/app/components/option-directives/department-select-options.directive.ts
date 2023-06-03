@@ -1,6 +1,6 @@
+import { DepartmentService } from '#/app/common/services';
 import { Directive, inject, type OnInit } from '@angular/core';
 import { RkSelect } from '@ngx-rask/components';
-import { DepartmentService } from '../../common';
 
 @Directive({
   selector: '[appDepartmentSelectOptions]',
