@@ -1,7 +1,8 @@
 import { OverlayModule } from '@angular/cdk/overlay';
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { NgIf, NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Output,
@@ -15,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
 import { CssVariablePipe } from '@ngx-rask/core';
+import { RxFor } from '@rx-angular/template/for';
 import { UnpatchDirective } from '@rx-angular/template/unpatch';
 import {
   COMMAND_PALETTE_OPTIONS,
@@ -35,11 +37,11 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
     MatIconModule,
     MatInputModule,
     MatListModule,
-    NgFor,
     NgIf,
     NgStyle,
     OverlayModule,
     RouterLink,
+    RxFor,
     UnpatchDirective,
   ],
   styles: [
@@ -244,11 +246,11 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
       <mat-nav-list>
         <div mat-subheader>Pages</div>
         <mat-list-item
-          *ngFor="let item of navItems()"
+          *rxFor="let item of navItems()"
+          [unpatch]="['mouseenter', 'mouseleave']"
           (click)="onNavigate(item)"
           (mouseenter)="onPageListItemMouseenter(item)"
-          (mouseleave)="onPageListItemMouseleave()"
-          [unpatch]="['mouseenter', 'mouseleave']">
+          (mouseleave)="onPageListItemMouseleave()">
           <mat-icon
             *ngIf="item.icon"
             matListItemIcon>
@@ -260,30 +262,30 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
             {{ item.title }}
           </a>
         </mat-list-item>
-        <ng-container *ngFor="let option of searchOptions(); index as i">
-          <mat-divider />
-          <div mat-subheader>{{ option.header }}</div>
-          <mat-list-item
-            *ngFor="let item of option.items"
-            class="search-option-item"
-            (mouseenter)="onPageListItemMouseenter(item)"
-            (mouseleave)="onPageListItemMouseleave()"
-            [unpatch]="['mouseenter', 'mouseleave']">
-            <mat-icon
-              *ngIf="item.icon"
-              matListItemIcon
-              class="search-option-icon-{{ i }}"
-              [ngStyle]="{ color: item.cssColorCustomProperty | cssVariable }">
-              {{ item.icon }}
-            </mat-icon>
-            {{ item.title }}
-            <div class="jump-to">
-              <span class="special-character">Tab</span>
-              to search
-            </div>
-          </mat-list-item>
-        </ng-container>
       </mat-nav-list>
+      <mat-selection-list *rxFor="let option of searchOptions(); index as i">
+        <mat-divider />
+        <div mat-subheader>{{ option.header }}</div>
+        <mat-list-item
+          *rxFor="let item of option.items"
+          class="search-option-item"
+          (mouseenter)="onPageListItemMouseenter(item)"
+          (mouseleave)="onPageListItemMouseleave()"
+          [unpatch]="['mouseenter', 'mouseleave']">
+          <mat-icon
+            *ngIf="item.icon"
+            matListItemIcon
+            class="search-option-icon-{{ i }}"
+            [ngStyle]="{ color: item.cssColorCustomProperty | cssVariable }">
+            {{ item.icon }}
+          </mat-icon>
+          {{ item.title }}
+          <div class="jump-to">
+            <span class="special-character">Tab</span>
+            to search
+          </div>
+        </mat-list-item>
+      </mat-selection-list>
     </section>
     <mat-divider />
     <footer>
@@ -299,6 +301,7 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
   `,
 })
 export class RkCommandPalette {
+  readonly #cdr = inject(ChangeDetectorRef);
   readonly #options = inject(COMMAND_PALETTE_OPTIONS);
   readonly #searchValue = signal<string | null>(null);
 
@@ -345,10 +348,12 @@ export class RkCommandPalette {
   protected onPageListItemMouseenter(event: CommandPaletteItem) {
     this.hoveredPageListItem.set(event);
     this.searchValuePlaceholder.set(event.title);
+    this.#cdr.detectChanges();
   }
 
   protected onPageListItemMouseleave() {
     this.hoveredPageListItem.set(null);
     this.searchValuePlaceholder.set(DEFAULT_SEARCH_VALUE_PLACEHOLDER);
+    this.#cdr.detectChanges();
   }
 }
