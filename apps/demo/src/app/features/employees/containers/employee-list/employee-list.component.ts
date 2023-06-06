@@ -65,7 +65,8 @@ import { EmployeesStore } from '../../store/employees.store';
         .title {
           padding-inline-start: 16px;
           margin-block-end: 0;
-          font-size: 1.1em;
+          font-size: 1.2em;
+          color: var(--app-color-primary);
         }
       }
 
