@@ -126,7 +126,7 @@ import { EmployeesStore } from '../../store/employees.store';
             appDepartmentListOptions
             color="primary"
             [multiple]="true"
-            [(selectedOptions)]="selectedDepartments" />
+            [(selected)]="selectedDepartments" />
         </div>
       </div>
 
@@ -153,8 +153,10 @@ import { EmployeesStore } from '../../store/employees.store';
   `,
 })
 export default class EmployeeList {
-  #selectedDepartments: MatListOption[] = [];
   #employeesStore = inject(EmployeesStore);
+  #selectedDepartments: MatListOption[] = [];
+
+  protected readonly employees = this.#employeesStore.filteredEmployees;
 
   protected set selectedDepartments(value: RkListOption<string>[]) {
     this.#selectedDepartments = value;
@@ -163,6 +165,4 @@ export default class EmployeeList {
   protected get selectedDepartments(): RkListOption<string>[] {
     return this.#selectedDepartments;
   }
-
-  protected readonly employees = this.#employeesStore.filteredEmployees;
 }

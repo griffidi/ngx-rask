@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   Output,
+  booleanAttribute,
   signal,
 } from '@angular/core';
 import { FormsModule, type ControlValueAccessor } from '@angular/forms';
@@ -29,7 +30,7 @@ export interface RkListOption<T = string> extends MatListOption {
   styles: [``],
   template: `
     <mat-selection-list
-      [color]="_color()"
+      [color]="color"
       [disabled]="disabled"
       [multiple]="multiple"
       (selectionChange)="onSelectionChange($event)">
@@ -43,14 +44,8 @@ export interface RkListOption<T = string> extends MatListOption {
   `,
 })
 export class RkSelectionList implements ControlValueAccessor {
-  @Input()
-  set color(value: ThemePalette) {
-    this._color.set(value);
-  }
-  get color() {
-    return this._color();
-  }
-  protected _color = signal<ThemePalette>('accent');
+  @Input() color: ThemePalette = 'accent';
+  @Input({ transform: booleanAttribute }) multiple = false;
 
   @Input()
   set options(value: RkSelectionListOption[]) {
@@ -61,30 +56,30 @@ export class RkSelectionList implements ControlValueAccessor {
   }
   protected _options = signal<RkSelectionListOption[]>([]);
 
-  @Input() multiple = false;
-
+  /**
+   * Selected list options. If `multiple` is `true`, then the array
+   * will only ever have one option.
+   */
   @Input()
-  set selectedOptions(value: RkListOption[]) {
-    // BUG: user selectionlistion triggers this setter twice.
-    this._selectedOptions.set(value);
-    this.selectedOptionsChange.emit(value);
+  set selected(value: RkListOption[]) {
+    this._selected.set(value);
+    this.selectedChange.emit(value);
     this.onChange(value);
   }
-  get selectedOptions() {
-    return this._selectedOptions();
+  get selected() {
+    return this._selected();
   }
-  protected _selectedOptions = signal<RkListOption[]>([]);
+  protected _selected = signal<RkListOption[]>([]);
 
   onChange = (_value: RkListOption[]) => {};
   onTouched = () => {};
   touched = false;
   disabled = false;
 
-  @Output() readonly selectedOptionsChange = new EventEmitter<RkListOption[]>();
-  @Output() readonly selectionListChange = new EventEmitter<MatSelectionListChange>();
+  @Output() readonly selectedChange = new EventEmitter<RkListOption[]>();
 
   writeValue(value: RkListOption[]) {
-    this._selectedOptions.set(value);
+    this._selected.set(value);
   }
 
   registerOnChange(onChange: (value: RkListOption[]) => void) {
@@ -106,7 +101,11 @@ export class RkSelectionList implements ControlValueAccessor {
     this.disabled = disabled;
   }
 
-  protected onSelectionChange(event: MatSelectionListChange) {
-    this.selectedOptions = event.options;
+  /**
+   * When list selection changes, get selected options from the list.
+   */
+  protected onSelectionChange({ source: { selectedOptions } }: MatSelectionListChange) {
+    const { selected } = selectedOptions;
+    this.selected = selected;
   }
 }
