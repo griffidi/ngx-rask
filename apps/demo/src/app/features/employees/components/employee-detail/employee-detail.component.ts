@@ -1,11 +1,12 @@
 import type { Employee } from '#/app/types/graphql';
 import { DatePipe, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { RkSelect, RkSvg } from '@ngx-rask/components';
+import { signalInput, toSignalInput } from '@ngx-rask/core';
 import {
   DepartmentSelectOptionsDirective,
   LocationStateSelectOptionsDirective,
@@ -101,7 +102,7 @@ import {
     `,
   ],
   template: `
-    <ng-container *ngIf="_employee() as model">
+    <ng-container *ngIf="employee() as model">
       <form #form="ngForm">
         <div class="row flex-end">
           <span class="updated">Started {{ model.dateStarted | date : 'yyyy-MM-dd' }}</span>
@@ -241,8 +242,5 @@ import {
   `,
 })
 export class EmployeeDetailComponent {
-  @Input({ required: true }) set employee(value: Employee) {
-    this._employee.set(value);
-  }
-  protected _employee = signal<Employee>({} as Employee);
+  @Input({ required: true, transform: toSignalInput }) employee = signalInput<Employee>();
 }

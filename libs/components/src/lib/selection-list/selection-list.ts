@@ -47,8 +47,7 @@ export class RkSelectionList implements ControlValueAccessor {
   @Input() color: ThemePalette = 'accent';
   @Input({ transform: booleanAttribute }) multiple = false;
 
-  @Input()
-  set options(value: RkSelectionListOption[]) {
+  @Input() set options(value: RkSelectionListOption[]) {
     this._options.set(value);
   }
   get options() {

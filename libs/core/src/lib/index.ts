@@ -4,4 +4,5 @@ export * from './composables';
 export * from './forms';
 export * from './identity';
 export * from './options';
+export * from './signals';
 export * from './zone';
