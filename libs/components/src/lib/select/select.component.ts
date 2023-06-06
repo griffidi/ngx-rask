@@ -53,6 +53,10 @@ export class RkSelect implements ControlValueAccessor {
   get options() {
     return this._options();
   }
+  /**
+   * Until native signal inputs are supposed, this property must be set manually
+   * and toSignalInput transform cannot be used.
+   */
   protected _options = signal<RkSelectOption[]>([]);
 
   @Input()
