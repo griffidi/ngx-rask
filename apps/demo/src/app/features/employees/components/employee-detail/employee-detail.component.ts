@@ -1,5 +1,5 @@
 import type { Employee } from '#/app/types/graphql';
-import { NgIf } from '@angular/common';
+import { DatePipe, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +16,7 @@ import {
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    DatePipe,
     FormsModule,
     DepartmentSelectOptionsDirective,
     LocationStateSelectOptionsDirective,
@@ -53,6 +54,11 @@ import {
           inline-size: 50%;
           align-items: flex-start;
         }
+
+        &.flex-end {
+          justify-content: flex-end;
+          gap: 10px;
+        }
       }
 
       .input-container {
@@ -74,6 +80,14 @@ import {
         inline-size: 100%;
       }
 
+      .updated {
+        justify-self: flex-end;
+        color: var(--app-color-text-dark-2);
+        font-size: 0.8rem;
+        font-weight: 300;
+        /* font-style: italic; */
+      }
+
       .avatar {
         inline-size: 132px;
         block-size: 132px;
@@ -89,6 +103,15 @@ import {
   template: `
     <ng-container *ngIf="_employee() as model">
       <form #form="ngForm">
+        <div class="row flex-end">
+          <span class="updated">Started {{ model.dateStarted | date : 'yyyy-MM-dd' }}</span>
+          <span
+            *ngIf="model.dateUpdated"
+            class="updated">
+            Updated {{ model.dateUpdated | date : 'shortTime' }}
+          </span>
+        </div>
+
         <div class="row">
           <mat-form-field>
             <mat-label>First name</mat-label>
@@ -135,7 +158,8 @@ import {
             <mat-radio-group
               aria-label="Select an gender"
               name="gender"
-              [ngModel]="model.gender">
+              color="primary"
+              [value]="model.gender">
               <mat-radio-button value="Male">Male</mat-radio-button>
               <mat-radio-button value="Female">Female</mat-radio-button>
             </mat-radio-group>
