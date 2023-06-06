@@ -4,11 +4,12 @@ import {
   GlobalPositionStrategy,
   Overlay,
   OverlayConfig,
+  OverlayRef,
   ViewportRuler,
 } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
-import { DestroyRef, Injectable, inject } from '@angular/core';
+import { DestroyRef, Injectable, NgZone, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { setTimeout } from '@rx-angular/cdk/zone-less/browser';
 import { Subscription, filter, fromEvent, map, merge, take, tap } from 'rxjs';
@@ -29,11 +30,12 @@ const COMMAND_PALETTE_OVERLAY_CONFIG: OverlayConfig = {
 
 @Injectable()
 export class CommandPaletteService {
-  #isSubscribed = false;
-  #keydownSubscription: Subscription | undefined;
+  #keydownSubscription: Subscription | null = null;
+  #overlayRef: OverlayRef | null = null;
 
   readonly #destroyRef = inject(DestroyRef);
   readonly #document = inject(DOCUMENT);
+  readonly #ngZone = inject(NgZone);
   readonly #overlay = inject(Overlay);
   readonly #viewportRuler = inject(ViewportRuler);
 
@@ -41,26 +43,24 @@ export class CommandPaletteService {
    * Subscribe to command palette events.
    */
   subscribe() {
-    if (this.#isSubscribed) {
+    if (this.#keydownSubscription) {
       return;
     }
 
-    this.#isSubscribed = true;
-
-    // we also store subscription in a variable, so that we can also unsubscribe manually
-    this.#keydownSubscription = fromEvent<KeyboardEvent>(this.#document, 'keydown')
-      .pipe(
-        takeUntilDestroyed(this.#destroyRef),
-        // TODO: find way to run this listener outside Angular. Currently doing so
-        // throws "inject() must be called from an injection context".
-        // runOutsideAngular(), // run subscription outside angular zone
-        filter(({ key, ctrlKey }) => ctrlKey && ['k', '/'].includes(key)),
-        map(event => {
-          this.show();
-          return event;
-        })
-      )
-      .subscribe();
+    this.#ngZone.runOutsideAngular(() => {
+      // we also store subscription in a variable, so that we can also unsubscribe manually
+      this.#keydownSubscription = fromEvent<KeyboardEvent>(this.#document, 'keydown')
+        .pipe(
+          takeUntilDestroyed(this.#destroyRef),
+          filter(({ key, ctrlKey }) => ctrlKey && ['k', '/'].includes(key)),
+          map(event => {
+            // need to run show() inside angular zone, otherwise it will not work
+            this.#ngZone.run(() => this.show());
+            return event;
+          })
+        )
+        .subscribe();
+    });
   }
 
   /**
@@ -68,7 +68,14 @@ export class CommandPaletteService {
    */
   unsubscribe() {
     this.#keydownSubscription?.unsubscribe();
-    this.#isSubscribed = false;
+    this.#keydownSubscription = null;
+  }
+
+  /**
+   * Close command palette.
+   */
+  close() {
+    this.#detachCommandPalette();
   }
 
   /**
@@ -90,7 +97,7 @@ export class CommandPaletteService {
     merge(componentRef.instance.close, overlayRef.backdropClick())
       .pipe(
         take(1),
-        tap(() => overlayRef.detach())
+        tap(() => this.#detachCommandPalette())
       )
       .subscribe();
 
@@ -104,5 +111,20 @@ export class CommandPaletteService {
       const commandPaletteElement = overlayElement.querySelector('rk-command-palette');
       commandPaletteElement?.setAttribute('opened', '');
     });
+
+    this.#overlayRef = overlayRef;
+
+    // unsubscribe from event listener to prevent showing multiple command palettes
+    this.unsubscribe();
+  }
+
+  #detachCommandPalette() {
+    if (this.#overlayRef) {
+      this.#overlayRef.detach();
+      this.#overlayRef = null;
+
+      // re-subscribe to event listener so command palette can be shown again
+      this.subscribe();
+    }
   }
 }
