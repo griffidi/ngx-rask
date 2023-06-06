@@ -9,43 +9,8 @@ import { RkBreadcrumbs } from '@ngx-rask/components';
 @Component({
   selector: 'app-header',
   standalone: true,
-  template: `
-    <header>
-      <nav>
-        <ng-content></ng-content>
-        <a
-          class="nav-link brand"
-          routerLink="/">
-          ngx-rask demo
-        </a>
-      </nav>
-
-      <rk-breadcrumbs></rk-breadcrumbs>
-
-      <div
-        class="command-palette-hint"
-        (click)="onSearchClick()">
-        <mat-icon>search</mat-icon>
-        Search
-        <span class="special-character">Ctrl</span>
-        <span class="special-character">K or /</span>
-      </div>
-
-      <button
-        *ngIf="isAuthenticated"
-        mat-mini-fab
-        [matMenuTriggerFor]="menu">
-        {{ userInitials }}
-      </button>
-      <mat-menu #menu="matMenu">
-        <button
-          mat-menu-item
-          (click)="logout.emit()">
-          Logout
-        </button>
-      </mat-menu>
-    </header>
-  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, MatIconModule, MatMenuModule, NgIf, RkBreadcrumbs, RouterLink],
   styles: [
     `
       header,
@@ -131,8 +96,43 @@ import { RkBreadcrumbs } from '@ngx-rask/components';
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatIconModule, MatMenuModule, NgIf, RkBreadcrumbs, RouterLink],
+  template: `
+    <header>
+      <nav>
+        <ng-content></ng-content>
+        <a
+          class="nav-link brand"
+          routerLink="/">
+          ngx-rask demo
+        </a>
+      </nav>
+
+      <rk-breadcrumbs></rk-breadcrumbs>
+
+      <div
+        class="command-palette-hint"
+        (click)="onSearchClick()">
+        <mat-icon>search</mat-icon>
+        Search
+        <span class="special-character">Ctrl</span>
+        <span class="special-character">K or /</span>
+      </div>
+
+      <button
+        *ngIf="isAuthenticated"
+        mat-mini-fab
+        [matMenuTriggerFor]="menu">
+        {{ userInitials }}
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          (click)="logout.emit()">
+          Logout
+        </button>
+      </mat-menu>
+    </header>
+  `,
 })
 export default class LayoutHeader {
   @Input({ required: true }) isAuthenticated = false;

@@ -6,6 +6,7 @@
     "@angular/common": "^16.1.0",
     "@angular/core": "^16.1.0",
     "@angular/material": "^16.1.0",
+    "@rx-angular/cdk": "^15.0.0",
     "@rx-angular/template": "^15.0.0",
     "@ngx-rask/core": "*"
   },

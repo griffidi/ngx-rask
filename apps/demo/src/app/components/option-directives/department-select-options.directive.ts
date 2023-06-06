@@ -12,7 +12,7 @@ export class DepartmentSelectOptionsDirective implements OnInit {
   #departmentService = inject(DepartmentService);
 
   async ngOnInit() {
-    this.#select.placeholder = 'Select...';
+    this.#select.label = 'Department';
 
     const departments = await this.#departmentService.getDepartments();
     this.#select.options = departments.map(({ id, name }) => ({ id, label: name }));

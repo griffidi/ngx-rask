@@ -5131,6 +5131,18 @@ export type GetInventoryBySizeQuery = {
   }>;
 };
 
+export type GetLocationStatesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetLocationStatesQuery = {
+  readonly __typename?: 'Query';
+  readonly locationStates: ReadonlyArray<{
+    readonly __typename?: 'LocationState';
+    readonly id: string;
+    readonly name: string;
+    readonly shortName: string;
+  }>;
+};
+
 export type LoginMutationVariables = Exact<{
   userName: Scalars['String']['input'];
   password: Scalars['String']['input'];
@@ -6043,6 +6055,33 @@ export const GetInventoryBySizeDocument = {
     },
   ],
 } as unknown as DocumentNode<GetInventoryBySizeQuery, GetInventoryBySizeQueryVariables>;
+export const GetLocationStatesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetLocationStates' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'locationStates' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'shortName' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetLocationStatesQuery, GetLocationStatesQueryVariables>;
 export const LoginDocument = {
   kind: 'Document',
   definitions: [

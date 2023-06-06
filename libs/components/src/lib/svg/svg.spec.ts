@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RkSvg } from './svg.component';
+import { RkSvg } from './svg';
 
 describe('SvgComponent', () => {
   let component: RkSvg;

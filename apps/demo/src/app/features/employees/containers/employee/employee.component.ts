@@ -8,6 +8,9 @@ import { EmployeesStore } from '../../store/employees.store';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [EmployeeDetailComponent, NgIf],
+  host: {
+    scrollable: '',
+  },
   styles: [
     `
       :host {
@@ -15,6 +18,7 @@ import { EmployeesStore } from '../../store/employees.store';
         flex-direction: column;
         align-items: center;
         padding-block: 40px;
+        block-size: 100%;
       }
     `,
   ],

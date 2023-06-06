@@ -3,7 +3,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Client } from '@ngx-rask/graphql';
 
 @Injectable()
-export class SizesService {
+export class SizeService {
   #client = inject(Client);
   #isLoadingSizes = signal(false);
   #sizes = signal<Size[]>([]);

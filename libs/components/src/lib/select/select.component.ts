@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,13 +21,12 @@ export interface RkSelectOption {
   selector: 'rk-select',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatSelectModule, RxFor],
+  imports: [MatSelectModule, NgIf, RxFor],
   styles: [``],
   template: `
     <mat-form-field>
-      <mat-select
-        [placeholder]="_placeholder()"
-        [(value)]="value">
+      <mat-label>{{ _label() }}</mat-label>
+      <mat-select [(value)]="value">
         <mat-option
           *rxFor="let option of _options(); trackBy: 'id'"
           [value]="option.id">
@@ -38,6 +38,15 @@ export interface RkSelectOption {
 })
 export class RkSelect implements ControlValueAccessor {
   @Input()
+  set label(value: string) {
+    this._label.set(value);
+  }
+  get label() {
+    return this._label();
+  }
+  protected _label = signal<string>('');
+
+  @Input()
   set options(value: RkSelectOption[]) {
     this._options.set(value);
   }
@@ -45,15 +54,6 @@ export class RkSelect implements ControlValueAccessor {
     return this._options();
   }
   protected _options = signal<RkSelectOption[]>([]);
-
-  @Input()
-  set placeholder(value: string) {
-    this._placeholder.set(value);
-  }
-  get placeholder() {
-    return this._placeholder();
-  }
-  protected _placeholder = signal<string>('');
 
   @Input()
   set value(value: string | null) {
