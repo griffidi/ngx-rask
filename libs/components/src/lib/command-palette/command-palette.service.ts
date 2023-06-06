@@ -32,10 +32,10 @@ export class CommandPaletteService {
   #isSubscribed = false;
   #keydownSubscription: Subscription | undefined;
 
-  readonly #viewportRuler = inject(ViewportRuler);
   readonly #destroyRef = inject(DestroyRef);
-  readonly #overlay = inject(Overlay);
   readonly #document = inject(DOCUMENT);
+  readonly #overlay = inject(Overlay);
+  readonly #viewportRuler = inject(ViewportRuler);
 
   /**
    * Subscribe to command palette events.
@@ -47,9 +47,13 @@ export class CommandPaletteService {
 
     this.#isSubscribed = true;
 
+    // we also store subscription in a variable, so that we can also unsubscribe manually
     this.#keydownSubscription = fromEvent<KeyboardEvent>(this.#document, 'keydown')
       .pipe(
         takeUntilDestroyed(this.#destroyRef),
+        // TODO: find way to run this listener outside Angular. Currently doing so
+        // throws "inject() must be called from an injection context".
+        // runOutsideAngular(), // run subscription outside angular zone
         filter(({ key, ctrlKey }) => ctrlKey && ['k', '/'].includes(key)),
         map(event => {
           this.show();
@@ -92,7 +96,7 @@ export class CommandPaletteService {
 
     /**
      * Add opened attribute to overlay and command palette. This allows
-     * applying animations and custom styling to  the elements.
+     * applying animations and custom styling.
      */
     setTimeout(() => {
       const { overlayElement } = overlayRef;

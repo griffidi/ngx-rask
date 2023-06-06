@@ -1,23 +1,26 @@
 import { OverlayModule } from '@angular/cdk/overlay';
-import { NgIf, NgStyle } from '@angular/common';
+import { DOCUMENT, NgIf, NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  DestroyRef,
   EventEmitter,
   Output,
   inject,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
-import { CssVariablePipe } from '@ngx-rask/core';
+import { CssVariablePipe, runOutsideAngular } from '@ngx-rask/core';
 import { RxFor } from '@rx-angular/template/for';
 import { UnpatchDirective } from '@rx-angular/template/unpatch';
+import { filter, fromEvent } from 'rxjs';
 import {
   COMMAND_PALETTE_OPTIONS,
   type CommandPaletteItem,
@@ -249,8 +252,8 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
           *rxFor="let item of navItems()"
           [unpatch]="['mouseenter', 'mouseleave']"
           (click)="onNavigate(item)"
-          (mouseenter)="onPageListItemMouseenter(item)"
-          (mouseleave)="onPageListItemMouseleave()">
+          (mouseenter)="onListItemMouseenter(item)"
+          (mouseleave)="onListItemMouseleave()">
           <mat-icon
             *ngIf="item.icon"
             matListItemIcon>
@@ -269,8 +272,8 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
         <mat-list-item
           *rxFor="let item of option.items"
           class="search-option-item"
-          (mouseenter)="onPageListItemMouseenter(item)"
-          (mouseleave)="onPageListItemMouseleave()"
+          (mouseenter)="onListItemMouseenter(item)"
+          (mouseleave)="onListItemMouseleave()"
           [unpatch]="['mouseenter', 'mouseleave']">
           <mat-icon
             *ngIf="item.icon"
@@ -302,8 +305,11 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
 })
 export class RkCommandPalette {
   readonly #cdr = inject(ChangeDetectorRef);
+  readonly #destroyRef = inject(DestroyRef);
+  readonly #document = inject(DOCUMENT);
+
   readonly #options = inject(COMMAND_PALETTE_OPTIONS);
-  readonly #searchValue = signal<string | null>(null);
+  readonly #searchValue = signal<string>('');
 
   protected readonly searchValuePlaceholder = signal<string>(DEFAULT_SEARCH_VALUE_PLACEHOLDER);
   protected readonly hoveredPageListItem = signal<CommandPaletteItem | null>(null);
@@ -326,15 +332,21 @@ export class RkCommandPalette {
     this.#options.searchOptions ?? []
   );
 
-  protected set searchValue(value: string | null) {
+  protected set searchValue(value: string) {
     this.#searchValue.set(value);
   }
-  get searchValue(): string | null {
+  get searchValue(): string {
     return this.#searchValue();
   }
 
   @Output() close = new EventEmitter<void>();
   @Output() navigate = new EventEmitter<CommandPaletteItem>();
+
+  @Output() open = fromEvent<KeyboardEvent>(this.#document, 'keydown').pipe(
+    takeUntilDestroyed(this.#destroyRef),
+    runOutsideAngular(), // run subscription outside angular zone
+    filter(({ key, ctrlKey }) => ctrlKey && ['k', '/'].includes(key))
+  );
 
   protected onClose() {
     this.close.emit();
@@ -345,15 +357,19 @@ export class RkCommandPalette {
     this.onClose();
   }
 
-  protected onPageListItemMouseenter(event: CommandPaletteItem) {
+  protected onListItemMouseenter(event: CommandPaletteItem) {
     this.hoveredPageListItem.set(event);
     this.searchValuePlaceholder.set(event.title);
+
+    // mouseenter event listener is unpatched so manually triggering change detection is required.
     this.#cdr.detectChanges();
   }
 
-  protected onPageListItemMouseleave() {
+  protected onListItemMouseleave() {
     this.hoveredPageListItem.set(null);
     this.searchValuePlaceholder.set(DEFAULT_SEARCH_VALUE_PLACEHOLDER);
+
+    // mouseleave event listener is unpatched so manually triggering change detection is required.
     this.#cdr.detectChanges();
   }
 }
