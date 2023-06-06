@@ -7,6 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { FormsModule, type ControlValueAccessor } from '@angular/forms';
+import type { ThemePalette } from '@angular/material/core';
 import { MatListModule, MatListOption, MatSelectionListChange } from '@angular/material/list';
 import { RxFor } from '@rx-angular/template/for';
 
@@ -28,6 +29,7 @@ export interface RkListOption<T = string> extends MatListOption {
   styles: [``],
   template: `
     <mat-selection-list
+      [color]="_color()"
       [disabled]="disabled"
       [multiple]="multiple"
       (selectionChange)="onSelectionChange($event)">
@@ -41,6 +43,15 @@ export interface RkListOption<T = string> extends MatListOption {
   `,
 })
 export class RkSelectionList implements ControlValueAccessor {
+  @Input()
+  set color(value: ThemePalette) {
+    this._color.set(value);
+  }
+  get color() {
+    return this._color();
+  }
+  protected _color = signal<ThemePalette>('accent');
+
   @Input()
   set options(value: RkSelectionListOption[]) {
     this._options.set(value);

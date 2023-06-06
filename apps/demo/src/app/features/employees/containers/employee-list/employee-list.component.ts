@@ -30,8 +30,25 @@ import { EmployeesStore } from '../../store/employees.store';
   styles: [
     `
       :host {
+        display: block;
+        inline-size: 100%;
+        container: container / inline-size;
+      }
+
+      .container {
         display: grid;
-        grid-template-columns: 400px 1fr;
+        grid-template-columns: minmax(auto, 500px) 1fr;
+      }
+
+      @container container (width < 700px) {
+        .container {
+          display: flex;
+          flex-direction: column;
+        }
+
+        :host .filter-container > div {
+          inline-size: 100%;
+        }
       }
 
       .filter-container {
@@ -40,6 +57,16 @@ import { EmployeesStore } from '../../store/employees.store';
         align-items: center;
         padding-block: 1rem;
         margin-block-start: 8px;
+
+        > div {
+          inline-size: 300px;
+        }
+
+        .title {
+          padding-inline-start: 16px;
+          margin-block-end: 0;
+          font-size: 1.1em;
+        }
       }
 
       .virtual-viewport {
@@ -47,32 +74,19 @@ import { EmployeesStore } from '../../store/employees.store';
         block-size: calc(100dvh - var(--app-site-header-block-size));
       }
 
-      /* :host
-        ::ng-deep
-        .mat-mdc-list-option
-        .mdc-checkbox
-        .mdc-checkbox__native-control:enabled:checked
-        ~ .mdc-checkbox__background,
-      :host
-        ::ng-deep
-        .mat-mdc-list-option
-        .mdc-checkbox
-        .mdc-checkbox__native-control:enabled:indeterminate
-        ~ .mdc-checkbox__background,
-      :host
-        ::ng-deep
-        .mat-mdc-list-option
-        .mdc-checkbox
-        .mdc-checkbox__native-control[data-indeterminate='true']:enabled
-        ~ .mdc-checkbox__background {
-        --mdc-checkbox-selected-icon-color: red;
-        --mdc-checkbox-hover-state-layer-icon-color: red;
-      } */
+      :host ::ng-deep rk-selection-list {
+        .mat-mdc-selection-list {
+          --mdc-list-list-item-one-line-container-height: 38px;
+          --mdc-list-list-item-label-text-size: 1em;
+        }
+      }
 
       mat-list-item.mat-mdc-list-item {
         --_list-item-background-color: var(--app-color-surface-1);
 
-        inline-size: 600px;
+        inline-size: 100%;
+        min-inline-size: 200px;
+        max-inline-size: 600px;
         block-size: 63px;
         margin-inline: auto;
         margin-block-start: 1rem;
@@ -100,39 +114,41 @@ import { EmployeesStore } from '../../store/employees.store';
           }
         }
       }
-
-      .filter {
-        inline-size: 50%;
-      }
     `,
   ],
   template: `
-    <div class="filter-container">
-      <rk-selection-list
-        appDepartmentListOptions
-        [multiple]="true"
-        [(selectedOptions)]="selectedDepartments" />
-    </div>
+    <div class="container">
+      <div class="filter-container">
+        <div>
+          <span class="title">Department</span>
+          <rk-selection-list
+            appDepartmentListOptions
+            color="primary"
+            [multiple]="true"
+            [(selectedOptions)]="selectedDepartments" />
+        </div>
+      </div>
 
-    <mat-nav-list>
-      <cdk-virtual-scroll-viewport
-        class="virtual-viewport"
-        scrollable
-        [itemSize]="50">
-        <mat-list-item
-          *cdkVirtualFor="let item of employees()"
-          [routerLink]="['/employees', item.id]">
-          <span matListItemTitle>{{ item.firstName }} {{ item.lastName }}</span>
-          <span matListItemLine>{{ item.jobTitle }}</span>
-          <span matListItemMeta>{{ item.department.name }}</span>
-          <mat-icon
-            matListItemAvatar
-            class="{{ item.gender === 'Male' ? 'male' : 'female' }}">
-            account_circle
-          </mat-icon>
-        </mat-list-item>
-      </cdk-virtual-scroll-viewport>
-    </mat-nav-list>
+      <mat-nav-list>
+        <cdk-virtual-scroll-viewport
+          class="virtual-viewport"
+          scrollable
+          [itemSize]="50">
+          <mat-list-item
+            *cdkVirtualFor="let item of employees()"
+            [routerLink]="['/employees', item.id]">
+            <span matListItemTitle>{{ item.firstName }} {{ item.lastName }}</span>
+            <span matListItemLine>{{ item.jobTitle }}</span>
+            <span matListItemMeta>{{ item.department.name }}</span>
+            <mat-icon
+              matListItemAvatar
+              class="{{ item.gender === 'Male' ? 'male' : 'female' }}">
+              account_circle
+            </mat-icon>
+          </mat-list-item>
+        </cdk-virtual-scroll-viewport>
+      </mat-nav-list>
+    </div>
   `,
 })
 export default class EmployeeList {
