@@ -722,6 +722,7 @@ export type Employee = {
   readonly firstName: Scalars['String']['output'];
   readonly gender: Scalars['String']['output'];
   readonly id: Scalars['String']['output'];
+  readonly imagePath?: Maybe<Scalars['String']['output']>;
   readonly jobTitle: Scalars['String']['output'];
   readonly lastName: Scalars['String']['output'];
   readonly locationState: LocationState;
@@ -742,6 +743,7 @@ export type EmployeeCountAggregate = {
   readonly firstName: Scalars['Int']['output'];
   readonly gender: Scalars['Int']['output'];
   readonly id: Scalars['Int']['output'];
+  readonly imagePath: Scalars['Int']['output'];
   readonly jobTitle: Scalars['Int']['output'];
   readonly lastName: Scalars['Int']['output'];
   readonly phone: Scalars['Int']['output'];
@@ -759,6 +761,7 @@ export type EmployeeCountOrderByAggregateInput = {
   readonly firstName?: InputMaybe<SortOrder>;
   readonly gender?: InputMaybe<SortOrder>;
   readonly id?: InputMaybe<SortOrder>;
+  readonly imagePath?: InputMaybe<SortOrder>;
   readonly jobTitle?: InputMaybe<SortOrder>;
   readonly lastName?: InputMaybe<SortOrder>;
   readonly phone?: InputMaybe<SortOrder>;
@@ -776,6 +779,7 @@ export type EmployeeCreateInput = {
   readonly firstName: Scalars['String']['input'];
   readonly gender: Scalars['String']['input'];
   readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly imagePath?: InputMaybe<Scalars['String']['input']>;
   readonly jobTitle: Scalars['String']['input'];
   readonly lastName: Scalars['String']['input'];
   readonly locationState: LocationStateCreateNestedOneWithoutEmployeesInput;
@@ -818,6 +822,7 @@ export type EmployeeCreateWithoutDepartmentInput = {
   readonly firstName: Scalars['String']['input'];
   readonly gender: Scalars['String']['input'];
   readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly imagePath?: InputMaybe<Scalars['String']['input']>;
   readonly jobTitle: Scalars['String']['input'];
   readonly lastName: Scalars['String']['input'];
   readonly locationState: LocationStateCreateNestedOneWithoutEmployeesInput;
@@ -835,6 +840,7 @@ export type EmployeeCreateWithoutLocationStateInput = {
   readonly firstName: Scalars['String']['input'];
   readonly gender: Scalars['String']['input'];
   readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly imagePath?: InputMaybe<Scalars['String']['input']>;
   readonly jobTitle: Scalars['String']['input'];
   readonly lastName: Scalars['String']['input'];
   readonly phone: Scalars['String']['input'];
@@ -855,6 +861,7 @@ export type EmployeeGroupBy = {
   readonly firstName: Scalars['String']['output'];
   readonly gender: Scalars['String']['output'];
   readonly id: Scalars['String']['output'];
+  readonly imagePath?: Maybe<Scalars['String']['output']>;
   readonly jobTitle: Scalars['String']['output'];
   readonly lastName: Scalars['String']['output'];
   readonly phone: Scalars['String']['output'];
@@ -879,6 +886,7 @@ export type EmployeeMaxAggregate = {
   readonly firstName?: Maybe<Scalars['String']['output']>;
   readonly gender?: Maybe<Scalars['String']['output']>;
   readonly id?: Maybe<Scalars['String']['output']>;
+  readonly imagePath?: Maybe<Scalars['String']['output']>;
   readonly jobTitle?: Maybe<Scalars['String']['output']>;
   readonly lastName?: Maybe<Scalars['String']['output']>;
   readonly phone?: Maybe<Scalars['String']['output']>;
@@ -896,6 +904,7 @@ export type EmployeeMaxOrderByAggregateInput = {
   readonly firstName?: InputMaybe<SortOrder>;
   readonly gender?: InputMaybe<SortOrder>;
   readonly id?: InputMaybe<SortOrder>;
+  readonly imagePath?: InputMaybe<SortOrder>;
   readonly jobTitle?: InputMaybe<SortOrder>;
   readonly lastName?: InputMaybe<SortOrder>;
   readonly phone?: InputMaybe<SortOrder>;
@@ -914,6 +923,7 @@ export type EmployeeMinAggregate = {
   readonly firstName?: Maybe<Scalars['String']['output']>;
   readonly gender?: Maybe<Scalars['String']['output']>;
   readonly id?: Maybe<Scalars['String']['output']>;
+  readonly imagePath?: Maybe<Scalars['String']['output']>;
   readonly jobTitle?: Maybe<Scalars['String']['output']>;
   readonly lastName?: Maybe<Scalars['String']['output']>;
   readonly phone?: Maybe<Scalars['String']['output']>;
@@ -931,6 +941,7 @@ export type EmployeeMinOrderByAggregateInput = {
   readonly firstName?: InputMaybe<SortOrder>;
   readonly gender?: InputMaybe<SortOrder>;
   readonly id?: InputMaybe<SortOrder>;
+  readonly imagePath?: InputMaybe<SortOrder>;
   readonly jobTitle?: InputMaybe<SortOrder>;
   readonly lastName?: InputMaybe<SortOrder>;
   readonly phone?: InputMaybe<SortOrder>;
@@ -955,6 +966,7 @@ export type EmployeeOrderByWithAggregationInput = {
   readonly firstName?: InputMaybe<SortOrder>;
   readonly gender?: InputMaybe<SortOrder>;
   readonly id?: InputMaybe<SortOrder>;
+  readonly imagePath?: InputMaybe<SortOrder>;
   readonly jobTitle?: InputMaybe<SortOrder>;
   readonly lastName?: InputMaybe<SortOrder>;
   readonly phone?: InputMaybe<SortOrder>;
@@ -973,6 +985,7 @@ export type EmployeeOrderByWithRelationInput = {
   readonly firstName?: InputMaybe<SortOrder>;
   readonly gender?: InputMaybe<SortOrder>;
   readonly id?: InputMaybe<SortOrder>;
+  readonly imagePath?: InputMaybe<SortOrder>;
   readonly jobTitle?: InputMaybe<SortOrder>;
   readonly lastName?: InputMaybe<SortOrder>;
   readonly locationState?: InputMaybe<LocationStateOrderByWithRelationInput>;
@@ -991,12 +1004,13 @@ export enum EmployeeScalarFieldEnum {
   FirstName = 5,
   Gender = 6,
   Id = 7,
-  JobTitle = 8,
-  LastName = 9,
-  Phone = 10,
-  StateId = 11,
-  StreetAddress = 12,
-  ZipCode = 13,
+  ImagePath = 8,
+  JobTitle = 9,
+  LastName = 10,
+  Phone = 11,
+  StateId = 12,
+  StreetAddress = 13,
+  ZipCode = 14,
 }
 
 export type EmployeeScalarWhereInput = {
@@ -1011,6 +1025,7 @@ export type EmployeeScalarWhereInput = {
   readonly firstName?: InputMaybe<StringFilter>;
   readonly gender?: InputMaybe<StringFilter>;
   readonly id?: InputMaybe<StringFilter>;
+  readonly imagePath?: InputMaybe<StringNullableFilter>;
   readonly jobTitle?: InputMaybe<StringFilter>;
   readonly lastName?: InputMaybe<StringFilter>;
   readonly phone?: InputMaybe<StringFilter>;
@@ -1031,6 +1046,7 @@ export type EmployeeScalarWhereWithAggregatesInput = {
   readonly firstName?: InputMaybe<StringWithAggregatesFilter>;
   readonly gender?: InputMaybe<StringWithAggregatesFilter>;
   readonly id?: InputMaybe<StringWithAggregatesFilter>;
+  readonly imagePath?: InputMaybe<StringNullableWithAggregatesFilter>;
   readonly jobTitle?: InputMaybe<StringWithAggregatesFilter>;
   readonly lastName?: InputMaybe<StringWithAggregatesFilter>;
   readonly phone?: InputMaybe<StringWithAggregatesFilter>;
@@ -1048,6 +1064,7 @@ export type EmployeeUpdateInput = {
   readonly firstName?: InputMaybe<Scalars['String']['input']>;
   readonly gender?: InputMaybe<Scalars['String']['input']>;
   readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly imagePath?: InputMaybe<Scalars['String']['input']>;
   readonly jobTitle?: InputMaybe<Scalars['String']['input']>;
   readonly lastName?: InputMaybe<Scalars['String']['input']>;
   readonly locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeesNestedInput>;
@@ -1064,6 +1081,7 @@ export type EmployeeUpdateManyMutationInput = {
   readonly firstName?: InputMaybe<Scalars['String']['input']>;
   readonly gender?: InputMaybe<Scalars['String']['input']>;
   readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly imagePath?: InputMaybe<Scalars['String']['input']>;
   readonly jobTitle?: InputMaybe<Scalars['String']['input']>;
   readonly lastName?: InputMaybe<Scalars['String']['input']>;
   readonly phone?: InputMaybe<Scalars['String']['input']>;
@@ -1137,6 +1155,7 @@ export type EmployeeUpdateWithoutDepartmentInput = {
   readonly firstName?: InputMaybe<Scalars['String']['input']>;
   readonly gender?: InputMaybe<Scalars['String']['input']>;
   readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly imagePath?: InputMaybe<Scalars['String']['input']>;
   readonly jobTitle?: InputMaybe<Scalars['String']['input']>;
   readonly lastName?: InputMaybe<Scalars['String']['input']>;
   readonly locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeesNestedInput>;
@@ -1154,6 +1173,7 @@ export type EmployeeUpdateWithoutLocationStateInput = {
   readonly firstName?: InputMaybe<Scalars['String']['input']>;
   readonly gender?: InputMaybe<Scalars['String']['input']>;
   readonly id?: InputMaybe<Scalars['String']['input']>;
+  readonly imagePath?: InputMaybe<Scalars['String']['input']>;
   readonly jobTitle?: InputMaybe<Scalars['String']['input']>;
   readonly lastName?: InputMaybe<Scalars['String']['input']>;
   readonly phone?: InputMaybe<Scalars['String']['input']>;
@@ -1186,6 +1206,7 @@ export type EmployeeWhereInput = {
   readonly firstName?: InputMaybe<StringFilter>;
   readonly gender?: InputMaybe<StringFilter>;
   readonly id?: InputMaybe<StringFilter>;
+  readonly imagePath?: InputMaybe<StringNullableFilter>;
   readonly jobTitle?: InputMaybe<StringFilter>;
   readonly lastName?: InputMaybe<StringFilter>;
   readonly locationState?: InputMaybe<LocationStateRelationFilter>;
@@ -2367,6 +2388,37 @@ export type NestedStringFilter = {
   readonly lt?: InputMaybe<Scalars['String']['input']>;
   readonly lte?: InputMaybe<Scalars['String']['input']>;
   readonly not?: InputMaybe<NestedStringFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type NestedStringNullableFilter = {
+  readonly contains?: InputMaybe<Scalars['String']['input']>;
+  readonly endsWith?: InputMaybe<Scalars['String']['input']>;
+  readonly equals?: InputMaybe<Scalars['String']['input']>;
+  readonly gt?: InputMaybe<Scalars['String']['input']>;
+  readonly gte?: InputMaybe<Scalars['String']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly lt?: InputMaybe<Scalars['String']['input']>;
+  readonly lte?: InputMaybe<Scalars['String']['input']>;
+  readonly not?: InputMaybe<NestedStringNullableFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type NestedStringNullableWithAggregatesFilter = {
+  readonly _count?: InputMaybe<NestedIntNullableFilter>;
+  readonly _max?: InputMaybe<NestedStringNullableFilter>;
+  readonly _min?: InputMaybe<NestedStringNullableFilter>;
+  readonly contains?: InputMaybe<Scalars['String']['input']>;
+  readonly endsWith?: InputMaybe<Scalars['String']['input']>;
+  readonly equals?: InputMaybe<Scalars['String']['input']>;
+  readonly gt?: InputMaybe<Scalars['String']['input']>;
+  readonly gte?: InputMaybe<Scalars['String']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly lt?: InputMaybe<Scalars['String']['input']>;
+  readonly lte?: InputMaybe<Scalars['String']['input']>;
+  readonly not?: InputMaybe<NestedStringNullableWithAggregatesFilter>;
   readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
   readonly startsWith?: InputMaybe<Scalars['String']['input']>;
 };
@@ -4665,6 +4717,37 @@ export type StringFilter = {
   readonly startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type StringNullableFilter = {
+  readonly contains?: InputMaybe<Scalars['String']['input']>;
+  readonly endsWith?: InputMaybe<Scalars['String']['input']>;
+  readonly equals?: InputMaybe<Scalars['String']['input']>;
+  readonly gt?: InputMaybe<Scalars['String']['input']>;
+  readonly gte?: InputMaybe<Scalars['String']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly lt?: InputMaybe<Scalars['String']['input']>;
+  readonly lte?: InputMaybe<Scalars['String']['input']>;
+  readonly not?: InputMaybe<NestedStringNullableFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StringNullableWithAggregatesFilter = {
+  readonly _count?: InputMaybe<NestedIntNullableFilter>;
+  readonly _max?: InputMaybe<NestedStringNullableFilter>;
+  readonly _min?: InputMaybe<NestedStringNullableFilter>;
+  readonly contains?: InputMaybe<Scalars['String']['input']>;
+  readonly endsWith?: InputMaybe<Scalars['String']['input']>;
+  readonly equals?: InputMaybe<Scalars['String']['input']>;
+  readonly gt?: InputMaybe<Scalars['String']['input']>;
+  readonly gte?: InputMaybe<Scalars['String']['input']>;
+  readonly in?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly lt?: InputMaybe<Scalars['String']['input']>;
+  readonly lte?: InputMaybe<Scalars['String']['input']>;
+  readonly not?: InputMaybe<NestedStringNullableWithAggregatesFilter>;
+  readonly notIn?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
+  readonly startsWith?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type StringWithAggregatesFilter = {
   readonly _count?: InputMaybe<NestedIntFilter>;
   readonly _max?: InputMaybe<NestedStringFilter>;
@@ -5056,7 +5139,9 @@ export type GetEmployeesQuery = {
     readonly zipCode: string;
     readonly jobTitle: string;
     readonly departmentId: string;
+    readonly imagePath?: string | undefined;
     readonly dateStarted: any;
+    readonly dateUpdated?: any | undefined;
     readonly department: { readonly __typename?: 'Department'; readonly name: string };
   }>;
 };
@@ -5082,7 +5167,9 @@ export type GetEmployeeByIdQuery = {
         readonly zipCode: string;
         readonly jobTitle: string;
         readonly departmentId: string;
+        readonly imagePath?: string | undefined;
         readonly dateStarted: any;
+        readonly dateUpdated?: any | undefined;
       }
     | undefined;
 };
@@ -5373,7 +5460,9 @@ export type EmployeePartsFragment = {
   readonly zipCode: string;
   readonly jobTitle: string;
   readonly departmentId: string;
+  readonly imagePath?: string | undefined;
   readonly dateStarted: any;
+  readonly dateUpdated?: any | undefined;
 };
 
 export type InventoryPartsFragment = {
@@ -5465,7 +5554,9 @@ export const EmployeePartsFragmentDoc = {
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'imagePath' } },
           { kind: 'Field', name: { kind: 'Name', value: 'dateStarted' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'dateUpdated' } },
         ],
       },
     },
@@ -5779,7 +5870,9 @@ export const GetEmployeesDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'imagePath' } },
           { kind: 'Field', name: { kind: 'Name', value: 'dateStarted' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'dateUpdated' } },
         ],
       },
     },
@@ -5853,7 +5946,9 @@ export const GetEmployeeByIdDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'imagePath' } },
           { kind: 'Field', name: { kind: 'Name', value: 'dateStarted' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'dateUpdated' } },
         ],
       },
     },

@@ -13,7 +13,7 @@ import { koaMiddleware } from '@as-integrations/koa';
 import cors from '@koa/cors';
 import { resolvers } from '@prisma/generated/type-graphql/index.js';
 import Koa from 'koa';
-import bodyParser from 'koa-bodyparser';
+import { koaBody } from 'koa-body';
 import logger from 'koa-logger';
 import koaStatic from 'koa-static';
 import http from 'node:http';
@@ -68,7 +68,11 @@ app.use(
     origin: config.corsOrigin,
   })
 );
-app.use(bodyParser());
+app.use(
+  koaBody({
+    multipart: true,
+  })
+);
 
 app.use(staticMiddlewares);
 

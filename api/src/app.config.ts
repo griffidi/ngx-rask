@@ -15,11 +15,11 @@ interface AppConfig {
 }
 
 export default {
-  corsOrigin: process.env?.['CORS_ORIGIN'],
-  port: process.env?.['PORT'],
-  jwtKey: process.env?.['JWT_KEY'],
-  jwtSecret: process.env?.['JWT_SECRET'],
-  isDevMode: process.env?.['NODE_ENV'] === 'development',
+  corsOrigin: process.env['CORS_ORIGIN']!,
+  port: process.env['PORT']!,
+  jwtKey: process.env['JWT_KEY']!,
+  jwtSecret: process.env['JWT_SECRET']!,
+  isDevMode: process.env['NODE_ENV'] === 'development',
   staticPath: resolve(fileURLToPath(import.meta.url), '../../public'),
   staticRelativePath: '/public',
 } satisfies AppConfig;

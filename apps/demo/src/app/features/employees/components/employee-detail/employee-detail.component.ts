@@ -1,16 +1,19 @@
+import { IMAGE_PATH_TOKEN } from '#/app/common/*';
 import type { Employee } from '#/app/types/graphql';
 import { DatePipe, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { RkSelect, RkSvg } from '@ngx-rask/components';
+import { RkFileUpload, RkSelect, RkSvg } from '@ngx-rask/components';
 import { signalInput, toSignalInput } from '@ngx-rask/core';
 import {
   DepartmentSelectOptionsDirective,
   LocationStateSelectOptionsDirective,
 } from 'apps/demo/src/app/components';
+
+const DEFAULT_PROFILE_IMAGE_PATH = 'avatar/avatar-outline.svg';
 
 @Component({
   selector: 'app-employee-detail',
@@ -27,6 +30,7 @@ import {
     NgIf,
     RkSelect,
     RkSvg,
+    RkFileUpload,
   ],
   styles: [
     `
@@ -166,16 +170,12 @@ import {
             </mat-radio-group>
           </div>
           <div class="input-container upload">
-            <button
-              mat-flat-button
-              color="primary">
-              Upload
-            </button>
+            <rk-file-upload fileType="image/svg" />
             <rk-svg
               width="32px"
               height="32px"
               class="avatar"
-              path="assets/images/avatar/avatar-outline.svg"></rk-svg>
+              [path]="profileImagePath()"></rk-svg>
           </div>
         </div>
 
@@ -242,5 +242,11 @@ import {
   `,
 })
 export class EmployeeDetailComponent {
+  readonly #imagePath = inject(IMAGE_PATH_TOKEN);
+
+  protected profileImagePath = computed(
+    () => this.employee().imagePath ?? `${this.#imagePath}/${DEFAULT_PROFILE_IMAGE_PATH}`
+  );
+
   @Input({ required: true, transform: toSignalInput }) employee = signalInput<Employee>();
 }

@@ -36,6 +36,7 @@ export const employees = Array.from({ length: 100 }, () => {
     zipCode: randZipCode(),
     jobTitle: randJobTitle(),
     departmentId: randDepartmentIdCustom(),
+    imagePath: null,
     dateStarted: randPastDate({ years: 10 }),
     dateUpdated: randChanceFn({ chanceTrue: 0.6 }, () => randPastDate({ years: 10 })),
   };
