@@ -1,8 +1,8 @@
 import { GraphQLError } from 'graphql';
 import jwt, { type Secret } from 'jsonwebtoken';
 import { Args, ArgsType, Ctx, Field, Mutation, Resolver } from 'type-graphql';
+import config from '../app.config.js';
 import { type Context } from '../client/context.js';
-import { JWT_SECRET } from '../constants.js';
 import { compareHash } from '../crypto/hash.js';
 
 @ArgsType()
@@ -49,7 +49,7 @@ export class LoginResolver {
 
     if (isValid) {
       // credentials are valid, so return a JWT
-      const token = jwt.sign({ userName }, JWT_SECRET as Secret, { expiresIn: '1h' });
+      const token = jwt.sign({ userName }, config.jwtSecret as Secret, { expiresIn: '1h' });
       return token;
     }
 

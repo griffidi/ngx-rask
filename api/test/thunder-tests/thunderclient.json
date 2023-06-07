@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "c6dbe2b0-4fd1-4cb7-8e25-9464c85f567f",
+    "colId": "eee3de94-cc45-42df-a539-64aad5080290",
+    "containerId": "",
+    "name": "http://localhost:8018/public",
+    "url": "http://localhost:8018/public",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-06-06T21:13:38.058Z",
+    "modified": "2023-06-06T21:13:38.058Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      }
+    ]
+  }
+]
