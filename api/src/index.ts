@@ -16,15 +16,14 @@ import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
 import koaStatic from 'koa-static';
-import { readFile } from 'node:fs/promises';
 import http from 'node:http';
-import { resolve } from 'node:path';
 import { buildSchema } from 'type-graphql';
 import config from './app.config.js';
 import type { Context } from './client/context.js';
 import { prisma } from './client/index.js';
 import { LoginResolver } from './resolvers/login.js';
 import { ProductTransactionResolver } from './resolvers/product-transaction.js';
+import { staticMiddlewares } from './static/index.js';
 
 await prisma.$connect();
 
@@ -56,7 +55,12 @@ await server.start();
 
 app.use(logger());
 
-app.use(koaStatic(resolve(`import.meta.url, '/public`)));
+app.use(
+  koaStatic(config.staticRelativePath, {
+    gzip: true,
+    maxAge: 1 * 60 * 1000, // 1s,
+  })
+);
 
 app.use(
   cors({
@@ -66,28 +70,13 @@ app.use(
 );
 app.use(bodyParser());
 
-app.use(async (ctx, next: () => Promise<void>) => {
-  if (ctx.url.startsWith('/public')) {
-    const filePath = resolve(import.meta.url, ctx.url);
-    const file = await readFile(ctx.url, { encoding: 'utf-8' });
-
-    ctx.body = file;
-
-    return;
-  }
-
-  await next();
-});
+app.use(staticMiddlewares);
 
 app.use(
   koaMiddleware<Context>(server, {
     // @ts-ignore
     context: async ({ ctx: { method, url }, next }) => {
       // const token = ctx.headers.authorization;
-
-      if (method === 'POST' && url.startsWith('/files')) {
-        console.log('Get Files');
-      }
 
       return { prisma };
     },

@@ -1,4 +1,6 @@
 import dotenv from 'dotenv';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 dotenv.config({ path: `.env.${process.env?.['NODE_ENV'] ?? 'development'}` });
 
@@ -8,6 +10,8 @@ interface AppConfig {
   jwtKey: string;
   jwtSecret: string;
   isDevMode: boolean;
+  staticPath: string;
+  staticRelativePath: string;
 }
 
 export default {
@@ -16,4 +20,6 @@ export default {
   jwtKey: process.env?.['JWT_KEY'],
   jwtSecret: process.env?.['JWT_SECRET'],
   isDevMode: process.env?.['NODE_ENV'] === 'development',
+  staticPath: resolve(fileURLToPath(import.meta.url), '../../public'),
+  staticRelativePath: '/public',
 } satisfies AppConfig;

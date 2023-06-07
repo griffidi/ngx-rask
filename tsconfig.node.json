@@ -4,7 +4,7 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "alwaysStrict": true,
-    "composite": true,
+    // "composite": true,
     "declaration": true,
     "declarationMap": true,
     "emitDecoratorMetadata": true,
