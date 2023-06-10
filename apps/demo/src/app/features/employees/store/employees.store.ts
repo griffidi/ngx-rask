@@ -43,6 +43,12 @@ export const EmployeesStore = signalStore(
       const employees = await service.getEmployees();
       update({ loading: false, employees });
     },
+    async updateEmployee(employee: Employee) {
+      const service = inject(EmployeesService);
+      update({ loading: true });
+      await service.updateEmployee(employee);
+      update({ loading: false });
+    },
   })),
   withHooks({
     onInit: ({ loadEmployees }) => loadEmployees(),
