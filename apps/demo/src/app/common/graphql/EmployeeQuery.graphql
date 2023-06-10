@@ -1,11 +1,29 @@
 query GetEmployees {
   employees {
     ...EmployeeParts
+    department {
+      name
+    }
   }
 }
 
-query GetEmployeeById($id: String) {
+# query GetEmployeesByDepartmentId($departmentIds: [String]) {
+#   employees(where: { departmentId: { contains: $departmentIds } }) {
+#     ...EmployeeParts
+#     department {
+#       name
+#     }
+#   }
+# }
+
+query GetEmployeeById($id: String!) {
   employee(where: { id: $id }) {
     ...EmployeeParts
+  }
+}
+
+mutation UpdateEmployee($id: String!, $employee: EmployeeUpdateInput!) {
+  updateOneEmployee(where: { id: $id }, data: $employee) {
+    id
   }
 }

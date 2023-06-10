@@ -1,0 +1,7 @@
+query GetLocationStates {
+  locationStates {
+    id
+    name
+    shortName
+  }
+}

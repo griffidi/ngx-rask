@@ -2,14 +2,21 @@
   "name": "components",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/cdk": "^16.0.0",
-    "@angular/common": "^16.0.0",
-    "@angular/core": "^16.0.0",
-    "@angular/material": "^16.0.0",
+    "@angular/cdk": "^16.1.0",
+    "@angular/common": "^16.1.0",
+    "@angular/core": "^16.1.0",
+    "@angular/material": "^16.1.0",
+    "@rx-angular/cdk": "^15.0.0",
+    "@rx-angular/template": "^15.0.0",
     "@ngx-rask/core": "*"
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "exports": {
+    "./command-palette.css": {
+      "style": "./src/lib/command-palette/command-palette.css"
+    }
   },
   "sideEffects": false
 }

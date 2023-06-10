@@ -4,6 +4,7 @@
 @import url(./styles/layout.css);
 @import url(./styles/material.css);
 @import url(./styles/scrollable.css);
+@import url(./styles/command-palette.css);
 
 body {
   font-family: "Inter var experimental", "Inter var", Inter;

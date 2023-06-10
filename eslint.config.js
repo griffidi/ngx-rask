@@ -1,6 +1,7 @@
 import ngplugin from '@angular-eslint/eslint-plugin';
 import ngtemplate from '@angular-eslint/eslint-plugin-template';
 import ngparser from '@angular-eslint/template-parser';
+import rxNg from '@rx-angular/eslint-plugin';
 import ts from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
 import eslint from 'eslint';
@@ -45,7 +46,7 @@ const sharedRules = {
 const sharedNgRules = {
   ...ngplugin.rules.recommended,
   ...ngtemplate.rules['process-inline-templates'],
-  'ngplugin/no-empty-lifecycle-method': 'error',
+  ...rxNg.rules['zoneless'],
 };
 
 const sharedAppRules = {

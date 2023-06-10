@@ -9,19 +9,26 @@ type selectedColorType = `selected-color-${Colors}`;
 @Component({
   selector: 'app-product-images',
   standalone: true,
-  templateUrl: './product-images.component.html',
+  template: `
+    <rk-color-options
+      vertical
+      (hoveredColorChange)="onHoverColorChange($event)"
+      (selectedColorChange)="onSelectColorChange($event)" />
+    <rk-svg
+      [path]="svgPath"
+      [ngClass]="[hoveredColor(), selectedColor()]" />
+  `,
   styles: [
     `
       :host {
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 20px;
       }
 
       :host ::ng-deep rk-svg {
         --_svg-color: var(--app-color-clothing-black);
-
-        inline-size: 100%;
 
         & svg {
           block-size: 250px;
@@ -90,7 +97,7 @@ export class ProductImagesComponent {
   readonly #imagePath = inject(IMAGE_PATH_TOKEN);
 
   protected readonly hoveredColor = signal<hoveredColorType | ''>('');
-  protected readonly selectedColor = signal<selectedColorType>(`selected-color-${Colors.black}`);
+  protected readonly selectedColor = signal<selectedColorType>(`selected-color-${Colors.pink}`);
   protected svgPath = '';
 
   @Input({ required: true })

@@ -1,2 +1,2 @@
-export * from './color-options.component';
+export * from './color-options';
 export * from './colors';

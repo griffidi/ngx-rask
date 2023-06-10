@@ -1,7 +1,7 @@
 {
   "name": "@ngx-rask/root",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "license": "MIT",
   "author": {
     "name": "Dustin Griffith",
@@ -16,13 +16,14 @@
     "angular 16",
     "signals"
   ],
-  "packageManager": "pnpm@8.4.0",
+  "packageManager": "pnpm@8.6.0",
   "engines": {
     "node": ">=18.11",
-    "pnpm": ">=8.4.0"
+    "pnpm": ">=8.6.0"
   },
   "type": "module",
   "scripts": {
+    "clean": "rimraf dist",
     "ng": "ng",
     "start": "ng serve @ngx-rask/demo --hmr",
     "start:esbuild": "ng serve @ngx-rask/demo --force-esbuild",
@@ -32,60 +33,77 @@
     "build:graphql": "ng build @ngx-rask/graphql",
     "build:components": "ng build @ngx-rask/components",
     "watch": "ng build @ngx-rask/demo --watch --configuration development",
+    "prebuild:libs": "pnpm clean",
     "build:libs": "pnpm build:core && pnpm build:signal-store && pnpm build:graphql && pnpm build:components",
     "build:all": "pnpm build:libs && pnpm build",
     "lint": "ng lint",
     "test": "pnpx jest",
+    "api:db:build": "cd api && pnpm db:generate && pnpm dev:tsnode",
     "codegen:demo": "graphql-codegen --config apps/demo/codegen.yml",
     "postinstall": "cd api && pnpm install && pnpm db:generate"
   },
   "dependencies": {
-    "@angular/animations": "^16.1.0-next.2",
-    "@angular/cdk": "~16.1.0-next.1",
-    "@angular/common": "^16.1.0-next.2",
-    "@angular/compiler": "^16.1.0-next.2",
-    "@angular/core": "^16.1.0-next.2",
-    "@angular/forms": "^16.1.0-next.2",
-    "@angular/material": "~16.1.0-next.1",
-    "@angular/platform-browser": "^16.1.0-next.2",
-    "@angular/platform-browser-dynamic": "^16.1.0-next.2",
-    "@angular/router": "^16.1.0-next.2",
-    "@apollo/client": "^3.7.14",
+    "@angular/animations": "^16.1.0-next.3",
+    "@angular/cdk": "~16.1.0-next.2",
+    "@angular/common": "^16.1.0-next.3",
+    "@angular/compiler": "^16.1.0-next.3",
+    "@angular/core": "^16.1.0-next.3",
+    "@angular/forms": "^16.1.0-next.3",
+    "@angular/material": "~16.1.0-next.2",
+    "@angular/platform-browser": "^16.1.0-next.3",
+    "@angular/platform-browser-dynamic": "^16.1.0-next.3",
+    "@angular/router": "^16.1.0-next.3",
+    "@apollo/client": "^3.7.15",
+    "@rx-angular/cdk": "^15.0.0",
+    "@rx-angular/template": "^15.2.0",
     "apollo-angular": "^5.0.0",
     "apollo3-cache-persist": "^0.14.1",
     "graphql": "^16.6.0",
+    "ngx-toastr": "^17.0.2",
     "recursive-diff": "^1.0.9",
     "rxjs": "~7.8.1",
     "tslib": "^2.5.2",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^16.1.0-next.1",
-    "@angular-eslint/builder": "^16.0.2",
-    "@angular-eslint/eslint-plugin": "^16.0.2",
-    "@angular-eslint/eslint-plugin-template": "^16.0.2",
-    "@angular-eslint/schematics": "^16.0.2",
-    "@angular-eslint/template-parser": "^16.0.2",
-    "@angular/cli": "~16.1.0-next.1",
-    "@angular/compiler-cli": "^16.1.0-next.2",
-    "@graphql-codegen/cli": "^4.0.0",
+    "@angular-devkit/build-angular": "^16.1.0-next.2",
+    "@angular-eslint/builder": "^16.1.0-alpha.0",
+    "@angular-eslint/eslint-plugin": "^16.1.0-alpha.0",
+    "@angular-eslint/eslint-plugin-template": "^16.1.0-alpha.0",
+    "@angular-eslint/schematics": "^16.1.0-alpha.0",
+    "@angular-eslint/template-parser": "^16.1.0-alpha.0",
+    "@angular/cli": "~16.1.0-next.2",
+    "@angular/compiler-cli": "^16.1.0-next.3",
+    "@graphql-codegen/cli": "^4.0.1",
     "@graphql-codegen/typed-document-node": "^5.0.0",
     "@graphql-codegen/typescript": "^4.0.0",
     "@graphql-codegen/typescript-operations": "^4.0.0",
     "@graphql-typed-document-node/core": "^3.2.0",
-    "@types/jest": "^29.5.1",
+    "@rx-angular/eslint-plugin": "^1.0.0",
+    "@types/jest": "^29.5.2",
     "@types/node": "^20.2.5",
-    "@typescript-eslint/eslint-plugin": "5.59.7",
-    "@typescript-eslint/parser": "5.59.7",
+    "@typescript-eslint/eslint-plugin": "5.59.8",
+    "@typescript-eslint/parser": "5.59.8",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-jsdoc": "^44.2.7",
+    "eslint-plugin-jsdoc": "^46.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "graphql-tag": "^2.12.6",
     "jest": "^29.5.0",
     "jest-preset-angular": "^13.1.1",
     "ng-packagr": "^16.0.1",
     "prettier": "^2.8.8",
-    "typescript": "5.1.1-rc"
+    "rimraf": "^5.0.1",
+    "typescript": "5.1.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "graphql-config": "^5.0.2"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "typescript": "^5.1.3"
+      }
+    }
   }
 }

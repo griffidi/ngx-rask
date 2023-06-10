@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "fb8d74dd-735a-4eaa-b71a-1f78c68fcb1f",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:8018/public",
+    "url": "http://localhost:8018/public/test.txt",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-06-06T21:13:05.743Z",
+    "modified": "2023-06-07T05:00:13.977Z",
+    "headers": [
+      {
+        "name": "Access-Control-Allow-Origin",
+        "value": "*"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/plain"
+      }
+    ],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      }
+    ]
+  }
+]

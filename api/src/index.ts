@@ -13,14 +13,17 @@ import { koaMiddleware } from '@as-integrations/koa';
 import cors from '@koa/cors';
 import { resolvers } from '@prisma/generated/type-graphql/index.js';
 import Koa from 'koa';
-import bodyParser from 'koa-bodyparser';
+import { koaBody } from 'koa-body';
+import logger from 'koa-logger';
+import koaStatic from 'koa-static';
 import http from 'node:http';
 import { buildSchema } from 'type-graphql';
+import config from './app.config.js';
 import type { Context } from './client/context.js';
 import { prisma } from './client/index.js';
-import { CORS_ORIGINS, GRAPHQL_PORT, IS_DEV_MODE } from './constants.js';
 import { LoginResolver } from './resolvers/login.js';
 import { ProductTransactionResolver } from './resolvers/product-transaction.js';
+import { staticMiddlewares } from './static/index.js';
 
 await prisma.$connect();
 
@@ -35,7 +38,7 @@ const httpServer = http.createServer(app.callback());
 const server = new ApolloServer<Context>({
   cache: new InMemoryLRUCache(),
   schema,
-  introspection: IS_DEV_MODE,
+  introspection: config.isDevMode,
   plugins: [
     ApolloServerPluginDrainHttpServer({ httpServer }),
     ApolloServerPluginUsageReportingDisabled(),
@@ -50,17 +53,33 @@ const server = new ApolloServer<Context>({
 
 await server.start();
 
+app.use(logger());
+
 app.use(
-  cors({
-    allowMethods: ['POST', 'OPTIONS'],
-    origin: CORS_ORIGINS,
+  koaStatic(config.staticRelativePath, {
+    gzip: true,
+    maxAge: 1 * 60 * 1000, // 1s,
   })
 );
-app.use(bodyParser());
+
+app.use(
+  cors({
+    allowMethods: ['GET', 'POST', 'OPTIONS'],
+    origin: config.corsOrigin,
+  })
+);
+app.use(
+  koaBody({
+    multipart: true,
+  })
+);
+
+app.use(staticMiddlewares);
+
 app.use(
   koaMiddleware<Context>(server, {
-    context: async ({ ctx }) => {
-      // @ts-ignore
+    // @ts-ignore
+    context: async ({ ctx: { method, url }, next }) => {
       // const token = ctx.headers.authorization;
 
       return { prisma };
@@ -68,4 +87,4 @@ app.use(
   })
 );
 
-await new Promise<void>(resolve => httpServer.listen({ port: GRAPHQL_PORT }, resolve));
+await new Promise<void>(resolve => httpServer.listen({ port: config.port }, resolve));

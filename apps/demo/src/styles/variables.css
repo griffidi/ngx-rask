@@ -2,13 +2,14 @@
   --app-color-primary: #7e57c2;
   --app-color-accent: #69f0ae;
   --app-color-secondary: #3e4140;
-  --app-color-background: #0b0c0e;
-  --app-color-background-hover: #303031;
-  --app-color-border-color: rgba(235, 235, 235, 0.12);
+  --app-color-background: hsl(229, 15%, 12%);
+  --app-color-background-hover: hsl(229, 15%, 18%);
+  --app-color-border: rgba(255, 255, 255, 0.12);
 }
 
 :root {
   --app-color-blue: #5a14ff;
+  --app-color-blue-light: #549ced;
   --app-color-green: rgb(66, 184, 131);
   --app-color-hot-pink: #ff007b;
   --app-color-magenta: #e666cc;
@@ -50,15 +51,17 @@
   --app-color-text-dark-2: rgba(235, 235, 235, 0.6);
   --app-color-text-dark-3: rgba(235, 235, 235, 0.38);
   --app-color-text-dark-4: rgba(235, 235, 235, 0.18);
+  --app-color-label-1: rgba(255, 255, 255, 0.6);
 }
 
 /* surface */
 :root {
-  --app-color-surface-1: #111113;
-  --app-color-surface-2: color-mix(in srgb, var(--app-color-surface-1) 94%, #ffffff);
-  --app-color-surface-3: color-mix(in srgb, var(--app-color-surface-1) 88%, #ffffff);
-  --app-color-surface-4: color-mix(in srgb, var(--app-color-surface-1) 82%, #ffffff);
-  --app-color-surface-5: color-mix(in srgb, var(--app-color-surface-1) 76%, #ffffff);
+  --app-color-surface-0: var(--app-color-background);
+  --app-color-surface-1: color-mix(in srgb, var(--app-color-background) 97%, #ffffff);
+  --app-color-surface-2: color-mix(in srgb, var(--app-color-background) 94%, #ffffff);
+  --app-color-surface-3: color-mix(in srgb, var(--app-color-background) 88%, #ffffff);
+  --app-color-surface-4: color-mix(in srgb, var(--app-color-background) 82%, #ffffff);
+  --app-color-surface-5: color-mix(in srgb, var(--app-color-background) 76%, #ffffff);
 }
 
 /* layout */
@@ -70,6 +73,7 @@
 
 /* shape */
 :root {
+  --app-shape-extra-small: 4px;
   --app-shape-small: 8px;
   --app-shape-medium: 16px;
   --app-shape-large: 24px;
@@ -78,4 +82,24 @@
 /* nav */
 :root {
   --app-nav-link-color: var(--app-color-text-dark-1);
+}
+
+/* material */
+:root {
+  --mdc-theme-surface: var(--app-color-surface-1);
+}
+
+.mat-mdc-list-item {
+  --mdc-list-list-item-hover-state-layer-color: transparent;
+  --mdc-list-list-item-selected-container-color: transparent;
+  --mdc-list-list-item-focus-container-color: transparent;
+
+  &.mdc-list-item--with-one-line,
+  .mat-mdc-focus-indicator {
+    border-radius: var(--app-shape-small);
+  }
+
+  &:hover {
+    background: var(--app-color-background-hover);
+  }
 }

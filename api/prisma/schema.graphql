@@ -666,6 +666,7 @@ type Employee {
   firstName: String!
   gender: String!
   id: String!
+  imagePath: String
   jobTitle: String!
   lastName: String!
   locationState: LocationState!
@@ -685,6 +686,7 @@ type EmployeeCountAggregate {
   firstName: Int!
   gender: Int!
   id: Int!
+  imagePath: Int!
   jobTitle: Int!
   lastName: Int!
   phone: Int!
@@ -702,6 +704,7 @@ input EmployeeCountOrderByAggregateInput {
   firstName: SortOrder
   gender: SortOrder
   id: SortOrder
+  imagePath: SortOrder
   jobTitle: SortOrder
   lastName: SortOrder
   phone: SortOrder
@@ -719,6 +722,7 @@ input EmployeeCreateInput {
   firstName: String!
   gender: String!
   id: String
+  imagePath: String
   jobTitle: String!
   lastName: String!
   locationState: LocationStateCreateNestedOneWithoutEmployeesInput!
@@ -757,6 +761,7 @@ input EmployeeCreateWithoutDepartmentInput {
   firstName: String!
   gender: String!
   id: String
+  imagePath: String
   jobTitle: String!
   lastName: String!
   locationState: LocationStateCreateNestedOneWithoutEmployeesInput!
@@ -774,6 +779,7 @@ input EmployeeCreateWithoutLocationStateInput {
   firstName: String!
   gender: String!
   id: String
+  imagePath: String
   jobTitle: String!
   lastName: String!
   phone: String!
@@ -793,6 +799,7 @@ type EmployeeGroupBy {
   firstName: String!
   gender: String!
   id: String!
+  imagePath: String
   jobTitle: String!
   lastName: String!
   phone: String!
@@ -816,6 +823,7 @@ type EmployeeMaxAggregate {
   firstName: String
   gender: String
   id: String
+  imagePath: String
   jobTitle: String
   lastName: String
   phone: String
@@ -833,6 +841,7 @@ input EmployeeMaxOrderByAggregateInput {
   firstName: SortOrder
   gender: SortOrder
   id: SortOrder
+  imagePath: SortOrder
   jobTitle: SortOrder
   lastName: SortOrder
   phone: SortOrder
@@ -850,6 +859,7 @@ type EmployeeMinAggregate {
   firstName: String
   gender: String
   id: String
+  imagePath: String
   jobTitle: String
   lastName: String
   phone: String
@@ -867,6 +877,7 @@ input EmployeeMinOrderByAggregateInput {
   firstName: SortOrder
   gender: SortOrder
   id: SortOrder
+  imagePath: SortOrder
   jobTitle: SortOrder
   lastName: SortOrder
   phone: SortOrder
@@ -891,6 +902,7 @@ input EmployeeOrderByWithAggregationInput {
   firstName: SortOrder
   gender: SortOrder
   id: SortOrder
+  imagePath: SortOrder
   jobTitle: SortOrder
   lastName: SortOrder
   phone: SortOrder
@@ -909,6 +921,7 @@ input EmployeeOrderByWithRelationInput {
   firstName: SortOrder
   gender: SortOrder
   id: SortOrder
+  imagePath: SortOrder
   jobTitle: SortOrder
   lastName: SortOrder
   locationState: LocationStateOrderByWithRelationInput
@@ -927,6 +940,7 @@ enum EmployeeScalarFieldEnum {
   firstName
   gender
   id
+  imagePath
   jobTitle
   lastName
   phone
@@ -947,6 +961,7 @@ input EmployeeScalarWhereInput {
   firstName: StringFilter
   gender: StringFilter
   id: StringFilter
+  imagePath: StringNullableFilter
   jobTitle: StringFilter
   lastName: StringFilter
   phone: StringFilter
@@ -967,6 +982,7 @@ input EmployeeScalarWhereWithAggregatesInput {
   firstName: StringWithAggregatesFilter
   gender: StringWithAggregatesFilter
   id: StringWithAggregatesFilter
+  imagePath: StringNullableWithAggregatesFilter
   jobTitle: StringWithAggregatesFilter
   lastName: StringWithAggregatesFilter
   phone: StringWithAggregatesFilter
@@ -984,6 +1000,7 @@ input EmployeeUpdateInput {
   firstName: String
   gender: String
   id: String
+  imagePath: String
   jobTitle: String
   lastName: String
   locationState: LocationStateUpdateOneRequiredWithoutEmployeesNestedInput
@@ -1000,6 +1017,7 @@ input EmployeeUpdateManyMutationInput {
   firstName: String
   gender: String
   id: String
+  imagePath: String
   jobTitle: String
   lastName: String
   phone: String
@@ -1061,6 +1079,7 @@ input EmployeeUpdateWithoutDepartmentInput {
   firstName: String
   gender: String
   id: String
+  imagePath: String
   jobTitle: String
   lastName: String
   locationState: LocationStateUpdateOneRequiredWithoutEmployeesNestedInput
@@ -1078,6 +1097,7 @@ input EmployeeUpdateWithoutLocationStateInput {
   firstName: String
   gender: String
   id: String
+  imagePath: String
   jobTitle: String
   lastName: String
   phone: String
@@ -1110,6 +1130,7 @@ input EmployeeWhereInput {
   firstName: StringFilter
   gender: StringFilter
   id: StringFilter
+  imagePath: StringNullableFilter
   jobTitle: StringFilter
   lastName: StringFilter
   locationState: LocationStateRelationFilter
@@ -1946,6 +1967,37 @@ input NestedStringFilter {
   lt: String
   lte: String
   not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedStringNullableFilter
+  _min: NestedStringNullableFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableWithAggregatesFilter
   notIn: [String!]
   startsWith: String
 }
@@ -3540,6 +3592,37 @@ input StringFilter {
   lt: String
   lte: String
   not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedStringNullableFilter
+  _min: NestedStringNullableFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableWithAggregatesFilter
   notIn: [String!]
   startsWith: String
 }

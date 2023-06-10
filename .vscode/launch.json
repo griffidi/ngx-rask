@@ -7,19 +7,25 @@
       "cwd": "${workspaceFolder}/api",
       "request": "launch",
       "type": "node-terminal",
-      "command": "pnpm run dev:tsnode",
+      "command": "pnpm run dev",
       "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/api/dist/**", "!**/node_modules/**"],
+      "resolveSourceMapLocations": ["${workspaceFolder}/api/dist/**", "!**/node_modules/**"],
       "presentation": {
         "hidden": false,
         "group": "api",
         "order": 1
-      }
+      },
+      "smartStep": true,
+      "enableTurboSourcemaps": true
     },
     {
       "name": "Debug ng serve",
       "type": "node-terminal",
       "request": "launch",
       "command": "pnpm start:esbuild",
+      // "resolveSourceMapLocations": ["${workspaceFolder}/api/dist/**/*.js", "!**/node_modules/**"],
       // "preLaunchTask": "build libs",
       "presentation": {
         "hidden": false,
@@ -37,6 +43,7 @@
       "userDataDir": "${workspaceFolder}/.out/edge",
       "skipFiles": ["<node_internals>/**"],
       "smartStep": true,
+      // "resolveSourceMapLocations": ["${workspaceFolder}/api/dist/**/*.js", "!**/node_modules/**"],
       // "preLaunchTask": "start",
       // "cleanUp": "wholeBrowser",
       // "cascadeTerminateToConfigurations": ["start"],

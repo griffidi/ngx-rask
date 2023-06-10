@@ -1,22 +1,22 @@
 import { AuthService } from '#/app/common/auth';
 import { slideInAnimation } from '#/app/common/router';
 import { LayoutHeader } from '#/app/ui/layout';
-import { DOCUMENT, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
-  ViewChild,
   computed,
+  effect,
   inject,
-  type AfterViewInit,
+  signal,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { fromEvent, tap } from 'rxjs';
+import { CommandPaletteService } from '@ngx-rask/components';
+import { RxFor } from '@rx-angular/template/for';
+import routes, { nonNavRoutePaths } from './routes';
 
 @Component({
   selector: 'app-layout',
@@ -56,11 +56,15 @@ import { fromEvent, tap } from 'rxjs';
 
       .mat-drawer-content {
         position: relative;
+        overflow: hidden;
 
-        & section {
+        section {
           block-size: 100%;
-          padding-inline: var(--_toggle-button-offset);
-          padding-block: var(--_toggle-button-offset);
+
+          & + router-outlet + * {
+            padding-inline: var(--_toggle-button-offset);
+            padding-block: var(--_toggle-button-offset);
+          }
         }
       }
 
@@ -86,7 +90,7 @@ import { fromEvent, tap } from 'rxjs';
           gap: 30px;
           color: var(--app-color-text-dark-1);
 
-          &:focus,
+          /* &:focus, */
           &:hover {
             outline: none;
             background: var(--app-color-background-hover);
@@ -110,13 +114,16 @@ import { fromEvent, tap } from 'rxjs';
     RouterLink,
     RouterLinkActive,
     RouterOutlet,
+    RxFor,
   ],
   animations: [slideInAnimation],
 })
-export default class Layout implements AfterViewInit {
-  readonly #destroyRef = inject(DestroyRef);
-  readonly #document = inject(DOCUMENT);
+export default class Layout {
+  readonly #commandPaletteService = inject(CommandPaletteService);
 
+  /**
+   * Authentication properties.
+   */
   protected readonly authService = inject(AuthService);
   protected readonly isAuthenticated = computed(() => this.authService.isAuthenticated());
   protected readonly userInitials = computed(() => {
@@ -124,27 +131,38 @@ export default class Layout implements AfterViewInit {
     return `${firstName[0]}${lastName[0]}`;
   });
 
-  @ViewChild(MatDrawer) private readonly _drawer: MatDrawer | undefined;
+  /**
+   * Drawer open properties.
+   */
+  protected readonly drawerOpen = signal(false);
+  protected isDrawerOpen = false;
 
-  ngAfterViewInit() {
-    if (this._drawer) {
-      this._drawer._content.nativeElement.focus();
-      // close drawer when nav-link is clicked
-      const links = this.#document.querySelectorAll('nav .nav-link');
-      fromEvent(links, 'click')
-        .pipe(
-          takeUntilDestroyed(this.#destroyRef),
-          tap(() => this._drawer?.close())
-        )
-        .subscribe();
-    }
+  /**
+   * Navigation routes to render in drawer.
+   */
+  protected readonly routes = signal(
+    routes
+      .filter(({ path }) => !nonNavRoutePaths.includes(path))
+      .map(({ data, path, title }) => ({ data, path, title }))
+  );
+
+  constructor() {
+    effect(() => {
+      this.isAuthenticated()
+        ? this.#commandPaletteService.subscribe()
+        : this.#commandPaletteService.unsubscribe();
+    });
+
+    effect(() => (this.isDrawerOpen = this.drawerOpen()));
   }
 
   protected logout() {
     this.authService.logout();
   }
 
-  protected toggleDrawer() {
-    this._drawer?.toggle();
+  protected onNavigate() {}
+
+  protected onSearchClicked() {
+    this.#commandPaletteService.show();
   }
 }

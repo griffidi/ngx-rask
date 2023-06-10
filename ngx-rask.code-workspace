@@ -1,15 +1,15 @@
 {
   "folders": [
     {
+      "path": ".",
+      "name": ".root"
+    },
+    {
       "path": "api"
     },
     {
       "name": "demo",
       "path": "apps/demo"
-    },
-    {
-      "name": "components",
-      "path": "libs/components"
     },
     {
       "name": "core",
@@ -24,8 +24,8 @@
       "path": "libs/signal-store"
     },
     {
-      "path": ".",
-      "name": ".root"
+      "name": "components",
+      "path": "libs/components"
     }
   ],
   "settings": {
@@ -112,6 +112,7 @@
       "source.fixAll.markdownlint": true
     },
 
+    "eslint.enable": true,
     "eslint.workingDirectories": [{ "mode": "auto" }],
     "eslint.codeActionsOnSave.mode": "problems",
     "eslint.experimental.useFlatConfig": true,
@@ -156,7 +157,21 @@
     "angular.forceStrictTemplates": true,
 
     "terminal.integrated.cwd": "${workspaceFolder}",
-    "cSpell.words": ["devkit", "ngeslint", "ngparser", "ngplugin", "ngtemplate", "tshirt"]
+    "cSpell.words": [
+      "devkit",
+      "falso",
+      "ngeslint",
+      "ngneat",
+      "ngparser",
+      "ngplugin",
+      "ngtemplate",
+      "nooped",
+      "pnpx",
+      "predev",
+      "preprisma",
+      "tshirt",
+      "wght"
+    ]
   },
   "extensions": {
     "recommendations": ["angular.ng-template", "esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]

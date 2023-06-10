@@ -26,6 +26,7 @@ yarn-error.log
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+!.vscode/*snippets
 .history/*
 
 # Miscellaneous
@@ -41,3 +42,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# generated files
+dev.db

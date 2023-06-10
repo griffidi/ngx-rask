@@ -1,5 +1,10 @@
+a.mdc-button,
 button.mdc-button {
   border-radius: var(--app-shape-medium);
+
+  &[color="accent"] {
+    color: var(--app-color-text-dark-1);
+  }
 }
 
 input:-webkit-autofill,
@@ -18,6 +23,18 @@ mat-table mat-row {
       background: var(--app-color-background-hover);
       /* background: color-mix(in srgb, var(--app-color-accent), transparent 50%); */
       /* background: var(--app-color-accent); */
+    }
+  }
+}
+
+/* mat-option background */
+.mdc-menu-surface {
+  .mat-mdc-option.mdc-list-item {
+    &:focus,
+    &:hover:not(.mdc-list-item--disabled),
+    &.mat-mdc-option-active,
+    &.mdc-list-item--selected:not(.mat-mdc-option-multiple):not(.mdc-list-item--disabled) {
+      background: var(--app-color-background-hover);
     }
   }
 }

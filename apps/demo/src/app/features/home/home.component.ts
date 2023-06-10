@@ -19,8 +19,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         line-height: 4;
         background-image: linear-gradient(
           to right,
-          var(--app-color-hot-pink),
-          var(--app-color-purple)
+          var(--app-color-purple),
+          var(--app-color-green)
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

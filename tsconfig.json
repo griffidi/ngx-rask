@@ -32,6 +32,7 @@
     "paths": {
       "#/app/common/*": ["apps/demo/src/app/common/index.ts"],
       "#/app/features/*": ["apps/demo/src/app/features/*"],
+      "#/app/styles/*": ["apps/demo/src/styles/*"],
       "#/app/types/graphql": ["apps/demo/src/types/graphql.ts"],
       "#/app/ui/*": ["apps/demo/src/app/ui/*/index.ts"],
       "@ngx-rask/components": ["libs/components/src/index.ts"],
