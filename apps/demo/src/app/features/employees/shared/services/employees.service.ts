@@ -1,4 +1,10 @@
-import { GetEmployeeByIdDocument, GetEmployeesDocument, type Employee } from '#/app/types/graphql';
+import {
+  GetEmployeeByIdDocument,
+  GetEmployeesDocument,
+  UpdateEmployeeDocument,
+  type Employee,
+  type EmployeeUpdateInput,
+} from '#/app/types/graphql';
 import { Injectable, inject } from '@angular/core';
 import { Client } from '@ngx-rask/graphql';
 import { catchError, map, tap } from 'rxjs';
@@ -40,6 +46,25 @@ export class EmployeesService {
         .pipe(
           map(({ employees }) => employees as Employees),
           tap(employees => resolve(employees)),
+          catchError(error => {
+            reject(error);
+            return [];
+          })
+        )
+        .subscribe();
+    });
+  }
+
+  updateEmployee(employee: Employee): Promise<Employee> {
+    return new Promise((resolve, reject) => {
+      this.#client
+        .mutate(UpdateEmployeeDocument, {
+          id: employee.id,
+          employee: employee as any as EmployeeUpdateInput,
+        })
+        .pipe(
+          map(({ employee }) => employee),
+          tap(employee => resolve(employee)),
           catchError(error => {
             reject(error);
             return [];

@@ -6,13 +6,14 @@ emitLegacyCommonJSImports: false
 schema: 'api/prisma/schema.graphql'
 documents: ['apps/demo/src/app/common/graphql/**/*.graphql']
 config:
-  avoidOptionals: false
+  avoidOptionals: true
   # allowEnumStringTypes: true
   numericEnums: true
   # dedupeOperationSuffix: true
   enumsAsConst: true
   overwrite: true
   # declarationKind: 'interface'
+  inputMaybeValue: 'T | undefined'
   immutableTypes: true
   maybeValue: 'T | undefined'
   # preResolveTypes: true

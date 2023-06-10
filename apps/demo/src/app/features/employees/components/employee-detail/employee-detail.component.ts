@@ -1,7 +1,15 @@
 import { IMAGE_PATH_TOKEN } from '#/app/common/*';
 import type { Employee } from '#/app/types/graphql';
 import { DatePipe, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, computed, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  computed,
+  inject,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -245,8 +253,16 @@ export class EmployeeDetailComponent {
   readonly #imagePath = inject(IMAGE_PATH_TOKEN);
 
   protected profileImagePath = computed(
-    () => this.employee().imagePath ?? `${this.#imagePath}/${DEFAULT_PROFILE_IMAGE_PATH}`
+    () => this.employee()?.imagePath ?? `${this.#imagePath}/${DEFAULT_PROFILE_IMAGE_PATH}`
   );
 
-  @Input({ required: true, transform: toSignalInput }) employee = signalInput<Employee>();
+  @Input({ required: true, transform: toSignalInput }) employee = signalInput<
+    Employee | undefined
+  >();
+
+  @Output() update = new EventEmitter<Employee>();
+
+  protected onSave() {
+    this.update.emit(this.employee());
+  }
 }

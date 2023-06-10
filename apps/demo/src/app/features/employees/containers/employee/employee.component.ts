@@ -23,9 +23,9 @@ import { EmployeesStore } from '../../store/employees.store';
     `,
   ],
   template: `
-    <ng-container *ngIf="employee() as employee">
-      <app-employee-detail [employee]="employee" />
-    </ng-container>
+    <!-- <ng-container *ngIf="employee() as employee"> -->
+    <app-employee-detail [employee]="employee" />
+    <!-- </ng-container> -->
   `,
 })
 export default class EmployeeComponent {

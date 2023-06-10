@@ -21,3 +21,9 @@ query GetEmployeeById($id: String!) {
     ...EmployeeParts
   }
 }
+
+mutation UpdateEmployee($id: String!, $employee: EmployeeUpdateInput!) {
+  updateOneEmployee(where: { id: $id }, data: $employee) {
+    id
+  }
+}
