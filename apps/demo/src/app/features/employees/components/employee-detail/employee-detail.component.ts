@@ -9,19 +9,26 @@ import {
   Output,
   computed,
   inject,
+  signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { RkFileUpload, RkSelect, RkSvg } from '@ngx-rask/components';
-import { signalInput, toSignalInput } from '@ngx-rask/core';
 import {
   DepartmentSelectOptionsDirective,
   LocationStateSelectOptionsDirective,
 } from 'apps/demo/src/app/components';
 
-const DEFAULT_PROFILE_IMAGE_PATH = 'avatar/avatar-outline.svg';
+/**
+ * Generate employee profile image path. If employee imagePath is undefined,
+ * use the default avatar image path.
+ */
+function generateImagePath({ imagePath }: Employee, assetsImagePath: string): string {
+  return imagePath ?? `${assetsImagePath}/avatar/avatar-outline.svg`;
+}
 
 @Component({
   selector: 'app-employee-detail',
@@ -33,6 +40,7 @@ const DEFAULT_PROFILE_IMAGE_PATH = 'avatar/avatar-outline.svg';
     DepartmentSelectOptionsDirective,
     LocationStateSelectOptionsDirective,
     MatButtonModule,
+    MatDatepickerModule,
     MatInputModule,
     MatRadioModule,
     NgIf,
@@ -95,10 +103,10 @@ const DEFAULT_PROFILE_IMAGE_PATH = 'avatar/avatar-outline.svg';
 
       .updated {
         justify-self: flex-end;
-        color: var(--app-color-text-dark-2);
+        color: var(--app-color-text-dark-3);
         font-size: 0.8rem;
         font-weight: 300;
-        /* font-style: italic; */
+        font-style: italic;
       }
 
       .avatar {
@@ -114,14 +122,13 @@ const DEFAULT_PROFILE_IMAGE_PATH = 'avatar/avatar-outline.svg';
     `,
   ],
   template: `
-    <ng-container *ngIf="employee() as model">
+    <ng-container *ngIf="_employee() as model">
       <form #form="ngForm">
         <div class="row flex-end">
-          <span class="updated">Started {{ model.dateStarted | date : 'yyyy-MM-dd' }}</span>
           <span
             *ngIf="model.dateUpdated"
             class="updated">
-            Updated {{ model.dateUpdated | date : 'shortTime' }}
+            Updated {{ model.dateUpdated | date : 'yyyy-MM-dd' }}
           </span>
         </div>
 
@@ -201,6 +208,23 @@ const DEFAULT_PROFILE_IMAGE_PATH = 'avatar/avatar-outline.svg';
           </mat-form-field>
         </div>
 
+        <div class="row row-50">
+          <mat-form-field>
+            <mat-label>Start date</mat-label>
+            <input
+              matInput
+              name="dateStarted"
+              [matDatepicker]="picker"
+              [ngModel]="model.dateStarted" />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker
+              #picker
+              color="primary"></mat-datepicker>
+          </mat-form-field>
+        </div>
+
         <div class="row group">
           <mat-form-field>
             <mat-label>Street address</mat-label>
@@ -252,17 +276,19 @@ const DEFAULT_PROFILE_IMAGE_PATH = 'avatar/avatar-outline.svg';
 export class EmployeeDetailComponent {
   readonly #imagePath = inject(IMAGE_PATH_TOKEN);
 
-  protected profileImagePath = computed(
-    () => this.employee()?.imagePath ?? `${this.#imagePath}/${DEFAULT_PROFILE_IMAGE_PATH}`
-  );
+  protected profileImagePath = computed(() => generateImagePath(this._employee(), this.#imagePath));
 
-  @Input({ required: true, transform: toSignalInput }) employee = signalInput<
-    Employee | undefined
-  >();
+  @Input({ required: true }) set employee(value: Employee) {
+    this._employee.set(value);
+  }
+  get employee(): Employee {
+    return this._employee();
+  }
+  protected readonly _employee = signal<Employee>({} as Employee);
 
   @Output() update = new EventEmitter<Employee>();
 
   protected onSave() {
-    this.update.emit(this.employee());
+    this.update.emit(this._employee() as Employee);
   }
 }

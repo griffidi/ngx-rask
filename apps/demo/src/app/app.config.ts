@@ -2,7 +2,12 @@ import { provideAssets } from '#/app/common/assets';
 import { authInterceptor } from '#/app/common/auth';
 import { searchOptions } from '#/app/common/command-palette';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { provideZoneChangeDetection, type ApplicationConfig } from '@angular/core';
+import {
+  importProvidersFrom,
+  provideZoneChangeDetection,
+  type ApplicationConfig,
+} from '@angular/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import {
   PreloadAllModules,
@@ -52,5 +57,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideFileUpload(`${environment.apiUrl}/public`),
     provideToastr(),
+    importProvidersFrom(MatNativeDateModule),
   ],
 };

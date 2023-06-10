@@ -55,7 +55,13 @@ export class EmployeesService {
     });
   }
 
-  updateEmployee(employee: Employee): Promise<Employee> {
+  /**
+   * Update employee.
+   *
+   * @param {Employee} employee Employee object to update.
+   * @returns {Promise<boolean>} True if the employee was updated successfully.
+   */
+  updateEmployee(employee: Employee): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.#client
         .mutate(UpdateEmployeeDocument, {
@@ -63,8 +69,7 @@ export class EmployeesService {
           employee: employee as any as EmployeeUpdateInput,
         })
         .pipe(
-          map(({ employee }) => employee),
-          tap(employee => resolve(employee)),
+          tap(() => resolve(true)),
           catchError(error => {
             reject(error);
             return [];
