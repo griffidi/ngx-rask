@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import type { ControlValueAccessor } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UnpatchDirective } from '@rx-angular/template/unpatch';
 import { filter, finalize, map, tap } from 'rxjs';
 import { FileUploadService } from './file-upload.service';
@@ -19,7 +19,7 @@ import { FileUploadService } from './file-upload.service';
   selector: 'rk-file-upload',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatProgressBarModule, UnpatchDirective],
+  imports: [MatButtonModule, MatProgressSpinnerModule, UnpatchDirective],
   providers: [FileUploadService],
   styles: [
     `
@@ -29,15 +29,14 @@ import { FileUploadService } from './file-upload.service';
     `,
   ],
   template: `
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="upload.click()">
-      Upload
-      <mat-progress-bar
-        mode="determinate"
-        [value]="progress()" />
+    <button (click)="upload.click()">
+      <!-- <mat-progress-bar
+      mode="determinate"
+      [value]="progress()" /> -->
     </button>
+    <!-- <mat-progress-spinner
+      color="accent"
+      value="90" /> -->
 
     <input
       #upload
@@ -56,7 +55,6 @@ export class RkFileUpload implements ControlValueAccessor {
 
   @Input()
   set value(value: File | null) {
-    // BUG: user selection triggers this setter twice.
     this._value.set(value);
     this.valueChange.emit(value);
     this.onChange(value);
