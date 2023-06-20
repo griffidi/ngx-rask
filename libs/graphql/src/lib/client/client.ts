@@ -12,6 +12,21 @@ export class Client {
   #apollo = inject(Apollo);
 
   /**
+   * Mutation GraphQL API.
+   *
+   * @param {DocumentNode | TypedDocumentNode<T, V>} mutation Mutation document.
+   * @param {V} variables Mutation variables.
+   *
+   * @returns {Observable<T>} The unwrapped mutation result.
+   */
+  mutate<T, V = OperationVariables>(
+    mutation: DocumentNode | TypedDocumentNode<T, V>,
+    variables?: V
+  ): Observable<T | null | undefined> {
+    return this.#apollo.mutate({ mutation, variables }).pipe(map(({ data }) => data));
+  }
+
+  /**
    * Mutate GraphQL API.
    *
    * @param {DocumentNode | TypedDocumentNode<T, V>} mutation Mutation document.
@@ -19,7 +34,7 @@ export class Client {
    *
    * @returns {Promise<T>} The unwrapped mutation result.
    */
-  async mutate<T, V = OperationVariables>(
+  async mutatePromise<T, V = OperationVariables>(
     mutation: DocumentNode | TypedDocumentNode<T, V>,
     variables?: V
   ): Promise<T> {
