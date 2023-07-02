@@ -87,7 +87,7 @@ import { EmployeesStore } from '../../store/employees.store';
 
         inline-size: 100%;
         min-inline-size: 200px;
-        max-inline-size: 600px;
+        max-inline-size: 800px;
         block-size: 63px;
         margin-inline: auto;
         margin-block-start: 1rem;

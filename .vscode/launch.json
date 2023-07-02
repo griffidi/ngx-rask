@@ -52,12 +52,38 @@
         "group": "demo",
         "order": 2
       }
+    },
+
+    {
+      "name": "Debug demo (chrome)",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "runtimeExecutable": "dev",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+      "userDataDir": "${workspaceFolder}/.out/edge",
+      "skipFiles": ["<node_internals>/**"],
+      "smartStep": true,
+      // "resolveSourceMapLocations": ["${workspaceFolder}/api/dist/**/*.js", "!**/node_modules/**"],
+      // "preLaunchTask": "start",
+      // "cleanUp": "wholeBrowser",
+      // "cascadeTerminateToConfigurations": ["start"],
+      "presentation": {
+        "hidden": false,
+        "group": "demo",
+        "order": 2
+      }
     }
   ],
   "compounds": [
     {
-      "name": "Launch demo",
+      "name": "Launch demo (edge)",
       "configurations": ["Debug api", "Debug ng serve", "Debug demo (edge)"],
+      "stopAll": true
+    },
+    {
+      "name": "Launch demo (chrome)",
+      "configurations": ["Debug api", "Debug ng serve", "Debug demo (chrome)"],
       "stopAll": true
     }
   ]
