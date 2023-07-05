@@ -252,7 +252,7 @@ input CustomerOrderByWithAggregationInput {
   _min: CustomerMinOrderByAggregateInput
   city: SortOrder
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -266,7 +266,7 @@ input CustomerOrderByWithAggregationInput {
 input CustomerOrderByWithRelationInput {
   city: SortOrder
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -483,7 +483,7 @@ type Department {
 }
 
 type DepartmentCount {
-  employees: Int!
+  employees(where: EmployeeWhereInput): Int!
 }
 
 type DepartmentCountAggregate {
@@ -570,14 +570,14 @@ input DepartmentOrderByWithAggregationInput {
   _max: DepartmentMaxOrderByAggregateInput
   _min: DepartmentMinOrderByAggregateInput
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   id: SortOrder
   name: SortOrder
 }
 
 input DepartmentOrderByWithRelationInput {
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   employees: EmployeeOrderByRelationAggregateInput
   id: SortOrder
   name: SortOrder
@@ -896,13 +896,13 @@ input EmployeeOrderByWithAggregationInput {
   _min: EmployeeMinOrderByAggregateInput
   city: SortOrder
   dateStarted: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   departmentId: SortOrder
   email: SortOrder
   firstName: SortOrder
   gender: SortOrder
   id: SortOrder
-  imagePath: SortOrder
+  imagePath: SortOrderInput
   jobTitle: SortOrder
   lastName: SortOrder
   phone: SortOrder
@@ -914,14 +914,14 @@ input EmployeeOrderByWithAggregationInput {
 input EmployeeOrderByWithRelationInput {
   city: SortOrder
   dateStarted: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   department: DepartmentOrderByWithRelationInput
   departmentId: SortOrder
   email: SortOrder
   firstName: SortOrder
   gender: SortOrder
   id: SortOrder
-  imagePath: SortOrder
+  imagePath: SortOrderInput
   jobTitle: SortOrder
   lastName: SortOrder
   locationState: LocationStateOrderByWithRelationInput
@@ -1351,7 +1351,7 @@ input InventoryOrderByWithAggregationInput {
   _min: InventoryMinOrderByAggregateInput
   _sum: InventorySumOrderByAggregateInput
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   id: SortOrder
   productId: SortOrder
   quantity: SortOrder
@@ -1360,7 +1360,7 @@ input InventoryOrderByWithAggregationInput {
 
 input InventoryOrderByWithRelationInput {
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   id: SortOrder
   product: ProductOrderByWithRelationInput
   productId: SortOrder
@@ -1530,8 +1530,8 @@ type LocationState {
 }
 
 type LocationStateCount {
-  customers: Int!
-  employees: Int!
+  customers(where: CustomerWhereInput): Int!
+  employees(where: EmployeeWhereInput): Int!
 }
 
 type LocationStateCountAggregate {
@@ -1649,7 +1649,7 @@ input LocationStateOrderByWithAggregationInput {
   _max: LocationStateMaxOrderByAggregateInput
   _min: LocationStateMinOrderByAggregateInput
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   id: SortOrder
   name: SortOrder
   shortName: SortOrder
@@ -1658,7 +1658,7 @@ input LocationStateOrderByWithAggregationInput {
 input LocationStateOrderByWithRelationInput {
   customers: CustomerOrderByRelationAggregateInput
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   employees: EmployeeOrderByRelationAggregateInput
   id: SortOrder
   name: SortOrder
@@ -2019,6 +2019,11 @@ input NestedStringWithAggregatesFilter {
   startsWith: String
 }
 
+enum NullsOrder {
+  first
+  last
+}
+
 type Product {
   _count: ProductCount
   cost: Float!
@@ -2043,9 +2048,9 @@ input ProductAvgOrderByAggregateInput {
 }
 
 type ProductCount {
-  inventory: Int!
-  productSales: Int!
-  productTransactions: Int!
+  inventory(where: InventoryWhereInput): Int!
+  productSales(where: ProductSaleWhereInput): Int!
+  productTransactions(where: ProductTransactionWhereInput): Int!
 }
 
 type ProductCountAggregate {
@@ -2203,7 +2208,7 @@ input ProductOrderByWithAggregationInput {
   _sum: ProductSumOrderByAggregateInput
   cost: SortOrder
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   id: SortOrder
   name: SortOrder
   rating: SortOrder
@@ -2212,7 +2217,7 @@ input ProductOrderByWithAggregationInput {
 input ProductOrderByWithRelationInput {
   cost: SortOrder
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   id: SortOrder
   inventory: InventoryOrderByRelationAggregateInput
   name: SortOrder
@@ -2378,7 +2383,7 @@ input ProductSaleOrderByWithAggregationInput {
   _min: ProductSaleMinOrderByAggregateInput
   _sum: ProductSaleSumOrderByAggregateInput
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   id: SortOrder
   productId: SortOrder
   quantity: SortOrder
@@ -2387,7 +2392,7 @@ input ProductSaleOrderByWithAggregationInput {
 
 input ProductSaleOrderByWithRelationInput {
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   id: SortOrder
   product: ProductOrderByWithRelationInput
   productId: SortOrder
@@ -3104,7 +3109,7 @@ type Role {
 }
 
 type RoleCount {
-  users: Int!
+  users(where: UserWhereInput): Int!
 }
 
 type RoleCountAggregate {
@@ -3200,7 +3205,7 @@ input RoleOrderByWithAggregationInput {
   _max: RoleMaxOrderByAggregateInput
   _min: RoleMinOrderByAggregateInput
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   description: SortOrder
   id: SortOrder
   name: SortOrder
@@ -3208,7 +3213,7 @@ input RoleOrderByWithAggregationInput {
 
 input RoleOrderByWithRelationInput {
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   description: SortOrder
   id: SortOrder
   name: SortOrder
@@ -3306,9 +3311,9 @@ type Size {
 }
 
 type SizeCount {
-  inventory: Int!
-  productSales: Int!
-  productTransactions: Int!
+  inventory(where: InventoryWhereInput): Int!
+  productSales(where: ProductSaleWhereInput): Int!
+  productTransactions(where: ProductTransactionWhereInput): Int!
 }
 
 type SizeCountAggregate {
@@ -3439,14 +3444,14 @@ input SizeOrderByWithAggregationInput {
   _max: SizeMaxOrderByAggregateInput
   _min: SizeMinOrderByAggregateInput
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   id: SortOrder
   name: SortOrder
 }
 
 input SizeOrderByWithRelationInput {
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   id: SortOrder
   inventory: InventoryOrderByRelationAggregateInput
   name: SortOrder
@@ -3580,6 +3585,11 @@ input SizeWhereUniqueInput {
 enum SortOrder {
   asc
   desc
+}
+
+input SortOrderInput {
+  nulls: NullsOrder
+  sort: SortOrder!
 }
 
 input StringFilter {
@@ -3794,7 +3804,7 @@ input UserOrderByWithAggregationInput {
   _max: UserMaxOrderByAggregateInput
   _min: UserMinOrderByAggregateInput
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -3806,7 +3816,7 @@ input UserOrderByWithAggregationInput {
 
 input UserOrderByWithRelationInput {
   dateCreated: SortOrder
-  dateUpdated: SortOrder
+  dateUpdated: SortOrderInput
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
