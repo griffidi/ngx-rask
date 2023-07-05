@@ -26,13 +26,25 @@ import { FileUploadService } from './file-upload.service';
       input {
         display: none;
       }
+
+      button {
+        --_border-size: 0.3rem;
+        --_border-color: var(--app-color-accent);
+
+        border: var(--_border-size) solid transparent;
+        border-image: conic-gradient(var(--_border-color) 0deg, transparent 90deg) 1;
+      }
     `,
   ],
   template: `
-    <button (click)="upload.click()">
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="upload.click()">
       <!-- <mat-progress-bar
       mode="determinate"
       [value]="progress()" /> -->
+      Upload
     </button>
     <!-- <mat-progress-spinner
       color="accent"

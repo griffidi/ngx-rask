@@ -10,6 +10,7 @@ import { FixedSizeVirtualScrollStrategy } from '@rx-angular/template/experimenta
 import { RxFor } from '@rx-angular/template/for';
 import { DepartmentListOptionsDirective } from 'apps/demo/src/app/components';
 import { EmployeesStore } from '../../store/employees.store';
+
 @Component({
   selector: 'app-employee-list',
   standalone: true,

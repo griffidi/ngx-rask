@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
       "name": "Debug api",
       "cwd": "${workspaceFolder}/api",
       "request": "launch",
@@ -24,7 +31,7 @@
       "name": "Debug ng serve",
       "type": "node-terminal",
       "request": "launch",
-      "command": "pnpm start:esbuild",
+      "command": "pnpm start",
       // "resolveSourceMapLocations": ["${workspaceFolder}/api/dist/**/*.js", "!**/node_modules/**"],
       // "preLaunchTask": "build libs",
       "presentation": {
@@ -56,12 +63,12 @@
 
     {
       "name": "Debug demo (chrome)",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
-      "runtimeExecutable": "dev",
+      // "runtimeExecutable": "dev",
       "url": "http://localhost:4200",
       "webRoot": "${workspaceFolder}",
-      "userDataDir": "${workspaceFolder}/.out/edge",
+      "userDataDir": "${workspaceFolder}/.out/chrome",
       "skipFiles": ["<node_internals>/**"],
       "smartStep": true,
       // "resolveSourceMapLocations": ["${workspaceFolder}/api/dist/**/*.js", "!**/node_modules/**"],
