@@ -98,8 +98,8 @@ devDependencies:
     specifier: ^4.0.0
     version: 4.0.0
   '@types/node':
-    specifier: ^20.4.0
-    version: 20.4.0
+    specifier: ^20.4.1
+    version: 20.4.1
   class-validator:
     specifier: ^0.14.0
     version: 0.14.0
@@ -120,7 +120,7 @@ devDependencies:
     version: 5.0.1
   typegraphql-prisma:
     specifier: 0.26.0
-    version: 0.26.0(@prisma/client@4.16.2)(@types/graphql-fields@1.3.5)(@types/node@20.4.0)(graphql-fields@2.0.3)(graphql-scalars@1.22.2)(prisma@4.16.2)(tslib@2.6.0)(type-graphql@2.0.0-beta.2)
+    version: 0.26.0(@prisma/client@4.16.2)(@types/graphql-fields@1.3.5)(@types/node@20.4.1)(graphql-fields@2.0.3)(graphql-scalars@1.22.2)(prisma@4.16.2)(tslib@2.6.0)(type-graphql@2.0.0-beta.2)
   typescript:
     specifier: 5.1.6
     version: 5.1.6
@@ -851,25 +851,25 @@ packages:
   /@types/accepts@1.3.5:
     resolution: {integrity: sha512-jOdnI/3qTpHABjM5cx1Hc0sKsPoYCp+DP/GJRGtDlPd7fiV9oXGGIcjW/ZOxLIvjGz8MA+uMZI9metHlgqbgwQ==}
     dependencies:
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
 
   /@types/body-parser@1.19.2:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
       '@types/connect': 3.4.35
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
 
   /@types/co-body@6.1.0:
     resolution: {integrity: sha512-3e0q2jyDAnx/DSZi0z2H0yoZ2wt5yRDZ+P7ymcMObvq0ufWRT4tsajyO+Q1VwVWiv9PRR4W3YEjEzBjeZlhF+w==}
     dependencies:
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
       '@types/qs': 6.9.7
     dev: false
 
   /@types/connect@3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
 
   /@types/content-disposition@0.5.5:
     resolution: {integrity: sha512-v6LCdKfK6BwcqMo+wYW05rLS12S0ZO0Fl4w1h4aaZMD7bqT3gVUns6FvLJKGZHQmYn3SX55JWGpziwJRwVgutA==}
@@ -880,12 +880,12 @@ packages:
       '@types/connect': 3.4.35
       '@types/express': 4.17.17
       '@types/keygrip': 1.0.2
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
 
   /@types/cross-spawn@6.0.2:
     resolution: {integrity: sha512-KuwNhp3eza+Rhu8IFI5HUXRP0LIhqH5cAjubUvGXXthh4YYBuP2ntwEX+Cz8GJoZUHlKo247wPWOfA9LYEq4cw==}
     dependencies:
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
     dev: true
 
   /@types/debug@4.1.8:
@@ -897,7 +897,7 @@ packages:
   /@types/express-serve-static-core@4.17.35:
     resolution: {integrity: sha512-wALWQwrgiB2AWTT91CB62b6Yt0sNHpznUXeZEcnPU3DRdlDIz74x8Qg1UUYKSVFi+va5vKOLYRBI1bRKiLLKIg==}
     dependencies:
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
       '@types/send': 0.17.1
@@ -913,13 +913,13 @@ packages:
   /@types/formidable@2.0.6:
     resolution: {integrity: sha512-L4HcrA05IgQyNYJj6kItuIkXrInJvsXTPC5B1i64FggWKKqSL+4hgt7asiSNva75AoLQjq29oPxFfU4GAQ6Z2w==}
     dependencies:
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
     dev: false
 
   /@types/formidable@3.4.0:
     resolution: {integrity: sha512-JXP+LsspYYBIJJxZ9VJsswb5U1hkUUhLmtAb6EB1SWcDDbJQlWRhGoZYasMSnk2NsqtUEHd3uuaiImmSys+8AQ==}
     dependencies:
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
     dev: true
 
   /@types/graphql-fields@1.3.5:
@@ -937,7 +937,7 @@ packages:
   /@types/jsonwebtoken@9.0.2:
     resolution: {integrity: sha512-drE6uz7QBKq1fYqqoFKTDRdFCPHd5TCub75BM+D+cMx7NU9hUz7SESLfC2fSCXVFMO5Yj8sOWHuGqPgjc+fz0Q==}
     dependencies:
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
     dev: true
 
   /@types/keygrip@1.0.2:
@@ -983,7 +983,7 @@ packages:
       '@types/http-errors': 2.0.1
       '@types/keygrip': 1.0.2
       '@types/koa-compose': 3.2.5
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
 
   /@types/koa__cors@4.0.0:
     resolution: {integrity: sha512-qpwswNgQ2GxiDGNnKbDSBY5XmQTVJ6fspNvInLsAJ+jSwINxihvVzblj5anujNBg2BtL0xpUrcIt3UYwGzu05A==}
@@ -1008,12 +1008,12 @@ packages:
   /@types/node-fetch@2.6.4:
     resolution: {integrity: sha512-1ZX9fcN4Rvkvgv4E6PAY5WXUFWFcRWxZa3EW83UjycOB9ljJCedb2CupIP4RZMEwF/M3eTcCihbBRgwtGbg5Rg==}
     dependencies:
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
       form-data: 3.0.1
     dev: false
 
-  /@types/node@20.4.0:
-    resolution: {integrity: sha512-jfT7iTf/4kOQ9S7CHV9BIyRaQqHu67mOjsIQBC3BKZvzvUB6zLxEwJ6sBE3ozcvP8kF6Uk5PXN0Q+c0dfhGX0g==}
+  /@types/node@20.4.1:
+    resolution: {integrity: sha512-JIzsAvJeA/5iY6Y/OxZbv1lUcc8dNSE77lb2gnBH+/PJ3lFR1Ccvgwl5JWnHAkNHcRsT0TbpVOsiMKZ1F/yyJg==}
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -1036,14 +1036,14 @@ packages:
     resolution: {integrity: sha512-Cwo8LE/0rnvX7kIIa3QHCkcuF21c05Ayb0ZfxPiv0W8VRiZiNW/WuRupHKpqqGVGf7SUA44QSOUKaEd9lIrd/Q==}
     dependencies:
       '@types/mime': 1.3.2
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
 
   /@types/serve-static@1.15.2:
     resolution: {integrity: sha512-J2LqtvFYCzaj8pVYKw8klQXrLLk7TBZmQ4ShlcdkELFKGwGMfevMLneMMRkMgZxotOD9wg497LpC7O8PcvAmfw==}
     dependencies:
       '@types/http-errors': 2.0.1
       '@types/mime': 3.0.1
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
 
   /@types/validator@13.7.17:
     resolution: {integrity: sha512-aqayTNmeWrZcvnG2MG9eGYI6b7S5fl+yKgPs6bAjOTwPS316R5SxBGKvtSExfyoJU7pIeHJfsHI0Ji41RVMkvQ==}
@@ -3458,7 +3458,7 @@ packages:
       class-validator:
         optional: true
     dependencies:
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
       '@types/semver': 7.5.0
       class-validator: 0.14.0
       graphql: 16.7.1
@@ -3475,7 +3475,7 @@ packages:
       mime-types: 2.1.35
     dev: false
 
-  /typegraphql-prisma@0.26.0(@prisma/client@4.16.2)(@types/graphql-fields@1.3.5)(@types/node@20.4.0)(graphql-fields@2.0.3)(graphql-scalars@1.22.2)(prisma@4.16.2)(tslib@2.6.0)(type-graphql@2.0.0-beta.2):
+  /typegraphql-prisma@0.26.0(@prisma/client@4.16.2)(@types/graphql-fields@1.3.5)(@types/node@20.4.1)(graphql-fields@2.0.3)(graphql-scalars@1.22.2)(prisma@4.16.2)(tslib@2.6.0)(type-graphql@2.0.0-beta.2):
     resolution: {integrity: sha512-ofKn4zJstsKfvROOHNEI657od5Xv2oU81YA2pIzmWu9WdtclO1F8WgiZhdV1k8T7zVDe//vM7KowJ50GSzmHTQ==}
     engines: {node: '>=12.4'}
     hasBin: true
@@ -3493,7 +3493,7 @@ packages:
       '@prisma/generator-helper': 4.16.2
       '@prisma/internals': 4.16.2
       '@types/graphql-fields': 1.3.5
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
       graphql-fields: 2.0.3
       graphql-scalars: 1.22.2(graphql@16.7.1)
       pluralize: 8.0.0
