@@ -1,4 +1,3 @@
-import routes from '#/app/features/layout/routes';
 import { NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
