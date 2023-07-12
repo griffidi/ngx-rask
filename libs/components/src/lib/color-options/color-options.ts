@@ -1,6 +1,6 @@
 import { LowerCasePipe, NgClass, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output, signal } from '@angular/core';
-import { UnpatchDirective } from '@rx-angular/template/unpatch';
+import { RxUnpatch } from '@rx-angular/template/unpatch';
 import { Colors } from './colors';
 
 @Component({
@@ -99,7 +99,7 @@ import { Colors } from './colors';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LowerCasePipe, NgClass, NgFor, UnpatchDirective],
+  imports: [LowerCasePipe, NgClass, NgFor, RxUnpatch],
 })
 export class RkColorOptions {
   protected readonly colors = signal(Object.values(Colors));

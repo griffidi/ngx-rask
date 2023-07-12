@@ -3,13 +3,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Chrome",
-      "request": "launch",
-      "type": "chrome",
-      "url": "http://localhost:8080",
-      "webRoot": "${workspaceFolder}"
-    },
-    {
       "name": "Debug api",
       "cwd": "${workspaceFolder}/api",
       "request": "launch",
@@ -68,7 +61,7 @@
       // "runtimeExecutable": "dev",
       "url": "http://localhost:4200",
       "webRoot": "${workspaceFolder}",
-      "userDataDir": "${workspaceFolder}/.out/chrome",
+      // "userDataDir": "${workspaceFolder}/.out/chrome",
       "skipFiles": ["<node_internals>/**"],
       "smartStep": true,
       // "resolveSourceMapLocations": ["${workspaceFolder}/api/dist/**/*.js", "!**/node_modules/**"],

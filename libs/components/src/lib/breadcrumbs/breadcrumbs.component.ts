@@ -4,11 +4,13 @@ import {
   Component,
   DestroyRef,
   Injector,
+  Input,
   inject,
   runInInjectionContext,
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import type { Routes } from '@angular/router';
 import {
   ActivatedRoute,
   NavigationEnd,
@@ -32,9 +34,9 @@ interface BreadcrumbPath {
   selector: 'rk-breadcrumbs',
   standalone: true,
   template: `
-    <nav *ngIf="routes().length">
+    <nav *ngIf="paths().length">
       <ul>
-        <li *ngFor="let route of routes(); let first = first">
+        <li *ngFor="let route of paths(); let first = first">
           <rk-svg-divider
             *ngIf="!first"
             [dividerType]="'right-arrow'"></rk-svg-divider>
@@ -74,7 +76,9 @@ interface BreadcrumbPath {
         border: 1px solid var(--_link-border-color);
         border-radius: var(--app-shape-small);
         color: var(--_link-color);
-        transition: color 200ms ease-in-out, border-color 200ms ease-in-out;
+        transition:
+          color 200ms ease-in-out,
+          border-color 200ms ease-in-out;
 
         &:hover {
           --_link-color: var(--app-color-accent);
@@ -94,7 +98,9 @@ interface BreadcrumbPath {
 export class RkBreadcrumbs {
   #injector = inject(Injector);
 
-  protected routes = signal<BreadcrumbPath[]>([]);
+  protected paths = signal<BreadcrumbPath[]>([]);
+
+  @Input({ required: true }) routes!: Routes;
 
   constructor() {
     const destroyRef = inject(DestroyRef);
@@ -103,9 +109,9 @@ export class RkBreadcrumbs {
 
     events
       .pipe(
-        takeUntilDestroyed(destroyRef),
         filter(event => event instanceof NavigationEnd),
-        tap(async () => this.routes.set(await this.#createBreadcrumbs(route.root)))
+        tap(async () => this.paths.set(await this.#createBreadcrumbs(route.root))),
+        takeUntilDestroyed(destroyRef)
       )
       .subscribe();
   }
@@ -115,7 +121,7 @@ export class RkBreadcrumbs {
    */
   async #createBreadcrumbs(route: ActivatedRoute): Promise<BreadcrumbPath[]> {
     // default path and title.
-    const { path: defaultpath, title: defaultTitle } = routes.find(({ path }) => path === '')!;
+    const { path: defaultpath, title: defaultTitle } = this.routes.find(({ path }) => path === '')!;
 
     const tree = await this.#buildRouteTree(route);
 
@@ -134,7 +140,8 @@ export class RkBreadcrumbs {
     }
 
     // add default path and title to the tree.
-    return [{ title: defaultTitle, paths: [defaultpath] }, ...tree];
+    // NOTE: pass variables in template strings to force as string
+    return [{ title: `${defaultTitle}`, paths: [`${defaultpath}`] }, ...tree];
   }
 
   /**

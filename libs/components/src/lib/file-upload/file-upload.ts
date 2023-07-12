@@ -11,7 +11,7 @@ import {
 import type { ControlValueAccessor } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { UnpatchDirective } from '@rx-angular/template/unpatch';
+import { RxUnpatch } from '@rx-angular/template/unpatch';
 import { filter, finalize, map, tap } from 'rxjs';
 import { FileUploadService } from './file-upload.service';
 
@@ -19,7 +19,7 @@ import { FileUploadService } from './file-upload.service';
   selector: 'rk-file-upload',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatProgressSpinnerModule, UnpatchDirective],
+  imports: [MatButtonModule, MatProgressSpinnerModule, RxUnpatch],
   providers: [FileUploadService],
   styles: [
     `

@@ -116,7 +116,6 @@
     "eslint.workingDirectories": [{ "mode": "auto" }],
     "eslint.codeActionsOnSave.mode": "problems",
     "eslint.experimental.useFlatConfig": true,
-    "eslint.packageManager": "pnpm",
     "eslint.validate": ["json", "javascript", "typescript", "html", "css"],
     "eslint.debug": true,
 
@@ -158,6 +157,7 @@
 
     "terminal.integrated.cwd": "${workspaceFolder}",
     "cSpell.words": [
+      "dbaeumer",
       "devkit",
       "falso",
       "ngeslint",
@@ -170,6 +170,7 @@
       "predev",
       "preprisma",
       "tshirt",
+      "unmap",
       "wght"
     ]
   },

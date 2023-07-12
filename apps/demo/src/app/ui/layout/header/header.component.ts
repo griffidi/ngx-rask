@@ -1,3 +1,4 @@
+import routes from '#/app/features/layout/routes';
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -107,7 +108,7 @@ import { RkBreadcrumbs } from '@ngx-rask/components';
         </a>
       </nav>
 
-      <rk-breadcrumbs></rk-breadcrumbs>
+      <rk-breadcrumbs [routes]="routes"></rk-breadcrumbs>
 
       <div
         class="command-palette-hint"
@@ -135,8 +136,11 @@ import { RkBreadcrumbs } from '@ngx-rask/components';
   `,
 })
 export default class LayoutHeader {
+  protected routes = routes;
+
   @Input({ required: true }) isAuthenticated = false;
   @Input({ required: true }) userInitials = '';
+
   @Output() logout = new EventEmitter();
   @Output() searchClicked = new EventEmitter<void>();
 

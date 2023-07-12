@@ -19,7 +19,7 @@ import { MatListModule } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
 import { CssVariablePipe, runOutsideAngular } from '@ngx-rask/core';
 import { RxFor } from '@rx-angular/template/for';
-import { UnpatchDirective } from '@rx-angular/template/unpatch';
+import { RxUnpatch } from '@rx-angular/template/unpatch';
 import { filter, fromEvent } from 'rxjs';
 import {
   COMMAND_PALETTE_OPTIONS,
@@ -45,7 +45,7 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
     OverlayModule,
     RouterLink,
     RxFor,
-    UnpatchDirective,
+    RxUnpatch,
   ],
   styles: [
     `
