@@ -39,8 +39,8 @@ dependencies:
     specifier: ^16.2.0-next.1
     version: 16.2.0-next.1(@angular/common@16.2.0-next.1)(@angular/core@16.2.0-next.1)(@angular/platform-browser@16.2.0-next.1)(rxjs@7.8.1)
   '@apollo/client':
-    specifier: ^3.7.16
-    version: 3.7.16(graphql@16.7.1)
+    specifier: ^3.7.17
+    version: 3.7.17(graphql@16.7.1)
   '@rx-angular/cdk':
     specifier: ^16.0.0
     version: 16.0.0(@angular-devkit/core@16.1.4)(@angular-devkit/schematics@16.1.4)(@angular/core@16.2.0-next.1)(rxjs@7.8.1)
@@ -49,10 +49,10 @@ dependencies:
     version: 16.0.1(@angular-devkit/core@16.1.4)(@angular-devkit/schematics@16.1.4)(@angular/core@16.2.0-next.1)(@rx-angular/cdk@16.0.0)(rxjs@7.8.1)
   apollo-angular:
     specifier: ^5.0.0
-    version: 5.0.0(@angular/core@16.2.0-next.1)(@apollo/client@3.7.16)(graphql@16.7.1)(rxjs@7.8.1)
+    version: 5.0.0(@angular/core@16.2.0-next.1)(@apollo/client@3.7.17)(graphql@16.7.1)(rxjs@7.8.1)
   apollo3-cache-persist:
     specifier: ^0.14.1
-    version: 0.14.1(@apollo/client@3.7.16)
+    version: 0.14.1(@apollo/client@3.7.17)
   graphql:
     specifier: ^16.7.1
     version: 16.7.1
@@ -116,8 +116,8 @@ devDependencies:
     specifier: ^1.0.0
     version: 1.0.0(eslint@8.44.0)(typescript@5.1.6)
   '@types/jest':
-    specifier: ^29.5.2
-    version: 29.5.2
+    specifier: ^29.5.3
+    version: 29.5.3
   '@types/node':
     specifier: ^20.4.1
     version: 20.4.1
@@ -721,8 +721,8 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@apollo/client@3.7.16(graphql@16.7.1):
-    resolution: {integrity: sha512-rdhoc7baSD7ZzcjavEpYN8gZJle1KhjEKj4SJeMgBpcnO4as7oXUVU4LtFpotzZdFlo57qaLrNzfvppSTsKvZQ==}
+  /@apollo/client@3.7.17(graphql@16.7.1):
+    resolution: {integrity: sha512-0EErSHEtKPNl5wgWikHJbKFAzJ/k11O0WO2QyqZSHpdxdAnw7UWHY4YiLbHCFG7lhrD+NTQ3Z/H9Jn4rcikoJA==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
       graphql-ws: ^5.5.5
@@ -5258,8 +5258,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest@29.5.2:
-    resolution: {integrity: sha512-mSoZVJF5YzGVCk+FsDxzDuH7s+SCkzrgKZzf0Z0T2WudhBUPoF6ktoTPC4R0ZoCPCV5xUvuU6ias5NvxcBcMMg==}
+  /@types/jest@29.5.3:
+    resolution: {integrity: sha512-1Nq7YrO/vJE/FYnqYyw0FS8LdrjExSgIiHyKg7xPpn+yi8Q4huZryKnkJatN1ZRH89Kw2v33/8ZMB7DuZeSLlA==}
     dependencies:
       expect: 29.5.0
       pretty-format: 29.5.0
@@ -6077,7 +6077,7 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /apollo-angular@5.0.0(@angular/core@16.2.0-next.1)(@apollo/client@3.7.16)(graphql@16.7.1)(rxjs@7.8.1):
+  /apollo-angular@5.0.0(@angular/core@16.2.0-next.1)(@apollo/client@3.7.17)(graphql@16.7.1)(rxjs@7.8.1):
     resolution: {integrity: sha512-g98CvEGmRkrfBcXQS+HwIDuSsDnxqg/7RB+N/ICXbXfnnbBNIVzQ+xSaawz6kOo04Rx7jtLQAjda6/69fhHMDQ==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -6087,18 +6087,18 @@ packages:
       rxjs: ^6.0.0 || ^7.0.0
     dependencies:
       '@angular/core': 16.2.0-next.1(rxjs@7.8.1)(zone.js@0.13.1)
-      '@apollo/client': 3.7.16(graphql@16.7.1)
+      '@apollo/client': 3.7.17(graphql@16.7.1)
       graphql: 16.7.1
       rxjs: 7.8.1
       tslib: 2.6.0
     dev: false
 
-  /apollo3-cache-persist@0.14.1(@apollo/client@3.7.16):
+  /apollo3-cache-persist@0.14.1(@apollo/client@3.7.17):
     resolution: {integrity: sha512-p/jNzN/MmSd0TmY7/ts0B3qi0SdQ3w9yNLQdKqB3GGb9xATUlAum2v4hSrTeWd/DZKK2Z7Xg5kFXTH6nNVnKSQ==}
     peerDependencies:
       '@apollo/client': ^3.2.5
     dependencies:
-      '@apollo/client': 3.7.16(graphql@16.7.1)
+      '@apollo/client': 3.7.17(graphql@16.7.1)
     dev: false
 
   /aproba@2.0.0:
