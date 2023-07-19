@@ -23,8 +23,8 @@ const sharedBrowserGlobals = {
 
 const sharedRules = {
   ...eslint['recommended'],
-  ...ts.rules['recommended'],
-  ...ts.rules['recommended-requiring-type-checking'],
+  ...ts.rules['stylistic-type-checked'],
+  ...ts.rules['strict-type-checked'],
   ...jsdoc['recommended'],
   ...prettier.rules,
   'ts/ban-types': 'warn',
@@ -149,7 +149,7 @@ export default [
       parser,
       parserOptions: {
         project: true,
-        tsconfigRootDir: import.meta.url,
+        // tsconfigRootDir: import.meta.url,
       },
       globals: {
         ...sharedBrowserGlobals,
@@ -181,7 +181,7 @@ export default [
       sourceType: 'module',
       parserOptions: {
         project: true,
-        tsconfigRootDir: import.meta.url,
+        // tsconfigRootDir: import.meta.url,
       },
       globals: {
         ...sharedBrowserGlobals,
