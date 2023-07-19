@@ -12,8 +12,8 @@ dependencies:
     specifier: ^16.2.0-next.2
     version: 16.2.0-next.2(@angular/core@16.2.0-next.2)
   '@angular/cdk':
-    specifier: ~16.2.0-next.3
-    version: 16.2.0-next.3(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(rxjs@7.8.1)
+    specifier: ~16.2.0-next.4
+    version: 16.2.0-next.4(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(rxjs@7.8.1)
   '@angular/common':
     specifier: ^16.2.0-next.2
     version: 16.2.0-next.2(@angular/core@16.2.0-next.2)(rxjs@7.8.1)
@@ -27,8 +27,8 @@ dependencies:
     specifier: ^16.2.0-next.2
     version: 16.2.0-next.2(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(@angular/platform-browser@16.2.0-next.2)(rxjs@7.8.1)
   '@angular/material':
-    specifier: ~16.2.0-next.3
-    version: 16.2.0-next.3(@angular/animations@16.2.0-next.2)(@angular/cdk@16.2.0-next.3)(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(@angular/forms@16.2.0-next.2)(@angular/platform-browser@16.2.0-next.2)(rxjs@7.8.1)
+    specifier: ~16.2.0-next.4
+    version: 16.2.0-next.4(@angular/animations@16.2.0-next.2)(@angular/cdk@16.2.0-next.4)(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(@angular/forms@16.2.0-next.2)(@angular/platform-browser@16.2.0-next.2)(rxjs@7.8.1)
   '@angular/platform-browser':
     specifier: ^16.2.0-next.2
     version: 16.2.0-next.2(@angular/animations@16.2.0-next.2)(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)
@@ -493,8 +493,8 @@ packages:
       '@angular/core': 16.2.0-next.2(rxjs@7.8.1)(zone.js@0.13.1)
       tslib: 2.6.0
 
-  /@angular/cdk@16.2.0-next.3(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(rxjs@7.8.1):
-    resolution: {integrity: sha512-LBuh2iaQYF7Hz8592+l3yRQjF2rUiflNdFh3RV8b6sTj430JrukWcAFi7LjBchWGkcLkrOaDHihEVsgAUTTxtQ==}
+  /@angular/cdk@16.2.0-next.4(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(rxjs@7.8.1):
+    resolution: {integrity: sha512-b4/d+IWfM92JpO0jFOE8PpwFcEwOxSn9wFhLoDRcoRzyOj3DbRywDVIZCKNoi7V/u9zbqJ5aW9OJ4ca55q/47Q==}
     peerDependencies:
       '@angular/common': ^16.0.0-0 || ^16.1.0-0 || ^16.2.0-0 || ^16.3.0-0 || ^17.0.0-0
       '@angular/core': ^16.0.0-0 || ^16.1.0-0 || ^16.2.0-0 || ^16.3.0-0 || ^17.0.0-0
@@ -609,11 +609,11 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@angular/material@16.2.0-next.3(@angular/animations@16.2.0-next.2)(@angular/cdk@16.2.0-next.3)(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(@angular/forms@16.2.0-next.2)(@angular/platform-browser@16.2.0-next.2)(rxjs@7.8.1):
-    resolution: {integrity: sha512-RhUL9yEN81rQJx3me73OMRMYoWsyEUqkk01Z+6wZYIAP2j25E/UeRgU6wA67FH22wp85QD586KJEOJIUajFe9w==}
+  /@angular/material@16.2.0-next.4(@angular/animations@16.2.0-next.2)(@angular/cdk@16.2.0-next.4)(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(@angular/forms@16.2.0-next.2)(@angular/platform-browser@16.2.0-next.2)(rxjs@7.8.1):
+    resolution: {integrity: sha512-Fy4qNAznaJCcnmkH8podywqnk0bXlxrorYdfUsoVEPRPoctRSzxlnyfXz8eR1J06+K/IMZhuY/niepXAuzMbMA==}
     peerDependencies:
       '@angular/animations': ^16.0.0-0 || ^16.1.0-0 || ^16.2.0-0 || ^16.3.0-0 || ^17.0.0-0
-      '@angular/cdk': 16.2.0-next.3
+      '@angular/cdk': 16.2.0-next.4
       '@angular/common': ^16.0.0-0 || ^16.1.0-0 || ^16.2.0-0 || ^16.3.0-0 || ^17.0.0-0
       '@angular/core': ^16.0.0-0 || ^16.1.0-0 || ^16.2.0-0 || ^16.3.0-0 || ^17.0.0-0
       '@angular/forms': ^16.0.0-0 || ^16.1.0-0 || ^16.2.0-0 || ^16.3.0-0 || ^17.0.0-0
@@ -621,7 +621,7 @@ packages:
       rxjs: ^6.5.3 || ^7.4.0
     dependencies:
       '@angular/animations': 16.2.0-next.2(@angular/core@16.2.0-next.2)
-      '@angular/cdk': 16.2.0-next.3(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(rxjs@7.8.1)
+      '@angular/cdk': 16.2.0-next.4(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(rxjs@7.8.1)
       '@angular/common': 16.2.0-next.2(@angular/core@16.2.0-next.2)(rxjs@7.8.1)
       '@angular/core': 16.2.0-next.2(rxjs@7.8.1)(zone.js@0.13.1)
       '@angular/forms': 16.2.0-next.2(@angular/common@16.2.0-next.2)(@angular/core@16.2.0-next.2)(@angular/platform-browser@16.2.0-next.2)(rxjs@7.8.1)
