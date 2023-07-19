@@ -45,8 +45,8 @@ dependencies:
     specifier: ^16.0.0
     version: 16.0.0(@angular-devkit/core@16.1.4)(@angular-devkit/schematics@16.1.4)(@angular/core@16.2.0-next.2)(rxjs@7.8.1)
   '@rx-angular/template':
-    specifier: ^16.0.1
-    version: 16.0.1(@angular-devkit/core@16.1.4)(@angular-devkit/schematics@16.1.4)(@angular/core@16.2.0-next.2)(@rx-angular/cdk@16.0.0)(rxjs@7.8.1)
+    specifier: ^16.0.2
+    version: 16.0.2(@angular-devkit/core@16.1.4)(@angular-devkit/schematics@16.1.4)(@angular/core@16.2.0-next.2)(@rx-angular/cdk@16.0.0)(rxjs@7.8.1)
   apollo-angular:
     specifier: ^5.0.0
     version: 5.0.0(@angular/core@16.2.0-next.2)(@apollo/client@3.7.17)(graphql@16.7.1)(rxjs@7.8.1)
@@ -4948,8 +4948,8 @@ packages:
       - supports-color
     dev: true
 
-  /@rx-angular/template@16.0.1(@angular-devkit/core@16.1.4)(@angular-devkit/schematics@16.1.4)(@angular/core@16.2.0-next.2)(@rx-angular/cdk@16.0.0)(rxjs@7.8.1):
-    resolution: {integrity: sha512-8qnGk8vQHA1BXc4E6Xnm5a0do5HQCvcA8YK5Y7U6iI7cAe6kKC5Y/czePywuxXTqDFGbdBnyXjO2vEk9KJEj3g==}
+  /@rx-angular/template@16.0.2(@angular-devkit/core@16.1.4)(@angular-devkit/schematics@16.1.4)(@angular/core@16.2.0-next.2)(@rx-angular/cdk@16.0.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-W+vh/nCviT7WtAA7lZnBZzshiRbmfxTjeHCJTabq0w5vQVvlnGL+sgasjBLMPhp8KPM3UZ7cgQncxwMPsoVjYw==}
     peerDependencies:
       '@angular/core': ^16.0.0
       '@rx-angular/cdk': ^16.0.0
