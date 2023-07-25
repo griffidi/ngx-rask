@@ -121,7 +121,9 @@ export class RkBreadcrumbs {
    */
   async #createBreadcrumbs(route: ActivatedRoute): Promise<BreadcrumbPath[]> {
     // default path and title.
-    const { path: defaultpath, title: defaultTitle } = this.routes.find(({ path }) => path === '')!;
+    const { path: defaultpath, title: defaultTitle } = this.routes?.find(
+      ({ path }) => path === ''
+    ) ?? { path: '', title: 'Home' };
 
     const tree = await this.#buildRouteTree(route);
 
