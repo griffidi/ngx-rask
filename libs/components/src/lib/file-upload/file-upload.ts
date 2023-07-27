@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { HttpEventType, type HttpProgressEvent } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
@@ -28,7 +29,7 @@ import { FileUploadService } from './file-upload.service';
       }
 
       button {
-        --_border-size: 0.3rem;
+        --_border-size: 4px;
         --_border-color: var(--app-color-accent);
 
         border: var(--_border-size) solid transparent;
@@ -39,14 +40,15 @@ import { FileUploadService } from './file-upload.service';
         &::before {
           position: absolute;
           content: '';
-          inset: 0;
+          inset: calc(var(--_border-size) * -1);
           /* border: var(--_border-size) solid; */
           padding: var(--_border-size);
           /* border-image: conic-gradient(var(--_border-color) 0deg, transparent 90deg) 1; */
           /* border-image-width: var(--_border-size);
           border-image-slice: 1; */
           border-radius: var(--app-shape-medium);
-          background: conic-gradient(red 0deg, blue 90deg) border-box;
+          background-clip: border-box;
+          /* background: conic-gradient(red 120deg, transparent 0deg) border-box; */
           -webkit-mask:
             linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);
@@ -124,9 +126,19 @@ import { FileUploadService } from './file-upload.service';
   `,
 })
 export class RkFileUpload implements ControlValueAccessor {
+  readonly #document = inject(DOCUMENT);
   readonly #fileUploadService = inject(FileUploadService);
 
   protected readonly progress = signal<number>(0);
+
+  get #buttonBefore(): HTMLElement {
+    if (!this.#_buttonBefore) {
+      this.#_buttonBefore = this.#document.querySelector<HTMLElement>('button::before')!;
+    }
+
+    return this.#_buttonBefore;
+  }
+  #_buttonBefore: HTMLElement | undefined;
 
   @Input() fileType: string | undefined;
 
@@ -181,9 +193,13 @@ export class RkFileUpload implements ControlValueAccessor {
         .pipe(
           filter(({ type }) => type === HttpEventType.UploadProgress),
           map(event => event as HttpProgressEvent), // this is only here b/c TypeScript doesn't allow converting the type
-          tap(({ loaded, total }: HttpProgressEvent) =>
-            this.progress.set(this.#calcProgress(loaded, total))
-          ),
+          tap(({ loaded, total }: HttpProgressEvent) => {
+            console.log('progress');
+            // this.progress.set(this.#calcProgress(loaded, total))
+            const progress = this.#calcProgress(loaded, total);
+            const degrees = 360 / progress;
+            this.#buttonBefore.style.backgroundImage = `conic-gradient(red ${degrees}deg, transparent 0deg)`;
+          }),
           finalize(() => this.#reset())
         )
         .subscribe();
