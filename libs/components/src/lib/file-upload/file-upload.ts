@@ -32,7 +32,72 @@ import { FileUploadService } from './file-upload.service';
         --_border-color: var(--app-color-accent);
 
         border: var(--_border-size) solid transparent;
-        border-image: conic-gradient(var(--_border-color) 0deg, transparent 90deg) 1;
+        /* border: 0; */
+        position: relative;
+        /* box-sizing: content-box; */
+
+        &::before {
+          position: absolute;
+          content: '';
+          inset: 0;
+          /* border: var(--_border-size) solid; */
+          padding: var(--_border-size);
+          /* border-image: conic-gradient(var(--_border-color) 0deg, transparent 90deg) 1; */
+          /* border-image-width: var(--_border-size);
+          border-image-slice: 1; */
+          border-radius: var(--app-shape-medium);
+          background: conic-gradient(red 0deg, blue 90deg) border-box;
+          -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+        }
+
+        /* &::before,
+        &::after {
+          position: absolute;
+          content: '';
+          inline-size: 0;
+          block-size: 0;
+          border-radius: var(--app-shape-medium);
+          overflow: hidden;
+        }
+
+        &::before {
+          inset-inline-start: 0;
+          inset-block-start: 0;
+        }
+
+        &::after {
+          inset-inline-end: 0;
+          inset-block-end: 0;
+        }
+
+        &:hover {
+          &::before,
+          &::after {
+            inline-size: 100%;
+            block-size: 100%;
+          }
+
+          &::before {
+            border-inline-end-color: red;
+            border-block-start-color: red;
+            transition:
+              inline-size 0.25s ease-out,
+              block-size 0.25s ease-out 0.25s;
+          }
+
+          &::after {
+            border-inline-start-color: red;
+            border-block-end-color: red;
+            transition:
+              border-color 0s ease-out 0.5s,
+              inline-size 0.25s ease-out 0.5s,
+              block-size 0.25s ease-out 0.75s;
+          }
+        } */
       }
     `,
   ],
