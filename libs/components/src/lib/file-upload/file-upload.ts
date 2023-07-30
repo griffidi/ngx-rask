@@ -1,4 +1,3 @@
-import { DOCUMENT } from '@angular/common';
 import { HttpEventType, type HttpProgressEvent } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
@@ -6,21 +5,24 @@ import {
   EventEmitter,
   Input,
   Output,
+  ViewChild,
   inject,
   signal,
 } from '@angular/core';
 import type { ControlValueAccessor } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButton, MatButtonModule } from '@angular/material/button';
+import { requestAnimationFrame, setTimeout } from '@rx-angular/cdk/zone-less/browser';
 import { RxUnpatch } from '@rx-angular/template/unpatch';
 import { filter, finalize, map, tap } from 'rxjs';
 import { FileUploadService } from './file-upload.service';
+
+const UPLOAD_RESET_TIMEOUT = 2_000;
 
 @Component({
   selector: 'rk-file-upload',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatProgressSpinnerModule, RxUnpatch],
+  imports: [MatButtonModule, RxUnpatch],
   providers: [FileUploadService],
   styles: [
     `
@@ -29,26 +31,24 @@ import { FileUploadService } from './file-upload.service';
       }
 
       button {
-        --_border-size: 4px;
-        --_border-color: var(--app-color-accent);
+        --_button-border-size: 4px;
+        --_button-border-color: var(--app-color-accent);
+        --_button-background-gradient-degree: 0deg;
 
         border: var(--_border-size) solid transparent;
-        /* border: 0; */
         position: relative;
-        /* box-sizing: content-box; */
 
         &::before {
           position: absolute;
           content: '';
-          inset: calc(var(--_border-size) * -1);
-          /* border: var(--_border-size) solid; */
-          padding: var(--_border-size);
-          /* border-image: conic-gradient(var(--_border-color) 0deg, transparent 90deg) 1; */
-          /* border-image-width: var(--_border-size);
-          border-image-slice: 1; */
+          inset: 0;
+          padding: var(--_button-border-size);
           border-radius: var(--app-shape-medium);
           background-clip: border-box;
-          /* background: conic-gradient(red 120deg, transparent 0deg) border-box; */
+          background-image: conic-gradient(
+            #69f0ae var(--_button-background-gradient-degree),
+            transparent 0deg
+          );
           -webkit-mask:
             linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);
@@ -56,69 +56,23 @@ import { FileUploadService } from './file-upload.service';
           mask-composite: exclude;
         }
 
-        /* &::before,
-        &::after {
-          position: absolute;
-          content: '';
-          inline-size: 0;
-          block-size: 0;
-          border-radius: var(--app-shape-medium);
-          overflow: hidden;
+        &.upload-complete-success {
+          color: var(--app-color-accent);
         }
-
-        &::before {
-          inset-inline-start: 0;
-          inset-block-start: 0;
-        }
-
-        &::after {
-          inset-inline-end: 0;
-          inset-block-end: 0;
-        }
-
-        &:hover {
-          &::before,
-          &::after {
-            inline-size: 100%;
-            block-size: 100%;
-          }
-
-          &::before {
-            border-inline-end-color: red;
-            border-block-start-color: red;
-            transition:
-              inline-size 0.25s ease-out,
-              block-size 0.25s ease-out 0.25s;
-          }
-
-          &::after {
-            border-inline-start-color: red;
-            border-block-end-color: red;
-            transition:
-              border-color 0s ease-out 0.5s,
-              inline-size 0.25s ease-out 0.5s,
-              block-size 0.25s ease-out 0.75s;
-          }
-        } */
       }
     `,
   ],
   template: `
     <button
+      #button
       mat-flat-button
       color="primary"
-      (click)="upload.click()">
-      <!-- <mat-progress-bar
-      mode="determinate"
-      [value]="progress()" /> -->
+      (click)="input.click()">
       Upload
     </button>
-    <!-- <mat-progress-spinner
-      color="accent"
-      value="90" /> -->
 
     <input
-      #upload
+      #input
       type="file"
       [unpatch]="['change']"
       [accept]="fileType"
@@ -126,19 +80,7 @@ import { FileUploadService } from './file-upload.service';
   `,
 })
 export class RkFileUpload implements ControlValueAccessor {
-  readonly #document = inject(DOCUMENT);
   readonly #fileUploadService = inject(FileUploadService);
-
-  protected readonly progress = signal<number>(0);
-
-  get #buttonBefore(): HTMLElement {
-    if (!this.#_buttonBefore) {
-      this.#_buttonBefore = this.#document.querySelector<HTMLElement>('button::before')!;
-    }
-
-    return this.#_buttonBefore;
-  }
-  #_buttonBefore: HTMLElement | undefined;
 
   @Input() fileType: string | undefined;
 
@@ -159,6 +101,8 @@ export class RkFileUpload implements ControlValueAccessor {
   disabled = false;
 
   @Output() readonly valueChange = new EventEmitter<File | null>();
+
+  @ViewChild('button') protected button!: MatButton;
 
   writeValue(value: File | null) {
     this._value.set(value);
@@ -193,24 +137,67 @@ export class RkFileUpload implements ControlValueAccessor {
         .pipe(
           filter(({ type }) => type === HttpEventType.UploadProgress),
           map(event => event as HttpProgressEvent), // this is only here b/c TypeScript doesn't allow converting the type
-          tap(({ loaded, total }: HttpProgressEvent) => {
-            console.log('progress');
-            // this.progress.set(this.#calcProgress(loaded, total))
-            const progress = this.#calcProgress(loaded, total);
-            const degrees = 360 / progress;
-            this.#buttonBefore.style.backgroundImage = `conic-gradient(red ${degrees}deg, transparent 0deg)`;
-          }),
-          finalize(() => this.#reset())
+          tap(({ loaded, total }: HttpProgressEvent) => this.#setProgress(loaded, total)),
+          finalize(() => this.#reset(true))
         )
         .subscribe();
     }
   }
 
-  #calcProgress(loaded: number, total: number = 1) {
-    return Math.round((loaded / total) * 100);
+  /**
+   * Set the upload progress by calculating the current upload values.
+   *
+   * @param {number} loaded The number of bytes uploaded for the file.
+   * @param {number} total  The total number of bytes to upload for the file.
+   */
+  #setProgress(loaded: number, total: number = 1) {
+    const { progress, degree } = this.#calculateProgress(loaded, total);
+
+    this.#setState(progress, degree);
   }
 
-  #reset() {
-    this.progress.set(0);
+  /**
+   * Calculate the file upload progress.
+   *
+   * @param {number} loaded The number of bytes uploaded for the file.
+   * @param {number} total  The total number of bytes to upload for the file.
+   * @returns The progress and degree values.
+   */
+  #calculateProgress(loaded: number, total: number = 1) {
+    const progress = loaded / total;
+    const degree = Math.round(360 * progress);
+
+    return { progress, degree };
+  }
+
+  /**
+   * Reset upload UI to original state.
+   */
+  #reset(isComplete: boolean) {
+    this.#setState(0, 0, isComplete);
+  }
+
+  #setState(progress: number, degree: number, isComplete = false) {
+    const setState = () => {
+      const buttonElement = this.button._elementRef.nativeElement as HTMLElement;
+
+      buttonElement.style.setProperty('--_button-background-gradient-degree', `${degree}deg`);
+
+      if (progress === 1) {
+        buttonElement.classList.add('upload-complete-success');
+        return;
+      }
+
+      buttonElement.classList.remove('upload-complete-success');
+    };
+
+    if (isComplete) {
+      this.#setState(1, 360, false);
+      setTimeout(() => requestAnimationFrame(setState), UPLOAD_RESET_TIMEOUT);
+
+      return;
+    }
+
+    requestAnimationFrame(setState);
   }
 }

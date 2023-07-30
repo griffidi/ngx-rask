@@ -6,6 +6,7 @@
     "@angular/core": "^16.1.0",
     "@apollo/client": "^3.7.14",
     "apollo-angular": "*",
+    "apollo-upload-client": "^17.0.0",
     "apollo3-cache-persist": "*",
     "graphql": "*",
     "rxjs": "*"

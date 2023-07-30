@@ -29,14 +29,18 @@ export const staticMiddlewares = async (
       const file: File = ctx.request.files?.['file'] as any;
 
       if (file) {
-        const reader = createReadStream(file.filepath);
-        const stream = createWriteStream(`${config.staticPath}/${file.originalFilename}`);
-        reader.pipe(stream);
-        console.log(`Uploading ${file.filepath} to ${stream.path}`);
-        ctx.status = 201;
-        ctx.body = null;
-        ctx.redirect('/');
-        return;
+        try {
+          const reader = createReadStream(file.filepath);
+          const stream = createWriteStream(`${config.staticPath}/${file.originalFilename}`);
+          reader.pipe(stream);
+          console.log(`Uploading ${file.filepath} to ${stream.path}`);
+          ctx.status = 201;
+          ctx.body = null;
+          ctx.redirect('/');
+          return;
+        } catch (ex) {
+          console.error(ex);
+        }
       }
     }
   }
