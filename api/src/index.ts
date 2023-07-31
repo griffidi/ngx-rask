@@ -77,7 +77,7 @@ app.use(
 app.use(staticMiddlewares);
 
 app.use(
-  koaMiddleware<Context>(server, {
+  koaMiddleware<Context>(server as any, {
     // @ts-ignore
     context: async ({ ctx: { method, url }, next }) => {
       // const token = ctx.headers.authorization;

@@ -26,7 +26,7 @@ export const staticMiddlewares = async (
     }
 
     if (ctx.method === 'POST') {
-      const file: File = ctx.request.files?.['file'] as any;
+      const file: File = ctx.request?.files?.['file'] as any;
 
       if (file) {
         try {
