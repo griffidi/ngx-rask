@@ -16,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { RkFileUpload, RkSelect, RkSvg } from '@ngx-rask/components';
+import { RkFileUpload, RkSelect, RkSvg, type FileUploadCompleteEvent } from '@ngx-rask/components';
 import {
   DepartmentSelectOptionsDirective,
   LocationStateSelectOptionsDirective,
@@ -187,7 +187,7 @@ function generateImagePath({ imagePath }: Employee, assetsImagePath: string): st
           <div class="input-container upload">
             <rk-file-upload
               fileType="image/svg"
-              [uploadComplete]="fileUploadComplete" />
+              (uploadComplete)="onFileUploadComplete($event)" />
             <rk-svg
               width="32px"
               height="32px"
@@ -292,5 +292,9 @@ export class EmployeeDetailComponent {
 
   protected onSave() {
     this.update.emit(this._employee() as Employee);
+  }
+
+  protected onFileUploadComplete(e: FileUploadCompleteEvent) {
+    console.log(e);
   }
 }

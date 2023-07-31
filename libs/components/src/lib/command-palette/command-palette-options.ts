@@ -19,6 +19,7 @@ export interface CommandPaletteSearchOption {
 export interface CommandPaletteOptions {
   routes: Route[];
   searchOptions?: CommandPaletteSearchOption[];
+  offsetY: number;
 }
 
 /**

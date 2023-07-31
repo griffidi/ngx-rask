@@ -1,4 +1,3 @@
-import cssVariables from '#/app/styles/variables';
 import {
   BlockScrollStrategy,
   GlobalPositionStrategy,
@@ -14,6 +13,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { setTimeout } from '@rx-angular/cdk/zone-less/browser';
 import { Subscription, filter, fromEvent, map, merge, take, tap } from 'rxjs';
 import { RkCommandPalette } from './command-palette';
+import { COMMAND_PALETTE_OPTIONS } from './command-palette-options';
 
 const COMMAND_PALETTE_OVERLAY_CONFIG: OverlayConfig = {
   hasBackdrop: true,
@@ -23,9 +23,6 @@ const COMMAND_PALETTE_OVERLAY_CONFIG: OverlayConfig = {
   minHeight: '100px',
   maxHeight: '450px',
   width: '600px',
-  positionStrategy: new GlobalPositionStrategy()
-    .centerHorizontally()
-    .top(`${cssVariables.layout.header.blockSizeNumber + 50}px`),
 };
 
 @Injectable()
@@ -36,6 +33,7 @@ export class CommandPaletteService {
   readonly #destroyRef = inject(DestroyRef);
   readonly #document = inject(DOCUMENT);
   readonly #ngZone = inject(NgZone);
+  readonly #options = inject(COMMAND_PALETTE_OPTIONS);
   readonly #overlay = inject(Overlay);
   readonly #viewportRuler = inject(ViewportRuler);
 
@@ -89,6 +87,9 @@ export class CommandPaletteService {
     const overlayRef = this.#overlay.create({
       ...COMMAND_PALETTE_OVERLAY_CONFIG,
       scrollStrategy: new BlockScrollStrategy(this.#viewportRuler, this.#document),
+      positionStrategy: new GlobalPositionStrategy()
+        .centerHorizontally()
+        .top(`${this.#options.offsetY + 50}px`),
     });
     const portal = new ComponentPortal(RkCommandPalette);
     const componentRef = overlayRef.attach(portal);

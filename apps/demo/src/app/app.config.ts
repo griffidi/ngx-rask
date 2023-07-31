@@ -1,6 +1,7 @@
 import { provideAssets } from '#/app/common/assets';
 import { authInterceptor } from '#/app/common/auth';
 import { searchOptions } from '#/app/common/command-palette';
+import cssVariables from '#/app/styles/variables';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import {
   importProvidersFrom,
@@ -54,6 +55,7 @@ export const appConfig: ApplicationConfig = {
     provideCommandPalette({
       routes: routes.filter(({ path }) => path !== 'login'),
       searchOptions,
+      offsetY: cssVariables.layout.header.blockSizeNumber,
     }),
     provideFileUpload(`${environment.apiUrl}/public`),
     provideToastr(),
