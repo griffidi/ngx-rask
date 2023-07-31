@@ -128,7 +128,7 @@ function generateImagePath({ imagePath }: Employee, assetsImagePath: string): st
           <span
             *ngIf="model.dateUpdated"
             class="updated">
-            Updated {{ model.dateUpdated | date : 'yyyy-MM-dd' }}
+            Updated {{ model.dateUpdated | date: 'yyyy-MM-dd' }}
           </span>
         </div>
 
@@ -185,7 +185,9 @@ function generateImagePath({ imagePath }: Employee, assetsImagePath: string): st
             </mat-radio-group>
           </div>
           <div class="input-container upload">
-            <rk-file-upload fileType="image/svg" />
+            <rk-file-upload
+              fileType="image/svg"
+              [uploadComplete]="fileUploadComplete" />
             <rk-svg
               width="32px"
               height="32px"

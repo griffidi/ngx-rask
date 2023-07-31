@@ -14,6 +14,7 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
 import { requestAnimationFrame, setTimeout } from '@rx-angular/cdk/zone-less/browser';
 import { RxUnpatch } from '@rx-angular/template/unpatch';
 import { filter, finalize, map, tap } from 'rxjs';
+import type { FileUploadCompleteEvent } from './file-upload-complete-event';
 import { FileUploadService } from './file-upload.service';
 
 const UPLOAD_RESET_TIMEOUT = 2_000;
@@ -35,8 +36,8 @@ const UPLOAD_RESET_TIMEOUT = 2_000;
         --_button-border-color: var(--app-color-accent);
         --_button-background-gradient-degree: 0deg;
 
-        border: var(--_border-size) solid transparent;
         position: relative;
+        border: var(--_border-size) solid transparent;
 
         &::before {
           position: absolute;
@@ -100,6 +101,7 @@ export class RkFileUpload implements ControlValueAccessor {
   touched = false;
   disabled = false;
 
+  @Output() readonly uploadComplete = new EventEmitter<FileUploadCompleteEvent>();
   @Output() readonly valueChange = new EventEmitter<File | null>();
 
   @ViewChild('button') protected button!: MatButton;
@@ -138,7 +140,10 @@ export class RkFileUpload implements ControlValueAccessor {
           filter(({ type }) => type === HttpEventType.UploadProgress),
           map(event => event as HttpProgressEvent), // this is only here b/c TypeScript doesn't allow converting the type
           tap(({ loaded, total }: HttpProgressEvent) => this.#setProgress(loaded, total)),
-          finalize(() => this.#reset(true))
+          finalize(() => {
+            this.#reset(true);
+            this.uploadComplete.emit({ file: this.value! });
+          })
         )
         .subscribe();
     }
