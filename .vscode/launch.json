@@ -37,7 +37,7 @@
       "name": "Debug demo (edge)",
       "type": "pwa-msedge",
       "request": "launch",
-      // "runtimeExecutable": "dev",
+      "runtimeExecutable": "dev",
       "url": "http://localhost:4200",
       "webRoot": "${workspaceFolder}",
       "userDataDir": "${workspaceFolder}/.out/edge",

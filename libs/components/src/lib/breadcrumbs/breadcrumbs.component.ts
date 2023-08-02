@@ -33,22 +33,8 @@ interface BreadcrumbPath {
 @Component({
   selector: 'rk-breadcrumbs',
   standalone: true,
-  template: `
-    <nav *ngIf="paths().length">
-      <ul>
-        <li *ngFor="let route of paths(); let first = first">
-          <rk-svg-divider
-            *ngIf="!first"
-            [dividerType]="'right-arrow'"></rk-svg-divider>
-          <a
-            class="nav-link"
-            [routerLink]="route.paths">
-            {{ route.title }}
-          </a>
-        </li>
-      </ul>
-    </nav>
-  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgFor, NgIf, RkSvgDivider, RouterLink],
   styles: [
     `
       ul {
@@ -92,8 +78,22 @@ interface BreadcrumbPath {
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgFor, NgIf, RkSvgDivider, RouterLink],
+  template: `
+    <nav *ngIf="paths().length">
+      <ul>
+        <li *ngFor="let route of paths(); let first = first">
+          <rk-svg-divider
+            *ngIf="!first"
+            [dividerType]="'right-arrow'"></rk-svg-divider>
+          <a
+            class="nav-link"
+            [routerLink]="route.paths">
+            {{ route.title }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  `,
 })
 export class RkBreadcrumbs {
   #injector = inject(Injector);
