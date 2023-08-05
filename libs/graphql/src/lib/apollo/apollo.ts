@@ -13,9 +13,8 @@ import { GRAPHQL_URI_TOKEN } from '../graphql-uri-token';
  */
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   const uri = inject(GRAPHQL_URI_TOKEN);
-  const link = httpLink.create({ uri });
-  // const link = createUploadLink({ uri });
-  // const link2 = link.concat(httpLink.create());
+  const uploadLink = createUploadLink({ uri });
+  const link = uploadLink.concat(httpLink.create({ uri }));
 
   return {
     cache: new InMemoryCache(),
@@ -29,8 +28,6 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     headers: {
       'Access-Control-Allow-Origin': 'true',
     },
-    // link,
-    link: link.concat(createUploadLink()),
-    // link: httpLink.create({ uri }),
+    link,
   };
 }
