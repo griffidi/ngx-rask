@@ -13,8 +13,13 @@ import { GRAPHQL_URI_TOKEN } from '../graphql-uri-token';
  */
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   const uri = inject(GRAPHQL_URI_TOKEN);
-  const uploadLink = createUploadLink({ uri });
-  const link = uploadLink.concat(httpLink.create({ uri }));
+
+  // BUG: This is not the proper way to create a Link.
+  // However, all HTTP request using apollo-angular are successful even though the following
+  // warning outputted to the console:
+  // Error: You are calling concat on a terminating link, which will have no effect.
+  const httpLinkHandler = httpLink.create({ uri });
+  const link = httpLinkHandler.concat(createUploadLink());
 
   return {
     cache: new InMemoryCache(),
