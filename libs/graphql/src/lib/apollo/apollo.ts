@@ -19,7 +19,13 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   // warning outputted to the console:
   // Error: You are calling concat on a terminating link, which will have no effect.
   const httpLinkHandler = httpLink.create({ uri });
-  const link = httpLinkHandler.concat(createUploadLink());
+  const link = httpLinkHandler.concat(
+    createUploadLink({
+      headers: {
+        'Apollo-Require-Preflight': 'true',
+      },
+    })
+  );
 
   return {
     cache: new InMemoryCache(),

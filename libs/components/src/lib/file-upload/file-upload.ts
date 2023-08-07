@@ -75,8 +75,8 @@ const UPLOAD_RESET_TIMEOUT = 2_000;
     <input
       #input
       type="file"
+      [attr.accept]="fileType"
       [unpatch]="['change']"
-      [accept]="fileType"
       (change)="onFileChange($event)" />
   `,
 })

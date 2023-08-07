@@ -10,12 +10,13 @@ import { ApolloServerPluginUsageReportingDisabled } from '@apollo/server/plugin/
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
 import { koaMiddleware } from '@as-integrations/koa';
+import { mergeSchemas } from '@graphql-tools/schema';
 import cors from '@koa/cors';
 import { resolvers } from '@prisma/generated/type-graphql/index.js';
+import graphqlUploadKoa from 'graphql-upload/graphqlUploadKoa.mjs';
 import Koa from 'koa';
 import { koaBody } from 'koa-body';
 import logger from 'koa-logger';
-import koaStatic from 'koa-static';
 import http from 'node:http';
 import { buildSchema } from 'type-graphql';
 import config from './app.config.js';
@@ -23,7 +24,7 @@ import type { Context } from './client/context.js';
 import { prisma } from './client/index.js';
 import { LoginResolver } from './resolvers/login.js';
 import { ProductTransactionResolver } from './resolvers/product-transaction.js';
-import { staticMiddlewares } from './static/index.js';
+import schemas from './schema/index.js';
 
 await prisma.$connect();
 
@@ -33,11 +34,15 @@ const schema = await buildSchema({
   validate: false,
 });
 
+const mergedSchemas = mergeSchemas({
+  schemas: [schema, schemas],
+});
+
 const app = new Koa();
 const httpServer = http.createServer(app.callback());
 const server = new ApolloServer<Context>({
   cache: new InMemoryLRUCache(),
-  schema,
+  schema: mergedSchemas,
   introspection: config.isDevMode,
   plugins: [
     ApolloServerPluginDrainHttpServer({ httpServer }),
@@ -55,12 +60,12 @@ await server.start();
 
 app.use(logger());
 
-app.use(
-  koaStatic(config.staticRelativePath, {
-    gzip: true,
-    maxAge: 1 * 60 * 1000, // 1s,
-  })
-);
+// app.use(
+//   koaStatic(config.staticRelativePath, {
+//     gzip: true,
+//     maxAge: 1 * 60 * 1000, // 1s,
+//   })
+// );
 
 app.use(
   cors({
@@ -68,13 +73,21 @@ app.use(
     origin: config.corsOrigin,
   })
 );
+
 app.use(
   koaBody({
     multipart: true,
   })
 );
 
-app.use(staticMiddlewares);
+app.use(
+  graphqlUploadKoa({
+    maxFileSize: 10000000, // 10 MB
+    maxFiles: 20,
+  })
+);
+
+// app.use(staticMiddlewares);
 
 app.use(
   koaMiddleware<Context>(server as any, {

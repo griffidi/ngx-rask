@@ -11,6 +11,7 @@ interface AppConfig {
   jwtSecret: string;
   isDevMode: boolean;
   staticPath: string;
+  staticUrl: URL;
   staticRelativePath: string;
 }
 
@@ -21,5 +22,6 @@ export default {
   jwtSecret: process.env['JWT_SECRET']!,
   isDevMode: process.env['NODE_ENV'] === 'development',
   staticPath: resolve(fileURLToPath(import.meta.url), '../../public'),
+  staticUrl: new URL('../../public', import.meta.url),
   staticRelativePath: '/public',
 } satisfies AppConfig;

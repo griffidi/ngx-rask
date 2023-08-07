@@ -15,7 +15,7 @@
     "incremental": true,
     // "inlineSources": true,
     "lib": ["ESNext"],
-    "module": "ESNext",
+    "module": "Node16",
     "moduleResolution": "node16",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
