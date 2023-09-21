@@ -59,7 +59,7 @@
     "apollo-angular": "^5.0.0",
     "apollo-upload-client": "^17.0.0",
     "apollo3-cache-persist": "^0.14.1",
-    "graphql": "^16.7.1",
+    "graphql": "^16.8.1",
     "ngx-toastr": "^17.0.2",
     "recursive-diff": "^1.0.9",
     "rxjs": "~7.8.1",
