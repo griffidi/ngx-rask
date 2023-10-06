@@ -1,12 +1,18 @@
 <mat-card
   *ngFor="let product of products()"
   (click)="onCardClick(product.id)">
-  <span class="title">
-    {{ product.name }}
-  </span>
-  <button
-    mat-icon-button
-    color="primary">
-    <mat-icon>folder_open</mat-icon>
-  </button>
+  <mat-card-header>
+    <span class="title">
+      <div>{{ product.name }}</div>
+      <div>{{ product.rating }}</div>
+      <div>{{ product.cost }}</div>
+    </span>
+  </mat-card-header>
+  <mat-card-actions>
+    <button
+      mat-icon-button
+      color="primary">
+      <mat-icon>folder_open</mat-icon>
+    </button>
+  </mat-card-actions>
 </mat-card>
