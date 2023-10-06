@@ -234,7 +234,7 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
           [(ngModel)]="searchValue" />
         <mat-hint align="start">
           Tip: Type
-          <span class="special-character">@</span>
+          <span class="special-character">&#64;</span>
           to search for employees
         </mat-hint>
         <mat-hint align="end">
