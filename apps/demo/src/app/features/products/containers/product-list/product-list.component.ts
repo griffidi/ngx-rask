@@ -12,21 +12,32 @@ import { productsStore } from '../../store';
   selector: 'app-product-list',
   standalone: true,
   templateUrl: './product-list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CreatePathPipe,
+    CurrencyPipe,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    NgFor,
+    RouterLink,
+  ],
   styles: [
     `
       :host {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
         grid-gap: 2.2rem;
+        padding: 20px;
       }
 
       .mat-mdc-card {
         --_border-color: transparent;
 
         display: flex;
-        flex-direction: row;
+        /* flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        align-items: center; */
         gap: 20px;
         background: var(--app-color-surface-2);
         border-radius: var(--app-shape-medium);
@@ -47,26 +58,7 @@ import { productsStore } from '../../store';
         font-size: 1.1em;
         font-weight: 500;
       }
-      /*
-
-img {
-  border-start-start-radius: var(--app-shape-large);
-  border-start-end-radius: var(--app-shape-large);
-  aspect-ratio: 1 / 1;
-  clip-path: fill;
-  filter: grayscale(0.8);
-} */
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CreatePathPipe,
-    CurrencyPipe,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    NgFor,
-    RouterLink,
   ],
 })
 export default class ProductListComponent {
