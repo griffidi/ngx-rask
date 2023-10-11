@@ -50,6 +50,6 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
-    "_enabledBlockTypes": ["if", "switch", "for", "defer"]
+    "_enabledBlockTypes": ["if", "for", "switch", "defer"]
   }
 }

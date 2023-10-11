@@ -1,7 +1,7 @@
-import { IMAGE_PATH_TOKEN } from '#/app/common/*';
 import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, inject, signal } from '@angular/core';
 import { Colors, RkColorOptions, RkSvg } from '@ngx-rask/components';
+import { IMAGE_PATH_TOKEN } from 'apps/demo/src/app/common/assets';
 
 type hoveredColorType = `hovered-color-${Colors}`;
 type selectedColorType = `selected-color-${Colors}`;
