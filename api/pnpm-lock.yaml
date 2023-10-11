@@ -36,8 +36,8 @@ dependencies:
     specifier: ^2.0.3
     version: 2.0.3
   graphql-scalars:
-    specifier: ^1.22.3
-    version: 1.22.3(graphql@16.8.1)
+    specifier: ^1.22.4
+    version: 1.22.4(graphql@16.8.1)
   graphql-upload:
     specifier: ^16.0.2
     version: 16.0.2(@types/koa@2.13.9)(graphql@16.8.1)
@@ -83,11 +83,11 @@ devDependencies:
     specifier: ^3.4.3
     version: 3.4.3
   '@types/graphql-fields':
-    specifier: ^1.3.6
-    version: 1.3.6
+    specifier: ^1.3.7
+    version: 1.3.7
   '@types/graphql-upload':
-    specifier: ^16.0.2
-    version: 16.0.2
+    specifier: ^16.0.3
+    version: 16.0.3
   '@types/jsonwebtoken':
     specifier: ^9.0.3
     version: 9.0.3
@@ -129,7 +129,7 @@ devDependencies:
     version: 5.0.5
   typegraphql-prisma:
     specifier: 0.27.0
-    version: 0.27.0(@prisma/client@5.4.2)(@types/graphql-fields@1.3.6)(@types/node@20.8.4)(graphql-fields@2.0.3)(graphql-scalars@1.22.3)(prisma@5.4.2)(tslib@2.6.2)(type-graphql@2.0.0-beta.2)
+    version: 0.27.0(@prisma/client@5.4.2)(@types/graphql-fields@1.3.7)(@types/node@20.8.4)(graphql-fields@2.0.3)(graphql-scalars@1.22.4)(prisma@5.4.2)(tslib@2.6.2)(type-graphql@2.0.0-beta.2)
   typescript:
     specifier: 5.2.2
     version: 5.2.2
@@ -966,6 +966,15 @@ packages:
       '@types/qs': 6.9.8
       '@types/serve-static': 1.15.3
 
+  /@types/express@4.17.19:
+    resolution: {integrity: sha512-UtOfBtzN9OvpZPPbnnYunfjM7XCI4jyk1NvnFhTVz5krYAnW4o5DCoIekvms+8ApqhB4+9wSge1kBijdfTSmfg==}
+    dependencies:
+      '@types/body-parser': 1.19.3
+      '@types/express-serve-static-core': 4.17.37
+      '@types/qs': 6.9.8
+      '@types/serve-static': 1.15.3
+    dev: true
+
   /@types/formidable@2.0.6:
     resolution: {integrity: sha512-L4HcrA05IgQyNYJj6kItuIkXrInJvsXTPC5B1i64FggWKKqSL+4hgt7asiSNva75AoLQjq29oPxFfU4GAQ6Z2w==}
     dependencies:
@@ -978,16 +987,16 @@ packages:
       '@types/node': 20.8.4
     dev: true
 
-  /@types/graphql-fields@1.3.6:
-    resolution: {integrity: sha512-tLiskj9g5ftYgiVxq8VlvBEYDRow23IwY/LMnhljXfWvBhi+LIo9YEMa6AACjgIa3rG+edS9xh3v6Rja2UPbDg==}
+  /@types/graphql-fields@1.3.7:
+    resolution: {integrity: sha512-sI92U61qFyqDxU8SH0TbB9+1wDBEOR6lcp6q6OUUzMLUhdpe3l8muIUDi6WBn20gm5lBsKw+3ZmjEb7xKd/q3Q==}
     dependencies:
       graphql: 16.8.1
     dev: true
 
-  /@types/graphql-upload@16.0.2:
-    resolution: {integrity: sha512-N9ywBqlfQVG8NH8VI4ZyGIfPW/BHjiXx60eEL4ULp1GzVz8jTOITbYUAAkbsMN9LdNzVwgo2Czk8o/vouzkfAg==}
+  /@types/graphql-upload@16.0.3:
+    resolution: {integrity: sha512-2xFC5PWeS5MJ2To42ZSNyoafdEhgSoG0iCf37jrIdONWAgPZ8W7oPg9MJJVBckYhe9o4mWxQUcTGULByRMyRxQ==}
     dependencies:
-      '@types/express': 4.17.18
+      '@types/express': 4.17.19
       '@types/koa': 2.13.9
       fs-capacitor: 8.0.0
       graphql: 16.8.1
@@ -2031,8 +2040,8 @@ packages:
       graphql: 16.8.1
       lodash.get: 4.4.2
 
-  /graphql-scalars@1.22.3(graphql@16.8.1):
-    resolution: {integrity: sha512-AmoMjwaoqUXerFjZ3KswhU/6XtT8OXmMp+ZZrxqm7p+ZI5ma+36KIPuN53cGIba9A2SxTU0bGyHoF5zZd2bCUQ==}
+  /graphql-scalars@1.22.4(graphql@16.8.1):
+    resolution: {integrity: sha512-ILnv7jq5VKHLUyoaTFX7lgYrjCd6vTee9i8/B+D4zJKJT5TguOl0KkpPEbXHjmeor8AZYrVsrYUHdqRBMX1pjA==}
     engines: {node: '>=10'}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -3631,7 +3640,7 @@ packages:
       mime-types: 2.1.35
     dev: false
 
-  /typegraphql-prisma@0.27.0(@prisma/client@5.4.2)(@types/graphql-fields@1.3.6)(@types/node@20.8.4)(graphql-fields@2.0.3)(graphql-scalars@1.22.3)(prisma@5.4.2)(tslib@2.6.2)(type-graphql@2.0.0-beta.2):
+  /typegraphql-prisma@0.27.0(@prisma/client@5.4.2)(@types/graphql-fields@1.3.7)(@types/node@20.8.4)(graphql-fields@2.0.3)(graphql-scalars@1.22.4)(prisma@5.4.2)(tslib@2.6.2)(type-graphql@2.0.0-beta.2):
     resolution: {integrity: sha512-yZTco+qR9nTWf9hpjPPx8BPa+GEoKQl0+Zq1wiXiUgBrXX/b77TrkqphVia0nb5nSyIdSmRcPUbqMPi0DwCOtA==}
     engines: {node: '>=12.4'}
     hasBin: true
@@ -3648,10 +3657,10 @@ packages:
       '@prisma/client': 5.4.2(prisma@5.4.2)
       '@prisma/generator-helper': 5.0.0
       '@prisma/internals': 5.0.0
-      '@types/graphql-fields': 1.3.6
+      '@types/graphql-fields': 1.3.7
       '@types/node': 20.8.4
       graphql-fields: 2.0.3
-      graphql-scalars: 1.22.3(graphql@16.8.1)
+      graphql-scalars: 1.22.4(graphql@16.8.1)
       pluralize: 8.0.0
       prisma: 5.4.2
       semver: 7.5.4
