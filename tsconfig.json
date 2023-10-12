@@ -31,6 +31,7 @@
     "target": "ES2022",
     "paths": {
       "#/app/common/*": ["apps/demo/src/app/common/index.ts"],
+      "#/app/components/*": ["apps/demo/src/app/components/index.ts"],
       "#/app/features/*": ["apps/demo/src/app/features/*"],
       "#/app/styles/*": ["apps/demo/src/styles/*"],
       "#/app/types/graphql": ["apps/demo/src/types/graphql.ts"],
