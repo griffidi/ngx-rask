@@ -1,4 +1,4 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
@@ -2433,7 +2433,7 @@ packages:
       '@types/koa': 2.13.9
       co-body: 6.1.0
       formidable: 2.1.2
-      zod: 3.21.4
+      zod: 3.22.4
     dev: false
 
   /koa-bodyparser@4.4.1:
@@ -3814,6 +3814,6 @@ packages:
       readable-stream: 3.6.2
     dev: true
 
-  /zod@3.21.4:
-    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+  /zod@3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: false
