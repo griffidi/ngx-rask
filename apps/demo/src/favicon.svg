@@ -3,7 +3,7 @@
   xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <linearGradient id="myGradient">
-      <stop offset="0%" stop-color="#dd0031" />
+      <stop offset="0%" stop-color="#ff3a65" />
       <stop offset="100%" stop-color="#b6002b" />
     </linearGradient>
   </defs>

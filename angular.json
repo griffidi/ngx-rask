@@ -35,7 +35,7 @@
             "outputPath": "dist/@ngx-rask/demo",
             "index": "apps/demo/src/index.html",
             "main": "apps/demo/src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": ["apps/demo/src/zone-flags.js", "zone.js"],
             "tsConfig": "apps/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/demo/src/favicon.svg", "apps/demo/src/assets"],

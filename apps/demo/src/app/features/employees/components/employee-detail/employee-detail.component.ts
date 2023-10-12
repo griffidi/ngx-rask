@@ -1,4 +1,8 @@
 import { IMAGE_PATH_TOKEN } from '#/app/common/assets';
+import {
+  DepartmentSelectOptionsDirective,
+  LocationStateSelectOptionsDirective,
+} from '#/app/components/option-directives';
 import type { Employee } from '#/app/types/graphql';
 import { DatePipe, NgIf } from '@angular/common';
 import {
@@ -17,10 +21,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { RkFileUpload, RkSelect, RkSvg, type FileUploadCompleteEvent } from '@ngx-rask/components';
-import {
-  DepartmentSelectOptionsDirective,
-  LocationStateSelectOptionsDirective,
-} from 'apps/demo/src/app/components';
 
 /**
  * Generate employee profile image path. If employee imagePath is undefined,

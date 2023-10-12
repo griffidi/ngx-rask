@@ -1,3 +1,4 @@
+import { DepartmentListOptionsDirective } from '#/app/components/option-directives';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
@@ -8,7 +9,6 @@ import { RouterLink } from '@angular/router';
 import { RkSelect, RkSelectionList, type RkListOption } from '@ngx-rask/components';
 import { FixedSizeVirtualScrollStrategy } from '@rx-angular/template/experimental/virtual-scrolling';
 import { RxFor } from '@rx-angular/template/for';
-import { DepartmentListOptionsDirective } from 'apps/demo/src/app/components';
 import { EmployeesStore } from '../../store/employees.store';
 
 @Component({
