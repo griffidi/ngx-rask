@@ -3,7 +3,7 @@ html.cdk-global-scrollblock {
 }
 
 .rk-command-palette-backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--app-scrim-color);
 }
 
 .rk-command-palette-panel {

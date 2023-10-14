@@ -103,3 +103,8 @@
     background: var(--app-color-background-hover);
   }
 }
+
+/* back drops */
+:root {
+  --app-scrim-color: rgba(0, 0, 0, 0.5);
+}

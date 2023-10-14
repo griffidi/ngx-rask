@@ -22,9 +22,24 @@ import routes, { nonNavRoutePaths } from './routes';
   selector: 'app-layout',
   standalone: true,
   templateUrl: './layout.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    // LayoutFooter,
+    LayoutHeader,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    NgIf,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+    RxFor,
+  ],
+  animations: [slideInAnimation],
   styles: [
     `
       :host {
+        --mat-sidenav-scrim-color: var(--app-scrim-color);
         --_toggle-button-offset: 20px;
 
         display: block;
@@ -103,20 +118,6 @@ import routes, { nonNavRoutePaths } from './routes';
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    // LayoutFooter,
-    LayoutHeader,
-    MatButtonModule,
-    MatIconModule,
-    MatSidenavModule,
-    NgIf,
-    RouterLink,
-    RouterLinkActive,
-    RouterOutlet,
-    RxFor,
-  ],
-  animations: [slideInAnimation],
 })
 export default class Layout {
   readonly #commandPaletteService = inject(CommandPaletteService);
