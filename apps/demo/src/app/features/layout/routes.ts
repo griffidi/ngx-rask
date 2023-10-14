@@ -6,7 +6,7 @@ export default [
     path: '',
     title: 'Home',
     canActivate: [authGuard('protected')],
-    data: { animation: 'HomePage', icon: 'home' },
+    data: { animation: 'HomePage', icon: 'home', notSearchable: true },
     loadComponent: () => import('../home/home.component'),
   },
   {

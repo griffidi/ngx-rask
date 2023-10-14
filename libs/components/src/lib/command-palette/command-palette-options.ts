@@ -4,6 +4,10 @@ import type { Route } from '@angular/router';
 export interface CommandPaletteItem {
   cssColorCustomProperty?: string;
   icon?: string;
+  /**
+   * Since most command items are searchable, the default is searchable.
+   */
+  notSearchable?: boolean;
   path: string;
   title: string;
 }

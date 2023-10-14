@@ -92,7 +92,7 @@
       "editor.tabSize": 2
     },
     "[prisma]": {
-      "editor.defaultFormatter": "Prisma.prisma-insider"
+      "editor.defaultFormatter": "Prisma.prisma"
     },
     "[markdown]": {
       "editor.formatOnSave": true,

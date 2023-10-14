@@ -87,6 +87,13 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
           color: var(--app-color-text-dark-3);
         }
 
+        ::ng-deep .mat-mdc-form-field-icon-prefix {
+          display: flex;
+          align-items: center;
+          font-size: 0.8em;
+          color: var(--app-color-text-dark-3);
+        }
+
         .mat-mdc-form-field-hint {
           display: flex;
           align-items: center;
@@ -227,10 +234,15 @@ const DEFAULT_SEARCH_VALUE_PLACEHOLDER = 'Search or jump to...';
     <header>
       <mat-form-field>
         <mat-icon matPrefix>search</mat-icon>
+        <span
+          matPrefix
+          *ngIf="searchCategory()">
+          {{ searchCategory() }} /
+        </span>
         <input
           matInput
           name="searchValue"
-          [placeholder]="searchValuePlaceholder()"
+          [placeholder]="searchPlaceholder()"
           [(ngModel)]="searchValue" />
         <mat-hint align="start">
           Tip: Type
@@ -311,7 +323,8 @@ export class RkCommandPalette {
   readonly #options = inject(COMMAND_PALETTE_OPTIONS);
   readonly #searchValue = signal<string>('');
 
-  protected readonly searchValuePlaceholder = signal<string>(DEFAULT_SEARCH_VALUE_PLACEHOLDER);
+  protected readonly searchCategory = signal<string>('');
+  protected readonly searchPlaceholder = signal<string>(DEFAULT_SEARCH_VALUE_PLACEHOLDER);
   protected readonly hoveredPageListItem = signal<CommandPaletteItem | null>(null);
 
   /**
@@ -320,6 +333,7 @@ export class RkCommandPalette {
   protected readonly navItems = signal<CommandPaletteItem[]>(
     this.#options.routes.map(({ data, path, title }) => ({
       icon: data?.['icon'],
+      notSearchable: data?.['notSearchable'],
       path: String(path),
       title: String(title),
     }))
@@ -359,7 +373,11 @@ export class RkCommandPalette {
 
   protected onListItemMouseenter(event: CommandPaletteItem) {
     this.hoveredPageListItem.set(event);
-    this.searchValuePlaceholder.set(event.title);
+    this.searchCategory.set(event.title);
+    this.searchPlaceholder.set('');
+
+    const input = this.#document.querySelector('input[name="searchValue"]') as HTMLInputElement;
+    input?.focus();
 
     // mouseenter event listener is unpatched so manually triggering change detection is required.
     this.#cdr.detectChanges();
@@ -367,7 +385,8 @@ export class RkCommandPalette {
 
   protected onListItemMouseleave() {
     this.hoveredPageListItem.set(null);
-    this.searchValuePlaceholder.set(DEFAULT_SEARCH_VALUE_PLACEHOLDER);
+    this.searchCategory.set('');
+    this.searchPlaceholder.set(DEFAULT_SEARCH_VALUE_PLACEHOLDER);
 
     // mouseleave event listener is unpatched so manually triggering change detection is required.
     this.#cdr.detectChanges();
