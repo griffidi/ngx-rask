@@ -4,22 +4,22 @@ import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
-import { ProductDetailFormComponent } from '../../components';
+import ProductDetailFormComponent from '../../components/product-detail-form/product-detail-form.component';
 import ProductImageFormComponent from '../../components/product-image-form/product-image-form.component';
 import { productsStore } from '../../store';
 
 @Component({
   selector: 'app-product-edit',
   standalone: true,
-  template: `
-    <ng-container *ngIf="product() as product">
-      <app-product-detail-form
-        [product]="product"
-        (save)="onSave($event)"
-        (cancel)="onCancel()"></app-product-detail-form>
-      <app-product-image-form />
-    </ng-container>
-  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    MatButtonModule,
+    MatInputModule,
+    NgIf,
+    ProductDetailFormComponent,
+    ProductImageFormComponent,
+    RouterLink,
+  ],
   styles: [
     `
       :host {
@@ -45,15 +45,15 @@ import { productsStore } from '../../store';
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatButtonModule,
-    MatInputModule,
-    NgIf,
-    ProductDetailFormComponent,
-    ProductImageFormComponent,
-    RouterLink,
-  ],
+  template: `
+    @if (product(); as product) {
+    <app-product-detail-form
+      [product]="product"
+      (save)="onSave($event)"
+      (cancel)="onCancel()"></app-product-detail-form>
+    <app-product-image-form />
+    }
+  `,
 })
 export default class ProductEditComponent {
   #store = inject(productsStore);

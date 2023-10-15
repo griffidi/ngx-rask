@@ -1,6 +1,5 @@
-<mat-card
-  *ngFor="let product of products()"
-  (click)="onCardClick(product.id)">
+@for (product of products(); track product.id) {
+<mat-card (click)="onCardClick(product.id)">
   <mat-card-header>
     <span class="title">
       <div>{{ product.name }}</div>
@@ -16,3 +15,4 @@
     </button>
   </mat-card-actions>
 </mat-card>
+}

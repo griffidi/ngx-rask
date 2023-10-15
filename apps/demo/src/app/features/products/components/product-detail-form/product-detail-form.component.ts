@@ -17,6 +17,33 @@ import { tap } from 'rxjs';
 @Component({
   selector: 'app-product-detail-form',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [FormsModule, MatButtonModule, MatInputModule],
+  styles: [
+    `
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background: var(--app-color-surface-2);
+        border-radius: var(--app-shape-small);
+        inline-size: 600px;
+        padding-inline: 20px;
+        padding-block: 20px;
+      }
+
+      .row {
+        display: flex;
+        gap: 20px;
+      }
+
+      footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+    `,
+  ],
   template: `
     <form
       #form="ngForm"
@@ -56,35 +83,8 @@ import { tap } from 'rxjs';
       </footer>
     </form>
   `,
-  styles: [
-    `
-      form {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        background: var(--app-color-surface-2);
-        border-radius: var(--app-shape-small);
-        inline-size: 600px;
-        padding-inline: 20px;
-        padding-block: 20px;
-      }
-
-      .row {
-        display: flex;
-        gap: 20px;
-      }
-
-      footer {
-        display: flex;
-        justify-content: flex-end;
-        gap: 10px;
-      }
-    `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, MatButtonModule, MatInputModule],
 })
-export class ProductDetailFormComponent implements AfterViewInit {
+export default class ProductDetailFormComponent implements AfterViewInit {
   protected readonly _product = signal<Product>({} as Product);
 
   @Input({ required: true }) set product(value: Product) {
