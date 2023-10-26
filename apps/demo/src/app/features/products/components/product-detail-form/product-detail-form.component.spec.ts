@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ProductDetailFormComponent } from './product-detail-form.component';
+import ProductDetailFormComponent from './product-detail-form.component';
 
 describe('ProductDetailFormComponent', () => {
   let component: ProductDetailFormComponent;
@@ -8,7 +7,7 @@ describe('ProductDetailFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ProductDetailFormComponent]
+      imports: [ProductDetailFormComponent],
     });
     fixture = TestBed.createComponent(ProductDetailFormComponent);
     component = fixture.componentInstance;

@@ -8,7 +8,7 @@ import { GRAPHQL_URI_TOKEN } from '../graphql-uri-token';
  * Create Apollo Client Options. The intent of this function
  * is to be used in a provider factory.
  *
- * @param {HttpLink} httpLink The HttpLink service.
+ * @param {HttpLink} httpLink The HttpLink service.cd ..
  * @returns {ApolloClientOptions<any>} The Apollo Client Options.
  */
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
@@ -26,6 +26,16 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
       },
     })
   );
+
+  // const uploadLink = createUploadLink({
+  //   headers: {
+  //     'Apollo-Require-Preflight': 'true',
+  //   },
+  // });
+
+  // const link = uploadLink.concat(httpLink.create({ uri }));
+
+  // const link = httpLink.create({ uri });
 
   return {
     cache: new InMemoryCache(),
