@@ -106,10 +106,10 @@
     "debug.javascript.unmapMissingSources": true,
     "debug.showBreakpointsInOverviewRuler": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll": true,
-      "source.fixAll.eslint": true,
-      "source.organizeImports": true,
-      "source.fixAll.markdownlint": true
+      "source.fixAll": "explicit",
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "explicit",
+      "source.fixAll.markdownlint": "explicit"
     },
 
     "eslint.enable": true,
