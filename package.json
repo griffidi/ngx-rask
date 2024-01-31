@@ -43,22 +43,22 @@
     "postinstall": "cd api && pnpm install && pnpm db:generate"
   },
   "dependencies": {
-    "@angular/animations": "^17.1.0-next.2",
-    "@angular/cdk": "^17.1.0-next.1",
-    "@angular/common": "^17.1.0-next.2",
-    "@angular/compiler": "^17.1.0-next.2",
-    "@angular/core": "^17.1.0-next.2",
-    "@angular/forms": "^17.1.0-next.2",
-    "@angular/material": "^17.1.0-next.1",
-    "@angular/platform-browser": "^17.1.0-next.2",
-    "@angular/platform-browser-dynamic": "^17.1.0-next.2",
-    "@angular/router": "^17.1.0-next.2",
-    "@angular/ssr": "^17.1.0-next.0",
-    "@apollo/client": "^3.7.17",
+    "@angular/animations": "^17",
+    "@angular/cdk": "^17",
+    "@angular/common": "^17",
+    "@angular/compiler": "^17",
+    "@angular/core": "^17",
+    "@angular/forms": "^17",
+    "@angular/material": "^17",
+    "@angular/platform-browser": "^17",
+    "@angular/platform-browser-dynamic": "^17",
+    "@angular/router": "^17",
+    "@angular/ssr": "^17``",
+    "@apollo/client": "^3.8.8",
     "@rx-angular/cdk": "^17.0.0",
     "@rx-angular/template": "^17.0.0",
     "apollo-angular": "^6.0.0",
-    "apollo-upload-client": "^18.0.1",
+    "apollo-upload-client": "^17.0.0",
     "apollo3-cache-persist": "^0.14.1",
     "graphql": "^16.7.1",
     "ngx-toastr": "^18.0.0",
@@ -68,14 +68,14 @@
     "zone.js": "~0.14.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.1.0-next.0",
-    "@angular-eslint/builder": "^17.1.0",
-    "@angular-eslint/eslint-plugin": "^17.1.0",
-    "@angular-eslint/eslint-plugin-template": "^17.1.0",
-    "@angular-eslint/schematics": "^17.1.0",
-    "@angular-eslint/template-parser": "^17.1.0",
-    "@angular/cli": "^17.1.0-next.0",
-    "@angular/compiler-cli": "^17.1.0-next.2",
+    "@angular-devkit/build-angular": "^17",
+    "@angular-eslint/builder": "^17.1.1",
+    "@angular-eslint/eslint-plugin": "^17.1.1",
+    "@angular-eslint/eslint-plugin-template": "^17.1.1",
+    "@angular-eslint/schematics": "^17.1.1",
+    "@angular-eslint/template-parser": "^17.1.1",
+    "@angular/cli": "^17",
+    "@angular/compiler-cli": "^17",
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/typed-document-node": "^5.0.1",
     "@graphql-codegen/typescript": "^4.0.1",
@@ -84,10 +84,10 @@
     "@rx-angular/eslint-plugin": "^2.0.0",
     "@types/apollo-upload-client": "^17.0.0",
     "@types/jest": "^29.5.3",
-    "@types/node": "^20.10.0",
-    "@typescript-eslint/eslint-plugin": "6.12.0",
-    "@typescript-eslint/parser": "6.12.0",
-    "eslint": "^8.52.0",
+    "@types/node": "^20.10.2",
+    "@typescript-eslint/eslint-plugin": "6.13.1",
+    "@typescript-eslint/parser": "6.13.1",
+    "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-jsdoc": "^46.4.6",
     "eslint-plugin-prettier": "^5.0.1",
@@ -98,15 +98,5 @@
     "prettier": "^3.0.1",
     "rimraf": "^5.0.1",
     "typescript": "5.3.2"
-  },
-  "pnpm": {
-    "overrides": {
-      "graphql-config": "^5.0.2"
-    },
-    "peerDependencyRules": {
-      "allowedVersions": {
-        "typescript": "^5.2.0"
-      }
-    }
   }
 }

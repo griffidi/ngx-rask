@@ -1,7 +1,7 @@
 import { inject, isDevMode } from '@angular/core';
 import { InMemoryCache, type ApolloClientOptions } from '@apollo/client/core';
 import { type HttpLink } from 'apollo-angular/http';
-import { createUploadLink } from 'apollo-upload-client';
+// import { createUploadLink } from 'apollo-upload-client';
 import { GRAPHQL_URI_TOKEN } from '../graphql-uri-token';
 
 /**
@@ -18,14 +18,14 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   // However, all HTTP request using apollo-angular are successful even though the following
   // warning outputted to the console:
   // Error: You are calling concat on a terminating link, which will have no effect.
-  const httpLinkHandler = httpLink.create({ uri });
-  const link = httpLinkHandler.concat(
-    createUploadLink({
-      headers: {
-        'Apollo-Require-Preflight': 'true',
-      },
-    })
-  );
+  // const httpLinkHandler = httpLink.create({ uri });
+  // const link = httpLinkHandler.concat(
+  //   createUploadLink({
+  //     headers: {
+  //       'Apollo-Require-Preflight': 'true',
+  //     },
+  //   })
+  // );
 
   // const uploadLink = createUploadLink({
   //   headers: {
@@ -35,7 +35,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 
   // const link = uploadLink.concat(httpLink.create({ uri }));
 
-  // const link = httpLink.create({ uri });
+  const link = httpLink.create({ uri });
 
   return {
     cache: new InMemoryCache(),
